@@ -10,7 +10,73 @@
 <atom:link href="https://mtanviruzzaman.github.io/nature/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Tue, 22 Sep 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 27 Sep 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Fundamental units</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/fundamental-units/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>There are three fundamental units (of time, length, and mass) and all other units of measurements are some combination of these three. First we define the unit of time–one second; we use <em>second</em> to define the unit of length–one meter; and we use both <em>second</em> and <em>meter</em> to define the unit of mass–one kilogram.</p>
+<link rel="stylesheet" href="https://tikzjax.com/v1/fonts.css">
+<script defer="" src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+<div style="display:flex; justify-content:center; width:100%; margin-bottom:1.5rem;">
+<script type="text/tikz">
+\begin{tikzpicture}[scale=1.5,transform shape,
+  every node/.style={draw,font=\small,inner sep=2pt},
+  arrow/.style={->,>=latex,line width=.8pt}]
+
+  \node (s) at (1.2,1.6) {1 second};
+  \node (m) at (0,.8)    {1 meter};
+  \node (k) at (1.4,0)   {1 kilogram};
+
+  \draw[arrow] (m) -- (s);
+  \draw[arrow] (k.north) -- (m);
+  \draw[arrow] (k.north) -- (s.south);
+
+\end{tikzpicture}
+</script>
+</div>
+<p>We want these units of measurements to be stable, universal, and reproducible. What that means is: ten seconds should mean exactly the same duration today and 1000 years from now, here and anywhere else, and anyone with the right equipment should be able to reproduce that ten-second duration independently.</p>
+<section id="second" class="level2">
+<h2 class="anchored" data-anchor-id="second">Second</h2>
+<p>One second is the duration of exactly 9,192,631,770 cycles of microwave radiation resonant with the unperturbed ground-state hyperfine transition of a cesium-133 atom.</p>
+<details>
+<summary>
+More…
+</summary>
+</details>
+</section>
+<section id="meter" class="level2">
+<h2 class="anchored" data-anchor-id="meter">Meter</h2>
+<p>One meter is the distance light travels in a vacuum in exactly <img src="https://latex.codecogs.com/png.latex?%5Ctfrac%7B1%7D%7B%5Ctext%7B299,792,458%7D%7D"> of a second.</p>
+<details>
+<summary>
+More…
+</summary>
+</details>
+</section>
+<section id="kilogram" class="level2">
+<h2 class="anchored" data-anchor-id="kilogram">Kilogram</h2>
+<p>One kilogram is the mass that makes Planck’s constant <img src="https://latex.codecogs.com/png.latex?h"> exactly <img src="https://latex.codecogs.com/png.latex?6.62607015%5Ctimes10%5E%7B-34%7D%5C%20%5Cmathrm%7Bkg%20%5Ccdot%20m%5E2/s%7D"></p>
+<details>
+<summary>
+More…
+</summary>
+</details>
+
+
+</section>
+
+ ]]></description>
+  <category>physics</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/fundamental-units/</guid>
+  <pubDate>Sun, 27 Sep 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Review: University Physics</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>

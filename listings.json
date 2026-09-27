@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/fundamental-units/index.html",
       "/posts/young-freedman-review/index.html",
       "/posts/circular-motion/index.html",
       "/posts/first-post/index.html"
