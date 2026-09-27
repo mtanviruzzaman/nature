@@ -67,6 +67,41 @@
     "href": "index.html",
     "title": "The Nature Curriculum",
     "section": "",
-    "text": "Review: University Physics\n\n\n\nphysics\n\nreview\n\n\n\nRetrieval practice hints for University Physics (14th ed.) by Young and Freedman\n\n\n\n\n\nSep 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nCentripetal acceleration in uniform circular motion\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHidden history in Physics textbooks\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 4, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\nNo matching items"
+    "text": "Fundamental units\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 27, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nReview: University Physics\n\n\n\nphysics\n\nreview\n\n\n\nRetrieval practice hints for University Physics (14th ed.) by Young and Freedman\n\n\n\n\n\nSep 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nCentripetal acceleration in uniform circular motion\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHidden history in Physics textbooks\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 4, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/fundamental-units/index.html",
+    "href": "posts/fundamental-units/index.html",
+    "title": "Fundamental units",
+    "section": "",
+    "text": "There are three fundamental units (of time, length, and mass) and all other units of measurements are some combination of these three. First we define the unit of time–one second; we use second to define the unit of length–one meter; and we use both second and meter to define the unit of mass–one kilogram.\nWe want these units of measurements to be stable, universal, and reproducible. What that means is: ten seconds should mean exactly the same duration today and 1000 years from now, here and anywhere else, and anyone with the right equipment should be able to reproduce that ten-second duration independently."
+  },
+  {
+    "objectID": "posts/fundamental-units/index.html#one-second",
+    "href": "posts/fundamental-units/index.html#one-second",
+    "title": "Fundamental units",
+    "section": "One second",
+    "text": "One second"
+  },
+  {
+    "objectID": "posts/fundamental-units/index.html#second",
+    "href": "posts/fundamental-units/index.html#second",
+    "title": "Fundamental units",
+    "section": "Second",
+    "text": "Second\nOne second is the duration of exactly 9,192,631,770 cycles of microwave radiation resonant with the unperturbed ground-state hyperfine transition of a cesium-133 atom.\n\n\nMore…"
+  },
+  {
+    "objectID": "posts/fundamental-units/index.html#meter",
+    "href": "posts/fundamental-units/index.html#meter",
+    "title": "Fundamental units",
+    "section": "Meter",
+    "text": "Meter\nOne meter is the distance light travels in a vacuum in exactly \\(\\tfrac{1}{\\text{299,792,458}}\\) of a second.\n\n\nMore…"
+  },
+  {
+    "objectID": "posts/fundamental-units/index.html#kilogram",
+    "href": "posts/fundamental-units/index.html#kilogram",
+    "title": "Fundamental units",
+    "section": "Kilogram",
+    "text": "Kilogram\nOne kilogram is the mass that makes Planck’s constant \\(h\\) exactly \\(6.62607015\\times10^{-34}\\ \\mathrm{kg \\cdot m^2/s}\\)\n\n\nMore…"
   }
 ]

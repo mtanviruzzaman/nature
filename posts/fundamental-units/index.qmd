@@ -1,0 +1,55 @@
+---
+title: "Fundamental units"
+author: "Mohammad Tanviruzzaman"
+date: "2026-09-27"
+categories: [physics]
+---
+There are three fundamental units (of time, length, and mass) and all other units of measurements are some combination of these three. First we define the unit of time--one second; we use _second_ to define the unit of length--one meter; and we use both _second_ and _meter_ to define the unit of mass--one kilogram.
+
+```{=html}
+<link rel="stylesheet" href="https://tikzjax.com/v1/fonts.css">
+<script defer src="https://tikzjax.com/v1/tikzjax.js"></script>
+
+<div style="display:flex; justify-content:center; width:100%; margin-bottom:1.5rem;">
+<script type="text/tikz">
+\begin{tikzpicture}[scale=1.5,transform shape,
+  every node/.style={draw,font=\small,inner sep=2pt},
+  arrow/.style={->,>=latex,line width=.8pt}]
+
+  \node (s) at (1.2,1.6) {1 second};
+  \node (m) at (0,.8)    {1 meter};
+  \node (k) at (1.4,0)   {1 kilogram};
+
+  \draw[arrow] (m) -- (s);
+  \draw[arrow] (k.north) -- (m);
+  \draw[arrow] (k.north) -- (s.south);
+
+\end{tikzpicture}
+</script>
+</div>
+```
+
+We want these units of measurements to be stable, universal, and reproducible. What that means is: ten seconds should mean exactly the same duration today and 1000 years from now, here and anywhere else, and anyone with the right equipment should be able to reproduce that ten-second duration independently. 
+
+## Second
+One second is the duration of exactly 9,192,631,770 cycles of microwave radiation resonant with the unperturbed ground-state hyperfine transition of a cesium-133 atom.
+
+<details>
+<summary>More...</summary>
+</details>
+
+
+## Meter
+One meter is the distance light travels in a vacuum in exactly $\tfrac{1}{\text{299,792,458}}$ of a second.
+
+<details>
+<summary>More...</summary>
+</details>
+
+
+## Kilogram
+One kilogram is the mass that makes Planck's constant $h$ exactly $6.62607015\times10^{-34}\ \mathrm{kg \cdot m^2/s}$
+
+<details>
+<summary>More...</summary>
+</details>
