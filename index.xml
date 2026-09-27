@@ -20,7 +20,7 @@
 
 
 
-<p>There are three fundamental units (of time, length, and mass) and all other units of measurements are some combination of these three. First we define the unit of time–one second; we use <em>second</em> to define the unit of length–one meter; and we use both <em>second</em> and <em>meter</em> to define the unit of mass–one kilogram.</p>
+<p>There are three fundamental units (of time, distance, and mass) and all other units of measurement are some combination of these three. First we define the unit of time–one second; we use <em>second</em> to define the unit of length–one meter; and we use both <em>second</em> and <em>meter</em> to define the unit of mass–one kilogram.</p>
 <link rel="stylesheet" href="https://tikzjax.com/v1/fonts.css">
 <script defer="" src="https://tikzjax.com/v1/tikzjax.js"></script>
 
@@ -41,7 +41,7 @@
 \end{tikzpicture}
 </script>
 </div>
-<p>We want these units of measurements to be stable, universal, and reproducible. What that means is: ten seconds should mean exactly the same duration today and 1000 years from now, here and anywhere else, and anyone with the right equipment should be able to reproduce that ten-second duration independently.</p>
+<p>We want these units to be stable, universal, and reproducible. What that means is: ten seconds should mean exactly the same duration today and 1000 years from now, here and anywhere else, and anyone with the right equipment should be able to reproduce that ten-second duration independently.</p>
 <section id="second" class="level2">
 <h2 class="anchored" data-anchor-id="second">Second</h2>
 <p>One second is the duration of exactly 9,192,631,770 cycles of microwave radiation resonant with the unperturbed ground-state hyperfine transition of a cesium-133 atom.</p>
