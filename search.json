@@ -67,7 +67,7 @@
     "href": "posts/fundamental-units/index.html",
     "title": "Fundamental units",
     "section": "",
-    "text": "There are three fundamental units (of time, distance, and mass) and all other units of measurement are some combination of these three. First we define the unit of time–one second; we use second to define the unit of length–one meter; and we use both second and meter to define the unit of mass–one kilogram.\nWe want these units to be stable, universal, and reproducible. What that means is: ten seconds should mean exactly the same duration today and 1000 years from now, here and anywhere else, and anyone with the right equipment should be able to reproduce that ten-second duration independently."
+    "text": "There are three fundamental units (of time, distance, and mass) and all other units of measurement are some combination of these three. First we define the unit of time–one second; we use second to define the unit of distance–one meter; and we use both second and meter to define the unit of mass–one kilogram.\nWe want these units to be stable, universal, and reproducible. What that means is: ten seconds should mean exactly the same duration today and 1000 years from now, here and anywhere else, and anyone with the right equipment should be able to reproduce that ten-second duration independently."
   },
   {
     "objectID": "posts/fundamental-units/index.html#second",
