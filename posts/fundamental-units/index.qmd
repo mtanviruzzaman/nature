@@ -4,7 +4,7 @@ author: "Mohammad Tanviruzzaman"
 date: "2026-09-27"
 categories: [physics]
 ---
-There are three fundamental units (of time, distance, and mass) and all other units of measurement are some combination of these three. First we define the unit of time--one second; we use _second_ to define the unit of length--one meter; and we use both _second_ and _meter_ to define the unit of mass--one kilogram.
+There are three fundamental units (of time, distance, and mass) and all other units of measurement are some combination of these three. First we define the unit of time--one second; we use _second_ to define the unit of distance--one meter; and we use both _second_ and _meter_ to define the unit of mass--one kilogram.
 
 ```{=html}
 <link rel="stylesheet" href="https://tikzjax.com/v1/fonts.css">
