@@ -67,7 +67,7 @@
     "href": "posts/fundamental-units/index.html",
     "title": "Fundamental units",
     "section": "",
-    "text": "There are three fundamental units (of time, distance, and mass) and all other units of measurement are some combination of these three. First we define the unit of time–one second; we use second to define the unit of length–one meter; and we use both second and meter to define the unit of mass–one kilogram.\nWe want these units to be stable, universal, and reproducible. What that means is: ten seconds should mean exactly the same duration today and 1000 years from now, here and anywhere else, and anyone with the right equipment should be able to reproduce that ten-second duration independently."
+    "text": "There are three fundamental units (of time, distance, and mass) and all other units of measurement are some combination of these three. First we define the unit of time–one second; we use second to define the unit of distance–one meter; and we use both second and meter to define the unit of mass–one kilogram.\nWe want these units to be stable, universal, and reproducible. What that means is: ten seconds should mean exactly the same duration today and 1000 years from now, here and anywhere else, and anyone with the right equipment should be able to reproduce that ten-second duration independently."
   },
   {
     "objectID": "posts/fundamental-units/index.html#second",
@@ -95,6 +95,48 @@
     "href": "index.html",
     "title": "The Nature Curriculum",
     "section": "",
-    "text": "Fundamental units\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 27, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nReview: University Physics\n\n\n\nphysics\n\nreview\n\n\n\nRetrieval practice hints for University Physics (14th ed.) by Young and Freedman\n\n\n\n\n\nSep 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nCentripetal acceleration in uniform circular motion\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHidden history in Physics textbooks\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 4, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\nNo matching items"
+    "text": "Tradeoffs in elementary math\n\n\n\nmath\n\n\n\n\n\n\n\n\n\nSep 30, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nFundamental units\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 27, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nReview: University Physics\n\n\n\nphysics\n\nreview\n\n\n\nRetrieval practice hints for University Physics (14th ed.) by Young and Freedman\n\n\n\n\n\nSep 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nCentripetal acceleration in uniform circular motion\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHidden history in Physics textbooks\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 4, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/Trade-off in elementary math/index.html",
+    "href": "posts/Trade-off in elementary math/index.html",
+    "title": "Tradeoffs in elementary math",
+    "section": "",
+    "text": "tl;dr"
+  },
+  {
+    "objectID": "posts/Trade-off in elementary math/index.html#x0",
+    "href": "posts/Trade-off in elementary math/index.html#x0",
+    "title": "Tradeoffs in elementary math",
+    "section": "\\(x^0\\)",
+    "text": "\\(x^0\\)\nFor \\(x \\ne 0\\), we choose \\(x^0 = 1\\) because choosing \\(x^0 = 0\\) instead would require us to give up the general exponent rule:\n\\[\nx^{a+b} = x^a x^b.\n\\]\n\n\nMore…\n\n\\[\nx = x^{1+0} = x^1 \\cdot x^0\n\\]"
+  },
+  {
+    "objectID": "posts/Trade-off in elementary math/index.html#section",
+    "href": "posts/Trade-off in elementary math/index.html#section",
+    "title": "Tradeoffs in elementary math",
+    "section": "$(-1)(-1)",
+    "text": "$(-1)(-1)"
+  },
+  {
+    "objectID": "posts/Trade-off in elementary math/index.html#times--1",
+    "href": "posts/Trade-off in elementary math/index.html#times--1",
+    "title": "Tradeoffs in elementary math",
+    "section": "\\(-1 \\times -1\\)",
+    "text": "\\(-1 \\times -1\\)\nWhen extending multiplication to negative numbers, we choose \\((-1) \\times (-1) = +1\\) because choosing \\(-1\\) instead would require us to give up the distributive law:\n\\[\na \\times (b+c) = a \\times b + a \\times c.\n\\]\n\n\nMore…\n\n\\[\n0=-1\\times \\bigl(1+(-1)\\bigr)= -1 + (-1 \\times -1).\n\\]"
+  },
+  {
+    "objectID": "posts/Trade-off in elementary math/index.html#frac30-frac00",
+    "href": "posts/Trade-off in elementary math/index.html#frac30-frac00",
+    "title": "Tradeoffs in elementary math",
+    "section": "\\(\\frac{3}{0}\\), \\(\\frac{0}{0}\\)",
+    "text": "\\(\\frac{3}{0}\\), \\(\\frac{0}{0}\\)\nWe choose both \\(\\frac{3}{0}\\) and \\(\\frac{0}{0}\\) as undefined because if allowed them, we had to give away the useful general structure: division always has a unique quotient."
+  },
+  {
+    "objectID": "posts/Trade-off in elementary math/index.html#frac30-and-frac00",
+    "href": "posts/Trade-off in elementary math/index.html#frac30-and-frac00",
+    "title": "Tradeoffs in elementary math",
+    "section": "\\(\\frac{3}{0}\\) and \\(\\frac{0}{0}\\)",
+    "text": "\\(\\frac{3}{0}\\) and \\(\\frac{0}{0}\\)\nWe leave both \\(\\frac{3}{0}\\) and \\(\\frac{0}{0}\\) undefined to preserve division as the operation that uniquely undoes multiplication: \\(a/b\\) must be the unique number \\(q\\) satisfying\n\\[\nbq = a.\n\\]\n\n\nMore…\n\nFor \\(\\frac{3}{0}\\), no number satisfies \\(0q = 3\\).\nFor \\(\\frac{0}{0}\\), every number satisfies \\(0q = 0\\), so there is no unique answer."
   }
 ]
