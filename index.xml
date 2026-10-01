@@ -26,7 +26,7 @@
 </blockquote>
 <section id="x0" class="level2">
 <h2 class="anchored" data-anchor-id="x0"><img src="https://latex.codecogs.com/png.latex?x%5E0"></h2>
-<p>For <img src="https://latex.codecogs.com/png.latex?x%20%5Cne%200">, we choose <img src="https://latex.codecogs.com/png.latex?x%5E0%20=%201"> because choosing <img src="https://latex.codecogs.com/png.latex?x%5E0%20=%200"> instead would require us to give up the general exponent rule:</p>
+<p>We choose <img src="https://latex.codecogs.com/png.latex?x%5E0%20=%201"> because choosing <img src="https://latex.codecogs.com/png.latex?x%5E0%20=%200"> instead would require us to give up the general exponent rule:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Ax%5E%7Ba+b%7D%20=%20x%5Ea%20x%5Eb.%0A"></p>
 <details>
 <summary>
@@ -43,7 +43,10 @@ More…
 <summary>
 More…
 </summary>
-<img src="https://latex.codecogs.com/png.latex?%0A0=-1%5Ctimes%20%5Cbigl(1+(-1)%5Cbigr)=%20-1%20+%20(-1%20%5Ctimes%20-1)%0A">
+<p><img src="https://latex.codecogs.com/png.latex?%0A0=-1%5Ctimes%20%5Cbigl(1+(-1)%5Cbigr)=%20-1%20+%20(-1%20%5Ctimes%20-1)%0A"></p>
+<p>We actually can preserve the distributive law even if we define the product of <img src="https://latex.codecogs.com/png.latex?-1"> and <img src="https://latex.codecogs.com/png.latex?-1"> as <img src="https://latex.codecogs.com/png.latex?-1">. Bue we must redefine multiplication as: <img src="https://latex.codecogs.com/png.latex?a%20%5Cstar%20b%20=%20-(ab)"> with <img src="https://latex.codecogs.com/png.latex?ab%20=%20%5Cunderbrace%7Bb%20+%20b%20+%20%5Ccdots%20+%20b%7D_%7Ba%5Ctext%7B%20times%7D%7D">.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A0%20=%20-1%20%5Cstar%20%5Cbigl(1+(-1)%5Cbigr)%20=%201%20+%20(-1%20%5Cstar%20-1)%0A"></p>
+This redefined multiplication now behaves very differently, like <img src="https://latex.codecogs.com/png.latex?-1"> becomes our multiplicative identity: <img src="https://latex.codecogs.com/png.latex?-1%20%5Cstar%20a%20=%20a">.
 </details>
 </section>
 <section id="frac30-and-frac00" class="level2">

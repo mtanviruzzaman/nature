@@ -102,14 +102,14 @@
     "href": "posts/Trade-off in elementary math/index.html#x0",
     "title": "Tradeoffs in elementary math",
     "section": "\\(x^0\\)",
-    "text": "\\(x^0\\)\nFor \\(x \\ne 0\\), we choose \\(x^0 = 1\\) because choosing \\(x^0 = 0\\) instead would require us to give up the general exponent rule:\n\\[\nx^{a+b} = x^a x^b.\n\\]\n\n\nMore…\n\n\\[\nx = x^{1+0} = x^1 \\cdot x^0\n\\]"
+    "text": "\\(x^0\\)\nWe choose \\(x^0 = 1\\) because choosing \\(x^0 = 0\\) instead would require us to give up the general exponent rule:\n\\[\nx^{a+b} = x^a x^b.\n\\]\n\n\nMore…\n\n\\[\nx = x^{1+0} = x^1 \\cdot x^0\n\\]"
   },
   {
     "objectID": "posts/Trade-off in elementary math/index.html#times--1",
     "href": "posts/Trade-off in elementary math/index.html#times--1",
     "title": "Tradeoffs in elementary math",
     "section": "\\(-1 \\times -1\\)",
-    "text": "\\(-1 \\times -1\\)\nWhen extending multiplication to negative numbers, we choose \\((-1) \\times (-1) = +1\\) because choosing \\(-1\\) instead would require us to give up the distributive law:\n\\[\na \\times (b+c) = a \\times b + a \\times c\n\\]\n\n\nMore…\n\n\\[\n0=-1\\times \\bigl(1+(-1)\\bigr)= -1 + (-1 \\times -1)\n\\]"
+    "text": "\\(-1 \\times -1\\)\nWhen extending multiplication to negative numbers, we choose \\((-1) \\times (-1) = +1\\) because choosing \\(-1\\) instead would require us to give up the distributive law:\n\\[\na \\times (b+c) = a \\times b + a \\times c\n\\]\n\n\nMore…\n\n\\[\n0=-1\\times \\bigl(1+(-1)\\bigr)= -1 + (-1 \\times -1)\n\\]\nWe actually can preserve the distributive law even if we define the product of \\(-1\\) and \\(-1\\) as \\(-1\\). Bue we must redefine multiplication as: \\(a \\star b = -(ab)\\) with \\(ab = \\underbrace{b + b + \\cdots + b}_{a\\text{ times}}\\).\n\\[\n0 = -1 \\star \\bigl(1+(-1)\\bigr) = 1 + (-1 \\star -1)\n\\]\nThis redefined multiplication now behaves very differently, like \\(-1\\) becomes our multiplicative identity: \\(-1 \\star a = a\\)."
   },
   {
     "objectID": "posts/Trade-off in elementary math/index.html#frac30-and-frac00",
