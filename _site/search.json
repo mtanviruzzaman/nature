@@ -102,14 +102,14 @@
     "href": "posts/Trade-off in elementary math/index.html#x0",
     "title": "Tradeoffs in elementary algebra",
     "section": "\\(x^0\\)",
-    "text": "\\(x^0\\)\nWe choose \\(x^0 = 1\\) because choosing \\(x^0 = 0\\) instead would require us to give up the general exponent rule:\n\\[\nx^{a+b} = x^a x^b.\n\\]\n\n\nMore…\n\n\\[\nx = x^{1+0} = x^1 \\cdot x^0\n\\]"
+    "text": "\\(x^0\\)\nWe choose \\(x^0 = 1\\) because choosing \\(x^0 = 0\\) instead would require us to give up the general exponent rule:\n\\[\nx^{a+b} = x^a x^b\n\\]\n\n\nMore…\n\n\\[\nx = x^{1+0} = x^1 \\cdot x^0\n\\]\nWith \\(x \\neq 0\\), \\[\n1 = \\frac{x^3}{x^3} = x^{3-3} = x^0\n\\]"
   },
   {
     "objectID": "posts/Trade-off in elementary math/index.html#times--1",
     "href": "posts/Trade-off in elementary math/index.html#times--1",
     "title": "Tradeoffs in elementary algebra",
     "section": "\\(-1 \\times -1\\)",
-    "text": "\\(-1 \\times -1\\)\nWhen extending multiplication to negative numbers, we choose \\((-1) \\times (-1) = +1\\) because choosing \\(-1\\) instead would require us to give up the distributive law:\n\\[\na \\times (b+c) = a \\times b + a \\times c\n\\]\n\n\nMore…\n\n\\[\n0=-1\\times \\bigl(1+(-1)\\bigr)= -1 + (-1 \\times -1)\n\\]\nWe can make the product of \\(-1\\) and \\(-1\\) equal to \\(-1\\) while keeping distributivity, but other rules must change. For example, we could define a new multiplication: \\(a \\star b = -(ab)\\) with \\(ab = \\underbrace{b + b + \\cdots + b}_{a\\text{ times}}\\). Now, the distributive law works:\n\\[\n0 = -1 \\star \\bigl(1+(-1)\\bigr) = 1 + (-1 \\star -1)\n\\]\nThe trade-off is that multiplying by \\(1\\) now reverses the sign:\n\\[\na \\star 1 = -a.\n\\]\nInstead, \\(-1\\) becomes the multiplicative identity:\n\\[\na \\star (-1) = a.\n\\]"
+    "text": "\\(-1 \\times -1\\)\nWhen extending multiplication to negative numbers, we choose \\((-1) \\times (-1) = +1\\) because choosing \\(-1\\) instead would require us to give up the distributive law:\n\\[\na \\times (b+c) = a \\times b + a \\times c\n\\]\n\n\nMore…\n\n\\[\n0=-1\\times \\bigl(1+(-1)\\bigr)= -1 + (-1 \\times -1)\n\\]\nWe can make the product of \\(-1\\) and \\(-1\\) equal to \\(-1\\) while keeping distributivity, but other rules must change. For example, we could define a new multiplication: \\(a \\star b = -(ab)\\) with \\(ab = \\underbrace{b + b + \\cdots + b}_{a\\text{ times}}\\). Now, the distributive law works:\n\\[\n0 = -1 \\star \\bigl(1+(-1)\\bigr) = 1 + (-1 \\star -1)\n\\]\nThe tradeoff is that multiplying by \\(1\\) now reverses the sign:\n\\[\na \\star 1 = -a.\n\\]\nInstead, \\(-1\\) becomes the multiplicative identity:\n\\[\na \\star (-1) = a.\n\\]"
   },
   {
     "objectID": "posts/Trade-off in elementary math/index.html#frac30-and-frac00",
@@ -124,5 +124,12 @@
     "title": "The Nature Curriculum",
     "section": "",
     "text": "Tradeoffs in elementary algebra\n\n\n\nmath\n\n\n\n\n\n\n\n\n\nSep 30, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nFundamental units\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 27, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nReview: University Physics\n\n\n\nphysics\n\nreview\n\n\n\nRetrieval practice hints for University Physics (14th ed.) by Young and Freedman\n\n\n\n\n\nSep 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nCentripetal acceleration in uniform circular motion\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHidden history in Physics textbooks\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 4, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/Trade-off in elementary math/index.html#fracx0",
+    "href": "posts/Trade-off in elementary math/index.html#fracx0",
+    "title": "Tradeoffs in elementary algebra",
+    "section": "\\(\\frac{x}{0}\\)",
+    "text": "\\(\\frac{x}{0}\\)\nWe leave \\(\\frac{x}{0}\\) undefined to preserve division as the operation that uniquely undoes multiplication: \\(a/b\\) must be the unique number \\(q\\) satisfying\n\\[\nbq = a\n\\]\n\n\nMore…\n\nFor \\(\\frac{3}{0}\\), no number satisfies \\(0q = 3\\).\nFor \\(\\frac{0}{0}\\), every number satisfies \\(0q = 0\\), so there is no unique answer."
   }
 ]

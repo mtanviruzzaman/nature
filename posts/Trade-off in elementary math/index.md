@@ -14,13 +14,18 @@ categories: [math]
 We choose $x^0 = 1$ because choosing $x^0 = 0$ instead would require us to give up the general exponent rule:
 
 $$
-x^{a+b} = x^a x^b.
+x^{a+b} = x^a x^b
 $$
 
 <details>
 <summary>More...</summary>
 $$
 x = x^{1+0} = x^1 \cdot x^0
+$$
+
+With $x \neq 0$,
+$$
+1 = \frac{x^3}{x^3} = x^{3-3} = x^0
 $$
 </details>
 
@@ -57,9 +62,9 @@ a \star (-1) = a.
 $$
 </details>
 
-## $\frac{3}{0}$ and $\frac{0}{0}$
+## $\frac{x}{0}$
 
-We leave both $\frac{3}{0}$ and $\frac{0}{0}$ undefined to preserve division as the operation that uniquely undoes multiplication: $a/b$ must be the unique number $q$ satisfying
+We leave $\frac{x}{0}$ undefined to preserve division as the operation that uniquely undoes multiplication: $a/b$ must be the unique number $q$ satisfying
 
 $$
 bq = a
