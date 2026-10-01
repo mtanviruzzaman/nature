@@ -5,7 +5,9 @@ date: "2026-09-04"
 categories: [physics]
 ---
 
-**TL;DR:** Ideas are presented in roughly the order they were discovered.
+**TL;DR:** 
+
+> Ideas are presented in roughly the order they were discovered.
 
 In [The Evolution of Physics](https://archive.org/details/B-001-002-263/mode/2up), Einstein and Infeld argue that Physics has evolved in three sequential phases:
 
