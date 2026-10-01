@@ -44,7 +44,7 @@ $$
 0 = -1 \star \bigl(1+(-1)\bigr) = 1 + (-1 \star -1)
 $$
 
-The trade-off is that multiplying by $1$ now reverses the sign:
+The tradeoff is that multiplying by $1$ now reverses the sign:
 
 $$
 a \star 1 = -a.
