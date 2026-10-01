@@ -11,7 +11,7 @@ categories: [math]
 
 ## $x^0$
 
-For $x \ne 0$, we choose $x^0 = 1$ because choosing $x^0 = 0$ instead would require us to give up the general exponent rule:
+We choose $x^0 = 1$ because choosing $x^0 = 0$ instead would require us to give up the general exponent rule:
 
 $$
 x^{a+b} = x^a x^b.
@@ -37,6 +37,14 @@ $$
 $$
 0=-1\times \bigl(1+(-1)\bigr)= -1 + (-1 \times -1)
 $$
+
+We actually can preserve the distributive law even if we define the product of $-1$ and $-1$ as $-1$. Bue we must redefine multiplication as: $a \star b = -(ab)$ with $ab = \underbrace{b + b + \cdots + b}_{a\text{ times}}$.
+
+$$
+0 = -1 \star \bigl(1+(-1)\bigr) = 1 + (-1 \star -1)
+$$
+
+This redefined multiplication now behaves very differently, like $-1$ becomes our multiplicative identity: $-1 \star a = a$. 
 </details>
 
 ## $\frac{3}{0}$ and $\frac{0}{0}$
