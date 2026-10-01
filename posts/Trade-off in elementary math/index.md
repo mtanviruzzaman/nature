@@ -1,5 +1,5 @@
 ---
-title: "Tradeoffs in elementary math"
+title: "Tradeoffs in elementary algebra"
 author: "Mohammad Tanviruzzaman"
 date: "2026-09-30"
 categories: [math]
