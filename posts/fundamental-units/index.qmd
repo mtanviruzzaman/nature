@@ -1,3 +1,11 @@
+```{=html}
+<style>
+.quarto-figure figcaption {
+  text-align: center !important;
+}
+</style>
+```
+
 ---
 title: "Fundamental units"
 author: "Mohammad Tanviruzzaman"
@@ -36,6 +44,29 @@ One second is the duration of exactly 9,192,631,770 cycles of microwave radiatio
 
 <details>
 <summary>More...</summary>
+![How we tune the microwave source which serves as our clock post-tuning](one_second.jpg)
+
+<details>
+<summary><strong>Why exactly 9,192,631,770 cycles?</strong></summary>
+
+To preserve the duration of the second already in use.
+
+</details>
+
+<details>
+<summary><strong>Why cesium-133?</strong></summary>
+
+Cesium-133 has a stable, reproducible resonance that scientists can measure precisely using microwave electronics.
+
+</details>
+
+<details>
+<summary><strong>Why use a vacuum?</strong></summary>
+
+A vacuum reduces collisions with surrounding gas, which could disturb the atoms and shift their resonance frequency.
+
+</details>
+
 </details>
 
 
