@@ -46,7 +46,7 @@ More…
 <p><img src="https://latex.codecogs.com/png.latex?%0A0=-1%5Ctimes%20%5Cbigl(1+(-1)%5Cbigr)=%20-1%20+%20(-1%20%5Ctimes%20-1)%0A"></p>
 <p>We can make the product of <img src="https://latex.codecogs.com/png.latex?-1"> and <img src="https://latex.codecogs.com/png.latex?-1"> equal to <img src="https://latex.codecogs.com/png.latex?-1"> while keeping distributivity, but other rules must change. For example, we could define a new multiplication: <img src="https://latex.codecogs.com/png.latex?a%20%5Cstar%20b%20=%20-(ab)"> with <img src="https://latex.codecogs.com/png.latex?ab%20=%20%5Cunderbrace%7Bb%20+%20b%20+%20%5Ccdots%20+%20b%7D_%7Ba%5Ctext%7B%20times%7D%7D">. Now, the distributive law works:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A0%20=%20-1%20%5Cstar%20%5Cbigl(1+(-1)%5Cbigr)%20=%201%20+%20(-1%20%5Cstar%20-1)%0A"></p>
-<p>The trade-off is that multiplying by <img src="https://latex.codecogs.com/png.latex?1"> now reverses the sign:</p>
+<p>The tradeoff is that multiplying by <img src="https://latex.codecogs.com/png.latex?1"> now reverses the sign:</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Aa%20%5Cstar%201%20=%20-a.%0A"></p>
 <p>Instead, <img src="https://latex.codecogs.com/png.latex?-1"> becomes the multiplicative identity:</p>
 <img src="https://latex.codecogs.com/png.latex?%0Aa%20%5Cstar%20(-1)%20=%20a.%0A">
