@@ -27,12 +27,13 @@
 <section id="x0" class="level2">
 <h2 class="anchored" data-anchor-id="x0"><img src="https://latex.codecogs.com/png.latex?x%5E0"></h2>
 <p>We choose <img src="https://latex.codecogs.com/png.latex?x%5E0%20=%201"> because choosing <img src="https://latex.codecogs.com/png.latex?x%5E0%20=%200"> instead would require us to give up the general exponent rule:</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0Ax%5E%7Ba+b%7D%20=%20x%5Ea%20x%5Eb.%0A"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Ax%5E%7Ba+b%7D%20=%20x%5Ea%20x%5Eb%0A"></p>
 <details>
 <summary>
 More…
 </summary>
-<img src="https://latex.codecogs.com/png.latex?%0Ax%20=%20x%5E%7B1+0%7D%20=%20x%5E1%20%5Ccdot%20x%5E0%0A">
+<p><img src="https://latex.codecogs.com/png.latex?%0Ax%20=%20x%5E%7B1+0%7D%20=%20x%5E1%20%5Ccdot%20x%5E0%0A"></p>
+With <img src="https://latex.codecogs.com/png.latex?x%20%5Cneq%200">, <img src="https://latex.codecogs.com/png.latex?%0A1%20=%20%5Cfrac%7Bx%5E3%7D%7Bx%5E3%7D%20=%20x%5E%7B3-3%7D%20=%20x%5E0%0A">
 </details>
 </section>
 <section id="times--1" class="level2">
@@ -52,9 +53,9 @@ More…
 <img src="https://latex.codecogs.com/png.latex?%0Aa%20%5Cstar%20(-1)%20=%20a.%0A">
 </details>
 </section>
-<section id="frac30-and-frac00" class="level2">
-<h2 class="anchored" data-anchor-id="frac30-and-frac00"><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B3%7D%7B0%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B0%7D%7B0%7D"></h2>
-<p>We leave both <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B3%7D%7B0%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B0%7D%7B0%7D"> undefined to preserve division as the operation that uniquely undoes multiplication: <img src="https://latex.codecogs.com/png.latex?a/b"> must be the unique number <img src="https://latex.codecogs.com/png.latex?q"> satisfying</p>
+<section id="fracx0" class="level2">
+<h2 class="anchored" data-anchor-id="fracx0"><img src="https://latex.codecogs.com/png.latex?%5Cfrac%7Bx%7D%7B0%7D"></h2>
+<p>We leave <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7Bx%7D%7B0%7D"> undefined to preserve division as the operation that uniquely undoes multiplication: <img src="https://latex.codecogs.com/png.latex?a/b"> must be the unique number <img src="https://latex.codecogs.com/png.latex?q"> satisfying</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0Abq%20=%20a%0A"></p>
 <details>
 <summary>
