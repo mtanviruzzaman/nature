@@ -44,7 +44,7 @@ More…
 More…
 </summary>
 <p><img src="https://latex.codecogs.com/png.latex?%0A0=-1%5Ctimes%20%5Cbigl(1+(-1)%5Cbigr)=%20-1%20+%20(-1%20%5Ctimes%20-1)%0A"></p>
-<p>We actually can preserve the distributive law even if we define the product of <img src="https://latex.codecogs.com/png.latex?-1"> and <img src="https://latex.codecogs.com/png.latex?-1"> as <img src="https://latex.codecogs.com/png.latex?-1">. Bue we must redefine multiplication as: <img src="https://latex.codecogs.com/png.latex?a%20%5Cstar%20b%20=%20-(ab)"> with <img src="https://latex.codecogs.com/png.latex?ab%20=%20%5Cunderbrace%7Bb%20+%20b%20+%20%5Ccdots%20+%20b%7D_%7Ba%5Ctext%7B%20times%7D%7D">.</p>
+<p>We can preserve the distributive law even if we define the product of <img src="https://latex.codecogs.com/png.latex?-1"> and <img src="https://latex.codecogs.com/png.latex?-1"> as <img src="https://latex.codecogs.com/png.latex?-1">, only if we are willing to pay the cost of redefining multiplication as: <img src="https://latex.codecogs.com/png.latex?a%20%5Cstar%20b%20=%20-(ab)"> with <img src="https://latex.codecogs.com/png.latex?ab%20=%20%5Cunderbrace%7Bb%20+%20b%20+%20%5Ccdots%20+%20b%7D_%7Ba%5Ctext%7B%20times%7D%7D">.</p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A0%20=%20-1%20%5Cstar%20%5Cbigl(1+(-1)%5Cbigr)%20=%201%20+%20(-1%20%5Cstar%20-1)%0A"></p>
 This redefined multiplication now behaves very differently, like <img src="https://latex.codecogs.com/png.latex?-1"> becomes our multiplicative identity: <img src="https://latex.codecogs.com/png.latex?-1%20%5Cstar%20a%20=%20a">.
 </details>
@@ -358,7 +358,10 @@ $$
 
 
 
-<p><strong>TL;DR:</strong> Ideas are presented in roughly the order they were discovered.</p>
+<p><strong>tl;dr</strong></p>
+<blockquote class="blockquote">
+<p>Ideas are presented in roughly the order they were discovered.</p>
+</blockquote>
 <p>In <a href="https://archive.org/details/B-001-002-263/mode/2up">The Evolution of Physics</a>, Einstein and Infeld argue that Physics has evolved in three sequential phases:</p>
 <details>
 <summary>
