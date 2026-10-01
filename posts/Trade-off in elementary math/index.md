@@ -29,13 +29,13 @@ $$
 When extending multiplication to negative numbers, we choose $(-1) \times (-1) = +1$ because choosing $-1$ instead would require us to give up the distributive law:
 
 $$
-a \times (b+c) = a \times b + a \times c.
+a \times (b+c) = a \times b + a \times c
 $$
 
 <details>
 <summary>More...</summary>
 $$
-0=-1\times \bigl(1+(-1)\bigr)= -1 + (-1 \times -1).
+0=-1\times \bigl(1+(-1)\bigr)= -1 + (-1 \times -1)
 $$
 </details>
 
@@ -44,7 +44,7 @@ $$
 We leave both $\frac{3}{0}$ and $\frac{0}{0}$ undefined to preserve division as the operation that uniquely undoes multiplication: $a/b$ must be the unique number $q$ satisfying
 
 $$
-bq = a.
+bq = a
 $$
 
 <details>
