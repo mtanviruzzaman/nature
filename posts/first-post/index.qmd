@@ -5,7 +5,7 @@ date: "2026-09-04"
 categories: [physics]
 ---
 
-**TL;DR:** 
+**tl;dr** 
 
 > Ideas are presented in roughly the order they were discovered.
 

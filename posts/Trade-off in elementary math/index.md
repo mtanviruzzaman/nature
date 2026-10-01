@@ -38,7 +38,7 @@ $$
 0=-1\times \bigl(1+(-1)\bigr)= -1 + (-1 \times -1)
 $$
 
-We actually can preserve the distributive law even if we define the product of $-1$ and $-1$ as $-1$. Bue we must redefine multiplication as: $a \star b = -(ab)$ with $ab = \underbrace{b + b + \cdots + b}_{a\text{ times}}$.
+We can preserve the distributive law even if we define the product of $-1$ and $-1$ as $-1$, only if we are willing to pay the cost of redefining multiplication as: $a \star b = -(ab)$ with $ab = \underbrace{b + b + \cdots + b}_{a\text{ times}}$.
 
 $$
 0 = -1 \star \bigl(1+(-1)\bigr) = 1 + (-1 \star -1)
