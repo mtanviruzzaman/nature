@@ -181,25 +181,8 @@ window.Quarto = {
 
 
 <p>There are three fundamental units (of time, distance, and mass) and all other units of measurement are some combination of these three. First we define the unit of time–one second; we use <em>second</em> to define the unit of distance–one meter; and we use both <em>second</em> and <em>meter</em> to define the unit of mass–one kilogram.</p>
-<link rel="stylesheet" href="https://tikzjax.com/v1/fonts.css">
-<script defer="" src="https://tikzjax.com/v1/tikzjax.js"></script>
-
-<div style="display:flex; justify-content:center; width:100%; margin-bottom:1.5rem;">
-<script type="text/tikz">
-\begin{tikzpicture}[scale=1.5,transform shape,
-  every node/.style={draw,font=\small,inner sep=2pt},
-  arrow/.style={->,>=latex,line width=.8pt}]
-
-  \node (s) at (1.2,1.6) {1 second};
-  \node (m) at (0,.8)    {1 meter};
-  \node (k) at (1.4,0)   {1 kilogram};
-
-  \draw[arrow] (s) -- (m);
-  \draw[arrow] (m) -- (k.north);
-  \draw[arrow] (s.south) -- (k.north);
-
-\end{tikzpicture}
-</script>
+<div style="display:flex; justify-content:center; margin-bottom:1.5rem;">
+  <img src="one_second.svg" alt="The second defines the meter; both define the kilogram." width="200" height="142">
 </div>
 <p>We want these units to be stable, universal, and reproducible. What that means is: ten seconds should mean exactly the same duration today and 1000 years from now, here and anywhere else, and anyone with the right equipment should be able to reproduce that ten-second duration independently.</p>
 <section id="second" class="level2">
