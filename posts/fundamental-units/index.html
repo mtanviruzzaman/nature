@@ -194,9 +194,9 @@ window.Quarto = {
   \node (m) at (0,.8)    {1 meter};
   \node (k) at (1.4,0)   {1 kilogram};
 
-  \draw[arrow] (m) -- (s);
-  \draw[arrow] (k.north) -- (m);
-  \draw[arrow] (k.north) -- (s.south);
+  \draw[arrow] (s) -- (m);
+  \draw[arrow] (m) -- (k.north);
+  \draw[arrow] (s.south) -- (k.north);
 
 \end{tikzpicture}
 </script>
