@@ -38,13 +38,23 @@ $$
 0=-1\times \bigl(1+(-1)\bigr)= -1 + (-1 \times -1)
 $$
 
-We can preserve the distributive law even if we define the product of $-1$ and $-1$ as $-1$, only if we are willing to pay the cost of redefining multiplication as: $a \star b = -(ab)$ with $ab = \underbrace{b + b + \cdots + b}_{a\text{ times}}$.
+We can make the product of $-1$ and $-1$ equal to $-1$ while keeping distributivity, but other rules must change. For example, we could define a new multiplication: $a \star b = -(ab)$ with $ab = \underbrace{b + b + \cdots + b}_{a\text{ times}}$. Now, the distributive law works:
 
 $$
 0 = -1 \star \bigl(1+(-1)\bigr) = 1 + (-1 \star -1)
 $$
 
-This redefined multiplication now behaves very differently, like $-1$ becomes our multiplicative identity: $-1 \star a = a$. 
+The trade-off is that multiplying by $1$ now reverses the sign:
+
+$$
+a \star 1 = -a.
+$$
+
+Instead, $-1$ becomes the multiplicative identity:
+
+$$
+a \star (-1) = a.
+$$
 </details>
 
 ## $\frac{3}{0}$ and $\frac{0}{0}$
