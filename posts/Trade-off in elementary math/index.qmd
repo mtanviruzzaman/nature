@@ -2,7 +2,7 @@
 title: "Tradeoffs in elementary algebra"
 author: "Mohammad Tanviruzzaman"
 date: "2026-09-30"
-categories: [math]
+categories: [computation]
 ---
 
 **tl;dr**

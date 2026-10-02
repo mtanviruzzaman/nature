@@ -1,0 +1,16 @@
+---
+title: "Rise and fall of dinosaurs"
+author: "Mohammad Tanviruzzaman"
+date: "2026-10-02"
+categories: [life]
+---
+
+```{=html}
+<style>
+.quarto-figure figcaption {
+  text-align: center !important;
+}
+</style>
+```
+
+![Dinosaurs family tree and their timeline](dino_family_time.png)
