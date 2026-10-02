@@ -4,6 +4,7 @@ author: "Mohammad Tanviruzzaman"
 date: "2026-10-02"
 categories: [life]
 ---
+Disasters within Earth helped dinosaurs rise to dominance; a disaster from beyond ended their reign.
 
 ```{=html}
 <style>
