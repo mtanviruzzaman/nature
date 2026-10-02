@@ -8,3 +8,7 @@ h1, h2, h3, h4, h5, h6,
 .navbar {
   font-family: "Source Sans 3", Helvetica, Arial, sans-serif;
 }
+
+.navbar {
+  font-size: 2.0rem;
+}

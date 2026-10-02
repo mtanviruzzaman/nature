@@ -5,8 +5,15 @@ website:
   description: "A blog built with Quarto"
   site-url: https://mtanviruzzaman.github.io/nature/
   repo-url: https://github.com/mtanviruzzaman/nature
-  title: "The Nature Curriculum"
+  # title: "The Nature Curriculum"
   navbar:
+    title: false
+    collapse: false
+    left:
+      - icon: house
+        href: index.qmd
+        text: "&nbsp;"
+        aria-label: "Home"
     right:
       - icon: github
         href: https://github.com/mtanviruzzaman/nature
