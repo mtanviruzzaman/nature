@@ -9,12 +9,21 @@ h1, h2, h3, h4, h5, h6,
   font-family: "Source Sans 3", Helvetica, Arial, sans-serif;
 }
 
-/* .navbar {
-  font-size: 2.0rem;
-} */
+/* Keep Home on the left and Search on the far right */
+@media (max-width: 991.98px) {
+  .navbar .navbar-container {
+    flex-wrap: nowrap !important;
+  }
 
-.navbar #quarto-search {
-  order: 99 !important;
-  margin-left: 0.75rem;
-  margin-right: 0;
+  .navbar #navbarCollapse {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    order: 1 !important;
+  }
+
+  .navbar #quarto-search {
+    order: 99 !important;
+    flex-shrink: 0;
+    margin-left: 0.75rem;
+  }
 }
