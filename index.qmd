@@ -12,8 +12,8 @@ title-block-banner: true
 
 title: "The Nature Curriculum"
 subtitle: |
-  *“The beauty of nature lies in detail; the message, in generality.”*<br>
-  <small>— Stephen Jay Gould</small>
+  *“Nature uses only the longest threads to weave her patterns, so each small piece of her fabric reveals the organization of the entire tapestry.”*<br>
+  <small>— Richard Feynman</small>
 ---
 ```{=html}
 <style>
