@@ -9,6 +9,9 @@ listing:
   filter-ui: false
 page-layout: full
 title-block-banner: true
+
+title: "The Nature Curriculum"
+subtitle: |
+  *“The beauty of nature lies in detail; the message, in generality.”*<br>
+  <small>— Stephen Jay Gould</small>
 ---
-
-
