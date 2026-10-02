@@ -15,3 +15,15 @@ subtitle: |
   *“The beauty of nature lies in detail; the message, in generality.”*<br>
   <small>— Stephen Jay Gould</small>
 ---
+```{=html}
+<style>
+#title-block-header .quarto-title-banner {
+  padding-bottom: 1rem !important;
+  margin-bottom: 0 !important;
+}
+
+#title-block-header {
+  margin-bottom: 1rem !important;
+}
+</style>
+```
