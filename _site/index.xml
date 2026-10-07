@@ -10,7 +10,87 @@
 <atom:link href="https://mtanviruzzaman.github.io/nature/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Fri, 02 Oct 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 06 Oct 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Nobel prizes in Physics</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/physics-nobels/</link>
+  <description><![CDATA[ 
+
+
+
+
+<iframe src="nobel-physics-lineages.html" title="Interactive Nobel Prize physics map" width="100%" height="2000" style="border:0; display:block;" loading="lazy">
+</iframe>
+
+
+
+ ]]></description>
+  <category>nobel</category>
+  <category>physics</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/physics-nobels/</guid>
+  <pubDate>Tue, 06 Oct 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Nobel prizes in Physiology and Medicine</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/medicine-nobels/</link>
+  <description><![CDATA[ 
+
+
+
+
+<iframe src="nobel-medicine-lineages.html" title="Interactive Nobel Prize medicine map" width="100%" height="2000" style="border:0; display:block;" loading="lazy">
+</iframe>
+
+
+
+ ]]></description>
+  <category>nobel</category>
+  <category>life</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/medicine-nobels/</guid>
+  <pubDate>Tue, 06 Oct 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Nobel prizes in Chemistry</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/chemistry-nobels/</link>
+  <description><![CDATA[ 
+
+
+
+
+<iframe src="nobel-chemistry-lineages.html" title="Interactive Nobel Prize chemistry map" width="100%" height="2000" style="border:0; display:block;" loading="lazy">
+</iframe>
+
+
+
+ ]]></description>
+  <category>nobel</category>
+  <category>chemistry</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/chemistry-nobels/</guid>
+  <pubDate>Tue, 06 Oct 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Nobel prizes in Economics</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/economics-nobels/</link>
+  <description><![CDATA[ 
+
+
+
+
+<iframe src="nobel-economics-lineages.html" title="Interactive Nobel Prize economics map" width="100%" height="2000" style="border:0; display:block;" loading="lazy">
+</iframe>
+
+
+
+ ]]></description>
+  <category>nobel</category>
+  <category>economics</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/economics-nobels/</guid>
+  <pubDate>Tue, 06 Oct 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Rise and fall of dinosaurs</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>
