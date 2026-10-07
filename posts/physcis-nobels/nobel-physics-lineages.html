@@ -6,7 +6,59 @@
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Nobel Physics Lineages Citations</title>
-<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+<style>:root{color-scheme:light dark}html,body{margin:0;padding:0;background:transparent !important}body{box-sizing:border-box}iframe{display:block;width:100%;height:100vh;margin:0;border:0;outline:0;box-shadow:none;background:transparent}</style>
+<script id="nobel-browser-theme">
+(() => {
+  const root = document.documentElement;
+  const browserTheme = matchMedia('(prefers-color-scheme: dark)');
+  let page = null;
+  try {
+    if (parent !== window) page = parent.document;
+  } catch {
+    // A cross-origin embed follows the browser preference.
+  }
+
+  function pageTheme() {
+    if (!page) return null;
+    for (const element of [page.body, page.documentElement]) {
+      if (!element) continue;
+      if (element.classList.contains('quarto-dark')) return 'dark';
+      if (element.classList.contains('quarto-light')) return 'light';
+      for (const attribute of ['data-bs-theme', 'data-theme', 'data-color-scheme']) {
+        const theme = element.getAttribute(attribute);
+        if (theme === 'light' || theme === 'dark') return theme;
+      }
+    }
+    return null;
+  }
+
+  function syncTheme() {
+    const theme = pageTheme() || (browserTheme.matches ? 'dark' : 'light');
+    root.dataset.theme = theme;
+    // The embedded map inherits this scheme, including its media-query updates.
+    root.style.colorScheme = theme;
+    // Keep the embedding element in the same scheme so the browser does not
+    // paint an opaque default canvas behind an otherwise transparent document.
+    try {
+      if (window.frameElement) window.frameElement.style.colorScheme = theme;
+    } catch {
+      // Cross-origin embedding elements cannot be styled from this document.
+    }
+  }
+
+  syncTheme();
+  browserTheme.addEventListener('change', syncTheme);
+  if (page) {
+    const observer = new MutationObserver(syncTheme);
+    for (const element of [page.documentElement, page.body]) {
+      if (element) observer.observe(element, {
+        attributes: true,
+        attributeFilter: ['class', 'data-bs-theme', 'data-theme', 'data-color-scheme'],
+      });
+    }
+  }
+})();
+</script>
 </head>
 <body>
 <iframe id="codex-visualization" sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer" title="Nobel Physics Lineages Citations" data-srcdoc="&lt;!doctype html&gt;
@@ -1500,6 +1552,7 @@ svg.lucide {
 }
 
 html&gt;body{padding:0}&lt;/style&gt;
+&lt;style id=&quot;nobel-transparent-embed&quot;&gt;:root,html,body,#widget{background:transparent !important}html,body{margin:0 !important;padding:0 !important}#nobel-lineage-citations-network .plot{border:0 !important}&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;script type=&quot;application/json&quot; id=&quot;codex-visualization-widget-state&quot;&gt;__CODEX_VISUALIZATION_WIDGET_STATE__&lt;/script&gt;
