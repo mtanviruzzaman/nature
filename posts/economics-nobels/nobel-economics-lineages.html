@@ -2089,13 +2089,36 @@ html&gt;body{padding:0}&lt;/style&gt;
       const el=document.createElement(&#x27;button&#x27;);el.type=&#x27;button&#x27;;el.className=&#x27;key cursor-interaction&#x27;;el.dataset.domain=id;el.setAttribute(&#x27;aria-pressed&#x27;,&#x27;false&#x27;);el.dataset.tooltip=`${count} of ${data.nodes.length} prize years.`;el.innerHTML=`&lt;svg class=&quot;area-color-key&quot; width=&quot;12&quot; height=&quot;12&quot; viewBox=&quot;0 0 12 12&quot; aria-hidden=&quot;true&quot;&gt;&lt;circle class=&quot;nobel-area-dot&quot; cx=&quot;6&quot; cy=&quot;6&quot; r=&quot;4.5&quot;&gt;&lt;/circle&gt;&lt;/svg&gt;&lt;span class=&quot;key-label&quot;&gt;${name} &lt;span class=&quot;tabular-nums&quot;&gt;${percent}%&lt;/span&gt;&lt;/span&gt;`;const dot=el.querySelector(&#x27;.nobel-area-dot&#x27;);dot.style.setProperty(&#x27;--nobel-area-color&#x27;,color[id]);dot.style.fill=color[id];legendDots.set(id,dot);el.addEventListener(&#x27;click&#x27;,()=&gt;selectDomain(id));root.querySelector(&#x27;#nobel-economics-lineage-legend&#x27;).append(el);
     });
     let width=0,height=0,baseScale=1,selected=null,hovered=null,activeDomain=null,transform=d3.zoomIdentity,projected=new Map(),labelsVisible=0;
-    const extentPoints=[...data.nodes,...data.links.flatMap(e=&gt;e.points??[])],extX=d3.extent(extentPoints,n=&gt;n.x),extY=d3.extent(extentPoints,n=&gt;n.y),midX=(extX[0]+extX[1])/2,midY=(extY[0]+extY[1])/2;
+    const directedPairs=new Set(data.links.map(e=&gt;`${e.source}:${e.target}`));
+    const compactControls=new Map(),reciprocalTops=new Set();
+    for(const e of data.links){
+      const a=byYear.get(e.source),b=byYear.get(e.target);
+      const reciprocal=directedPairs.has(`${e.target}:${e.source}`);
+      if(reciprocal&amp;&amp;a.y&lt;b.y)reciprocalTops.add(e.source);
+      if(a.y&lt;b.y&amp;&amp;!reciprocal)continue;
+      const dx=b.x-a.x,dy=b.y-a.y,length=Math.hypot(dx,dy)||1;
+      // Opposing dependencies use opposite sides; a lone return arrow bows inward.
+      const offset=Math.min(76,Math.max(44,length*.24))*(reciprocal?1:-1);
+      compactControls.set(e,{x:(a.x+b.x)/2-dy/length*offset,y:(a.y+b.y)/2+dx/length*offset});
+    }
+    function edgeGeometryPoints(e){
+      const control=compactControls.get(e);
+      return control?[byYear.get(e.source),control,byYear.get(e.target)]:(e.points??[]);
+    }
+    const extentPoints=[...data.nodes,...data.links.flatMap(edgeGeometryPoints)],extX=d3.extent(extentPoints,n=&gt;n.x),extY=d3.extent(extentPoints,n=&gt;n.y),midX=(extX[0]+extX[1])/2,midY=(extY[0]+extY[1])/2;
     svg.append(&#x27;defs&#x27;).append(&#x27;marker&#x27;).attr(&#x27;id&#x27;,&#x27;nobel-economics-lineage-arrow&#x27;).attr(&#x27;viewBox&#x27;,&#x27;0 -3 6 6&#x27;).attr(&#x27;refX&#x27;,5.5).attr(&#x27;refY&#x27;,0).attr(&#x27;markerWidth&#x27;,6).attr(&#x27;markerHeight&#x27;,6).attr(&#x27;markerUnits&#x27;,&#x27;userSpaceOnUse&#x27;).attr(&#x27;orient&#x27;,&#x27;auto&#x27;).append(&#x27;path&#x27;).attr(&#x27;class&#x27;,&#x27;edge-arrow&#x27;).attr(&#x27;d&#x27;,&#x27;M0,-3L6,0L0,3Z&#x27;);
     const lineLayer=svg.append(&#x27;g&#x27;),nodeLayer=svg.append(&#x27;g&#x27;),labelLayer=svg.append(&#x27;g&#x27;);
-    const edges=lineLayer.selectAll(&#x27;path&#x27;).data(data.links).join(&#x27;path&#x27;).attr(&#x27;class&#x27;,&#x27;edge&#x27;).attr(&#x27;data-source&#x27;,e=&gt;e.source).attr(&#x27;data-target&#x27;,e=&gt;e.target).attr(&#x27;data-edge-key&#x27;,edgeKey).attr(&#x27;marker-end&#x27;,&#x27;url(#nobel-economics-lineage-arrow)&#x27;);
+    const edges=lineLayer.selectAll(&#x27;path&#x27;).data(data.links).join(&#x27;path&#x27;).attr(&#x27;class&#x27;,&#x27;edge&#x27;).attr(&#x27;data-source&#x27;,e=&gt;e.source).attr(&#x27;data-target&#x27;,e=&gt;e.target).attr(&#x27;data-edge-key&#x27;,edgeKey).attr(&#x27;data-route&#x27;,e=&gt;compactControls.has(e)?&#x27;curved&#x27;:&#x27;layered&#x27;).attr(&#x27;marker-end&#x27;,&#x27;url(#nobel-economics-lineage-arrow)&#x27;);
     const curve=d3.line().x(p=&gt;p.x).y(p=&gt;p.y).curve(d3.curveMonotoneY);
     function edgePath(e){
       const a={...projected.get(e.source)},b={...projected.get(e.target)};
+      const control=compactControls.get(e);
+      if(control){
+        const c=screen(control),startLength=Math.hypot(c.x-a.x,c.y-a.y)||1,endLength=Math.hypot(b.x-c.x,b.y-c.y)||1;
+        a.x+=(c.x-a.x)/startLength*6;a.y+=(c.y-a.y)/startLength*6;
+        b.x-=(b.x-c.x)/endLength*8;b.y-=(b.y-c.y)/endLength*8;
+        return `M${a.x},${a.y}Q${c.x},${c.y} ${b.x},${b.y}`;
+      }
       const direction=byYear.get(e.source).y&lt;byYear.get(e.target).y?1:-1;
       a.y+=6*direction;b.y-=8*direction;
       const mids=(e.points??[]).slice(1,-1).map(screen);
@@ -2148,7 +2171,7 @@ html&gt;body{padding:0}&lt;/style&gt;
         let b=null,full=true;
         for(const showFull of [true,false]){
           full=showFull;const bw=full?labelWidths.get(n.year)+6:32,bh=full?17+n.lines.length*14:16;
-          const offsets=[[10,-7],[-bw-10,-7],[10,-bh+7],[-bw-10,-bh+7],[10,10],[-bw-10,10],[-bw/2,10],[-bw/2,-bh-12]];
+          const offsets=[...(reciprocalTops.has(n.year)?[[10,-bh-12],[-bw-10,-bh-12]]:[]),[10,-7],[-bw-10,-7],[10,-bh+7],[-bw-10,-bh+7],[10,10],[-bw-10,10],[-bw/2,10],[-bw/2,-bh-12]];
           for(const [dx,dy] of offsets){const q={x:p.x+dx,y:p.y+dy,w:bw,h:bh};if(q.x&lt;3||q.y&lt;3||q.x+q.w&gt;width-3||q.y+q.h&gt;height-3)continue;if(box.every(r=&gt;q.x+q.w+4&lt;r.x||q.x&gt;r.x+r.w+4||q.y+q.h+3&lt;r.y||q.y&gt;r.y+r.h+3)){b=q;break;}}
           if(b)break;
         }
@@ -2193,7 +2216,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     }
     function fitPrize(year){
       const reach=prizeReachability(year),nearNodes=[...reach.years].map(y=&gt;byYear.get(y));
-      const cameraPoints=[...nearNodes,...data.links.filter(e=&gt;reach.edgeKeys.has(edgeKey(e))).flatMap(e=&gt;e.points??[])];
+      const cameraPoints=[...nearNodes,...data.links.filter(e=&gt;reach.edgeKeys.has(edgeKey(e))).flatMap(edgeGeometryPoints)];
       const px=cameraPoints.map(n=&gt;width/2+(n.x-midX)*baseScale),py=cameraPoints.map(n=&gt;height/2+(n.y-midY)*baseScale);
       const x0=Math.min(...px),x1=Math.max(...px),y0=Math.min(...py),y1=Math.max(...py);
       const k=Math.max(1,Math.min(5,(width-180)/Math.max(1,x1-x0),(height-130)/Math.max(1,y1-y0)));
