@@ -1,5 +1,5 @@
 ---
-title: "How Chemistry chooses a hand"
+title: "How chemistry chooses a hand"
 subtitle: "The Ideas Behind the 2026 Chemistry Nobel"
 author: "Mohammad Tanviruzzaman"
 date: "2026-10-07"
