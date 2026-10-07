@@ -2,6 +2,7 @@
 <html lang="en" data-visualize-standalone>
 <head>
 <meta charset="utf-8">
+<meta name="darkreader-lock">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
@@ -21,6 +22,12 @@
     }
   } catch { /* Cross-origin ancestors cannot expose their selected theme. */ }
   function pageTheme() {
+    // Dark Reader can override a light Quarto page without changing its body class.
+    for (const page of pages) {
+      const scheme = page.documentElement.getAttribute('data-darkreader-scheme');
+      if (scheme === 'dark') return 'dark';
+      if (scheme === 'dimmed' || scheme === 'light') return 'light';
+    }
     for (const page of pages) for (const element of [page.body, page.documentElement]) {
       if (!element) continue;
       if (element.classList.contains('quarto-dark')) return 'dark';
@@ -32,15 +39,28 @@
     }
     return null;
   }
+  function readableBackground(value, theme) {
+    const match = /^rgba?\(([^)]+)\)$/.exec(value);
+    if (!match) return false;
+    const parts = match[1].split(/[,\s/]+/).filter(Boolean).map(Number);
+    if (parts.length < 3 || parts.some(n => !Number.isFinite(n)) || (parts.length > 3 && parts[3] < 1)) return false;
+    const luminance = parts.slice(0, 3).map(n => {
+      const s = n / 255;
+      return s <= 0.04045 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+    }).reduce((sum, n, i) => sum + n * [0.2126, 0.7152, 0.0722][i], 0);
+    const text = theme === 'dark' ? 1 : 0.0115;
+    return (Math.max(text, luminance) + 0.05) / (Math.min(text, luminance) + 0.05) >= 4.5;
+  }
   function pageBackground(theme) {
     try {
-      let element = window.frameElement;
+      // The iframe's own background can be stale or transformed by an extension.
+      let element = window.frameElement?.parentElement;
       while (element) {
         const value = element.ownerDocument.defaultView.getComputedStyle(element).backgroundColor;
-        if (value && value !== 'transparent' && !/rgba\([^)]*,\s*0\s*\)$/.test(value)) return value;
+        if (readableBackground(value, theme)) return value;
         element = element.parentElement;
       }
-    } catch { /* Use the explicit scheme palette when parent styles are unavailable. */ }
+    } catch { /* Use a readable native palette when parent styles are unavailable. */ }
     return theme === 'dark' ? 'rgb(24, 24, 24)' : 'rgb(255, 255, 255)';
   }
   function syncTheme() {
@@ -54,14 +74,26 @@
       if (window.frameElement) window.frameElement.style.colorScheme = theme;
     } catch { /* The embedding element can belong to another origin. */ }
   }
+  let themeUpdatePending = false;
+  function scheduleTheme() {
+    if (themeUpdatePending) return;
+    themeUpdatePending = true;
+    requestAnimationFrame(() => { themeUpdatePending = false; syncTheme(); });
+  }
   syncTheme();
   if (browserTheme.addEventListener) browserTheme.addEventListener('change', syncTheme);
   else browserTheme.addListener(syncTheme);
   for (const page of pages) {
-    const observer = new MutationObserver(syncTheme);
+    const observer = new MutationObserver(scheduleTheme);
     for (const element of [page.documentElement, page.body]) if (element) observer.observe(element, {
-      attributes:true, attributeFilter:['class','style','data-bs-theme','data-theme','data-color-scheme'],
+      attributes:true, attributeFilter:['class','style','data-bs-theme','data-theme','data-color-scheme','data-darkreader-mode','data-darkreader-scheme'],
     });
+    // Extension themes arrive through stylesheets, not necessarily body classes.
+    if (page.head) new MutationObserver(scheduleTheme).observe(page.head, {
+      childList:true, subtree:true, characterData:true,
+      attributes:true, attributeFilter:['media','disabled','href'],
+    });
+    page.addEventListener('load', scheduleTheme, true);
     page.defaultView.addEventListener('pageshow', syncTheme);
     page.defaultView.addEventListener('load', syncTheme);
   }
@@ -76,6 +108,7 @@
 &lt;html lang=&quot;en&quot; data-visualize-standalone&gt;
 &lt;head&gt;
 &lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;darkreader-lock&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
 &lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
 &lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
@@ -1945,10 +1978,10 @@ html&gt;body{padding:0}&lt;/style&gt;
     #nobel-lineage-citations-network .area-color-key { display:block; flex:none; overflow:visible; }
     #nobel-lineage-citations-network .nobel-area-dot { fill:var(--nobel-area-color); }
     #nobel-lineage-citations-network .plot { display:block; width:100%; touch-action:none; border:1px solid var(--border); }
-    #nobel-lineage-citations-network .edge { stroke:var(--foreground); stroke-width:1; opacity:.15; }
+    #nobel-lineage-citations-network .edge { stroke:currentColor; stroke-width:1; opacity:.15; }
     #nobel-lineage-citations-network .node-dot { stroke:var(--background); stroke-width:1.4; }
-    #nobel-lineage-citations-network .node-ring { fill:none; stroke:var(--foreground); stroke-width:1.5; }
-    #nobel-lineage-citations-network .node-label { fill:var(--foreground); font-size:12px; font-weight:500; stroke:none; pointer-events:none; }
+    #nobel-lineage-citations-network .node-ring { fill:none; stroke:currentColor; stroke-width:1.5; }
+    #nobel-lineage-citations-network .node-label { fill:currentColor; font-size:12px; font-weight:500; stroke:none; pointer-events:none; }
     #nobel-lineage-citations-network .node-year { font-weight:500; }
     #nobel-lineage-citations-network .detail { margin-top:12px; }
     #nobel-lineage-citations-network .detail:empty { display:none; }
@@ -1960,7 +1993,7 @@ html&gt;body{padding:0}&lt;/style&gt;
     #nobel-lineage-citations-network .plot-wrap { position:relative; }
     #nobel-lineage-citations-network .meta { margin-top:6px; }
     #nobel-lineage-citations-network .edge { fill:none; }
-    #nobel-lineage-citations-network .edge-arrow { fill:var(--foreground); }
+    #nobel-lineage-citations-network .edge-arrow { fill:currentColor; }
     #nobel-lineage-citations-network .dependency-list { display:grid; gap:8px; margin-top:8px; }
     #nobel-lineage-citations-network .dependency-row { display:grid; gap:2px; }
     #nobel-lineage-citations-network .dependency-year { font-weight:500; }
@@ -2167,11 +2200,12 @@ html&gt;body{padding:0}&lt;/style&gt;
       svg.call(zoom.transform,d3.zoomIdentity.translate(width/2-(x0+x1)/2*k,height/2-(y0+y1)/2*k).scale(k));
     }
     function showPrizeReadout(n){
-      const parts=[String(n.year)];
-      if(n.overallCitation)parts.push(n.overallCitation);
-      prizeCitations(n,displayedParts(n)).forEach(c=&gt;parts.push(`${c.laureates.join(&#x27; · &#x27;)}\n${c.quote}`));
-      const value=parts.join(&#x27;\n\n&#x27;);
-      if(readout.textContent!==value)readout.textContent=value;
+      const parts=displayedParts(n);
+      const key=JSON.stringify([n.year,parts===null?null:[...parts].sort()]);
+      if(readout.dataset.prizeKey===key&amp;&amp;readout.childElementCount)return;
+      readout.replaceChildren();
+      appendPrizeDetails(readout,n,parts);
+      readout.dataset.prizeKey=key;
     }
     nodes.on(&#x27;focus&#x27;,(_,n)=&gt;{hovered=n.year;draw();showPrizeReadout(n);}).on(&#x27;blur&#x27;,()=&gt;{hovered=null;draw();});
     svg.on(&#x27;pointermove.hover&#x27;,event=&gt;{
