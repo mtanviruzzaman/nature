@@ -1,7 +1,7 @@
 ---
 title: "Turing awards"
 author: "Mohammad Tanviruzzaman"
-date: "2026-10-06"
+date: "2026-10-07"
 categories: [computation]
 resources:
   - turing-award-lineages.html
