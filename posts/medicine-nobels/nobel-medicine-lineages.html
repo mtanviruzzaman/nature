@@ -6,21 +6,22 @@
 <meta name="referrer" content="no-referrer">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <title>Nobel Physics Lineages Citations</title>
-<style>:root{color-scheme:light dark}html,body{margin:0;padding:0;background:transparent !important}body{box-sizing:border-box}iframe{display:block;width:100%;height:100vh;margin:0;border:0;outline:0;box-shadow:none;background:transparent}</style>
+<style>:root{color-scheme:light dark}html,body{margin:0;padding:0;background:var(--nobel-page-background,#fff) !important}body{box-sizing:border-box}iframe{display:block;width:100%;height:100vh;margin:0;border:0;outline:0;box-shadow:none;background:transparent}</style>
 <script id="nobel-browser-theme">
 (() => {
   const root = document.documentElement;
   const browserTheme = matchMedia('(prefers-color-scheme: dark)');
-  let page = null;
+  const pages = [];
   try {
-    if (parent !== window) page = parent.document;
-  } catch {
-    // A cross-origin embed follows the browser preference.
-  }
-
+    let host = parent;
+    while (host !== window && pages.length < 8) {
+      pages.push(host.document);
+      if (host === host.parent) break;
+      host = host.parent;
+    }
+  } catch { /* Cross-origin ancestors cannot expose their selected theme. */ }
   function pageTheme() {
-    if (!page) return null;
-    for (const element of [page.body, page.documentElement]) {
+    for (const page of pages) for (const element of [page.body, page.documentElement]) {
       if (!element) continue;
       if (element.classList.contains('quarto-dark')) return 'dark';
       if (element.classList.contains('quarto-light')) return 'light';
@@ -31,32 +32,42 @@
     }
     return null;
   }
-
+  function pageBackground(theme) {
+    try {
+      let element = window.frameElement;
+      while (element) {
+        const value = element.ownerDocument.defaultView.getComputedStyle(element).backgroundColor;
+        if (value && value !== 'transparent' && !/rgba\([^)]*,\s*0\s*\)$/.test(value)) return value;
+        element = element.parentElement;
+      }
+    } catch { /* Use the explicit scheme palette when parent styles are unavailable. */ }
+    return theme === 'dark' ? 'rgb(24, 24, 24)' : 'rgb(255, 255, 255)';
+  }
   function syncTheme() {
     const theme = pageTheme() || (browserTheme.matches ? 'dark' : 'light');
-    root.dataset.theme = theme;
-    // The embedded map inherits this scheme, including its media-query updates.
+    const background = pageBackground(theme);
+    if (root.dataset.theme !== theme) root.dataset.theme = theme;
+    if (root.dataset.pageBackground !== background) root.dataset.pageBackground = background;
     root.style.colorScheme = theme;
-    // Keep the embedding element in the same scheme so the browser does not
-    // paint an opaque default canvas behind an otherwise transparent document.
+    root.style.setProperty('--nobel-page-background', background);
     try {
       if (window.frameElement) window.frameElement.style.colorScheme = theme;
-    } catch {
-      // Cross-origin embedding elements cannot be styled from this document.
-    }
+    } catch { /* The embedding element can belong to another origin. */ }
   }
-
   syncTheme();
-  browserTheme.addEventListener('change', syncTheme);
-  if (page) {
+  if (browserTheme.addEventListener) browserTheme.addEventListener('change', syncTheme);
+  else browserTheme.addListener(syncTheme);
+  for (const page of pages) {
     const observer = new MutationObserver(syncTheme);
-    for (const element of [page.documentElement, page.body]) {
-      if (element) observer.observe(element, {
-        attributes: true,
-        attributeFilter: ['class', 'data-bs-theme', 'data-theme', 'data-color-scheme'],
-      });
-    }
+    for (const element of [page.documentElement, page.body]) if (element) observer.observe(element, {
+      attributes:true, attributeFilter:['class','style','data-bs-theme','data-theme','data-color-scheme'],
+    });
+    page.defaultView.addEventListener('pageshow', syncTheme);
+    page.defaultView.addEventListener('load', syncTheme);
   }
+  window.addEventListener('pageshow', syncTheme);
+  window.addEventListener('load', syncTheme);
+  document.addEventListener('visibilitychange', syncTheme);
 })();
 </script>
 </head>
@@ -1553,6 +1564,67 @@ svg.lucide {
 
 html&gt;body{padding:0}&lt;/style&gt;
 &lt;style id=&quot;nobel-transparent-embed&quot;&gt;:root,html,body,#widget{background:transparent !important}html,body{margin:0 !important;padding:0 !important}#nobel-medicine-citations-network .plot{border:0 !important}&lt;/style&gt;
+&lt;style id=&quot;nobel-explicit-theme&quot;&gt;
+:root[data-theme=&quot;light&quot;] {
+  --background: rgb(255 255 255);
+  --foreground: rgb(26 28 31);
+  --card-foreground: rgb(26 28 31);
+  --popover: rgb(255 255 255);
+  --popover-foreground: rgb(26 28 31);
+  --primary: rgb(51 156 255);
+  --primary-foreground: rgb(255 255 255);
+  --secondary: rgb(255 255 255 / 96%);
+  --secondary-foreground: rgb(26 28 31);
+  --muted-foreground: rgb(26 28 31 / 49.4%);
+  --accent: rgb(229 242 255);
+  --accent-foreground: rgb(51 156 255);
+  --destructive: rgb(226 85 7);
+  --border: rgb(26 28 31 / 8%);
+  --input: rgb(26 28 31 / 11.8%);
+  --ring: rgb(51 156 255);
+  --blue: rgb(51 156 255);
+  --orange: rgb(226 85 7);
+  --green: rgb(0 162 64);
+  --red: rgb(224 46 42);
+  --purple: rgb(146 79 247);
+  --yellow: rgb(255 195 0);
+  --viz-series-2: rgb(243 136 59);
+  --viz-series-3: rgb(93 201 119);
+  --viz-series-4: rgb(235 119 177);
+  --viz-series-5: rgb(155 121 236);
+  --viz-series-6: rgb(58 185 177);
+}
+:root[data-theme=&quot;dark&quot;] {
+  --background: rgb(24 24 24);
+  --foreground: rgb(255 255 255);
+  --card-foreground: rgb(255 255 255);
+  --popover: rgb(45 45 45);
+  --popover-foreground: rgb(255 255 255);
+  --primary: rgb(131 195 255);
+  --primary-foreground: rgb(13 13 13);
+  --secondary: rgb(54 54 54 / 96%);
+  --secondary-foreground: rgb(255 255 255);
+  --muted-foreground: rgb(255 255 255 / 49.8%);
+  --accent: rgb(13 39 63);
+  --accent-foreground: rgb(131 195 255);
+  --destructive: rgb(255 133 73);
+  --border: rgb(255 255 255 / 8.2%);
+  --input: color-mix(in oklab, rgb(0 0 0) 10%, transparent);
+  --ring: rgb(131 195 255 / 76%);
+  --blue: rgb(51 156 255);
+  --orange: rgb(251 106 34);
+  --green: rgb(64 201 119);
+  --red: rgb(255 103 100);
+  --purple: rgb(173 123 249);
+  --yellow: rgb(255 210 64);
+  --viz-series-2: rgb(245 154 86);
+  --viz-series-3: rgb(116 213 139);
+  --viz-series-4: rgb(240 143 192);
+  --viz-series-5: rgb(170 145 239);
+  --viz-series-6: rgb(90 203 194);
+}
+:root,html,html&gt;body,#widget { background:var(--nobel-page-background,var(--background)) !important; }
+&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;script type=&quot;application/json&quot; id=&quot;codex-visualization-widget-state&quot;&gt;__CODEX_VISUALIZATION_WIDGET_STATE__&lt;/script&gt;
@@ -1707,9 +1779,15 @@ html&gt;body{padding:0}&lt;/style&gt;
       postToHost(&quot;widget-state-write&quot;, { id, state: serializedState });
     });
   };
+  let hostTheme = [&quot;light&quot;, &quot;dark&quot;].includes(initialGlobals.theme) ? initialGlobals.theme : null;
+  let hostBackground = initialGlobals.background;
   const syncTheme = () =&gt; {
-    const theme = mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;;
+    const theme = hostTheme || (mediaQuery.matches ? &quot;dark&quot; : &quot;light&quot;);
     root.dataset.theme = theme;
+    root.style.colorScheme = theme;
+    const background = typeof hostBackground === &quot;string&quot; &amp;&amp; hostBackground.length &lt; 128 &amp;&amp; CSS.supports(&quot;color&quot;, hostBackground)
+      ? hostBackground : (theme === &quot;dark&quot; ? &quot;rgb(24, 24, 24)&quot; : &quot;rgb(255, 255, 255)&quot;);
+    root.style.setProperty(&quot;--nobel-page-background&quot;, background);
     globalThis.openai = {
       ...globalThis.openai,
       openExternal,
@@ -1762,7 +1840,12 @@ html&gt;body{padding:0}&lt;/style&gt;
           &quot;message&quot;,
           (event) =&gt; {
             const data = apply(getMessageData, event, []);
-            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
+            if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;theme&quot; &amp;&amp;
+                (data.theme === &quot;light&quot; || data.theme === &quot;dark&quot;)) {
+              hostTheme = data.theme;
+              hostBackground = data.background;
+              syncTheme();
+            } else if (typeof data === &quot;object&quot; &amp;&amp; data?.type === &quot;measure&quot;) {
               sendHeight();
             } else if (
               typeof data === &quot;object&quot; &amp;&amp;
@@ -1835,8 +1918,19 @@ html&gt;body{padding:0}&lt;/style&gt;
       });
       return;
     }
-    event.preventDefault();
-    openExternal({ href });
+    // Preserve the native, synchronous link tap; do not proxy it through another frame.
+    // The sandbox already permits user-initiated HTTPS links to open a separate tab.
+    try {
+      if (new URL(href, document.baseURI).protocol !== &quot;https:&quot;) {
+        event.preventDefault();
+        return;
+      }
+    } catch {
+      event.preventDefault();
+      return;
+    }
+    link.target = &quot;_blank&quot;;
+    link.rel = &quot;noopener noreferrer&quot;;
   });
   new ResizeObserver(sendHeight).observe(document.body);
   syncTheme();
@@ -1874,6 +1968,8 @@ html&gt;body{padding:0}&lt;/style&gt;
     #nobel-medicine-citations-network .highlighted-prize { display:grid; gap:6px; overflow-wrap:anywhere; }
     #nobel-medicine-citations-network .highlighted-prize + .dependency-list { margin-top:16px; }
     #nobel-medicine-citations-network .award-citation { white-space:pre-line; }
+    #nobel-medicine-citations-network .award-contribution { display:grid; gap:3px; }
+    #nobel-medicine-citations-network .award-laureates { font-weight:600; }
     #nobel-medicine-citations-network .prize-navigation { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px; }
     #nobel-medicine-citations-network .prize-topic { flex:1; min-width:0; }
 
@@ -2036,9 +2132,14 @@ html&gt;body{padding:0}&lt;/style&gt;
       svg.call(zoom.transform,d3.zoomIdentity);
     }
     function appendPrizeDetails(container,n,parts=null){
-      const entry=document.createElement(&#x27;article&#x27;);entry.className=&#x27;highlighted-prize text-small&#x27;;entry.dataset.prizeYear=n.year;entry.setAttribute(&#x27;aria-label&#x27;,`${n.year} prize citation`);
+      const entry=document.createElement(&#x27;article&#x27;);entry.className=&#x27;highlighted-prize text-small&#x27;;entry.dataset.prizeYear=n.year;entry.setAttribute(&#x27;aria-label&#x27;,`${n.year} prize details`);
       if(n.overallCitation){const overall=document.createElement(&#x27;div&#x27;);overall.className=&#x27;award-citation&#x27;;overall.textContent=n.overallCitation;entry.append(overall);}
-      prizeCitations(n,parts).filter(c=&gt;c.quote).forEach(c=&gt;{const quote=document.createElement(&#x27;div&#x27;);quote.className=&#x27;award-citation&#x27;;quote.textContent=c.quote;entry.append(quote);});
+      prizeCitations(n,parts).forEach(c=&gt;{
+        const citation=document.createElement(&#x27;div&#x27;);citation.className=&#x27;award-contribution&#x27;;
+        const names=document.createElement(&#x27;div&#x27;);names.className=&#x27;award-laureates&#x27;;names.textContent=c.laureates.join(&#x27;, &#x27;);citation.append(names);
+        if(c.quote){const quote=document.createElement(&#x27;div&#x27;);quote.className=&#x27;award-citation&#x27;;quote.textContent=c.quote;citation.append(quote);}
+        entry.append(citation);
+      });
       const line=document.createElement(&#x27;div&#x27;);const source=document.createElement(&#x27;a&#x27;);source.href=n.source;source.target=&#x27;_blank&#x27;;source.rel=&#x27;noopener noreferrer&#x27;;source.textContent=`${n.year} · Official prize`;line.append(source);entry.append(line);
       container.append(entry);
     }
@@ -2753,6 +2854,8 @@ html&gt;body{padding:0}&lt;/style&gt;
     storage = null;
   }
   const initialGlobals = {
+    theme: document.documentElement.dataset.theme,
+    background: document.documentElement.dataset.pageBackground,
     widgetState: state,
     statePersistence: storage == null ? "none" : "local",
   };
@@ -2851,6 +2954,16 @@ html&gt;body{padding:0}&lt;/style&gt;
     }
   });
   channel.port1.start();
+  const sendTheme = () => {
+    const theme = document.documentElement.dataset.theme;
+    if (theme !== "light" && theme !== "dark") return;
+    frame.style.colorScheme = theme;
+    channel.port1.postMessage({ type: "theme", theme, background: document.documentElement.dataset.pageBackground });
+  };
+  new MutationObserver(sendTheme).observe(document.documentElement, {
+    attributes: true, attributeFilter: ["data-theme", "data-page-background"],
+  });
+  sendTheme();
   const srcdoc = frame.dataset.srcdoc;
   if (srcdoc == null) {
     return;
