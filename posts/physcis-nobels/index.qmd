@@ -2,7 +2,7 @@
 title: "Nobel prizes in Physics"
 author: "Mohammad Tanviruzzaman"
 date: "2026-10-06"
-categories: [physics]
+categories: [nobel, physics]
 resources:
   - nobel-physics-lineages.html
 ---
