@@ -1,0 +1,22 @@
+---
+title: "Old-school calculus prepartion"
+author: "Mohammad Tanviruzzaman"
+date: "2026-10-08"
+categories: [math]
+---
+
+## Algebra
+
+* [Chrystal's Algebra](https://archive.org/details/algebraelementar01chryuoft/mode/2up) (2 volumes)
+
+## Geometry
+
+* [Hadamard's Lessons in Geometry (Vol. 1)](https://isidore.co/CalibreLibrary/Hadamard,%20Jacques/Lessons%20in%20Geometry_%20I.%20Plane%20Geometry%20(6631)/) and its reader's companion by Saul
+* [Kieslev's Stereometry](https://www.cimat.mx/ciencia_para_jovenes/bachillerato/libros/[Kiselev,Givental]Kiselev's_Geom2.pdf)
+* Fuller and Tarwater's Analytic Geometry (7th ed.)
+
+## Trigonometry
+
+* [Hobson's Plane and Advanced Trigonometry](https://archive.org/details/treatiseonplanea0000ewho_7thedition)
+* [Todhunter's Spherical Trigonometry](https://archive.org/details/sphericaltrigono00todh/mode/2up)
+* Brummelen's Heavenly Mathematics
