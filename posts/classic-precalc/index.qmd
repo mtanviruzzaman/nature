@@ -1,5 +1,5 @@
 ---
-title: "Old-school calculus prepartion"
+title: "Old-school pre-calculus"
 author: "Mohammad Tanviruzzaman"
 date: "2026-10-08"
 categories: [math]
