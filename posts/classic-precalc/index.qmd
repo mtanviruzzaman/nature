@@ -19,4 +19,3 @@ categories: [math]
 
 * [Hobson's Plane and Advanced Trigonometry](https://archive.org/details/treatiseonplanea0000ewho_7thedition)
 * [Todhunter's Spherical Trigonometry](https://archive.org/details/sphericaltrigono00todh/mode/2up)
-* Brummelen's Heavenly Mathematics
