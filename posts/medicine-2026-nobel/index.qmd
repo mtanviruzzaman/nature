@@ -8,6 +8,8 @@ resources:
   - nobel-medicine-2026-ideas.html
 ---
 
+> How can light switch specific brain cells on and off in real time--and help us untangle the circuits of memory, emotion, and behavior?
+
 ```{=html}
 <iframe
   src="nobel-medicine-2026-ideas.html"

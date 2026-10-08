@@ -8,6 +8,8 @@ resources:
   - nobel-physics-2026-ideas.html
 ---
 
+> How do we capture ghostly neutrinos from deep space, distinguish them from atmospheric background, and trace them back to the universe’s ultimate particle accelerators?
+
 ```{=html}
 <iframe
   src="nobel-physics-2026-ideas.html"
