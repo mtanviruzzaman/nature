@@ -8,8 +8,6 @@ resources:
   - nobel-chemistry-2026-ideas.html
 ---
 
-> If chemical reactions often produce equal amounts of mirror-image molecules, how can a tiny imbalance make one form dominate---as it does in life's key building blocks?
-
 ```{=html}
 <iframe
   src="nobel-chemistry-2026-ideas.html"
