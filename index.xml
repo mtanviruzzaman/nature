@@ -10,7 +10,46 @@
 <atom:link href="https://mtanviruzzaman.github.io/nature/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Wed, 07 Oct 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 08 Oct 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Old-school calculus prepartion</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/classic-precalc/</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="algebra" class="level2">
+
+<ul>
+<li><a href="https://archive.org/details/algebraelementar01chryuoft/mode/2up">Chrystal’s Algebra</a> (2 volumes)</li>
+</ul>
+</section>
+<section id="geometry" class="level2">
+<h2 class="anchored" data-anchor-id="geometry">Geometry</h2>
+<ul>
+<li><a href="https://isidore.co/CalibreLibrary/Hadamard,%20Jacques/Lessons%20in%20Geometry_%20I.%20Plane%20Geometry%20(6631)/">Hadamard’s Lessons in Geometry (Vol. 1)</a> and its reader’s companion by Saul</li>
+<li><a href="https://www.cimat.mx/ciencia_para_jovenes/bachillerato/libros/%5BKiselev,Givental%5DKiselev's_Geom2.pdf">Kieslev’s Stereometry</a></li>
+<li>Fuller and Tarwater’s Analytic Geometry (7th ed.)</li>
+</ul>
+</section>
+<section id="trigonometry" class="level2">
+<h2 class="anchored" data-anchor-id="trigonometry">Trigonometry</h2>
+<ul>
+<li><a href="https://archive.org/details/treatiseonplanea0000ewho_7thedition">Hobson’s Plane and Advanced Trigonometry</a></li>
+<li><a href="https://archive.org/details/sphericaltrigono00todh/mode/2up">Todhunter’s Spherical Trigonometry</a></li>
+<li>Brummelen’s Heavenly Mathematics</li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>math</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/classic-precalc/</guid>
+  <pubDate>Thu, 08 Oct 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Seeing the universe through ice</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>
