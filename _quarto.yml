@@ -6,7 +6,7 @@ website:
   description: "A blog built with Quarto"
   site-url: https://mtanviruzzaman.github.io/nature/
   repo-url: https://github.com/mtanviruzzaman/nature
-  title: "The Nature Curriculum"
+  title: "Reading Nature"
   navbar:
     title: false
     collapse: false

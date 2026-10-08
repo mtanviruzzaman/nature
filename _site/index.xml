@@ -5,7 +5,7 @@
       xmlns:dc="http://purl.org/dc/elements/1.1/" 
       version="2.0">
 <channel>
-<title>The Nature Curriculum</title>
+<title>Reading Nature</title>
 <link>https://mtanviruzzaman.github.io/nature/</link>
 <atom:link href="https://mtanviruzzaman.github.io/nature/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
@@ -219,8 +219,14 @@
 <figcaption>Dinosaurs in space and time</figcaption>
 </figure>
 </div>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>The Rise and Fall of the Dinosaurs by Steve Brusatte</li>
+</ul>
 
 
+</section>
 
  ]]></description>
   <category>life</category>

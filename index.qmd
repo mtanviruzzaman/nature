@@ -10,7 +10,7 @@ listing:
 page-layout: full
 title-block-banner: true
 
-title: "The Nature Curriculum"
+title: "Reading Nature"
 subtitle: |
   *“Nature uses only the longest threads to weave her patterns, so each small piece of her fabric reveals the organization of the entire tapestry.”*<br>
   <small>— Richard Feynman</small>
