@@ -7,7 +7,7 @@ categories: [physics]
 
 **tl;dr** 
 
-> Many introductory physics textbooks echo the subject's historical arc---from mechanics to fields to quantum theory.
+> Introductory physics textbooks echo the subject's historical arc---from mechanics to fields to quantum theory.
 
 In [The Evolution of Physics](https://archive.org/details/B-001-002-263/mode/2up), Einstein and Infeld argue that Physics has evolved in three sequential phases:
 
