@@ -8,6 +8,8 @@ resources:
   - nobel-chemistry-2026-ideas.html
 ---
 
+Many organic molecules exist as two mirror-image forms, yet life on Earth overwhelmingly favors just one--a phenomenon known as biological homochirality. In certain chemical reactions, a tiny initial excess of one form acts as a self-reinforcing catalyst, generating more molecules with that same orientation. This positive feedback loop causes a single handedness to rapidly dominate the mixture. While such experiments show how molecular preference can spontaneously emerge, the original trigger that selected life's specific orientation remains one of chemistry's great mysteries.
+
 ```{=html}
 <iframe
   src="nobel-chemistry-2026-ideas.html"

@@ -8,6 +8,8 @@ resources:
   - nobel-medicine-2026-ideas.html
 ---
 
+Optogenetics revolutionized neuroscience by using light to control specific brain circuits in real time. By introducing genes encoding light-sensitive microbial proteins---such as channelrhodopsins---into targeted neurons, scientists can turn cellular firing on or off with millisecond precision using pulses of laser light. This pinpoint control allows researchers to map neural pathways directly to complex outcomes like memory, emotion, and behavior, transforming our understanding of brain function and mental health disorders.
+
 ```{=html}
 <iframe
   src="nobel-medicine-2026-ideas.html"
