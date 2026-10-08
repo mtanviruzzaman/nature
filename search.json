@@ -98,6 +98,13 @@
     "text": "Kilogram\nOne kilogram is the mass that makes Planck’s constant \\(h\\) exactly \\(6.62607015\\times10^{-34}\\ \\mathrm{kg \\cdot m^2/s}\\)\n\n\nMore…"
   },
   {
+    "objectID": "posts/medicine-2026-nobel/index.html",
+    "href": "posts/medicine-2026-nobel/index.html",
+    "title": "A light switch for neurons",
+    "section": "",
+    "text": "How can light switch specific brain cells on and off in real time–and help us untangle the circuits of memory, emotion, and behavior?"
+  },
+  {
     "objectID": "posts/young-freedman-review/index.html",
     "href": "posts/young-freedman-review/index.html",
     "title": "Review: University Physics",
@@ -124,6 +131,13 @@
     "title": "Review: University Physics",
     "section": "03. Motion in two and three dimensions",
     "text": "03. Motion in two and three dimensions\n\n\n\n\n\nPosition, velocity, and acceleration vectors\n\n\n\n\nProjectile motion\n\n\\[\n\\begin{align}\nx(t) &= (v_0 \\cos{\\alpha_0})t \\\\\ny(t) &= (v_0 \\sin{\\alpha_0})t - \\frac{1}{2}gt^2 \\\\\nv_x(t) &= v_0 \\cos{\\alpha_0} \\\\\nv_y(t) &= v_0 \\sin{\\alpha_0} - gt\n\\end{align}\n\\]\n\n\n\nUniform and nonuniform circular motion\n\n\\[\n\\begin{align}\na_{\\text{rad}} &= \\frac{v^2}{R} \\\\\na_{\\text{tan}} &= \\frac{d|\\vec{v}|}{dt} \\\\\n\\left| \\frac{d\\vec{v}}{dt} \\right| &= \\sqrt{ a_{\\text{rad}}^2 + a_{\\text{tan}}^2 }\n\\end{align}\n\\]\n\n\n\nRelative velocity\n\n\\[\n\\begin{align}\n\\vec{v}_{A/C} &= \\vec{v}_{A/B} + \\vec{v}_{B/C} \\\\\n\\vec{v}_{A/B} &= -\\vec{v}_{B/A}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "posts/physics-2026-nobel/index.html",
+    "href": "posts/physics-2026-nobel/index.html",
+    "title": "Seeing the universe through ice",
+    "section": "",
+    "text": "How do we capture ghostly neutrinos from deep space, distinguish them from atmospheric background, and trace them back to the universe’s ultimate particle accelerators?"
   },
   {
     "objectID": "posts/circular-motion/index.html",
@@ -159,6 +173,13 @@
     "title": "Rise and fall of dinosaurs",
     "section": "References",
     "text": "References\n\nThe Rise and Fall of the Dinosaurs by Steve Brusatte"
+  },
+  {
+    "objectID": "posts/chemistry-2026-nobel/index.html",
+    "href": "posts/chemistry-2026-nobel/index.html",
+    "title": "How chemistry chooses a hand",
+    "section": "",
+    "text": "If chemical reactions often produce equal amounts of mirror-image molecules, how can a tiny imbalance make one form dominate—as it does in life’s key building blocks?"
   },
   {
     "objectID": "index.html",
