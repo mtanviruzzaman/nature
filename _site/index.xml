@@ -10,7 +10,38 @@
 <atom:link href="https://mtanviruzzaman.github.io/nature/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Thu, 08 Oct 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 09 Oct 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Good habits, bad habits</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/habits/</link>
+  <description><![CDATA[ 
+
+
+
+
+<blockquote class="blockquote">
+<p>A habit is a learned association between a recurring context cue and a response, strengthened through repetition and often supported by rewards. Arranging the environment to reduce friction makes the response easier to repeat—metaphorically lowering its “activation energy.” As the association strengthens, the cue can trigger the response with little deliberation or mental effort. The response can persist even when the original reward is no longer valued, although conscious goals can still intervene.</p>
+</blockquote>
+<section id="sources" class="level2">
+<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<ul>
+<li>Good Habits, Bad Habits by Wendy Wood</li>
+<li><a href="https://www.gatsby.ucl.ac.uk/~dayan/papers/dolandayan2013.pdf">Goals and Habits in the Brain</a></li>
+<li><a href="https://kevinjmiller.org/wp-content/uploads/2019/01/millershenhavludvig_psychrev_inpress.pdf">Habits Without Values</a></li>
+<li><a href="https://www.researchgate.net/publication/290818619_Rethinking_Approach_and_Avoidance_in_Achievement_Contexts_The_Perspective_of_Dynamical_Systems">Rethinking Approach and Avoidance in Achievement Contexts: The Perspective of Dynamical Systems</a></li>
+<li><a href="https://jamesclear.com/habits-scorecard">Habit scorecard</a></li>
+<li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9815428/pdf/RHPB_11_2162904.pdf">Personalized script eliciation for improving evening sleep hygine habits</a></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>life</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/habits/</guid>
+  <pubDate>Fri, 09 Oct 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Old-school pre-calculus</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>
