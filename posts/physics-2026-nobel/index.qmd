@@ -8,9 +8,6 @@ resources:
   - nobel-physics-2026-ideas.html
 ---
 
-High-energy neutrinos act as cosmic messengers, carrying secrets from extreme environments far beyond our solar system. Because these elusive particles rarely interact with ordinary matter, detecting them requires an extraordinary scale: a cubic kilometer of Antarctic ice. Deep below the surface, the IceCube Observatory uses buried light sensors to record rare neutrino collisions, capturing the faint glow emitted by secondary charged particles. Tracing these light tracks back to their source allows scientists to map the universe's most powerful cosmic accelerators.
-
-
 ```{=html}
 <iframe
   src="nobel-physics-2026-ideas.html"

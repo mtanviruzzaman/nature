@@ -98,6 +98,13 @@
     "text": "Kilogram\nOne kilogram is the mass that makes Planck’s constant \\(h\\) exactly \\(6.62607015\\times10^{-34}\\ \\mathrm{kg \\cdot m^2/s}\\)\n\n\nMore…"
   },
   {
+    "objectID": "posts/medicine-2026-nobel/index.html",
+    "href": "posts/medicine-2026-nobel/index.html",
+    "title": "A light switch for neurons",
+    "section": "",
+    "text": "Optogenetics revolutionized neuroscience by using light to control specific brain circuits in real time. By introducing genes encoding light-sensitive microbial proteins—such as channelrhodopsins—into targeted neurons, scientists can turn cellular firing on or off with millisecond precision using pulses of laser light. This pinpoint control allows researchers to map neural pathways directly to complex outcomes like memory, emotion, and behavior, transforming our understanding of brain function and mental health disorders."
+  },
+  {
     "objectID": "posts/young-freedman-review/index.html",
     "href": "posts/young-freedman-review/index.html",
     "title": "Review: University Physics",
@@ -124,6 +131,13 @@
     "title": "Review: University Physics",
     "section": "03. Motion in two and three dimensions",
     "text": "03. Motion in two and three dimensions\n\n\n\n\n\nPosition, velocity, and acceleration vectors\n\n\n\n\nProjectile motion\n\n\\[\n\\begin{align}\nx(t) &= (v_0 \\cos{\\alpha_0})t \\\\\ny(t) &= (v_0 \\sin{\\alpha_0})t - \\frac{1}{2}gt^2 \\\\\nv_x(t) &= v_0 \\cos{\\alpha_0} \\\\\nv_y(t) &= v_0 \\sin{\\alpha_0} - gt\n\\end{align}\n\\]\n\n\n\nUniform and nonuniform circular motion\n\n\\[\n\\begin{align}\na_{\\text{rad}} &= \\frac{v^2}{R} \\\\\na_{\\text{tan}} &= \\frac{d|\\vec{v}|}{dt} \\\\\n\\left| \\frac{d\\vec{v}}{dt} \\right| &= \\sqrt{ a_{\\text{rad}}^2 + a_{\\text{tan}}^2 }\n\\end{align}\n\\]\n\n\n\nRelative velocity\n\n\\[\n\\begin{align}\n\\vec{v}_{A/C} &= \\vec{v}_{A/B} + \\vec{v}_{B/C} \\\\\n\\vec{v}_{A/B} &= -\\vec{v}_{B/A}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "posts/physics-2026-nobel/index.html",
+    "href": "posts/physics-2026-nobel/index.html",
+    "title": "Seeing the universe through ice",
+    "section": "",
+    "text": "High-energy neutrinos act as cosmic messengers, carrying secrets from extreme environments far beyond our solar system. Because these elusive particles rarely interact with ordinary matter, detecting them requires an extraordinary scale: a cubic kilometer of Antarctic ice. Deep below the surface, the IceCube Observatory uses buried light sensors to record rare neutrino collisions, capturing the faint glow emitted by secondary charged particles. Tracing these light tracks back to their source allows scientists to map the universe’s most powerful cosmic accelerators."
   },
   {
     "objectID": "posts/circular-motion/index.html",
@@ -161,20 +175,6 @@
     "text": "References\n\nThe Rise and Fall of the Dinosaurs by Steve Brusatte"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Reading Nature",
-    "section": "",
-    "text": "Old-school pre-calculus\n\n\n\n\n\n\nmath\n\n\n\n\n\n\n\n\n\nOct 8, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nSeeing the universe through ice\n\n\nThe Ideas Behind the 2026 Physics Nobel\n\n\n\nnobel\n\nphysics\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nA light switch for neurons\n\n\nThe Ideas Behind the 2026 Physiology and Medicine Nobel\n\n\n\nnobel\n\nlife\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHow chemistry chooses a hand\n\n\nThe Ideas Behind the 2026 Chemistry Nobel\n\n\n\nnobel\n\nchemistry\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Physics\n\n\n\n\n\n\nnobel\n\nphysics\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Physiology and Medicine\n\n\n\n\n\n\nnobel\n\nlife\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Chemistry\n\n\n\n\n\n\nnobel\n\nchemistry\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Economics\n\n\n\n\n\n\nnobel\n\neconomics\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nRise and fall of dinosaurs\n\n\n\n\n\n\nlife\n\n\n\n\n\n\n\n\n\nOct 2, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nTradeoffs in elementary algebra\n\n\n\n\n\n\ncomputation\n\n\n\n\n\n\n\n\n\nSep 30, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nFundamental units\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 27, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nReview: University Physics\n\n\n\n\n\n\nphysics\n\nreview\n\n\n\nRetrieval practice hints for University Physics (14th ed.) by Young and Freedman\n\n\n\n\n\nSep 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nCentripetal acceleration in uniform circular motion\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHidden history in Physics textbooks\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 4, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/physics-2026-nobel/index.html",
-    "href": "posts/physics-2026-nobel/index.html",
-    "title": "Seeing the universe through ice",
-    "section": "",
-    "text": "High-energy neutrinos act as cosmic messengers, carrying secrets from extreme environments far beyond our solar system. Because these elusive particles rarely interact with ordinary matter, detecting them requires an extraordinary scale: a cubic kilometer of Antarctic ice. Deep below the surface, the IceCube Observatory uses buried light sensors to record rare neutrino collisions, capturing the faint glow emitted by secondary charged particles. Tracing these light tracks back to their source allows scientists to map the universe’s most powerful cosmic accelerators."
-  },
-  {
     "objectID": "posts/chemistry-2026-nobel/index.html",
     "href": "posts/chemistry-2026-nobel/index.html",
     "title": "How chemistry chooses a hand",
@@ -182,10 +182,10 @@
     "text": "Many organic molecules exist as two mirror-image forms, yet life on Earth overwhelmingly favors just one–a phenomenon known as biological homochirality. In certain chemical reactions, a tiny initial excess of one form acts as a self-reinforcing catalyst, generating more molecules with that same orientation. This positive feedback loop causes a single handedness to rapidly dominate the mixture. While such experiments show how molecular preference can spontaneously emerge, the original trigger that selected life’s specific orientation remains one of chemistry’s great mysteries."
   },
   {
-    "objectID": "posts/medicine-2026-nobel/index.html",
-    "href": "posts/medicine-2026-nobel/index.html",
-    "title": "A light switch for neurons",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Reading Nature",
     "section": "",
-    "text": "Optogenetics revolutionized neuroscience by using light to control specific brain circuits in real time. By introducing genes encoding light-sensitive microbial proteins—such as channelrhodopsins—into targeted neurons, scientists can turn cellular firing on or off with millisecond precision using pulses of laser light. This pinpoint control allows researchers to map neural pathways directly to complex outcomes like memory, emotion, and behavior, transforming our understanding of brain function and mental health disorders."
+    "text": "Old-school pre-calculus\n\n\n\n\n\n\nmath\n\n\n\n\n\n\n\n\n\nOct 8, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nSeeing the universe through ice\n\n\nThe Ideas Behind the 2026 Physics Nobel\n\n\n\nnobel\n\nphysics\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nA light switch for neurons\n\n\nThe Ideas Behind the 2026 Physiology and Medicine Nobel\n\n\n\nnobel\n\nlife\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHow chemistry chooses a hand\n\n\nThe Ideas Behind the 2026 Chemistry Nobel\n\n\n\nnobel\n\nchemistry\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Physics\n\n\n\n\n\n\nnobel\n\nphysics\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Physiology and Medicine\n\n\n\n\n\n\nnobel\n\nlife\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Chemistry\n\n\n\n\n\n\nnobel\n\nchemistry\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Economics\n\n\n\n\n\n\nnobel\n\neconomics\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nRise and fall of dinosaurs\n\n\n\n\n\n\nlife\n\n\n\n\n\n\n\n\n\nOct 2, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nTradeoffs in elementary algebra\n\n\n\n\n\n\ncomputation\n\n\n\n\n\n\n\n\n\nSep 30, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nFundamental units\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 27, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nReview: University Physics\n\n\n\n\n\n\nphysics\n\nreview\n\n\n\nRetrieval practice hints for University Physics (14th ed.) by Young and Freedman\n\n\n\n\n\nSep 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nCentripetal acceleration in uniform circular motion\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHidden history in Physics textbooks\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 4, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\nNo matching items"
   }
 ]
