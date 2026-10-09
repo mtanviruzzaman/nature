@@ -1,4 +1,9 @@
 ---
+title: "Reading Nature"
+subtitle: |
+  <span class="site-quote">“Nature uses only the longest threads to weave her patterns, so each small piece of her fabric reveals the organization of the entire tapestry.”</span>
+  <span class="site-quote-author">— <strong>Richard Feynman</strong></span>
+
 listing:
   contents: posts
   feed: true
@@ -7,23 +12,38 @@ listing:
   categories: true
   sort-ui: false
   filter-ui: false
-page-layout: full
-title-block-banner: true
 
-title: "Reading Nature"
-subtitle: |
-  *“Nature uses only the longest threads to weave her patterns, so each small piece of her fabric reveals the organization of the entire tapestry.”*<br>
-  <small>— Richard Feynman</small>
+page-layout: full
+title-block-banner: false
 ---
+
 ```{=html}
 <style>
-#title-block-header .quarto-title-banner {
-  padding-bottom: 1rem !important;
-  margin-bottom: 0 !important;
+#title-block-header {
+  margin-bottom: 1.5rem;
 }
 
-#title-block-header {
-  margin-bottom: 1rem !important;
+.site-quote {
+  display: block;
+  margin-top: 0.4rem;
+  max-width: 65ch;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.6;
+  color: inherit;
+  opacity: 0.8;
+}
+
+.site-quote-author {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-style: normal;
+  color: inherit;
+  opacity: 0.8;
 }
 </style>
 ```
