@@ -20,40 +20,17 @@
 
 
 
-<p>A habit is a learned cue–response association built through repetition, often supported by immediate reward. Lowering friction makes repetition easier—reducing the “activation energy” to act. Once established, the cue can prompt a response with little mental effort, even when the original reward is no longer valued. Such routines can escape notice; tracking can reveal them and help us decide what to preserve or change.</p>
 <blockquote class="blockquote">
 <p>Habits automate familiar routines, freeing attention and deliberate effort for tasks that need them.</p>
 </blockquote>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Goal</th>
-<th>Cue</th>
-<th>Response</th>
-<th>Friction</th>
-<th>Reward</th>
-<th>Period</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Reduce spending</td>
-<td>About to make a purchase</td>
-<td>Pay only with cash or skip the purchase</td>
-<td>Carry no cards</td>
-<td>Saving from skipping a purchase</td>
-<td>8 weeks</td>
-</tr>
-</tbody>
-</table>
+<p>A habit is a learned cue–response association built through repetition, often supported by immediate reward. Lowering friction makes repetition easier—reducing the “activation energy” to act. Once established, the cue can prompt a response with little mental effort, even when the original reward is no longer valued. Such routines can escape notice; tracking can reveal them and help us decide what to preserve or change.</p>
+<!--
+
+| Goal | Cue | Response | Friction | Reward | Period |
+|---|---|---|---|---|---|
+| Reduce spending | About to make a purchase | Pay only with cash or skip the purchase | Carry no cards | Saving from skipping a purchase | 8 weeks |
+
+-->
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
 <ul>
