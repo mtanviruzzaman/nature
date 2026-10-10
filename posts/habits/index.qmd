@@ -11,7 +11,7 @@ A habit is a learned cue–response association built through repetition, often 
 
 | Goal | Cue | Response | Friction | Reward | Period |
 |---|---|---|---|---|---|
-| Reduce spending | About to make a purchase | Pay only with cash or skip the purchase | Cash-only, no cards | Saving from skipping a purchase | 8 weeks |
+| Reduce spending | About to make a purchase | Pay only with cash or skip the purchase | No cards, cash-only | Saving from skipping a purchase | 8 weeks |
 
 ## Sources
 * Good Habits, Bad Habits by Wendy Wood
