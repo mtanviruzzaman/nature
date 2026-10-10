@@ -20,45 +20,26 @@
 
 
 
-<p>A habit is a learned cue–response association built through repetition, often supported by immediate reward. Lowering friction makes repetition easier—reducing the “activation energy” to act. Once established, the cue can prompt a response with little mental effort, even when the original reward is no longer valued. Such routines can escape notice; tracking can reveal them and help us decide what to preserve or change.</p>
 <blockquote class="blockquote">
 <p>Habits automate familiar routines, freeing attention and deliberate effort for tasks that need them.</p>
 </blockquote>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Goal</th>
-<th>Cue</th>
-<th>Response</th>
-<th>Friction</th>
-<th>Reward</th>
-<th>Period</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Reduce spending</td>
-<td>About to make a purchase</td>
-<td>Pay only with cash or skip the purchase</td>
-<td>Carry no cards</td>
-<td>Saving from skipping a purchase</td>
-<td>8 weeks</td>
-</tr>
-</tbody>
-</table>
+<p>A habit is a learned cue–response association built through repetition, often supported by immediate reward. Lowering friction makes repetition easier—reducing the “activation energy” to act. Once established, the cue can prompt a response with little mental effort, even when the original reward is no longer valued. Such routines can escape notice; tracking can reveal them and help us decide what to preserve or change.</p>
+<!--
+
+| Goal | Cue | Response | Friction | Reward | Period |
+|---|---|---|---|---|---|
+| Reduce spending | About to make a purchase | Pay only with cash or skip the purchase | Carry no cards | Saving from skipping a purchase | 8 weeks |
+
+-->
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
 <ul>
 <li>Good Habits, Bad Habits by Wendy Wood</li>
 </ul>
+<!--
+* Tiny Habits by BJ Fogg
+* [Habit measurement](https://pmc.ncbi.nlm.nih.gov/articles/PMC3552971/pdf/1479-5868-9-102.pdf)
+-->
 <!--
 * [Goals and Habits in the Brain](https://www.gatsby.ucl.ac.uk/~dayan/papers/dolandayan2013.pdf)
 * [Habits Without Values](https://kevinjmiller.org/wp-content/uploads/2019/01/millershenhavludvig_psychrev_inpress.pdf)
@@ -81,6 +62,7 @@ The Perspective of Dynamical Systems](https://www.researchgate.net/publication/2
 * [Mindfulness for smoking](https://pmc.ncbi.nlm.nih.gov/articles/PMC3619004/pdf/nihms430593.pdf)
 * [Mindfulness for alcohol](https://pmc.ncbi.nlm.nih.gov/articles/PMC3619004/pdf/nihms430593.pdf)
 * [Coping skills manual](https://www.niaaa.nih.gov/sites/default/files/match03.pdf)
+* [Duration](https://www.flexyourbrain.com/wp-content/uploads/2015/10/UL-STUDY-66-Days-IJSP_998-1009.pdf)
 -->
 
 
