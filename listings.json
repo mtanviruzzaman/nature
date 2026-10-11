@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/braver-calc-review/index.html",
       "/posts/habits/index.html",
       "/posts/classic-precalc/index.html",
       "/posts/physics-2026-nobel/index.html",
@@ -12,7 +13,7 @@
       "/posts/chemistry-nobels/index.html",
       "/posts/economics-nobels/index.html",
       "/posts/rise-fall-dino/index.html",
-      "/posts/Trade-off in elementary math/index.html",
+      "/posts/trade-off-algebra/index.html",
       "/posts/fundamental-units/index.html",
       "/posts/young-freedman-review/index.html",
       "/posts/circular-motion/index.html",

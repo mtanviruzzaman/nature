@@ -7,9 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Mohammad Tanviruzzaman">
-<meta name="dcterms.date" content="2026-09-30">
+<meta name="dcterms.date" content="2026-10-10">
+<meta name="description" content="Retrieval practice hints for Full Frontal Calculus (1st ed.) by Seth Braver">
 
-<title>Tradeoffs in elementary algebra – Reading Nature</title>
+<title>Review: Full Frontal Calculus – Reading Nature</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -145,12 +146,18 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tradeoffs in elementary algebra</h1>
+<h1 class="title">Review: Full Frontal Calculus</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">computation</div>
+    <div class="quarto-category">math</div>
+    <div class="quarto-category">review</div>
   </div>
   </div>
 
+<div>
+  <div class="description">
+    Retrieval practice hints for Full Frontal Calculus (1st ed.) by Seth Braver
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -165,7 +172,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 30, 2026</p>
+      <p class="date">October 10, 2026</p>
     </div>
   </div>
   
@@ -177,67 +184,31 @@ window.Quarto = {
 </header>
 
 
-<p><strong>tl;dr</strong></p>
-<blockquote class="blockquote">
-<p>When extending a definition or operation, we favor choices that preserve useful general rules.</p>
-</blockquote>
-<section id="x0" class="level2">
-<h2 class="anchored" data-anchor-id="x0"><span class="math inline">\(x^0\)</span></h2>
-<p>We choose <span class="math inline">\(x^0 = 1\)</span> because choosing <span class="math inline">\(x^0 = 0\)</span> instead would require us to give up the general exponent rule:</p>
-<p><span class="math display">\[
-x^{a+b} = x^a x^b
-\]</span></p>
+<section id="chapter-5-the-integral-calculus-proper" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-5-the-integral-calculus-proper">Chapter 5: The Integral Calculus Proper</h2>
 <details>
 <summary>
-More…
+Algebraic Trickery (Rational Functions)
 </summary>
-<p><span class="math display">\[
-x = x^{1+0} = x^1 \cdot x^0
-\]</span></p>
-With <span class="math inline">\(x \neq 0\)</span>, <span class="math display">\[
-1 = \frac{x^3}{x^3} = x^{3-3} = x^0
-\]</span>
-</details>
-</section>
-<section id="times--1" class="level2">
-<h2 class="anchored" data-anchor-id="times--1"><span class="math inline">\(-1 \times -1\)</span></h2>
-<p>When extending multiplication to negative numbers, we choose <span class="math inline">\((-1) \times (-1) = +1\)</span> because choosing <span class="math inline">\(-1\)</span> instead would require us to give up the distributive law:</p>
-<p><span class="math display">\[
-a \times (b+c) = a \times b + a \times c
-\]</span></p>
 <details>
 <summary>
-More…
+Antiderivative of <span class="math inline">\(\frac{1}{x}\)</span>
 </summary>
-<p><span class="math display">\[
-0=-1\times \bigl(1+(-1)\bigr)= -1 + (-1 \times -1)
-\]</span></p>
-<p>We can make the product of <span class="math inline">\(-1\)</span> and <span class="math inline">\(-1\)</span> equal to <span class="math inline">\(-1\)</span> while keeping distributivity, but other rules must change. For example, we could define a new multiplication: <span class="math inline">\(a \star b = -(ab)\)</span> with <span class="math inline">\(ab = \underbrace{b + b + \cdots + b}_{a\text{ times}}\)</span>. Now, the distributive law works:</p>
-<p><span class="math display">\[
-0 = -1 \star \bigl(1+(-1)\bigr) = 1 + (-1 \star -1)
-\]</span></p>
-<p>The tradeoff is that multiplying by <span class="math inline">\(1\)</span> now reverses the sign:</p>
-<p><span class="math display">\[
-a \star 1 = -a.
-\]</span></p>
-<p>Instead, <span class="math inline">\(-1\)</span> becomes the multiplicative identity:</p>
 <span class="math display">\[
-a \star (-1) = a.
+\int \frac{1}{x}\ dx = \ln{|x|} + C
 \]</span>
 </details>
-</section>
-<section id="fracx0" class="level2">
-<h2 class="anchored" data-anchor-id="fracx0"><span class="math inline">\(\frac{x}{0}\)</span></h2>
-<p>We leave <span class="math inline">\(\frac{x}{0}\)</span> undefined to preserve division as the operation that uniquely undoes multiplication: <span class="math inline">\(a/b\)</span> must be the unique number <span class="math inline">\(q\)</span> satisfying</p>
-<p><span class="math display">\[
-bq = a
-\]</span></p>
 <details>
 <summary>
-More…
+Antiderivative of <span class="math inline">\(sec{(x)}\)</span> and <span class="math inline">\(csc{(x)}\)</span>
 </summary>
-<p>For <span class="math inline">\(\frac{3}{0}\)</span>, no number satisfies <span class="math inline">\(0q = 3\)</span>.</p>
-For <span class="math inline">\(\frac{0}{0}\)</span>, every number satisfies <span class="math inline">\(0q = 0\)</span>, so there is no unique answer.
+<span class="math display">\[
+\begin{align}
+\int \sec{(x)}\ dx &amp;= \ln{|\sec{(x)} + \tan{(x)}|} + C \\
+\int \csc{(x)}\ dx &amp;= -\ln{|\csc{(x)} + \cot{(x)}|} + C
+\end{align}
+\]</span>
+</details>
 </details>
 
 

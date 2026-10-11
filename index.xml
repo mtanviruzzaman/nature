@@ -10,7 +10,45 @@
 <atom:link href="https://mtanviruzzaman.github.io/nature/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Fri, 09 Oct 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 10 Oct 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Review: Full Frontal Calculus</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/braver-calc-review/</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="chapter-5-the-integral-calculus-proper" class="level2">
+
+<details>
+<summary>
+Algebraic Trickery (Rational Functions)
+</summary>
+<details>
+<summary>
+Antiderivative of <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7Bx%7D">
+</summary>
+<img src="https://latex.codecogs.com/png.latex?%0A%5Cint%20%5Cfrac%7B1%7D%7Bx%7D%5C%20dx%20=%20%5Cln%7B%7Cx%7C%7D%20+%20C%0A">
+</details>
+<details>
+<summary>
+Antiderivative of <img src="https://latex.codecogs.com/png.latex?sec%7B(x)%7D"> and <img src="https://latex.codecogs.com/png.latex?csc%7B(x)%7D">
+</summary>
+<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cint%20%5Csec%7B(x)%7D%5C%20dx%20&amp;=%20%5Cln%7B%7C%5Csec%7B(x)%7D%20+%20%5Ctan%7B(x)%7D%7C%7D%20+%20C%20%5C%5C%0A%5Cint%20%5Ccsc%7B(x)%7D%5C%20dx%20&amp;=%20-%5Cln%7B%7C%5Ccsc%7B(x)%7D%20+%20%5Ccot%7B(x)%7D%7C%7D%20+%20C%0A%5Cend%7Balign%7D%0A">
+</details>
+</details>
+
+
+</section>
+
+ ]]></description>
+  <category>math</category>
+  <category>review</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/braver-calc-review/</guid>
+  <pubDate>Sat, 10 Oct 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Good habits, bad habits</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>
@@ -312,7 +350,7 @@ The Perspective of Dynamical Systems](https://www.researchgate.net/publication/2
 <item>
   <title>Tradeoffs in elementary algebra</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>
-  <link>https://mtanviruzzaman.github.io/nature/posts/Trade-off in elementary math/</link>
+  <link>https://mtanviruzzaman.github.io/nature/posts/trade-off-algebra/</link>
   <description><![CDATA[ 
 
 
@@ -367,8 +405,8 @@ For <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B0%7D%7B0%7D">, ever
 </section>
 
  ]]></description>
-  <category>computation</category>
-  <guid>https://mtanviruzzaman.github.io/nature/posts/Trade-off in elementary math/</guid>
+  <category>math</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/trade-off-algebra/</guid>
   <pubDate>Wed, 30 Sep 2026 07:00:00 GMT</pubDate>
 </item>
 <item>
