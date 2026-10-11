@@ -2,7 +2,7 @@
 title: "Good habits, bad habits"
 author: "Mohammad Tanviruzzaman"
 date: "2026-10-09"
-categories: [life]
+categories: [life, psychology]
 ---
 
 > Habits automate familiar routines, freeing attention and deliberate effort for tasks that need them.
