@@ -7,7 +7,7 @@ categories: [life]
 
 > Habits automate familiar routines, freeing attention and deliberate effort for tasks that need them.
 
-A habit is a learned cue–response association built through repetition, often supported by immediate reward. Lowering friction makes repetition easier—reducing the “activation energy” to act. Once established, the cue can prompt a response with little mental effort, even when the original reward is no longer valued. Such routines can escape notice; tracking can reveal them and help us decide what to preserve or change.
+A habit is a learned (cue, response) association built through repetition, often supported by immediate reward. Lowering friction makes repetition easier—reducing the “activation energy” to act. Once established, the cue can prompt a response with little mental effort, even when the original reward is no longer valued. Such routines can escape notice; tracking can reveal them and help us decide what to preserve or change.
 
 ```{=html}
 <style>
