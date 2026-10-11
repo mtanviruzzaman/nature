@@ -1,0 +1,27 @@
+---
+title: "Review: Full Frontal Calculus"
+author: "Mohammad Tanviruzzaman"
+date: "2026-10-10"
+categories: [math, review]
+description: "Retrieval practice hints for Full Frontal Calculus (1st ed.) by Seth Braver"
+---
+
+## Chapter 5: The Integral Calculus Proper
+<details>
+<summary>Algebraic Trickery (Rational Functions)</summary>
+<details>
+<summary>Antiderivative of $\frac{1}{x}$</summary>
+$$
+\int \frac{1}{x}\ dx = \ln{|x|} + C
+$$
+</details>
+<details>
+<summary>Antiderivative of $sec{(x)}$ and $csc{(x)}$</summary>
+$$
+\begin{align}
+\int \sec{(x)}\ dx &= \ln{|\sec{(x)} + \tan{(x)}|} + C \\
+\int \csc{(x)}\ dx &= -\ln{|\csc{(x)} + \cot{(x)}|} + C
+\end{align}
+$$
+</details>
+</details>
