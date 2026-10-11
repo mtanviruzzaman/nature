@@ -9,11 +9,21 @@ categories: [life]
 
 A habit is a learned cue–response association built through repetition, often supported by immediate reward. Lowering friction makes repetition easier—reducing the “activation energy” to act. Once established, the cue can prompt a response with little mental effort, even when the original reward is no longer valued. Such routines can escape notice; tracking can reveal them and help us decide what to preserve or change.
 
+```{=html}
+<style>
+.quarto-figure figcaption {
+  text-align: center !important;
+}
+</style>
+```
+
+![Habit formation via repetition](form_habit.jpg)
+
 <!--
 
 | Goal | Cue | Response | Friction | Reward | Period |
 |---|---|---|---|---|---|
-| Reduce spending | About to make a purchase | Pay only with cash or skip the purchase | Carry no cards | Saving from skipping a purchase | 8 weeks |
+| Checking phn | About to make a purchase | Pay only with cash or skip the purchase | Carry no cards | Saving from skipping a purchase | 8 weeks |
 
 -->
 
@@ -37,6 +47,8 @@ The Perspective of Dynamical Systems](https://www.researchgate.net/publication/2
 <!--
 * [Sleep hygine](https://pmc.ncbi.nlm.nih.gov/articles/PMC9815428/pdf/RHPB_11_2162904.pdf)
 * [Cue planning](https://discovery.ucl.ac.uk/id/eprint/10118622/1/Jan%20paper.pdf)
+* [Smartphone checking 1](https://pmc.ncbi.nlm.nih.gov/articles/PMC9112639/pdf/11469_2022_Article_826.pdf)
+* [Smartphone checking 2](https://pmc.ncbi.nlm.nih.gov/articles/PMC9974409/pdf/pnas.202213114.pdf)
 * [Moving more](https://pmc.ncbi.nlm.nih.gov/articles/PMC11273430)
 * [Unhealhty snacking](https://pubmed.ncbi.nlm.nih.gov/25099386/)
 * [Flossing](https://pubmed.ncbi.nlm.nih.gov/22989272/)
