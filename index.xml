@@ -76,12 +76,6 @@ Double-angle identities
 </summary>
 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Ccos%7B(2x)%7D%20&amp;=%20%5Ccos%5E2%7Bx%7D%20-%20%5Csin%5E2%7Bx%7D%20%5C%5C%0A%5Csin%7B(2x)%7D%20&amp;=%202%5Csin%7Bx%7D%5Ccos%7Bx%7D%0A%5Cend%7Balign%7D%0A">
 </details>
-<details>
-<summary>
-Half-angle identities
-</summary>
-<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Ccos%5E2%7Bx%7D%20&amp;=%20%5Cfrac%7B1+%5Ccos%7B(2x)%7D%7D%7B2%7D%20%5C%5C%0A%5Csin%5E2%7Bx%7D%20&amp;=%20%5Cfrac%7B1-%5Ccos%7B(2x)%7D%7D%7B2%7D%0A%5Cend%7Balign%7D%0A">
-</details>
 </details>
 
 
