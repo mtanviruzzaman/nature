@@ -10,7 +10,28 @@
 <atom:link href="https://mtanviruzzaman.github.io/nature/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Sat, 10 Oct 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 12 Oct 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Steadying the economy from the ground up</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/nobel-2026-economics/</link>
+  <description><![CDATA[ 
+
+
+
+
+<iframe src="nobel-economics-2026-ideas.html" title="Ideas behind the 2026 Economics Nobel" width="100%" height="1100" style="border:0; display:block;" loading="lazy">
+</iframe>
+
+
+
+ ]]></description>
+  <category>nobel</category>
+  <category>economics</category>
+  <category>2026</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/nobel-2026-economics/</guid>
+  <pubDate>Mon, 12 Oct 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Review: Full Frontal Calculus</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>
