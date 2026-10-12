@@ -179,14 +179,14 @@
     "href": "posts/braver-calc-review/index.html",
     "title": "Review: Full Frontal Calculus",
     "section": "",
-    "text": "Algebraic Trickery (Rational Functions)\n\n\n\nAntiderivative of \\(\\frac{1}{x}\\)\n\n\\[\n\\int \\frac{1}{x}\\ dx = \\ln{|x|} + C\n\\]\n\n\n\nAntiderivative of \\(sec{(x)}\\) and \\(csc{(x)}\\)\n\n\\[\n\\begin{align}\n\\int \\sec{(x)}\\ dx &= \\ln{|\\sec{(x)} + \\tan{(x)}|} + C \\\\\n\\int \\csc{(x)}\\ dx &= -\\ln{|\\csc{(x)} + \\cot{(x)}|} + C\n\\end{align}\n\\]"
+    "text": "Algebraic Trickery (Rational Functions)\n\n\n\nAntiderivative of \\(\\frac{1}{x}\\)\n\n\\[\n\\int \\frac{1}{x}\\ dx = \\ln{|x|} + C\n\\]\n\n\n\nAntiderivative of \\(sec{(x)}\\) and \\(csc{(x)}\\)\n\n\\[\n\\begin{align}\n\\int \\sec{(x)}\\ dx &= \\ln{|\\sec{(x)} + \\tan{(x)}|} + C \\\\\n\\int \\csc{(x)}\\ dx &= -\\ln{|\\csc{(x)} + \\cot{(x)}|} + C\n\\end{align}\n\\]\n\n\n\n\nTrigonometric Trickery (Part 1)\n\n\n\nPythagorean identities\n\n\\[\n\\begin{align}\n\\sin^2{x} + \\cos^2{x} &= 1 \\\\\n\\sec^2{x} - \\tan^2{x} &= 1\n\\end{align}\n\\]\n\n\n\nDouble-angle identities\n\n\\[\n\\begin{align}\n\\cos{(2x)} &= \\cos^2{x} - \\sin^2{x} \\\\\n\\sin{(2x)} &= 2\\sin{x}\\cos{x}\n\\end{align}\n\\]\n\n\n\nHalf-angle identities\n\n\\[\n\\begin{align}\n\\cos^2{x} &= \\frac{1+\\cos{(2x)}}{2} \\\\\n\\sin^2{x} &= \\frac{1-\\cos{(2x)}}{2}\n\\end{align}\n\\]"
   },
   {
     "objectID": "posts/braver-calc-review/index.html#chapter-5-the-integral-calculus-proper",
     "href": "posts/braver-calc-review/index.html#chapter-5-the-integral-calculus-proper",
     "title": "Review: Full Frontal Calculus",
     "section": "",
-    "text": "Algebraic Trickery (Rational Functions)\n\n\n\nAntiderivative of \\(\\frac{1}{x}\\)\n\n\\[\n\\int \\frac{1}{x}\\ dx = \\ln{|x|} + C\n\\]\n\n\n\nAntiderivative of \\(sec{(x)}\\) and \\(csc{(x)}\\)\n\n\\[\n\\begin{align}\n\\int \\sec{(x)}\\ dx &= \\ln{|\\sec{(x)} + \\tan{(x)}|} + C \\\\\n\\int \\csc{(x)}\\ dx &= -\\ln{|\\csc{(x)} + \\cot{(x)}|} + C\n\\end{align}\n\\]"
+    "text": "Algebraic Trickery (Rational Functions)\n\n\n\nAntiderivative of \\(\\frac{1}{x}\\)\n\n\\[\n\\int \\frac{1}{x}\\ dx = \\ln{|x|} + C\n\\]\n\n\n\nAntiderivative of \\(sec{(x)}\\) and \\(csc{(x)}\\)\n\n\\[\n\\begin{align}\n\\int \\sec{(x)}\\ dx &= \\ln{|\\sec{(x)} + \\tan{(x)}|} + C \\\\\n\\int \\csc{(x)}\\ dx &= -\\ln{|\\csc{(x)} + \\cot{(x)}|} + C\n\\end{align}\n\\]\n\n\n\n\nTrigonometric Trickery (Part 1)\n\n\n\nPythagorean identities\n\n\\[\n\\begin{align}\n\\sin^2{x} + \\cos^2{x} &= 1 \\\\\n\\sec^2{x} - \\tan^2{x} &= 1\n\\end{align}\n\\]\n\n\n\nDouble-angle identities\n\n\\[\n\\begin{align}\n\\cos{(2x)} &= \\cos^2{x} - \\sin^2{x} \\\\\n\\sin{(2x)} &= 2\\sin{x}\\cos{x}\n\\end{align}\n\\]\n\n\n\nHalf-angle identities\n\n\\[\n\\begin{align}\n\\cos^2{x} &= \\frac{1+\\cos{(2x)}}{2} \\\\\n\\sin^2{x} &= \\frac{1-\\cos{(2x)}}{2}\n\\end{align}\n\\]"
   },
   {
     "objectID": "index.html",
