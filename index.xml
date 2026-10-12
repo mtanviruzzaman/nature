@@ -39,6 +39,29 @@ Antiderivative of <img src="https://latex.codecogs.com/png.latex?sec%7B(x)%7D"> 
 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cint%20%5Csec%7B(x)%7D%5C%20dx%20&amp;=%20%5Cln%7B%7C%5Csec%7B(x)%7D%20+%20%5Ctan%7B(x)%7D%7C%7D%20+%20C%20%5C%5C%0A%5Cint%20%5Ccsc%7B(x)%7D%5C%20dx%20&amp;=%20-%5Cln%7B%7C%5Ccsc%7B(x)%7D%20+%20%5Ccot%7B(x)%7D%7C%7D%20+%20C%0A%5Cend%7Balign%7D%0A">
 </details>
 </details>
+<details>
+<summary>
+Trigonometric Trickery (Part 1)
+</summary>
+<details>
+<summary>
+Pythagorean identities
+</summary>
+<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Csin%5E2%7Bx%7D%20+%20%5Ccos%5E2%7Bx%7D%20&amp;=%201%20%5C%5C%0A%5Csec%5E2%7Bx%7D%20-%20%5Ctan%5E2%7Bx%7D%20&amp;=%201%0A%5Cend%7Balign%7D%0A">
+</details>
+<details>
+<summary>
+Double-angle identities
+</summary>
+<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Ccos%7B(2x)%7D%20&amp;=%20%5Ccos%5E2%7Bx%7D%20-%20%5Csin%5E2%7Bx%7D%20%5C%5C%0A%5Csin%7B(2x)%7D%20&amp;=%202%5Csin%7Bx%7D%5Ccos%7Bx%7D%0A%5Cend%7Balign%7D%0A">
+</details>
+<details>
+<summary>
+Half-angle identities
+</summary>
+<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Ccos%5E2%7Bx%7D%20&amp;=%20%5Cfrac%7B1+%5Ccos%7B(2x)%7D%7D%7B2%7D%20%5C%5C%0A%5Csin%5E2%7Bx%7D%20&amp;=%20%5Cfrac%7B1-%5Ccos%7B(2x)%7D%7D%7B2%7D%0A%5Cend%7Balign%7D%0A">
+</details>
+</details>
 
 
 </section>
