@@ -46,13 +46,4 @@ $$
 \end{align}
 $$
 </details>
-<details>
-<summary>Half-angle identities</summary>
-$$
-\begin{align}
-\cos^2{x} &= \frac{1+\cos{(2x)}}{2} \\
-\sin^2{x} &= \frac{1-\cos{(2x)}}{2}
-\end{align}
-$$
-</details>
 </details>
