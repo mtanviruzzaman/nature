@@ -47,3 +47,14 @@ $$
 $$
 </details>
 </details>
+<details>
+<summary>Trigonometric Trickery (Part 2)</summary>
+<details>
+<summary>Trigonometric substitution</summary>
+We replace $x$ with a trigonometric function to complete the square and thus get rid of the square root. The Pythagorean identities are the squaremakers.
+
+- For $\sqrt{\text{constant} - \text{square}}$, we use: $\sin^2{\theta} + \cos^2{\theta} = 1$. For example, with $\sqrt{9-x^2}$ our substitution is $x = 3\sin{\theta}$ which transforms the expression into $\sqrt{(3\cos{\theta})^2}$.
+- For $\sqrt{\text{square} + \text{constant}}$, we use: $\sec^2{\theta} - \tan^2{\theta} = 1$. For example, with $\sqrt{x^2+16}$ our substitution is $x = 4\tan{\theta}$ which transforms the expression into $\sqrt{(4\sec{\theta})^2}$.
+- For $\sqrt{\text{square} - \text{constant}}$, we use: $\sec^2{\theta} - \tan^2{\theta} = 1$. For example, with $\sqrt{x^2-3}$ our substitution is $x = \sqrt{3}\sec{\theta}$ which transforms the expression into $\sqrt{(\sqrt{3}\tan{\theta})^2}$.
+
+</details>

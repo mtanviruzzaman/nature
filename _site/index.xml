@@ -42,7 +42,7 @@
 
 
 <section id="chapter-5-the-integral-calculus-proper" class="level2">
-
+<h2 class="anchored" data-anchor-id="chapter-5-the-integral-calculus-proper">Chapter 5: The Integral Calculus Proper</h2>
 <details>
 <summary>
 Algebraic Trickery (Rational Functions)
@@ -77,9 +77,24 @@ Double-angle identities
 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Ccos%7B(2x)%7D%20&amp;=%20%5Ccos%5E2%7Bx%7D%20-%20%5Csin%5E2%7Bx%7D%20%5C%5C%0A%5Csin%7B(2x)%7D%20&amp;=%202%5Csin%7Bx%7D%5Ccos%7Bx%7D%0A%5Cend%7Balign%7D%0A">
 </details>
 </details>
+<details>
+<summary>
+Trigonometric Trickery (Part 2)
+</summary>
+<details>
+<summary>
+Trigonometric substitution
+</summary>
+<p>We replace <img src="https://latex.codecogs.com/png.latex?x"> with a trigonometric function to complete the square and thus get rid of the square root. The Pythagorean identities are the squaremakers.</p>
+<ul>
+<li>For <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B%5Ctext%7Bconstant%7D%20-%20%5Ctext%7Bsquare%7D%7D">, we use: <img src="https://latex.codecogs.com/png.latex?%5Csin%5E2%7B%5Ctheta%7D%20+%20%5Ccos%5E2%7B%5Ctheta%7D%20=%201">. For example, with <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B9-x%5E2%7D"> our substitution is <img src="https://latex.codecogs.com/png.latex?x%20=%203%5Csin%7B%5Ctheta%7D"> which transforms the expression into <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B(3%5Ccos%7B%5Ctheta%7D)%5E2%7D">.</li>
+<li>For <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B%5Ctext%7Bsquare%7D%20+%20%5Ctext%7Bconstant%7D%7D">, we use: <img src="https://latex.codecogs.com/png.latex?%5Csec%5E2%7B%5Ctheta%7D%20-%20%5Ctan%5E2%7B%5Ctheta%7D%20=%201">. For example, with <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7Bx%5E2+16%7D"> our substitution is <img src="https://latex.codecogs.com/png.latex?x%20=%204%5Ctan%7B%5Ctheta%7D"> which transforms the expression into <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B(4%5Csec%7B%5Ctheta%7D)%5E2%7D">.</li>
+<li>For <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B%5Ctext%7Bsquare%7D%20-%20%5Ctext%7Bconstant%7D%7D">, we use: <img src="https://latex.codecogs.com/png.latex?%5Csec%5E2%7B%5Ctheta%7D%20-%20%5Ctan%5E2%7B%5Ctheta%7D%20=%201">. For example, with <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7Bx%5E2-3%7D"> our substitution is <img src="https://latex.codecogs.com/png.latex?x%20=%20%5Csqrt%7B3%7D%5Csec%7B%5Ctheta%7D"> which transforms the expression into <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B(%5Csqrt%7B3%7D%5Ctan%7B%5Ctheta%7D)%5E2%7D">.</li>
+</ul>
+</details>
 
 
-</section>
+</details></section>
 
  ]]></description>
   <category>math</category>
