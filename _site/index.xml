@@ -23,6 +23,18 @@
 <blockquote class="blockquote">
 <p>HTTP (Hypertext Transfer Protocol) is a stateless, human-readable application-layer protocol that operates on a client-server request-response model. A client uses URLs to locate resources and send requests to a server, which processes them and returns responses to transmit hypermedia and data across the web.</p>
 </blockquote>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/http/http-layers.svg" class="img-fluid"></p>
+<p><strong>Request</strong></p>
+<pre class="http"><code>GET /hello HTTP/1.1
+Host: example.com
+</code></pre>
+<p><strong>Response</strong></p>
+<pre class="http"><code>HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 13
+
+Hello, world!</code></pre>
+<p>The client requests <code>/hello</code>. The server responds with <code>200 OK</code> and a 13-byte text body. A blank line separates the headers from the body.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -62,6 +74,60 @@
 <td><code>DELETE</code></td>
 <td><code>DELETE /abc/123</code></td>
 <td>Yes</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Status code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>200 OK</code></td>
+<td>Request succeeded</td>
+</tr>
+<tr class="even">
+<td><code>201 Created</code></td>
+<td>New resource created</td>
+</tr>
+<tr class="odd">
+<td><code>204 No Content</code></td>
+<td>Succeeded; no response body</td>
+</tr>
+<tr class="even">
+<td><code>301 Moved Permanently</code></td>
+<td>Permanent redirect</td>
+</tr>
+<tr class="odd">
+<td><code>302 Found</code></td>
+<td>Temporary redirect</td>
+</tr>
+<tr class="even">
+<td><code>400 Bad Request</code></td>
+<td>Invalid request</td>
+</tr>
+<tr class="odd">
+<td><code>401 Unauthorized</code></td>
+<td>Authentication missing or invalid</td>
+</tr>
+<tr class="even">
+<td><code>403 Forbidden</code></td>
+<td>Access denied</td>
+</tr>
+<tr class="odd">
+<td><code>404 Not Found</code></td>
+<td>Resource not found</td>
+</tr>
+<tr class="even">
+<td><code>429 Too Many Requests</code></td>
+<td>Rate limit exceeded</td>
+</tr>
+<tr class="odd">
+<td><code>500 Internal Server Error</code></td>
+<td>Unexpected server failure</td>
 </tr>
 </tbody>
 </table>

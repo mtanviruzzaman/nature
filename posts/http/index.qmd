@@ -7,6 +7,29 @@ categories: [computation]
 
 > HTTP (Hypertext Transfer Protocol) is a stateless, human-readable application-layer protocol that operates on a client-server request-response model. A client uses URLs to locate resources and send requests to a server, which processes them and returns responses to transmit hypermedia and data across the web.
 
+![](http-layers.svg)
+
+**Request**
+
+```http
+GET /hello HTTP/1.1
+Host: example.com
+
+```
+
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 13
+
+Hello, world!
+```
+
+The client requests `/hello`. The server responds with `200 OK` and a
+13-byte text body. A blank line separates the headers from the body.
+
 | CRUD operation | HTTP verb | Example | Idempotent? |
 |---|---|---|---|
 | Create | `POST` | `POST /abc` | No |
@@ -14,6 +37,20 @@ categories: [computation]
 | Update — full replacement | `PUT` | `PUT /abc/123` | Yes |
 | Update — partial change | `PATCH` | `PATCH /abc/123` | No |
 | Delete | `DELETE` | `DELETE /abc/123` | Yes |
+
+| Status code | Meaning |
+|---|---|
+| `200 OK` | Request succeeded |
+| `201 Created` | New resource created |
+| `204 No Content` | Succeeded; no response body |
+| `301 Moved Permanently` | Permanent redirect |
+| `302 Found` | Temporary redirect |
+| `400 Bad Request` | Invalid request |
+| `401 Unauthorized` | Authentication missing or invalid |
+| `403 Forbidden` | Access denied |
+| `404 Not Found` | Resource not found |
+| `429 Too Many Requests` | Rate limit exceeded |
+| `500 Internal Server Error` | Unexpected server failure |
 
 ## Sources
 * [Mozilla doc](https://developer.mozilla.org/en-US/docs/Web/HTTP)
