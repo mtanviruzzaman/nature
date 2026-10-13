@@ -1,0 +1,19 @@
+---
+title: "HTTP"
+author: "Mohammad Tanviruzzaman"
+date: "2026-10-13"
+categories: [computation]
+---
+
+> HTTP (Hypertext Transfer Protocol) is a stateless, human-readable application-layer protocol that operates on a client-server request-response model. A client uses URLs to locate resources and send requests to a server, which processes them and returns responses to transmit hypermedia and data across the web.
+
+| CRUD operation | HTTP verb | Example | Idempotent? |
+|---|---|---|---|
+| Create | `POST` | `POST /abc` | No |
+| Read | `GET` | `GET /abc/123` | Yes |
+| Update — full replacement | `PUT` | `PUT /abc/123` | Yes |
+| Update — partial change | `PATCH` | `PATCH /abc/123` | No |
+| Delete | `DELETE` | `DELETE /abc/123` | Yes |
+
+## Sources
+* [Mozilla doc](https://developer.mozilla.org/en-US/docs/Web/HTTP)

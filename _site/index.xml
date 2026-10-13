@@ -10,7 +10,75 @@
 <atom:link href="https://mtanviruzzaman.github.io/nature/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Mon, 12 Oct 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 13 Oct 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>HTTP</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/http/</link>
+  <description><![CDATA[ 
+
+
+
+
+<blockquote class="blockquote">
+<p>HTTP (Hypertext Transfer Protocol) is a stateless, human-readable application-layer protocol that operates on a client-server request-response model. A client uses URLs to locate resources and send requests to a server, which processes them and returns responses to transmit hypermedia and data across the web.</p>
+</blockquote>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>CRUD operation</th>
+<th>HTTP verb</th>
+<th>Example</th>
+<th>Idempotent?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Create</td>
+<td><code>POST</code></td>
+<td><code>POST /abc</code></td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td>Read</td>
+<td><code>GET</code></td>
+<td><code>GET /abc/123</code></td>
+<td>Yes</td>
+</tr>
+<tr class="odd">
+<td>Update — full replacement</td>
+<td><code>PUT</code></td>
+<td><code>PUT /abc/123</code></td>
+<td>Yes</td>
+</tr>
+<tr class="even">
+<td>Update — partial change</td>
+<td><code>PATCH</code></td>
+<td><code>PATCH /abc/123</code></td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Delete</td>
+<td><code>DELETE</code></td>
+<td><code>DELETE /abc/123</code></td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<section id="sources" class="level2">
+<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP">Mozilla doc</a></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>computation</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/http/</guid>
+  <pubDate>Tue, 13 Oct 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Steadying the economy from the ground up</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>
