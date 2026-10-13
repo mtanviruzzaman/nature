@@ -35,6 +35,7 @@ Content-Length: 13
 
 Hello, world!</code></pre>
 <p>The client requests <code>/hello</code>. The server responds with <code>200 OK</code> and a 13-byte text body. A blank line separates the headers from the body.</p>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/http/fetching-a-page.svg" class="img-fluid"></p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -148,6 +149,7 @@ Hello, world!</code></pre>
 
  ]]></description>
   <category>computation</category>
+  <category>computer-networks</category>
   <guid>https://mtanviruzzaman.github.io/nature/posts/http/</guid>
   <pubDate>Tue, 13 Oct 2026 07:00:00 GMT</pubDate>
 </item>
