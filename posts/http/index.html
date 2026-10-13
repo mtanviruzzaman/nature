@@ -164,6 +164,12 @@ Content-Length: 13
 Hello, world!</code></pre>
 <p>The client requests <code>/hello</code>. The server responds with <code>200 OK</code> and a 13-byte text body. A blank line separates the headers from the body.</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>CRUD operation</th>
@@ -176,31 +182,31 @@ Hello, world!</code></pre>
 <tr class="odd">
 <td>Create</td>
 <td><code>POST</code></td>
-<td><code>POST /abc</code></td>
-<td>No</td>
+<td><code>POST /links</code></td>
+<td>Not guaranteed</td>
 </tr>
 <tr class="even">
 <td>Read</td>
 <td><code>GET</code></td>
-<td><code>GET /abc/123</code></td>
+<td><code>GET /links/123</code></td>
 <td>Yes</td>
 </tr>
 <tr class="odd">
 <td>Update — full replacement</td>
 <td><code>PUT</code></td>
-<td><code>PUT /abc/123</code></td>
+<td><code>PUT /links/123</code></td>
 <td>Yes</td>
 </tr>
 <tr class="even">
 <td>Update — partial change</td>
 <td><code>PATCH</code></td>
-<td><code>PATCH /abc/123</code></td>
-<td>No</td>
+<td><code>PATCH /links/123</code></td>
+<td>Not guaranteed</td>
 </tr>
 <tr class="odd">
 <td>Delete</td>
 <td><code>DELETE</code></td>
-<td><code>DELETE /abc/123</code></td>
+<td><code>DELETE /links/123</code></td>
 <td>Yes</td>
 </tr>
 </tbody>
