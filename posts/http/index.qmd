@@ -32,11 +32,11 @@ The client requests `/hello`. The server responds with `200 OK` and a
 
 | CRUD operation | HTTP verb | Example | Idempotent? |
 |---|---|---|---|
-| Create | `POST` | `POST /abc` | No |
-| Read | `GET` | `GET /abc/123` | Yes |
-| Update — full replacement | `PUT` | `PUT /abc/123` | Yes |
-| Update — partial change | `PATCH` | `PATCH /abc/123` | No |
-| Delete | `DELETE` | `DELETE /abc/123` | Yes |
+| Create | `POST` | `POST /links` | Not guaranteed |
+| Read | `GET` | `GET /links/123` | Yes |
+| Update — full replacement | `PUT` | `PUT /links/123` | Yes |
+| Update — partial change | `PATCH` | `PATCH /links/123` | Not guaranteed |
+| Delete | `DELETE` | `DELETE /links/123` | Yes |
 
 | Status code | Meaning |
 |---|---|
