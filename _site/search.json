@@ -133,6 +133,13 @@
     "text": "03. Motion in two and three dimensions\n\n\n\n\n\nPosition, velocity, and acceleration vectors\n\n\n\n\nProjectile motion\n\n\\[\n\\begin{align}\nx(t) &= (v_0 \\cos{\\alpha_0})t \\\\\ny(t) &= (v_0 \\sin{\\alpha_0})t - \\frac{1}{2}gt^2 \\\\\nv_x(t) &= v_0 \\cos{\\alpha_0} \\\\\nv_y(t) &= v_0 \\sin{\\alpha_0} - gt\n\\end{align}\n\\]\n\n\n\nUniform and nonuniform circular motion\n\n\\[\n\\begin{align}\na_{\\text{rad}} &= \\frac{v^2}{R} \\\\\na_{\\text{tan}} &= \\frac{d|\\vec{v}|}{dt} \\\\\n\\left| \\frac{d\\vec{v}}{dt} \\right| &= \\sqrt{ a_{\\text{rad}}^2 + a_{\\text{tan}}^2 }\n\\end{align}\n\\]\n\n\n\nRelative velocity\n\n\\[\n\\begin{align}\n\\vec{v}_{A/C} &= \\vec{v}_{A/B} + \\vec{v}_{B/C} \\\\\n\\vec{v}_{A/B} &= -\\vec{v}_{B/A}\n\\end{align}\n\\]"
   },
   {
+    "objectID": "posts/medicine-2026-nobel/index.html#sources",
+    "href": "posts/medicine-2026-nobel/index.html#sources",
+    "title": "A light switch for neurons",
+    "section": "Sources",
+    "text": "Sources\n\nMechanism of Optogenetics by Karl Deisseroth\nDevelopment of Optogenetics by Karl Deisseroth"
+  },
+  {
     "objectID": "posts/fundamental-units/index.html",
     "href": "posts/fundamental-units/index.html",
     "title": "Fundamental units",
@@ -208,12 +215,5 @@
     "title": "Reading Nature",
     "section": "",
     "text": "HTTP: The Language of the Web\n\n\n\n\n\n\ncomputation\n\ncomputer-networks\n\n\n\n\n\n\n\n\n\nOct 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nSteadying the economy from the ground up\n\n\nThe Ideas Behind the 2026 Economics Nobel\n\n\n\ncomplex-systems\n\nnobel\n\neconomics\n\n2026\n\n\n\n\n\n\n\n\n\nOct 12, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nReview: Full Frontal Calculus\n\n\n\n\n\n\ncomputation\n\nmath\n\nreview\n\n\n\nRetrieval practice hints for Full Frontal Calculus (1st ed.) by Seth Braver\n\n\n\n\n\nOct 10, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nGood habits, bad habits\n\n\n\n\n\n\nlife\n\npsychology\n\n\n\n\n\n\n\n\n\nOct 9, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nOld school precalculus\n\n\n\n\n\n\ncomputation\n\nmath\n\n\n\n\n\n\n\n\n\nOct 8, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nSeeing the universe through ice\n\n\nThe Ideas Behind the 2026 Physics Nobel\n\n\n\nnobel\n\nphysics\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nA light switch for neurons\n\n\nThe Ideas Behind the 2026 Physiology and Medicine Nobel\n\n\n\nnobel\n\nlife\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHow chemistry chooses a hand\n\n\nThe Ideas Behind the 2026 Chemistry Nobel\n\n\n\nnobel\n\nchemistry\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Physics\n\n\n\n\n\n\nnobel\n\nphysics\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Physiology and Medicine\n\n\n\n\n\n\nnobel\n\nlife\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Chemistry\n\n\n\n\n\n\nnobel\n\nchemistry\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Economics\n\n\n\n\n\n\ncomplex-systems\n\nnobel\n\neconomics\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nRise and fall of dinosaurs\n\n\n\n\n\n\nlife\n\n\n\n\n\n\n\n\n\nOct 2, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nTradeoffs in elementary algebra\n\n\n\n\n\n\ncomputation\n\nmath\n\n\n\n\n\n\n\n\n\nSep 30, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nFundamental units\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 27, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nReview: University Physics\n\n\n\n\n\n\nphysics\n\nreview\n\n\n\nRetrieval practice hints for University Physics (14th ed.) by Young and Freedman\n\n\n\n\n\nSep 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nCentripetal acceleration in uniform circular motion\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHidden history in Physics textbooks\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 4, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/medicine-2026-nobel/index.html#sources",
-    "href": "posts/medicine-2026-nobel/index.html#sources",
-    "title": "A light switch for neurons",
-    "section": "Sources",
-    "text": "Sources\n\nDevelopment of Optogenetics by Karl Deisseroth"
   }
 ]
