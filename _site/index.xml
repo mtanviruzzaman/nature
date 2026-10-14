@@ -12,7 +12,7 @@
 <generator>quarto-1.10.18</generator>
 <lastBuildDate>Tue, 13 Oct 2026 07:00:00 GMT</lastBuildDate>
 <item>
-  <title>HTTP</title>
+  <title>HTTP: The Language of the Web</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>
   <link>https://mtanviruzzaman.github.io/nature/posts/http/</link>
   <description><![CDATA[ 
@@ -185,6 +185,7 @@ Hello, world!</code></pre>
 
 
  ]]></description>
+  <category>complex-systems</category>
   <category>nobel</category>
   <category>economics</category>
   <category>2026</category>
@@ -256,6 +257,7 @@ Trigonometric substitution
 </details></section>
 
  ]]></description>
+  <category>computation</category>
   <category>math</category>
   <category>review</category>
   <guid>https://mtanviruzzaman.github.io/nature/posts/braver-calc-review/</guid>
@@ -371,6 +373,7 @@ The Perspective of Dynamical Systems](https://www.researchgate.net/publication/2
 </section>
 
  ]]></description>
+  <category>computation</category>
   <category>math</category>
   <guid>https://mtanviruzzaman.github.io/nature/posts/classic-precalc/</guid>
   <pubDate>Thu, 08 Oct 2026 07:00:00 GMT</pubDate>
@@ -513,6 +516,7 @@ The Perspective of Dynamical Systems](https://www.researchgate.net/publication/2
 
 
  ]]></description>
+  <category>complex-systems</category>
   <category>nobel</category>
   <category>economics</category>
   <guid>https://mtanviruzzaman.github.io/nature/posts/economics-nobels/</guid>
@@ -624,6 +628,7 @@ For <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B0%7D%7B0%7D">, ever
 </section>
 
  ]]></description>
+  <category>computation</category>
   <category>math</category>
   <guid>https://mtanviruzzaman.github.io/nature/posts/trade-off-algebra/</guid>
   <pubDate>Wed, 30 Sep 2026 07:00:00 GMT</pubDate>

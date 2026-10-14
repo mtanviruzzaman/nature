@@ -2,7 +2,7 @@
 title: "Review: Full Frontal Calculus"
 author: "Mohammad Tanviruzzaman"
 date: "2026-10-10"
-categories: [math, review]
+categories: [computation, math, review]
 description: "Retrieval practice hints for Full Frontal Calculus (1st ed.) by Seth Braver"
 ---
 

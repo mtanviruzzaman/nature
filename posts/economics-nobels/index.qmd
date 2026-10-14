@@ -2,7 +2,7 @@
 title: "Nobel prizes in Economics"
 author: "Mohammad Tanviruzzaman"
 date: "2026-10-06"
-categories: [nobel, economics]
+categories: [complex-systems, nobel, economics]
 resources:
   - nobel-economics-lineages.html
 ---

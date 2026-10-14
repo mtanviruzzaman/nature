@@ -3,7 +3,7 @@ title: "Steadying the economy from the ground up"
 subtitle: "The Ideas Behind the 2026 Economics Nobel"
 author: "Mohammad Tanviruzzaman"
 date: "2026-10-12"
-categories: [nobel, economics, "2026"]
+categories: [complex-systems, nobel, economics, "2026"]
 resources:
   - nobel-economics-2026-ideas.html
 ---
