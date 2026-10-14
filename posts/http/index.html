@@ -9,7 +9,7 @@
 <meta name="author" content="Mohammad Tanviruzzaman">
 <meta name="dcterms.date" content="2026-10-13">
 
-<title>HTTP – Reading Nature</title>
+<title>HTTP: The Language of the Web – Reading Nature</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -116,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">HTTP</h1>
+<h1 class="title">HTTP: The Language of the Web</h1>
   <div class="quarto-categories">
     <div class="quarto-category">computation</div>
     <div class="quarto-category">computer-networks</div>
@@ -214,56 +214,73 @@ Hello, world!</code></pre>
 </tbody>
 </table>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Status code</th>
 <th>Meaning</th>
+<th>Example HTTP response</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>200 OK</code></td>
 <td>Request succeeded</td>
+<td><code>HTTP/1.1 200 OK</code><br><code>Content-Type: application/json</code><br><br><code>{"message":"Success"}</code></td>
 </tr>
 <tr class="even">
 <td><code>201 Created</code></td>
 <td>New resource created</td>
+<td><code>HTTP/1.1 201 Created</code><br><code>Location: /items/42</code><br><code>Content-Type: application/json</code><br><br><code>{"id":42}</code></td>
 </tr>
 <tr class="odd">
 <td><code>204 No Content</code></td>
 <td>Succeeded; no response body</td>
+<td><code>HTTP/1.1 204 No Content</code></td>
 </tr>
 <tr class="even">
 <td><code>301 Moved Permanently</code></td>
 <td>Permanent redirect</td>
+<td><code>HTTP/1.1 301 Moved Permanently</code><br><code>Location: https://example.com/new-page</code></td>
 </tr>
 <tr class="odd">
 <td><code>302 Found</code></td>
 <td>Temporary redirect</td>
+<td><code>HTTP/1.1 302 Found</code><br><code>Location: https://example.com/temporary-page</code></td>
 </tr>
 <tr class="even">
 <td><code>400 Bad Request</code></td>
 <td>Invalid request</td>
+<td><code>HTTP/1.1 400 Bad Request</code><br><code>Content-Type: application/json</code><br><br><code>{"error":"Invalid request"}</code></td>
 </tr>
 <tr class="odd">
 <td><code>401 Unauthorized</code></td>
 <td>Authentication missing or invalid</td>
+<td><code>HTTP/1.1 401 Unauthorized</code><br><code>WWW-Authenticate: Bearer</code><br><code>Content-Type: application/json</code><br><br><code>{"error":"Authentication required"}</code></td>
 </tr>
 <tr class="even">
 <td><code>403 Forbidden</code></td>
 <td>Access denied</td>
+<td><code>HTTP/1.1 403 Forbidden</code><br><code>Content-Type: application/json</code><br><br><code>{"error":"Access denied"}</code></td>
 </tr>
 <tr class="odd">
 <td><code>404 Not Found</code></td>
 <td>Resource not found</td>
+<td><code>HTTP/1.1 404 Not Found</code><br><code>Content-Type: application/json</code><br><br><code>{"error":"Resource not found"}</code></td>
 </tr>
 <tr class="even">
 <td><code>429 Too Many Requests</code></td>
 <td>Rate limit exceeded</td>
+<td><code>HTTP/1.1 429 Too Many Requests</code><br><code>Retry-After: 60</code><br><code>Content-Type: application/json</code><br><br><code>{"error":"Rate limit exceeded"}</code></td>
 </tr>
 <tr class="odd">
 <td><code>500 Internal Server Error</code></td>
 <td>Unexpected server failure</td>
+<td><code>HTTP/1.1 500 Internal Server Error</code><br><code>Content-Type: application/json</code><br><br><code>{"error":"Internal server error"}</code></td>
 </tr>
 </tbody>
 </table>
