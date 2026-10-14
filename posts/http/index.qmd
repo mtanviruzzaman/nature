@@ -1,5 +1,5 @@
 ---
-title: "HTTP"
+title: "HTTP: The Language of the Web"
 author: "Mohammad Tanviruzzaman"
 date: "2026-10-13"
 categories: [computation, computer-networks]
