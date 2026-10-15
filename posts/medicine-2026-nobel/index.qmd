@@ -18,7 +18,3 @@ resources:
   loading="lazy">
 </iframe>
 ```
-
-## Sources
-* [Mechanism of Optogenetics](https://youtu.be/PSbNCoImUTA) by Karl Deisseroth
-* [Development of Optogenetics](https://youtu.be/MUGky_QaaV0) by Karl Deisseroth
