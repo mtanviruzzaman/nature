@@ -1,0 +1,13 @@
+---
+title: "Before the Violence"
+subtitle: "Understanding mass shootings--and how they can be prevented"
+author: "Mohammad Tanviruzzaman"
+date: "2026-10-16"
+categories: [psychology, life, complex-systems]
+---
+
+## Sources
+* The Violence Project by Peterson and Densley
+* Rampage by Newman
+* A Mother's Reckoning by Klebold and Solomon
+* Warning Signs by Langman

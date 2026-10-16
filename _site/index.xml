@@ -10,7 +10,34 @@
 <atom:link href="https://mtanviruzzaman.github.io/nature/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Tue, 13 Oct 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 16 Oct 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Before the Violence</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/school-shootings/</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="sources" class="level2">
+
+<ul>
+<li>The Violence Project by Peterson and Densley</li>
+<li>Rampage by Newman</li>
+<li>A Mother’s Reckoning by Klebold and Solomon</li>
+<li>Warning Signs by Langman</li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>psychology</category>
+  <category>complex-systems</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/school-shootings/</guid>
+  <pubDate>Fri, 16 Oct 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>HTTP: The Language of the Web</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>
