@@ -273,16 +273,39 @@ Trigonometric Trickery (Part 2)
 <summary>
 Trigonometric substitution
 </summary>
-<p>We replace <img src="https://latex.codecogs.com/png.latex?x"> with a trigonometric function to complete the square and thus get rid of the square root. The Pythagorean identities are the squaremakers.</p>
+We replace <img src="https://latex.codecogs.com/png.latex?x"> with a trigonometric function to complete the square and thus get rid of the square root. The Pythagorean identities are the squaremakers.
+<details>
+<summary>
+</summary>
 <ul>
 <li>For <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B%5Ctext%7Bconstant%7D%20-%20%5Ctext%7Bsquare%7D%7D">, we use: <img src="https://latex.codecogs.com/png.latex?%5Csin%5E2%7B%5Ctheta%7D%20+%20%5Ccos%5E2%7B%5Ctheta%7D%20=%201">. For example, with <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B9-x%5E2%7D"> our substitution is <img src="https://latex.codecogs.com/png.latex?x%20=%203%5Csin%7B%5Ctheta%7D"> which transforms the expression into <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B(3%5Ccos%7B%5Ctheta%7D)%5E2%7D">.</li>
 <li>For <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B%5Ctext%7Bsquare%7D%20+%20%5Ctext%7Bconstant%7D%7D">, we use: <img src="https://latex.codecogs.com/png.latex?%5Csec%5E2%7B%5Ctheta%7D%20-%20%5Ctan%5E2%7B%5Ctheta%7D%20=%201">. For example, with <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7Bx%5E2+16%7D"> our substitution is <img src="https://latex.codecogs.com/png.latex?x%20=%204%5Ctan%7B%5Ctheta%7D"> which transforms the expression into <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B(4%5Csec%7B%5Ctheta%7D)%5E2%7D">.</li>
 <li>For <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B%5Ctext%7Bsquare%7D%20-%20%5Ctext%7Bconstant%7D%7D">, we use: <img src="https://latex.codecogs.com/png.latex?%5Csec%5E2%7B%5Ctheta%7D%20-%20%5Ctan%5E2%7B%5Ctheta%7D%20=%201">. For example, with <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7Bx%5E2-3%7D"> our substitution is <img src="https://latex.codecogs.com/png.latex?x%20=%20%5Csqrt%7B3%7D%5Csec%7B%5Ctheta%7D"> which transforms the expression into <img src="https://latex.codecogs.com/png.latex?%5Csqrt%7B(%5Csqrt%7B3%7D%5Ctan%7B%5Ctheta%7D)%5E2%7D">.</li>
 </ul>
 </details>
+</details>
+</details>
+<details>
+<summary>
+Integration by parts
+</summary>
+It falls out from the product rule of derivatives.
+<details>
+<summary>
+</summary>
+<p>Say <img src="https://latex.codecogs.com/png.latex?u"> and <img src="https://latex.codecogs.com/png.latex?v"> are two functions of <img src="https://latex.codecogs.com/png.latex?x">. Then by product rule: <img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7Bd%7D%7Bdx%7D(uv)%20=%20%5Cfrac%7Bd%7D%7Bdx%7D(u)%20%5Ccdot%20v%20+%20u%20%5Ccdot%20%5Cfrac%7Bd%7D%7Bdx%7D(v)%20%5C%5C%0A"></p>
+<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Ctext%7BIntergrating%20both%20sides:%7D&amp;%5C%5C%0A%5Cint%20%5Cfrac%7Bd%7D%7Bdx%7D(uv)%5C%20dx%20&amp;=%20%5Cint%20%5Cfrac%7Bd%7D%7Bdx%7D(u)%20%5Ccdot%20v%5C%20dx%20+%20%5Cint%20u%20%5Ccdot%20%5Cfrac%7Bd%7D%7Bdx%7D(v)%5C%20dx%20%5C%5C%0Auv%20+%20C%20&amp;=%20%5Cint%20%5Cfrac%7Bd%7D%7Bdx%7D(u)%20%5Ccdot%20v%5C%20dx%20+%20%5Cint%20u%20%5Ccdot%20%5Cfrac%7Bd%7D%7Bdx%7D(v)%5C%20dx%20%5C%5C%0A%5Ctext%7BAbosorbing%20%7DC%5Ctext%7B%20inside%20the%20right%20integral:%7D&amp;%5C%5C%0A%5Cint%20u%20%5Ccdot%20%5Cfrac%7Bd%7D%7Bdx%7D(v)%5C%20dx%20&amp;=%20uv%20-%20%5Cint%20%5Ctextcolor%7Bblue%7D%7B%5Cfrac%7Bd%7D%7Bdx%7D(u)%7D%20%5Ccdot%20%5Ctextcolor%7Bgreen%7D%7Bv%7D%5C%20dx%0A%5Cend%7Balign%7D%0A"> Final equality is the integration by parts. We just need to imagine our integral as a product like <img src="https://latex.codecogs.com/png.latex?%5Cleft(u%20%5Ccdot%20%5Cfrac%7Bdv%7D%7Bdx%7D%5Cright)"> where finding <img src="https://latex.codecogs.com/png.latex?%5Ctextcolor%7Bblue%7D%7B%5Cfrac%7Bdu%7D%7Bdx%7D%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextcolor%7Bgreen%7D%7Bv%7D"> is easy.
+<details>
+<summary>
+</summary>
+<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cint%20x%20%5Ccos%7B(x)%7D%5C%20dx%20%5Cxlongequal%7B%5Ctext%7Bimagine...%7D%7D%20%5Cint%20%5Cunderbrace%7Bx%7D_%7Bu%7D%20%5Ccdot%20%5Coverbrace%7B%5Ccos%7B(x)%7D%7D%5E%7Bdv/dx%7D%5C%20dx%20&amp;=%20%5Cunderbrace%7Bx%7D_%7Bu%7D%5Ccdot%20%5Coverbrace%7B%5Csin%7B(x)%7D%7D%5E%7Bv%7D%20-%20%5Cint%20%5Cunderbrace%7B1%7D_%7Bdu/dx%7D%20%5Ccdot%20%5Coverbrace%7B%5Csin%7B(x)%7D%7D%5E%7Bv%7D%5C%20dx%5C%5C%0A&amp;=%20x%5Csin%7B(x)%7D%20+%20%5Ccos%7B(x)%7D%20+%20C%0A%5Cend%7Balign%7D%0A">
+</details>
+</details>
+</details>
 
 
-</details></section>
+
+</section>
 
  ]]></description>
   <category>computation</category>
