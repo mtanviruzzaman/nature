@@ -75,7 +75,7 @@ $$
 \text{Intergrating both sides:}&\\
 \int \frac{d}{dx}(uv)\ dx &= \int \frac{d}{dx}(u) \cdot v\ dx + \int u \cdot \frac{d}{dx}(v)\ dx \\
 uv + C &= \int \frac{d}{dx}(u) \cdot v\ dx + \int u \cdot \frac{d}{dx}(v)\ dx \\
-\text{Abosorbing }C\text{ inside the right integral:}&\\
+\text{Rearranging and aborbing }C&\text{ inside the right-side integral:}\\
 \int u \cdot \frac{d}{dx}(v)\ dx &= uv - \int \textcolor{blue}{\frac{d}{dx}(u)} \cdot \textcolor{green}{v}\ dx
 \end{align}
 $$
