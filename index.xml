@@ -243,7 +243,7 @@ Antiderivative of <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%
 </details>
 <details>
 <summary>
-Antiderivative of <img src="https://latex.codecogs.com/png.latex?sec%7B(x)%7D"> and <img src="https://latex.codecogs.com/png.latex?csc%7B(x)%7D">
+Antiderivative of <img src="https://latex.codecogs.com/png.latex?%5Csec%7B(x)%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Ccsc%7B(x)%7D">
 </summary>
 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cint%20%5Csec%7B(x)%7D%5C%20dx%20&amp;=%20%5Cln%7B%7C%5Csec%7B(x)%7D%20+%20%5Ctan%7B(x)%7D%7C%7D%20+%20C%20%5C%5C%0A%5Cint%20%5Ccsc%7B(x)%7D%5C%20dx%20&amp;=%20-%5Cln%7B%7C%5Ccsc%7B(x)%7D%20+%20%5Ccot%7B(x)%7D%7C%7D%20+%20C%0A%5Cend%7Balign%7D%0A">
 </details>
@@ -294,15 +294,14 @@ It falls out from the product rule of derivatives.
 <summary>
 </summary>
 <p>Say <img src="https://latex.codecogs.com/png.latex?u"> and <img src="https://latex.codecogs.com/png.latex?v"> are two functions of <img src="https://latex.codecogs.com/png.latex?x">. Then by product rule: <img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7Bd%7D%7Bdx%7D(uv)%20=%20%5Cfrac%7Bd%7D%7Bdx%7D(u)%20%5Ccdot%20v%20+%20u%20%5Ccdot%20%5Cfrac%7Bd%7D%7Bdx%7D(v)%20%5C%5C%0A"></p>
-<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Ctext%7BIntergrating%20both%20sides:%7D&amp;%5C%5C%0A%5Cint%20%5Cfrac%7Bd%7D%7Bdx%7D(uv)%5C%20dx%20&amp;=%20%5Cint%20%5Cfrac%7Bd%7D%7Bdx%7D(u)%20%5Ccdot%20v%5C%20dx%20+%20%5Cint%20u%20%5Ccdot%20%5Cfrac%7Bd%7D%7Bdx%7D(v)%5C%20dx%20%5C%5C%0Auv%20+%20C%20&amp;=%20%5Cint%20%5Cfrac%7Bd%7D%7Bdx%7D(u)%20%5Ccdot%20v%5C%20dx%20+%20%5Cint%20u%20%5Ccdot%20%5Cfrac%7Bd%7D%7Bdx%7D(v)%5C%20dx%20%5C%5C%0A%5Ctext%7BRearranging%20and%20aborbing%20%7DC&amp;%5Ctext%7B%20inside%20the%20right-side%20integral:%7D%5C%5C%0A%5Cint%20u%20%5Ccdot%20%5Cfrac%7Bd%7D%7Bdx%7D(v)%5C%20dx%20&amp;=%20uv%20-%20%5Cint%20%5Ctextcolor%7Bblue%7D%7B%5Cfrac%7Bd%7D%7Bdx%7D(u)%7D%20%5Ccdot%20%5Ctextcolor%7Bgreen%7D%7Bv%7D%5C%20dx%0A%5Cend%7Balign%7D%0A"> Final equality is the integration by parts. We just need to imagine our integral as a product like <img src="https://latex.codecogs.com/png.latex?%5Cleft(u%20%5Ccdot%20%5Cfrac%7Bdv%7D%7Bdx%7D%5Cright)"> where finding <img src="https://latex.codecogs.com/png.latex?%5Ctextcolor%7Bblue%7D%7B%5Cfrac%7Bdu%7D%7Bdx%7D%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextcolor%7Bgreen%7D%7Bv%7D"> is easy.
+<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Ctext%7BIntegrating%20both%20sides:%7D&amp;%5C%5C%0A%5Cint%20%5Cfrac%7Bd%7D%7Bdx%7D(uv)%5C%20dx%20&amp;=%20%5Cint%20%5Cfrac%7Bd%7D%7Bdx%7D(u)%20%5Ccdot%20v%5C%20dx%20+%20%5Cint%20u%20%5Ccdot%20%5Cfrac%7Bd%7D%7Bdx%7D(v)%5C%20dx%20%5C%5C%0Auv%20+%20C%20&amp;=%20%5Cint%20%5Cfrac%7Bd%7D%7Bdx%7D(u)%20%5Ccdot%20v%5C%20dx%20+%20%5Cint%20u%20%5Ccdot%20%5Cfrac%7Bd%7D%7Bdx%7D(v)%5C%20dx%20%5C%5C%0A%5Ctext%7BRearranging%20and%20absorbing%20%7DC&amp;%5Ctext%7B%20inside%20the%20right-side%20integral:%7D%5C%5C%0A%5Cint%20u%20%5Ccdot%20%5Cfrac%7Bd%7D%7Bdx%7D(v)%5C%20dx%20&amp;=%20uv%20-%20%5Cint%20%5Ctextcolor%7Bblue%7D%7B%5Cfrac%7Bd%7D%7Bdx%7D(u)%7D%20%5Ccdot%20%5Ctextcolor%7Bgreen%7D%7Bv%7D%5C%20dx%0A%5Cend%7Balign%7D%0A"> Final equality is the integration by parts. We just need to imagine our integral as a product like <img src="https://latex.codecogs.com/png.latex?%5Cleft(u%20%5Ccdot%20%5Cfrac%7Bdv%7D%7Bdx%7D%5Cright)"> where finding <img src="https://latex.codecogs.com/png.latex?%5Ctextcolor%7Bblue%7D%7B%5Cfrac%7Bdu%7D%7Bdx%7D%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Ctextcolor%7Bgreen%7D%7Bv%7D"> is easy (and that we transition into a simpler integral than the one we started with).
 <details>
 <summary>
 </summary>
-<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cint%20x%20%5Ccos%7B(x)%7D%5C%20dx%20%5Cxlongequal%7B%5Ctext%7Bimagine...%7D%7D%20%5Cint%20%5Cunderbrace%7Bx%7D_%7Bu%7D%20%5Ccdot%20%5Coverbrace%7B%5Ccos%7B(x)%7D%7D%5E%7Bdv/dx%7D%5C%20dx%20&amp;=%20%5Cunderbrace%7Bx%7D_%7Bu%7D%5Ccdot%20%5Coverbrace%7B%5Csin%7B(x)%7D%7D%5E%7Bv%7D%20-%20%5Cint%20%5Cunderbrace%7B1%7D_%7Bdu/dx%7D%20%5Ccdot%20%5Coverbrace%7B%5Csin%7B(x)%7D%7D%5E%7Bv%7D%5C%20dx%5C%5C%0A&amp;=%20x%5Csin%7B(x)%7D%20+%20%5Ccos%7B(x)%7D%20+%20C%0A%5Cend%7Balign%7D%0A">
+<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cint%20x%20%5Ccos%7B(x)%7D%5C%20dx%20%5Cxlongequal%7B%5Ctext%7Bimagine...%7D%7D%20%5Cint%20%5Cunderbrace%7Bx%7D_%7Bu%7D%20%5Ccdot%20%5Coverbrace%7B%5Ccos%7B(x)%7D%7D%5E%7Bdv/dx%7D%5C%20dx%20&amp;=%20%5Cunderbrace%7Bx%7D_%7Bu%7D%5Ccdot%20%5Coverbrace%7B%5Csin%7B(x)%7D%7D%5E%7Bv%7D%20-%20%5Cint%20%5Cunderbrace%7B1%7D_%7Bdu/dx%7D%20%5Ccdot%20%5Coverbrace%7B%5Csin%7B(x)%7D%7D%5E%7Bv%7D%5C%20dx%5C%5C%0A&amp;=%20x%5Csin%7B(x)%7D%20+%20%5Ccos%7B(x)%7D%20+%20C%0A%5Cend%7Balign%7D%0A"> Note, the intermediate integral <img src="https://latex.codecogs.com/png.latex?%5Cint%201%20%5Ccdot%20%5Csin%7B(x)%7D%5C%20dx"> is simpler than our original integral <img src="https://latex.codecogs.com/png.latex?%5Cint%20x%5Ccos%7Bx%7D%5C%20dx">.
 </details>
 </details>
 </details>
-
 
 
 </section>
