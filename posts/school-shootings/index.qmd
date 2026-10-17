@@ -1,6 +1,6 @@
 ---
-title: "Before the Violence"
-subtitle: "Understanding mass shootings—and how to prevent them."
+title: "Before the violence"
+subtitle: "Understanding mass shootings and how to prevent them"
 author: "Mohammad Tanviruzzaman"
 date: "2026-10-16"
 categories: [psychology, life, complex-systems]
