@@ -16,7 +16,7 @@ $$
 $$
 </details>
 <details>
-<summary>Antiderivative of $sec{(x)}$ and $csc{(x)}$</summary>
+<summary>Antiderivative of $\sec{(x)}$ and $\csc{(x)}$</summary>
 $$
 \begin{align}
 \int \sec{(x)}\ dx &= \ln{|\sec{(x)} + \tan{(x)}|} + C \\
@@ -54,6 +54,7 @@ $$
 We replace $x$ with a trigonometric function to complete the square and thus get rid of the square root. The Pythagorean identities are the squaremakers.
 <details>
 <summary></summary>
+
 - For $\sqrt{\text{constant} - \text{square}}$, we use: $\sin^2{\theta} + \cos^2{\theta} = 1$. For example, with $\sqrt{9-x^2}$ our substitution is $x = 3\sin{\theta}$ which transforms the expression into $\sqrt{(3\cos{\theta})^2}$.
 - For $\sqrt{\text{square} + \text{constant}}$, we use: $\sec^2{\theta} - \tan^2{\theta} = 1$. For example, with $\sqrt{x^2+16}$ our substitution is $x = 4\tan{\theta}$ which transforms the expression into $\sqrt{(4\sec{\theta})^2}$.
 - For $\sqrt{\text{square} - \text{constant}}$, we use: $\sec^2{\theta} - \tan^2{\theta} = 1$. For example, with $\sqrt{x^2-3}$ our substitution is $x = \sqrt{3}\sec{\theta}$ which transforms the expression into $\sqrt{(\sqrt{3}\tan{\theta})^2}$.
@@ -72,14 +73,14 @@ $$
 
 $$
 \begin{align}
-\text{Intergrating both sides:}&\\
+\text{Integrating both sides:}&\\
 \int \frac{d}{dx}(uv)\ dx &= \int \frac{d}{dx}(u) \cdot v\ dx + \int u \cdot \frac{d}{dx}(v)\ dx \\
 uv + C &= \int \frac{d}{dx}(u) \cdot v\ dx + \int u \cdot \frac{d}{dx}(v)\ dx \\
-\text{Rearranging and aborbing }C&\text{ inside the right-side integral:}\\
+\text{Rearranging and absorbing }C&\text{ inside the right-side integral:}\\
 \int u \cdot \frac{d}{dx}(v)\ dx &= uv - \int \textcolor{blue}{\frac{d}{dx}(u)} \cdot \textcolor{green}{v}\ dx
 \end{align}
 $$
-Final equality is the integration by parts. We just need to imagine our integral as a product like $\left(u \cdot \frac{dv}{dx}\right)$ where finding $\textcolor{blue}{\frac{du}{dx}}$ and $\textcolor{green}{v}$ is easy.
+Final equality is the integration by parts. We just need to imagine our integral as a product like $\left(u \cdot \frac{dv}{dx}\right)$ where finding $\textcolor{blue}{\frac{du}{dx}}$ and $\textcolor{green}{v}$ is easy (and that we transition into a simpler integral than the one we started with).
 <details>
 <summary></summary>
 $$
@@ -88,7 +89,7 @@ $$
 &= x\sin{(x)} + \cos{(x)} + C
 \end{align}
 $$
-</details>
+Note, the intermediate integral $\int 1 \cdot \sin{(x)}\ dx$ is simpler than our original integral $\int x\cos{x}\ dx$.
 </details>
 </details>
 </details>
