@@ -6,7 +6,7 @@ date: "2026-10-21"
 categories: [computation, complex-systems]
 ---
 
-## Communication layer
+## Messaging layer
 * RPC
 * REST
 

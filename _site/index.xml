@@ -20,8 +20,12 @@
 
 
 
-<section id="rpc" class="level2">
+<section id="communication-layer" class="level2">
 
+<ul>
+<li>RPC</li>
+<li>REST</li>
+</ul>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
