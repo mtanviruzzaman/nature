@@ -10,7 +10,31 @@
 <atom:link href="https://mtanviruzzaman.github.io/nature/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Fri, 16 Oct 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Wed, 21 Oct 2026 07:00:00 GMT</lastBuildDate>
+<item>
+  <title>Distributed systems</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/distributed-systems/</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="sources" class="level2">
+
+<ul>
+<li><a href="https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB">Kleppmann’s lectures</a> from 2021</li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>computation</category>
+  <category>complex-systems</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/distributed-systems/</guid>
+  <pubDate>Wed, 21 Oct 2026 07:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Before the violence</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>

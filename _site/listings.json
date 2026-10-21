@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/distributed-systems/index.html",
       "/posts/school-shootings/index.html",
       "/posts/http/index.html",
       "/posts/nobel-2026-economics/index.html",

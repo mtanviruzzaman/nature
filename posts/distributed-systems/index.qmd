@@ -1,0 +1,10 @@
+---
+title: "Distributed systems"
+subtitle: When many computers pretend to be one
+author: "Mohammad Tanviruzzaman"
+date: "2026-10-21"
+categories: [computation, complex-systems]
+---
+
+## Sources
+* [Kleppmann's lectures](https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB) from 2021
