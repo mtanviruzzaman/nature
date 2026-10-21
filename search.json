@@ -116,14 +116,14 @@
     "href": "posts/distributed-systems/index.html",
     "title": "Distributed systems",
     "section": "",
-    "text": "Charles for http messages\nWireshirk for IP packets"
+    "text": "RPC\nREST"
   },
   {
-    "objectID": "posts/distributed-systems/index.html#tools",
-    "href": "posts/distributed-systems/index.html#tools",
+    "objectID": "posts/distributed-systems/index.html#communication-layer",
+    "href": "posts/distributed-systems/index.html#communication-layer",
     "title": "Distributed systems",
     "section": "",
-    "text": "Charles for http messages\nWireshirk for IP packets"
+    "text": "RPC\nREST"
   },
   {
     "objectID": "posts/distributed-systems/index.html#sources",

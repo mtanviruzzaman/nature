@@ -20,11 +20,11 @@
 
 
 
-<section id="tools" class="level2">
+<section id="communication-layer" class="level2">
 
 <ul>
-<li><a href="https://www.charlesproxy.com/">Charles</a> for http messages</li>
-<li><a href="https://www.wireshark.org/">Wireshirk</a> for IP packets</li>
+<li>RPC</li>
+<li>REST</li>
 </ul>
 </section>
 <section id="sources" class="level2">
