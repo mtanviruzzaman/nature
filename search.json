@@ -116,14 +116,21 @@
     "href": "posts/distributed-systems/index.html",
     "title": "Distributed systems",
     "section": "",
-    "text": "Kleppmann’s lectures from 2021"
+    "text": "Charles for http messages\nWireshirk for IP packets"
+  },
+  {
+    "objectID": "posts/distributed-systems/index.html#tools",
+    "href": "posts/distributed-systems/index.html#tools",
+    "title": "Distributed systems",
+    "section": "",
+    "text": "Charles for http messages\nWireshirk for IP packets"
   },
   {
     "objectID": "posts/distributed-systems/index.html#sources",
     "href": "posts/distributed-systems/index.html#sources",
     "title": "Distributed systems",
-    "section": "",
-    "text": "Kleppmann’s lectures from 2021"
+    "section": "Sources",
+    "text": "Sources\n\nKleppmann’s 2021 lectures"
   },
   {
     "objectID": "posts/young-freedman-review/index.html",
