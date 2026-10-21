@@ -20,12 +20,8 @@
 
 
 
-<section id="tools" class="level2">
+<section id="rpc" class="level2">
 
-<ul>
-<li><a href="https://www.charlesproxy.com/">Charles</a> for http messages</li>
-<li><a href="https://www.wireshark.org/">Wireshirk</a> for IP packets</li>
-</ul>
 </section>
 <section id="sources" class="level2">
 <h2 class="anchored" data-anchor-id="sources">Sources</h2>
