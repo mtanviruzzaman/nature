@@ -42,8 +42,8 @@ Each additional nine reduces the downtime budget by **10×**.
 * Byzantine generals problem
 
 ## Messaging layer
-* RPC: REST
-* IDL: Protocol buffer or Thrift
+* RPC, REST
+* Language-agnostic IDL: Protocol buffer or Thrift
 
 ## Sources
 * Kleppmann's 2021 lectures:
