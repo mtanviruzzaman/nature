@@ -6,11 +6,9 @@ date: "2026-10-21"
 categories: [computation, complex-systems]
 ---
 
-## Microservices
-
 ## Messaging layer
-* RPC
-* REST
+* RPC: REST
+* IDL: Protocol buffer or Thrift
 
 ## Sources
 * [Kleppmann's 2021 lectures](https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB)
