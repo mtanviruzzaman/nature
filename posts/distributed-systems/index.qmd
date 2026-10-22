@@ -6,6 +6,18 @@ date: "2026-10-21"
 categories: [computation, complex-systems]
 ---
 
+## Assumptions
+* Network behavior
+
+![](network_behavior.svg)
+
+* Node behavior
+* Timing behavior
+
+## Failure models
+* Two generals problem
+* Byzantine generals problem
+
 ## Messaging layer
 * RPC: REST
 * IDL: Protocol buffer or Thrift

@@ -45,8 +45,26 @@
 
 
 
+<section id="assumptions" class="level2">
+<h2 class="anchored" data-anchor-id="assumptions">Assumptions</h2>
+<ul>
+<li>Network behavior</li>
+</ul>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/network_behavior.svg" class="img-fluid"></p>
+<ul>
+<li>Node behavior</li>
+<li>Timing behavior</li>
+</ul>
+</section>
+<section id="failure-models" class="level2">
+<h2 class="anchored" data-anchor-id="failure-models">Failure models</h2>
+<ul>
+<li>Two generals problem</li>
+<li>Byzantine generals problem</li>
+</ul>
+</section>
 <section id="messaging-layer" class="level2">
-
+<h2 class="anchored" data-anchor-id="messaging-layer">Messaging layer</h2>
 <ul>
 <li>RPC: REST</li>
 <li>IDL: Protocol buffer or Thrift</li>
