@@ -165,7 +165,7 @@
     "href": "posts/distributed-systems/index.html#messaging-layer",
     "title": "Distributed systems",
     "section": "Messaging layer",
-    "text": "Messaging layer\n\nRPC: REST\nIDL: Protocol buffer or Thrift"
+    "text": "Messaging layer\n\nRPC, REST\nLanguage-agnostic IDL: Protocol buffer or Thrift"
   },
   {
     "objectID": "posts/distributed-systems/index.html#sources",
