@@ -46,14 +46,14 @@
     "href": "posts/algorithmic-patterns/index.html",
     "title": "Beyond brute force",
     "section": "",
-    "text": "Search within the data: Use the input’s ordering to determine which half could contain the target. In a rotated sorted array with distinct values, identify the sorted half and use its range to decide which half to keep. Example: LeetCode #33: Search in Rotated Sorted Array.\nSearch the answer space: Find the smallest or largest answer satisfying a monotonic condition—one whose truth value changes at most once as candidate answers increase. The input itself need not be sorted. Example: LeetCode#875: Koko Eating Bananas."
+    "text": "Search within the data: Use the input’s ordering to determine which half could contain the target. Example: LeetCode #33: Search in Rotated Sorted Array.\nSearch the answer space: Find the smallest or largest answer satisfying a monotonic condition—one whose truth value changes at most once as candidate answers increase. The input itself need not be sorted. Example: LeetCode#875: Koko Eating Bananas."
   },
   {
     "objectID": "posts/algorithmic-patterns/index.html#binary-search",
     "href": "posts/algorithmic-patterns/index.html#binary-search",
     "title": "Beyond brute force",
     "section": "",
-    "text": "Search within the data: Use the input’s ordering to determine which half could contain the target. In a rotated sorted array with distinct values, identify the sorted half and use its range to decide which half to keep. Example: LeetCode #33: Search in Rotated Sorted Array.\nSearch the answer space: Find the smallest or largest answer satisfying a monotonic condition—one whose truth value changes at most once as candidate answers increase. The input itself need not be sorted. Example: LeetCode#875: Koko Eating Bananas."
+    "text": "Search within the data: Use the input’s ordering to determine which half could contain the target. Example: LeetCode #33: Search in Rotated Sorted Array.\nSearch the answer space: Find the smallest or largest answer satisfying a monotonic condition—one whose truth value changes at most once as candidate answers increase. The input itself need not be sorted. Example: LeetCode#875: Koko Eating Bananas."
   },
   {
     "objectID": "posts/braver-calc-review/index.html",
