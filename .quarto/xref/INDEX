@@ -169,5 +169,8 @@
   },
   "posts/distributed-systems/index.qmd": {
     "index.html": "e8a984be"
+  },
+  "posts/algorithmic-patterns/index.qmd": {
+    "index.html": "dcce707c"
   }
 }

@@ -1,0 +1,13 @@
+---
+title: "Beyond brute force"
+subtitle: "Patterns behind efficient algorithm design"
+author: "Mohammad Tanviruzzaman"
+date: "2026-10-22"
+categories: [computation, algorithms]
+---
+
+## Binary search
+
+* **Search within the data:** Use the input’s ordering to determine which half could contain the target. In a rotated sorted array with distinct values, identify the sorted half and use its range to decide which half to keep. Example: [LeetCode #33: Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/).
+
+* **Search the answer space:** Find the smallest or largest answer satisfying a monotonic condition—one whose truth value changes at most once as candidate answers increase. The input itself need not be sorted. Example: [LeetCode#875: Koko Eating Bananas](https://leetcode.com/problems/koko-eating-bananas/).

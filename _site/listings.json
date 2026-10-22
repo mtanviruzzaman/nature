@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/algorithmic-patterns/index.html",
       "/posts/distributed-systems/index.html",
       "/posts/school-shootings/index.html",
       "/posts/http/index.html",
