@@ -151,14 +151,28 @@
     "href": "posts/distributed-systems/index.html",
     "title": "Distributed systems",
     "section": "",
-    "text": "RPC: REST\nIDL: Protocol buffer or Thrift"
+    "text": "Network behavior\n\n\n\nNode behavior\nTiming behavior"
+  },
+  {
+    "objectID": "posts/distributed-systems/index.html#assumptions",
+    "href": "posts/distributed-systems/index.html#assumptions",
+    "title": "Distributed systems",
+    "section": "",
+    "text": "Network behavior\n\n\n\nNode behavior\nTiming behavior"
+  },
+  {
+    "objectID": "posts/distributed-systems/index.html#failure-models",
+    "href": "posts/distributed-systems/index.html#failure-models",
+    "title": "Distributed systems",
+    "section": "Failure models",
+    "text": "Failure models\n\nTwo generals problem\nByzantine generals problem"
   },
   {
     "objectID": "posts/distributed-systems/index.html#messaging-layer",
     "href": "posts/distributed-systems/index.html#messaging-layer",
     "title": "Distributed systems",
-    "section": "",
-    "text": "RPC: REST\nIDL: Protocol buffer or Thrift"
+    "section": "Messaging layer",
+    "text": "Messaging layer\n\nRPC: REST\nIDL: Protocol buffer or Thrift"
   },
   {
     "objectID": "posts/distributed-systems/index.html#sources",
