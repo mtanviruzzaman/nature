@@ -6,6 +6,24 @@ date: "2026-10-21"
 categories: [computation, complex-systems]
 ---
 
+## Fault tolerance
+* (Eventually Perfect) Failure detector
+    - Timeout
+
+
+## Availability
+
+| Nines | Availability | Equivalent downtime/year | Service example | Use case and cost of an outage |
+|---|---:|---:|---|---|
+| **2** | 99% | **3.65 days** | Personal blog | Readers can return later; interruptions usually cause limited harm. |
+| **3** | 99.9% | **8.76 hours** | Gmail in Google Workspace—[SLA](https://workspace.google.com/terms/sla/) | Business email: outages delay communication and everyday work. |
+| **4** | 99.99% | **52.6 minutes** | Amazon EC2 across multiple availability zones—[SLA](https://aws.amazon.com/compute/sla/) | Servers running a large online store’s checkout: outages block orders and lose sales. |
+| **5** | 99.999% | **5.26 minutes** | Google Spanner across multiple regions—[SLA](https://cloud.google.com/spanner/sla) | Database supporting payment processing: outages prevent customers from paying and merchants from completing transactions. |
+
+Each additional nine reduces the downtime budget by **10×**.
+
+### SLO, SLA
+
 ## Assumptions
 * Network behavior
 
