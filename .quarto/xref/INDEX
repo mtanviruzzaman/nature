@@ -172,5 +172,8 @@
   },
   "posts/algorithmic-patterns/index.qmd": {
     "index.html": "dcce707c"
+  },
+  "posts/concurrency/index.qmd": {
+    "index.html": "3342f644"
   }
 }

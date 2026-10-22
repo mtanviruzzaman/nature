@@ -1,0 +1,10 @@
+---
+title: "Interleaved realities"
+subtitle: "The logic and mechanics of concurrency"
+author: "Mohammad Tanviruzzaman"
+date: "2026-10-22"
+categories: [computation, complex-systems]
+---
+
+## Sources
+* [Little book of semaphores](https://greenteapress.com/wp/semaphores/)

@@ -12,6 +12,30 @@
 <generator>quarto-1.10.18</generator>
 <lastBuildDate>Thu, 22 Oct 2026 07:00:00 GMT</lastBuildDate>
 <item>
+  <title>Interleaved realities</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/concurrency/</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="sources" class="level2">
+
+<ul>
+<li><a href="https://greenteapress.com/wp/semaphores/">Little book of semaphores</a></li>
+</ul>
+
+
+</section>
+
+ ]]></description>
+  <category>computation</category>
+  <category>complex-systems</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/concurrency/</guid>
+  <pubDate>Thu, 22 Oct 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Beyond brute force</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>
   <link>https://mtanviruzzaman.github.io/nature/posts/algorithmic-patterns/</link>
@@ -960,98 +984,6 @@ Relative velocity
   <category>review</category>
   <guid>https://mtanviruzzaman.github.io/nature/posts/young-freedman-review/</guid>
   <pubDate>Tue, 22 Sep 2026 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Centripetal acceleration in uniform circular motion</title>
-  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
-  <link>https://mtanviruzzaman.github.io/nature/posts/circular-motion/</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>To understand how acceleration affects velocity, it is useful to think of acceleration vector having just two components: one parallel to the velocity vector and the other perpendicular to the velocity vector. The parallel component explains changes in speed and the perpendicular component explains changes in direction.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://mtanviruzzaman.github.io/nature/posts/circular-motion/circ_motion_1.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:30.0%"></p>
-</figure>
-</div>
-<p>In uniform circular motion, the speed is constant. So, the entire acceleration vector consists of the perpendicular component. At a given point on the circle, the velocity vector is tangent to the circular path and the acceleration vector is directed towards the center along a radius.</p>
-<p>We want to find the magnitude of this acceleration vector.</p>
-<section id="approach-1-geometric-derivation" class="level2">
-<h2 class="anchored" data-anchor-id="approach-1-geometric-derivation">Approach 1: Geometric derivation</h2>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cleft%7C%20%5Cvec%7Ba%7D_%7Baverage%7D%20%5Cright%7C%20&amp;=%20%5Cfrac%7B%5Cleft%7C%20%5CDelta%20%5Cvec%7Bv%7D%20%5Cright%7C%7D%7B%5CDelta%20t%7D%20%5C%5C%0A%5Cleft%7C%5Cvec%7Ba%7D%5Cright%7C%20&amp;=%20%5Clim_%7B%5CDelta%20t%20%5Cto%200%7D%20%5Cleft%7C%20%5Cvec%7Ba%7D_%7Baverage%7D%20%5Cright%7C%0A%5Cend%7Balign%7D%0A"></p>
-<p>First, we shall find out how <img src="https://latex.codecogs.com/png.latex?%5Cleft%7C%20%5Cvec%7Ba%7D_%7Baverage%7D%20%5Cright%7C"> looks like geometrically and then we shall reason how the geometric view changes when <img src="https://latex.codecogs.com/png.latex?%5CDelta%20t%20%5Cto%200">.</p>
-<p>We make the below observation about vectors in general: if we have two vectors (<img src="https://latex.codecogs.com/png.latex?%5Cvec%7Bv%7D_1"> and <img src="https://latex.codecogs.com/png.latex?%5Cvec%7Bv%7D_2">) perpendicular to two other vectors (<img src="https://latex.codecogs.com/png.latex?%5Cvec%7Br%7D_1"> and <img src="https://latex.codecogs.com/png.latex?%5Cvec%7Br%7D_2">), then these two pairs of vectors have same angle (<img src="https://latex.codecogs.com/png.latex?%5Ctheta">) between them.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://mtanviruzzaman.github.io/nature/posts/circular-motion/circ_motion_2.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-<p>Now, consider the situation where at times <img src="https://latex.codecogs.com/png.latex?t_1"> and <img src="https://latex.codecogs.com/png.latex?t_2%20(=%20t_1%20+%20%5CDelta%20t)"> a particle in uniform circular motion has velocities <img src="https://latex.codecogs.com/png.latex?%5Cvec%7Bv%7D_1"> and <img src="https://latex.codecogs.com/png.latex?%5Cvec%7Bv%7D_2">. Here <img src="https://latex.codecogs.com/png.latex?%7C%5Cvec%7Bv%7D_1%7C%20=%20%7C%5Cvec%7Bv%7D_1%7C%20=%20v">.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://mtanviruzzaman.github.io/nature/posts/circular-motion/circ_motion_3.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
-</div>
-<p>When we measure <img src="https://latex.codecogs.com/png.latex?%5Ctheta"> in radians, from the left figure above, we have: <img src="https://latex.codecogs.com/png.latex?%0A%5Ctheta%20=%20%5Cfrac%7B%5Ctext%7Barc-length%7D%7D%7BR%7D%20=%20%5Cfrac%7Bv%20%5Ccdot%20%5CDelta%20t%7D%7BR%7D%0A"></p>
-<p>On the other hand, from the right figure above, as <img src="https://latex.codecogs.com/png.latex?%5CDelta%20t%20%5Cto%200,%20%7C%5CDelta%20%5Cvec%7Bv%7D%7C%20%5Cto"> <span style="color: cyan; font-weight: 100">arc-length</span> and we have another expression for <img src="https://latex.codecogs.com/png.latex?%5Ctheta">: <img src="https://latex.codecogs.com/png.latex?%0A%5Ctheta%20=%20%5Cfrac%7B%5Ccolor%7Bcyan%7D%5Ctext%7Barc-length%7D%7D%7Bv%7D%20=%20%5Clim_%7B%5CDelta%20t%20%5Cto%200%7D%20%5Cfrac%7B%7C%5CDelta%20%5Cvec%7Bv%7D%7C%7D%7Bv%7D%0A"></p>
-<p>From the two expressions of <img src="https://latex.codecogs.com/png.latex?%5Ctheta">, we have:</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Clim_%7B%5CDelta%20t%20%5Cto%200%7D%20%5Cfrac%7B%20%5Ctfrac%7B%7C%5CDelta%20%5Cvec%7Bv%7D%7C%7D%7Bv%7D%20%7D%7B%20%5Ctfrac%7Bv%20%5Ccdot%20%5CDelta%20t%7D%7BR%7D%20%7D%20&amp;=%201%20%5C%5C%0A%5Cfrac%7BR%7D%7Bv%5E2%7D%20%5Clim_%7B%5CDelta%20t%20%5Cto%200%7D%20%5Cfrac%7B%20%7C%5CDelta%20%5Cvec%7Bv%7D%7C%20%7D%7B%20%5CDelta%20t%20%7D%20&amp;=%201%20%5C%5C%0A%7C%5Cvec%7Ba%7D%7C%20=%20%5Clim_%7B%5CDelta%20t%20%5Cto%200%7D%20%5Cfrac%7B%20%7C%5CDelta%20%5Cvec%7Bv%7D%7C%20%7D%7B%20%5CDelta%20t%20%7D%20&amp;=%20%5Cfrac%7Bv%5E2%7D%7BR%7D%0A%5Cend%7Balign%7D%0A"></p>
-<p>Consequently, a small drop in speed can make it safe around a sharp bend. For example, for a fixed acceleration (fixed tire-traction, road-bank, etc.), a drop of <img src="https://latex.codecogs.com/png.latex?8%5C%25"> in speed from <img src="https://latex.codecogs.com/png.latex?60"> mph to <img src="https://latex.codecogs.com/png.latex?55"> mph allows a <img src="https://latex.codecogs.com/png.latex?16%5C%25"> smaller radius.</p>
-<!-- hand-wavy
-## Approach 2: Another Geometric Derivation
-
-If the centripetal acceleration suddenly vanishes, the particle---due to inertia---will continue in a straight line (PQ) tangent to the circular path at the point (P) where the acceleration vanished. 
-
-![](circ_motion_4.jpg){width=90% fig-align="center"}
-
-We can think that the particle has "fallen" from Q to S---due to centripetal acceleration---to remain on the circular path. The "fall" from Q to S, unlike in the figure above, does not happen in one shot but happens in infinite number of infinitesimally small radial chunks starting with zero radial speed in the beginning. 
-
-So, QS = h = $\frac{1}{2}|\vec{a}|(\Delta t)^2$. Using Pythagoras in $\triangle$ OPQ:
-$$
-\begin{align}
-OQ^2 &= OP^2 + PQ^2 \\
-(R+h)^2 &= R^2 + d^2 \\
-R^2 + 2Rh + h^2 &= R^2 + d^2 \\
-2Rh + h^2 &= d^2
-\end{align}
-$$
-
-As $\Delta t \to 0, h^2 \to 0$ much quicker than $2Rh$ or $d^2$. As a result, in the limit:
-$$
-\begin{align}
-2Rh &= d^2 \\
-2R\cdot \frac{1}{2}|\vec{a}|(\Delta t)^2 &= (v \cdot \Delta t)^2\\
-|\vec{a}| &= \frac{v^2}{R}\
-\end{align}
-$$ 
--->
-</section>
-<section id="approach-2-calculus-based-derivation" class="level2">
-<h2 class="anchored" data-anchor-id="approach-2-calculus-based-derivation">Approach 2: Calculus-based derivation</h2>
-<p>Idea is to express the particle’s position as a function of time and then take derivatives to first find velocity and then acceleration.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://mtanviruzzaman.github.io/nature/posts/circular-motion/circ_motion_5.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
-</figure>
-</div>
-<p>The particle’s position can be represented as a radius vector that rotates with time: <img src="https://latex.codecogs.com/png.latex?%0A%5Cvec%7Br%7D(t)%20=%20r%20%5Ccos%7B(%5Ctheta(t))%7D%5Chat%7B%5Cimath%7D%20+%20r%20%5Csin%7B(%5Ctheta(t))%7D%5Chat%7B%5Cjmath%7D%0A"></p>
-<p>Since the motion is uniform circular, <img src="https://latex.codecogs.com/png.latex?r%20=%20%5Ctext%7Bconstant%7D"> and <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7Bd%5Ctheta(t)%7D%7Bdt%7D%20=%20%5Ctext%7Bconstant%7D">. Here <img src="https://latex.codecogs.com/png.latex?%5Cfrac%7Bd%5Ctheta(t)%7D%7Bdt%7D"> is the angular speed which we denote as <img src="https://latex.codecogs.com/png.latex?%5Comega">. <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cfrac%7Bd%5Ctheta(t)%7D%7Bdt%7D%20&amp;=%20%5Comega%20%5C%5C%0A%5Cint_0%5Et%20%5Cfrac%7Bd%5Ctheta(t)%7D%7Bdt%7D%5C%20dt%20&amp;=%20%5Cint_0%5Et%20%5Comega%5C%20dt%20%5C%5C%0A%5Ctheta(t)%20-%20%5Ctheta(0)%20&amp;=%20%5Comega%20t%20%5C%5C%0A%5Ctheta(t)%20&amp;=%20%5Comega%20t%5C%20(%5Ctext%7Bassume%20particle%20starts%20from%20+ve%20x-axis,%20so%20%7D%20%5Ctheta(0)%20=%200)%0A%5Cend%7Balign%7D%0A"></p>
-<p>So, the particle’s position as a function of time is: <img src="https://latex.codecogs.com/png.latex?%0A%5Cvec%7Br%7D(t)%20=%20r%20%5Ccos%7B(%5Comega%20t)%7D%5Chat%7B%5Cimath%7D%20+%20r%20%5Csin%7B(%5Comega%20t)%7D%5Chat%7B%5Cjmath%7D%0A"></p>
-<p>Finding an expression for the velocity is easy: <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cvec%7Bv%7D(t)%20&amp;=%20%5Cfrac%7Bd%7D%7Bdt%7D%5Cvec%7Br%7D(t)%20%5C%5C%0A%20%20%20%20%20%20%20%20&amp;=%20-r%5Comega%20%5Csin%7B(%5Comega%20t)%7D%5Chat%7B%5Cimath%7D+r%5Comega%20%5Ccos%7B(%5Comega%20t)%7D%5Chat%7B%5Cjmath%7D%0A%5Cend%7Balign%7D%0A"></p>
-<p>Note, <img src="https://latex.codecogs.com/png.latex?%5Cvec%7Br%7D(t)%20%5Ccdot%20%5Cvec%7Bv%7D(t)%20=%20-r%5E2%5Comega%20%5Csin%7B(%5Comega%20t)%7D%5Ccos%7B(%5Comega%20t)%7D%20+%20r%5E2%5Comega%20%5Csin%7B(%5Comega%20t)%7D%20%5Ccos%7B(%5Comega%20t)%7D%20=%200">, so <img src="https://latex.codecogs.com/png.latex?%5Cvec%7Br%7D(t)%20%5Cperp%20%5Cvec%7Bv%7D(t)">–as expected.</p>
-<p>Also, the speed <img src="https://latex.codecogs.com/png.latex?v%20=%20%5Csqrt%7Bv_x%5E2%20+%20v_y%5E2%7D%20=%20r%5Comega">.</p>
-<p>We find the acceleration as the derivative of <img src="https://latex.codecogs.com/png.latex?%5Cvec%7Bv%7D(t)">: <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cvec%7Ba%7D(t)%20&amp;=%20%5Cfrac%7Bd%7D%7Bdt%7D%5Cvec%7Bv%7D(t)%20%5C%5C%0A%20%20%20%20%20%20%20%20%20%20%20&amp;=%20-r%5Comega%5E2%20%5Ccos%7B(%5Comega%20t)%7D%5Chat%7B%5Cimath%7D-r%5Comega%5E2%20%5Csin%7B(%5Comega%20t)%7D%5Chat%7B%5Cjmath%7D%0A%5Cend%7Balign%7D%0A"></p>
-<p>So, <img src="https://latex.codecogs.com/png.latex?%7C%5Cvec%7Ba%7D(t)%7C%20=%20r%5Comega%5E2%20=%20(r%5Comega)%5Comega%20=%20v%5Cfrac%7Bv%7D%7Br%7D%20=%20%5Cfrac%7Bv%5E2%7D%7Br%7D">.</p>
-
-
-</section>
-
- ]]></description>
-  <category>physics</category>
-  <guid>https://mtanviruzzaman.github.io/nature/posts/circular-motion/</guid>
-  <pubDate>Sun, 13 Sep 2026 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
