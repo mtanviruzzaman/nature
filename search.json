@@ -130,14 +130,28 @@
     "href": "posts/distributed-systems/index.html",
     "title": "Distributed systems",
     "section": "",
-    "text": "Network behavior\n\n\n\nNode behavior\n\n\n\nTiming behavior"
+    "text": "(Eventually Perfect) Failure detector\n\nTimeout"
+  },
+  {
+    "objectID": "posts/distributed-systems/index.html#fault-tolerance",
+    "href": "posts/distributed-systems/index.html#fault-tolerance",
+    "title": "Distributed systems",
+    "section": "",
+    "text": "(Eventually Perfect) Failure detector\n\nTimeout"
+  },
+  {
+    "objectID": "posts/distributed-systems/index.html#availability",
+    "href": "posts/distributed-systems/index.html#availability",
+    "title": "Distributed systems",
+    "section": "Availability",
+    "text": "Availability\n\n\n\nNines\nAvailability\nEquivalent downtime/year\nService example\nUse case and cost of an outage\n\n\n\n\n2\n99%\n3.65 days\nPersonal blog\nReaders can return later; interruptions usually cause limited harm.\n\n\n3\n99.9%\n8.76 hours\nGmail in Google Workspace—SLA\nBusiness email: outages delay communication and everyday work.\n\n\n4\n99.99%\n52.6 minutes\nAmazon EC2 across multiple availability zones—SLA\nServers running a large online store’s checkout: outages block orders and lose sales.\n\n\n5\n99.999%\n5.26 minutes\nGoogle Spanner across multiple regions—SLA\nDatabase supporting payment processing: outages prevent customers from paying and merchants from completing transactions.\n\n\n\nEach additional nine reduces the downtime budget by 10×.\n\nSLO, SLA"
   },
   {
     "objectID": "posts/distributed-systems/index.html#assumptions",
     "href": "posts/distributed-systems/index.html#assumptions",
     "title": "Distributed systems",
-    "section": "",
-    "text": "Network behavior\n\n\n\nNode behavior\n\n\n\nTiming behavior"
+    "section": "Assumptions",
+    "text": "Assumptions\n\nNetwork behavior\n\n\n\nNode behavior\n\n\n\nTiming behavior"
   },
   {
     "objectID": "posts/distributed-systems/index.html#failure-models",

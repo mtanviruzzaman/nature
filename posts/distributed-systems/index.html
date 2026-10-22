@@ -150,6 +150,63 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="fault-tolerance" class="level2">
+<h2 class="anchored" data-anchor-id="fault-tolerance">Fault tolerance</h2>
+<ul>
+<li>(Eventually Perfect) Failure detector
+<ul>
+<li>Timeout</li>
+</ul></li>
+</ul>
+</section>
+<section id="availability" class="level2">
+<h2 class="anchored" data-anchor-id="availability">Availability</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Nines</th>
+<th style="text-align: right;">Availability</th>
+<th style="text-align: right;">Equivalent downtime/year</th>
+<th>Service example</th>
+<th>Use case and cost of an outage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>2</strong></td>
+<td style="text-align: right;">99%</td>
+<td style="text-align: right;"><strong>3.65 days</strong></td>
+<td>Personal blog</td>
+<td>Readers can return later; interruptions usually cause limited harm.</td>
+</tr>
+<tr class="even">
+<td><strong>3</strong></td>
+<td style="text-align: right;">99.9%</td>
+<td style="text-align: right;"><strong>8.76 hours</strong></td>
+<td>Gmail in Google Workspace—<a href="https://workspace.google.com/terms/sla/">SLA</a></td>
+<td>Business email: outages delay communication and everyday work.</td>
+</tr>
+<tr class="odd">
+<td><strong>4</strong></td>
+<td style="text-align: right;">99.99%</td>
+<td style="text-align: right;"><strong>52.6 minutes</strong></td>
+<td>Amazon EC2 across multiple availability zones—<a href="https://aws.amazon.com/compute/sla/">SLA</a></td>
+<td>Servers running a large online store’s checkout: outages block orders and lose sales.</td>
+</tr>
+<tr class="even">
+<td><strong>5</strong></td>
+<td style="text-align: right;">99.999%</td>
+<td style="text-align: right;"><strong>5.26 minutes</strong></td>
+<td>Google Spanner across multiple regions—<a href="https://cloud.google.com/spanner/sla">SLA</a></td>
+<td>Database supporting payment processing: outages prevent customers from paying and merchants from completing transactions.</td>
+</tr>
+</tbody>
+</table>
+<p>Each additional nine reduces the downtime budget by <strong>10×</strong>.</p>
+<section id="slo-sla" class="level3">
+<h3 class="anchored" data-anchor-id="slo-sla">SLO, SLA</h3>
+</section>
+</section>
 <section id="assumptions" class="level2">
 <h2 class="anchored" data-anchor-id="assumptions">Assumptions</h2>
 <ul>
