@@ -56,95 +56,74 @@
     "text": "Search within the data: Use the input’s ordering to determine which half could contain the target. Example: LeetCode #33: Search in Rotated Sorted Array.\nSearch the answer space: Find the smallest or largest answer satisfying a monotonic condition—one whose truth value changes at most once as candidate answers increase. The input itself need not be sorted. Example: LeetCode#875: Koko Eating Bananas."
   },
   {
-    "objectID": "posts/braver-calc-review/index.html",
-    "href": "posts/braver-calc-review/index.html",
-    "title": "Review: Full Frontal Calculus",
+    "objectID": "posts/concurrency/index.html",
+    "href": "posts/concurrency/index.html",
+    "title": "Interleaved realities",
     "section": "",
-    "text": "Algebraic Trickery (Rational Functions)\n\n\n\nAntiderivative of \\(\\frac{1}{x}\\)\n\n\\[\n\\int \\frac{1}{x}\\ dx = \\ln{|x|} + C\n\\]\n\n\n\nAntiderivative of \\(\\sec{(x)}\\) and \\(\\csc{(x)}\\)\n\n\\[\n\\begin{align}\n\\int \\sec{(x)}\\ dx &= \\ln{|\\sec{(x)} + \\tan{(x)}|} + C \\\\\n\\int \\csc{(x)}\\ dx &= -\\ln{|\\csc{(x)} + \\cot{(x)}|} + C\n\\end{align}\n\\]\n\n\n\n\nTrigonometric Trickery (Part 1)\n\n\n\nPythagorean identities\n\n\\[\n\\begin{align}\n\\sin^2{x} + \\cos^2{x} &= 1 \\\\\n\\sec^2{x} - \\tan^2{x} &= 1\n\\end{align}\n\\]\n\n\n\nDouble-angle identities\n\n\\[\n\\begin{align}\n\\cos{(2x)} &= \\cos^2{x} - \\sin^2{x} \\\\\n\\sin{(2x)} &= 2\\sin{x}\\cos{x}\n\\end{align}\n\\]\n\n\n\n\nTrigonometric Trickery (Part 2)\n\n\n\nTrigonometric substitution\n\nWe replace \\(x\\) with a trigonometric function to complete the square and thus get rid of the square root. The Pythagorean identities are the squaremakers.\n\n\n\n\nFor \\(\\sqrt{\\text{constant} - \\text{square}}\\), we use: \\(\\sin^2{\\theta} + \\cos^2{\\theta} = 1\\). For example, with \\(\\sqrt{9-x^2}\\) our substitution is \\(x = 3\\sin{\\theta}\\) which transforms the expression into \\(\\sqrt{(3\\cos{\\theta})^2}\\).\nFor \\(\\sqrt{\\text{square} + \\text{constant}}\\), we use: \\(\\sec^2{\\theta} - \\tan^2{\\theta} = 1\\). For example, with \\(\\sqrt{x^2+16}\\) our substitution is \\(x = 4\\tan{\\theta}\\) which transforms the expression into \\(\\sqrt{(4\\sec{\\theta})^2}\\).\nFor \\(\\sqrt{\\text{square} - \\text{constant}}\\), we use: \\(\\sec^2{\\theta} - \\tan^2{\\theta} = 1\\). For example, with \\(\\sqrt{x^2-3}\\) our substitution is \\(x = \\sqrt{3}\\sec{\\theta}\\) which transforms the expression into \\(\\sqrt{(\\sqrt{3}\\tan{\\theta})^2}\\).\n\n\n\n\n\n\nIntegration by parts\n\nIt falls out from the product rule of derivatives.\n\n\n\nSay \\(u\\) and \\(v\\) are two functions of \\(x\\). Then by product rule: \\[\n\\frac{d}{dx}(uv) = \\frac{d}{dx}(u) \\cdot v + u \\cdot \\frac{d}{dx}(v) \\\\\n\\]\n\\[\n\\begin{align}\n\\text{Integrating both sides:}&\\\\\n\\int \\frac{d}{dx}(uv)\\ dx &= \\int \\frac{d}{dx}(u) \\cdot v\\ dx + \\int u \\cdot \\frac{d}{dx}(v)\\ dx \\\\\nuv + C &= \\int \\frac{d}{dx}(u) \\cdot v\\ dx + \\int u \\cdot \\frac{d}{dx}(v)\\ dx \\\\\n\\text{Rearranging and absorbing }C&\\text{ inside the right-side integral:}\\\\\n\\int u \\cdot \\frac{d}{dx}(v)\\ dx &= uv - \\int \\textcolor{blue}{\\frac{d}{dx}(u)} \\cdot \\textcolor{green}{v}\\ dx\n\\end{align}\n\\] Final equality is the integration by parts. We just need to imagine our integral as a product like \\(\\left(u \\cdot \\frac{dv}{dx}\\right)\\) where finding \\(\\textcolor{blue}{\\frac{du}{dx}}\\) and \\(\\textcolor{green}{v}\\) is easy (and that we transition into a simpler integral than the one we started with).\n\n\n\n\\[\n\\begin{align}\n\\int x \\cos{(x)}\\ dx \\xlongequal{\\text{imagine...}} \\int \\underbrace{x}_{u} \\cdot \\overbrace{\\cos{(x)}}^{dv/dx}\\ dx &= \\underbrace{x}_{u}\\cdot \\overbrace{\\sin{(x)}}^{v} - \\int \\underbrace{1}_{du/dx} \\cdot \\overbrace{\\sin{(x)}}^{v}\\ dx\\\\\n&= x\\sin{(x)} + \\cos{(x)} + C\n\\end{align}\n\\] Note, the intermediate integral \\(\\int 1 \\cdot \\sin{(x)}\\ dx\\) is simpler than our original integral \\(\\int x\\cos{x}\\ dx\\)."
+    "text": "Little book of semaphores"
   },
   {
-    "objectID": "posts/braver-calc-review/index.html#chapter-5-the-integral-calculus-proper",
-    "href": "posts/braver-calc-review/index.html#chapter-5-the-integral-calculus-proper",
-    "title": "Review: Full Frontal Calculus",
+    "objectID": "posts/concurrency/index.html#sources",
+    "href": "posts/concurrency/index.html#sources",
+    "title": "Interleaved realities",
     "section": "",
-    "text": "Algebraic Trickery (Rational Functions)\n\n\n\nAntiderivative of \\(\\frac{1}{x}\\)\n\n\\[\n\\int \\frac{1}{x}\\ dx = \\ln{|x|} + C\n\\]\n\n\n\nAntiderivative of \\(\\sec{(x)}\\) and \\(\\csc{(x)}\\)\n\n\\[\n\\begin{align}\n\\int \\sec{(x)}\\ dx &= \\ln{|\\sec{(x)} + \\tan{(x)}|} + C \\\\\n\\int \\csc{(x)}\\ dx &= -\\ln{|\\csc{(x)} + \\cot{(x)}|} + C\n\\end{align}\n\\]\n\n\n\n\nTrigonometric Trickery (Part 1)\n\n\n\nPythagorean identities\n\n\\[\n\\begin{align}\n\\sin^2{x} + \\cos^2{x} &= 1 \\\\\n\\sec^2{x} - \\tan^2{x} &= 1\n\\end{align}\n\\]\n\n\n\nDouble-angle identities\n\n\\[\n\\begin{align}\n\\cos{(2x)} &= \\cos^2{x} - \\sin^2{x} \\\\\n\\sin{(2x)} &= 2\\sin{x}\\cos{x}\n\\end{align}\n\\]\n\n\n\n\nTrigonometric Trickery (Part 2)\n\n\n\nTrigonometric substitution\n\nWe replace \\(x\\) with a trigonometric function to complete the square and thus get rid of the square root. The Pythagorean identities are the squaremakers.\n\n\n\n\nFor \\(\\sqrt{\\text{constant} - \\text{square}}\\), we use: \\(\\sin^2{\\theta} + \\cos^2{\\theta} = 1\\). For example, with \\(\\sqrt{9-x^2}\\) our substitution is \\(x = 3\\sin{\\theta}\\) which transforms the expression into \\(\\sqrt{(3\\cos{\\theta})^2}\\).\nFor \\(\\sqrt{\\text{square} + \\text{constant}}\\), we use: \\(\\sec^2{\\theta} - \\tan^2{\\theta} = 1\\). For example, with \\(\\sqrt{x^2+16}\\) our substitution is \\(x = 4\\tan{\\theta}\\) which transforms the expression into \\(\\sqrt{(4\\sec{\\theta})^2}\\).\nFor \\(\\sqrt{\\text{square} - \\text{constant}}\\), we use: \\(\\sec^2{\\theta} - \\tan^2{\\theta} = 1\\). For example, with \\(\\sqrt{x^2-3}\\) our substitution is \\(x = \\sqrt{3}\\sec{\\theta}\\) which transforms the expression into \\(\\sqrt{(\\sqrt{3}\\tan{\\theta})^2}\\).\n\n\n\n\n\n\nIntegration by parts\n\nIt falls out from the product rule of derivatives.\n\n\n\nSay \\(u\\) and \\(v\\) are two functions of \\(x\\). Then by product rule: \\[\n\\frac{d}{dx}(uv) = \\frac{d}{dx}(u) \\cdot v + u \\cdot \\frac{d}{dx}(v) \\\\\n\\]\n\\[\n\\begin{align}\n\\text{Integrating both sides:}&\\\\\n\\int \\frac{d}{dx}(uv)\\ dx &= \\int \\frac{d}{dx}(u) \\cdot v\\ dx + \\int u \\cdot \\frac{d}{dx}(v)\\ dx \\\\\nuv + C &= \\int \\frac{d}{dx}(u) \\cdot v\\ dx + \\int u \\cdot \\frac{d}{dx}(v)\\ dx \\\\\n\\text{Rearranging and absorbing }C&\\text{ inside the right-side integral:}\\\\\n\\int u \\cdot \\frac{d}{dx}(v)\\ dx &= uv - \\int \\textcolor{blue}{\\frac{d}{dx}(u)} \\cdot \\textcolor{green}{v}\\ dx\n\\end{align}\n\\] Final equality is the integration by parts. We just need to imagine our integral as a product like \\(\\left(u \\cdot \\frac{dv}{dx}\\right)\\) where finding \\(\\textcolor{blue}{\\frac{du}{dx}}\\) and \\(\\textcolor{green}{v}\\) is easy (and that we transition into a simpler integral than the one we started with).\n\n\n\n\\[\n\\begin{align}\n\\int x \\cos{(x)}\\ dx \\xlongequal{\\text{imagine...}} \\int \\underbrace{x}_{u} \\cdot \\overbrace{\\cos{(x)}}^{dv/dx}\\ dx &= \\underbrace{x}_{u}\\cdot \\overbrace{\\sin{(x)}}^{v} - \\int \\underbrace{1}_{du/dx} \\cdot \\overbrace{\\sin{(x)}}^{v}\\ dx\\\\\n&= x\\sin{(x)} + \\cos{(x)} + C\n\\end{align}\n\\] Note, the intermediate integral \\(\\int 1 \\cdot \\sin{(x)}\\ dx\\) is simpler than our original integral \\(\\int x\\cos{x}\\ dx\\)."
+    "text": "Little book of semaphores"
   },
   {
-    "objectID": "posts/circular-motion/index.html",
-    "href": "posts/circular-motion/index.html",
-    "title": "Centripetal acceleration in uniform circular motion",
+    "objectID": "posts/rise-fall-dino/index.html",
+    "href": "posts/rise-fall-dino/index.html",
+    "title": "Rise and fall of dinosaurs",
     "section": "",
-    "text": "To understand how acceleration affects velocity, it is useful to think of acceleration vector having just two components: one parallel to the velocity vector and the other perpendicular to the velocity vector. The parallel component explains changes in speed and the perpendicular component explains changes in direction.\nIn uniform circular motion, the speed is constant. So, the entire acceleration vector consists of the perpendicular component. At a given point on the circle, the velocity vector is tangent to the circular path and the acceleration vector is directed towards the center along a radius.\nWe want to find the magnitude of this acceleration vector."
+    "text": "Disasters within Earth helped dinosaurs rise to dominance; a disaster from beyond ended their reign."
   },
   {
-    "objectID": "posts/circular-motion/index.html#approach-1-geometric-derivation",
-    "href": "posts/circular-motion/index.html#approach-1-geometric-derivation",
-    "title": "Centripetal acceleration in uniform circular motion",
-    "section": "Approach 1: Geometric derivation",
-    "text": "Approach 1: Geometric derivation\n\\[\n\\begin{align}\n\\left| \\vec{a}_{average} \\right| &= \\frac{\\left| \\Delta \\vec{v} \\right|}{\\Delta t} \\\\\n\\left|\\vec{a}\\right| &= \\lim_{\\Delta t \\to 0} \\left| \\vec{a}_{average} \\right|\n\\end{align}\n\\]\nFirst, we shall find out how \\(\\left| \\vec{a}_{average} \\right|\\) looks like geometrically and then we shall reason how the geometric view changes when \\(\\Delta t \\to 0\\).\nWe make the below observation about vectors in general: if we have two vectors (\\(\\vec{v}_1\\) and \\(\\vec{v}_2\\)) perpendicular to two other vectors (\\(\\vec{r}_1\\) and \\(\\vec{r}_2\\)), then these two pairs of vectors have same angle (\\(\\theta\\)) between them.\n\n\n\n\n\nNow, consider the situation where at times \\(t_1\\) and \\(t_2 (= t_1 + \\Delta t)\\) a particle in uniform circular motion has velocities \\(\\vec{v}_1\\) and \\(\\vec{v}_2\\). Here \\(|\\vec{v}_1| = |\\vec{v}_1| = v\\).\n\n\n\n\n\nWhen we measure \\(\\theta\\) in radians, from the left figure above, we have: \\[\n\\theta = \\frac{\\text{arc-length}}{R} = \\frac{v \\cdot \\Delta t}{R}\n\\]\nOn the other hand, from the right figure above, as \\(\\Delta t \\to 0, |\\Delta \\vec{v}| \\to\\) arc-length and we have another expression for \\(\\theta\\): \\[\n\\theta = \\frac{\\color{cyan}\\text{arc-length}}{v} = \\lim_{\\Delta t \\to 0} \\frac{|\\Delta \\vec{v}|}{v}\n\\]\nFrom the two expressions of \\(\\theta\\), we have:\n\\[\n\\begin{align}\n\\lim_{\\Delta t \\to 0} \\frac{ \\tfrac{|\\Delta \\vec{v}|}{v} }{ \\tfrac{v \\cdot \\Delta t}{R} } &= 1 \\\\\n\\frac{R}{v^2} \\lim_{\\Delta t \\to 0} \\frac{ |\\Delta \\vec{v}| }{ \\Delta t } &= 1 \\\\\n|\\vec{a}| = \\lim_{\\Delta t \\to 0} \\frac{ |\\Delta \\vec{v}| }{ \\Delta t } &= \\frac{v^2}{R}\n\\end{align}\n\\]\nConsequently, a small drop in speed can make it safe around a sharp bend. For example, for a fixed acceleration (fixed tire-traction, road-bank, etc.), a drop of \\(8\\%\\) in speed from \\(60\\) mph to \\(55\\) mph allows a \\(16\\%\\) smaller radius."
+    "objectID": "posts/rise-fall-dino/index.html#sources",
+    "href": "posts/rise-fall-dino/index.html#sources",
+    "title": "Rise and fall of dinosaurs",
+    "section": "Sources",
+    "text": "Sources\n\nThe Rise and Fall of the Dinosaurs by Steve Brusatte\nThe Last Days of the Dinosaurs by Riley Black"
   },
   {
-    "objectID": "posts/circular-motion/index.html#approach-2-calculus-based-derivation",
-    "href": "posts/circular-motion/index.html#approach-2-calculus-based-derivation",
-    "title": "Centripetal acceleration in uniform circular motion",
-    "section": "Approach 2: Calculus-based derivation",
-    "text": "Approach 2: Calculus-based derivation\nIdea is to express the particle’s position as a function of time and then take derivatives to first find velocity and then acceleration.\n\n\n\n\n\nThe particle’s position can be represented as a radius vector that rotates with time: \\[\n\\vec{r}(t) = r \\cos{(\\theta(t))}\\hat{\\imath} + r \\sin{(\\theta(t))}\\hat{\\jmath}\n\\]\nSince the motion is uniform circular, \\(r = \\text{constant}\\) and \\(\\frac{d\\theta(t)}{dt} = \\text{constant}\\). Here \\(\\frac{d\\theta(t)}{dt}\\) is the angular speed which we denote as \\(\\omega\\). \\[\n\\begin{align}\n\\frac{d\\theta(t)}{dt} &= \\omega \\\\\n\\int_0^t \\frac{d\\theta(t)}{dt}\\ dt &= \\int_0^t \\omega\\ dt \\\\\n\\theta(t) - \\theta(0) &= \\omega t \\\\\n\\theta(t) &= \\omega t\\ (\\text{assume particle starts from +ve x-axis, so } \\theta(0) = 0)\n\\end{align}\n\\]\nSo, the particle’s position as a function of time is: \\[\n\\vec{r}(t) = r \\cos{(\\omega t)}\\hat{\\imath} + r \\sin{(\\omega t)}\\hat{\\jmath}\n\\]\nFinding an expression for the velocity is easy: \\[\n\\begin{align}\n\\vec{v}(t) &= \\frac{d}{dt}\\vec{r}(t) \\\\\n        &= -r\\omega \\sin{(\\omega t)}\\hat{\\imath}+r\\omega \\cos{(\\omega t)}\\hat{\\jmath}\n\\end{align}\n\\]\nNote, \\(\\vec{r}(t) \\cdot \\vec{v}(t) = -r^2\\omega \\sin{(\\omega t)}\\cos{(\\omega t)} + r^2\\omega \\sin{(\\omega t)} \\cos{(\\omega t)} = 0\\), so \\(\\vec{r}(t) \\perp \\vec{v}(t)\\)–as expected.\nAlso, the speed \\(v = \\sqrt{v_x^2 + v_y^2} = r\\omega\\).\nWe find the acceleration as the derivative of \\(\\vec{v}(t)\\): \\[\n\\begin{align}\n\\vec{a}(t) &= \\frac{d}{dt}\\vec{v}(t) \\\\\n           &= -r\\omega^2 \\cos{(\\omega t)}\\hat{\\imath}-r\\omega^2 \\sin{(\\omega t)}\\hat{\\jmath}\n\\end{align}\n\\]\nSo, \\(|\\vec{a}(t)| = r\\omega^2 = (r\\omega)\\omega = v\\frac{v}{r} = \\frac{v^2}{r}\\)."
-  },
-  {
-    "objectID": "posts/trade-off-algebra/index.html",
-    "href": "posts/trade-off-algebra/index.html",
-    "title": "Tradeoffs in elementary algebra",
+    "objectID": "posts/habits/index.html",
+    "href": "posts/habits/index.html",
+    "title": "Good habits, bad habits",
     "section": "",
-    "text": "tl;dr"
+    "text": "Habits automate familiar routines, freeing attention and deliberate effort for tasks that need them.\nA habit is a learned (cue, response) association built through repetition, often supported by immediate reward. Lowering friction makes repetition easier—reducing the “activation energy” to act. Once established, the cue can prompt a response with little mental effort, even when the original reward is no longer valued. Such routines can escape notice; tracking can reveal them and help us decide what to preserve or change."
   },
   {
-    "objectID": "posts/trade-off-algebra/index.html#x0",
-    "href": "posts/trade-off-algebra/index.html#x0",
-    "title": "Tradeoffs in elementary algebra",
-    "section": "\\(x^0\\)",
-    "text": "\\(x^0\\)\nWe choose \\(x^0 = 1\\) because choosing \\(x^0 = 0\\) instead would require us to give up the general exponent rule:\n\\[\nx^{a+b} = x^a x^b\n\\]\n\n\nMore…\n\n\\[\nx = x^{1+0} = x^1 \\cdot x^0\n\\]\nWith \\(x \\neq 0\\), \\[\n1 = \\frac{x^3}{x^3} = x^{3-3} = x^0\n\\]"
+    "objectID": "posts/habits/index.html#sources",
+    "href": "posts/habits/index.html#sources",
+    "title": "Good habits, bad habits",
+    "section": "Sources",
+    "text": "Sources\n\nGood Habits, Bad Habits by Wendy Wood\n\n\n\n\nHabit scorecard"
   },
   {
-    "objectID": "posts/trade-off-algebra/index.html#times--1",
-    "href": "posts/trade-off-algebra/index.html#times--1",
-    "title": "Tradeoffs in elementary algebra",
-    "section": "\\(-1 \\times -1\\)",
-    "text": "\\(-1 \\times -1\\)\nWhen extending multiplication to negative numbers, we choose \\((-1) \\times (-1) = +1\\) because choosing \\(-1\\) instead would require us to give up the distributive law:\n\\[\na \\times (b+c) = a \\times b + a \\times c\n\\]\n\n\nMore…\n\n\\[\n0=-1\\times \\bigl(1+(-1)\\bigr)= -1 + (-1 \\times -1)\n\\]\nWe can make the product of \\(-1\\) and \\(-1\\) equal to \\(-1\\) while keeping distributivity, but other rules must change. For example, we could define a new multiplication: \\(a \\star b = -(ab)\\) with \\(ab = \\underbrace{b + b + \\cdots + b}_{a\\text{ times}}\\). Now, the distributive law works:\n\\[\n0 = -1 \\star \\bigl(1+(-1)\\bigr) = 1 + (-1 \\star -1)\n\\]\nThe tradeoff is that multiplying by \\(1\\) now reverses the sign:\n\\[\na \\star 1 = -a.\n\\]\nInstead, \\(-1\\) becomes the multiplicative identity:\n\\[\na \\star (-1) = a.\n\\]"
-  },
-  {
-    "objectID": "posts/trade-off-algebra/index.html#fracx0",
-    "href": "posts/trade-off-algebra/index.html#fracx0",
-    "title": "Tradeoffs in elementary algebra",
-    "section": "\\(\\frac{x}{0}\\)",
-    "text": "\\(\\frac{x}{0}\\)\nWe leave \\(\\frac{x}{0}\\) undefined to preserve division as the operation that uniquely undoes multiplication: \\(a/b\\) must be the unique number \\(q\\) satisfying\n\\[\nbq = a\n\\]\n\n\nMore…\n\nFor \\(\\frac{3}{0}\\), no number satisfies \\(0q = 3\\).\nFor \\(\\frac{0}{0}\\), every number satisfies \\(0q = 0\\), so there is no unique answer."
-  },
-  {
-    "objectID": "posts/young-freedman-review/index.html",
-    "href": "posts/young-freedman-review/index.html",
-    "title": "Review: University Physics",
+    "objectID": "posts/fundamental-units/index.html",
+    "href": "posts/fundamental-units/index.html",
+    "title": "Fundamental units",
     "section": "",
-    "text": "Physical quantities and units\n\n\n\n\nSignificant figures\n\n\n\n\nScalars, vectors, and vector addition\n\n\n\n\nVector components and vector addition\n\n\n\n\nUnit vectors\n\n\n\n\nScalar product\n\n\n\n\nVector product"
+    "text": "There are three fundamental units (of time, distance, and mass) and all other units of measurement are some combination of these three. First we define the unit of time–one second; we use second to define the unit of distance–one meter; and we use both second and meter to define the unit of mass–one kilogram.\nWe want these units to be stable, universal, and reproducible. What that means is: ten seconds should mean exactly the same duration today and 1000 years from now, here and anywhere else, and anyone with the right equipment should be able to reproduce that ten-second duration independently."
   },
   {
-    "objectID": "posts/young-freedman-review/index.html#units-physical-quantities-and-vectors",
-    "href": "posts/young-freedman-review/index.html#units-physical-quantities-and-vectors",
-    "title": "Review: University Physics",
-    "section": "",
-    "text": "Physical quantities and units\n\n\n\n\nSignificant figures\n\n\n\n\nScalars, vectors, and vector addition\n\n\n\n\nVector components and vector addition\n\n\n\n\nUnit vectors\n\n\n\n\nScalar product\n\n\n\n\nVector product"
+    "objectID": "posts/fundamental-units/index.html#second",
+    "href": "posts/fundamental-units/index.html#second",
+    "title": "Fundamental units",
+    "section": "Second",
+    "text": "Second\nOne second is the duration of exactly 9,192,631,770 cycles of microwave radiation resonant with the unperturbed ground-state hyperfine transition of a cesium-133 atom.\n\n\nMore…\n\n\n\n\n\nHow we tune the microwave source which serves as our clock post-tuning\n\n\n\n\nWhy exactly 9,192,631,770 cycles?\n\nTo preserve the duration of the second already in use.\n\n\n\nWhy cesium-133?\n\nCesium-133 has a stable, reproducible resonance that scientists can measure precisely using microwave electronics.\n\n\n\nWhy use a vacuum?\n\nA vacuum reduces collisions with surrounding gas, which could disturb the atoms and shift their resonance frequency."
   },
   {
-    "objectID": "posts/young-freedman-review/index.html#motion-along-a-straight-line",
-    "href": "posts/young-freedman-review/index.html#motion-along-a-straight-line",
-    "title": "Review: University Physics",
-    "section": "02. Motion along a straight line",
-    "text": "02. Motion along a straight line\n\n\n\n\n\nStraight-line motion, average and instantaneous x-velocity\n\n\n\n\nAverage and instantaneous x-acceleration\n\n\n\n\nStraight-line motion with constant acceleration\n\n\n\n\nFreely falling bodies\n\n\n\n\nStraight-line motion with varying acceleration"
+    "objectID": "posts/fundamental-units/index.html#meter",
+    "href": "posts/fundamental-units/index.html#meter",
+    "title": "Fundamental units",
+    "section": "Meter",
+    "text": "Meter\nOne meter is the distance light travels in a vacuum in exactly \\(\\tfrac{1}{\\text{299,792,458}}\\) of a second.\n\n\nMore…"
   },
   {
-    "objectID": "posts/young-freedman-review/index.html#motion-in-two-and-three-dimensions",
-    "href": "posts/young-freedman-review/index.html#motion-in-two-and-three-dimensions",
-    "title": "Review: University Physics",
-    "section": "03. Motion in two and three dimensions",
-    "text": "03. Motion in two and three dimensions\n\n\n\n\n\nPosition, velocity, and acceleration vectors\n\n\n\n\nProjectile motion\n\n\\[\n\\begin{align}\nx(t) &= (v_0 \\cos{\\alpha_0})t \\\\\ny(t) &= (v_0 \\sin{\\alpha_0})t - \\frac{1}{2}gt^2 \\\\\nv_x(t) &= v_0 \\cos{\\alpha_0} \\\\\nv_y(t) &= v_0 \\sin{\\alpha_0} - gt\n\\end{align}\n\\]\n\n\n\nUniform and nonuniform circular motion\n\n\\[\n\\begin{align}\na_{\\text{rad}} &= \\frac{v^2}{R} \\\\\na_{\\text{tan}} &= \\frac{d|\\vec{v}|}{dt} \\\\\n\\left| \\frac{d\\vec{v}}{dt} \\right| &= \\sqrt{ a_{\\text{rad}}^2 + a_{\\text{tan}}^2 }\n\\end{align}\n\\]\n\n\n\nRelative velocity\n\n\\[\n\\begin{align}\n\\vec{v}_{A/C} &= \\vec{v}_{A/B} + \\vec{v}_{B/C} \\\\\n\\vec{v}_{A/B} &= -\\vec{v}_{B/A}\n\\end{align}\n\\]"
+    "objectID": "posts/fundamental-units/index.html#kilogram",
+    "href": "posts/fundamental-units/index.html#kilogram",
+    "title": "Fundamental units",
+    "section": "Kilogram",
+    "text": "Kilogram\nOne kilogram is the mass that makes Planck’s constant \\(h\\) exactly \\(6.62607015\\times10^{-34}\\ \\mathrm{kg \\cdot m^2/s}\\)\n\n\nMore…"
   },
   {
     "objectID": "posts/distributed-systems/index.html",
@@ -182,60 +161,95 @@
     "text": "Sources\n\nKleppmann’s 2021 lectures"
   },
   {
-    "objectID": "posts/fundamental-units/index.html",
-    "href": "posts/fundamental-units/index.html",
-    "title": "Fundamental units",
+    "objectID": "posts/young-freedman-review/index.html",
+    "href": "posts/young-freedman-review/index.html",
+    "title": "Review: University Physics",
     "section": "",
-    "text": "There are three fundamental units (of time, distance, and mass) and all other units of measurement are some combination of these three. First we define the unit of time–one second; we use second to define the unit of distance–one meter; and we use both second and meter to define the unit of mass–one kilogram.\nWe want these units to be stable, universal, and reproducible. What that means is: ten seconds should mean exactly the same duration today and 1000 years from now, here and anywhere else, and anyone with the right equipment should be able to reproduce that ten-second duration independently."
+    "text": "Physical quantities and units\n\n\n\n\nSignificant figures\n\n\n\n\nScalars, vectors, and vector addition\n\n\n\n\nVector components and vector addition\n\n\n\n\nUnit vectors\n\n\n\n\nScalar product\n\n\n\n\nVector product"
   },
   {
-    "objectID": "posts/fundamental-units/index.html#second",
-    "href": "posts/fundamental-units/index.html#second",
-    "title": "Fundamental units",
-    "section": "Second",
-    "text": "Second\nOne second is the duration of exactly 9,192,631,770 cycles of microwave radiation resonant with the unperturbed ground-state hyperfine transition of a cesium-133 atom.\n\n\nMore…\n\n\n\n\n\nHow we tune the microwave source which serves as our clock post-tuning\n\n\n\n\nWhy exactly 9,192,631,770 cycles?\n\nTo preserve the duration of the second already in use.\n\n\n\nWhy cesium-133?\n\nCesium-133 has a stable, reproducible resonance that scientists can measure precisely using microwave electronics.\n\n\n\nWhy use a vacuum?\n\nA vacuum reduces collisions with surrounding gas, which could disturb the atoms and shift their resonance frequency."
-  },
-  {
-    "objectID": "posts/fundamental-units/index.html#meter",
-    "href": "posts/fundamental-units/index.html#meter",
-    "title": "Fundamental units",
-    "section": "Meter",
-    "text": "Meter\nOne meter is the distance light travels in a vacuum in exactly \\(\\tfrac{1}{\\text{299,792,458}}\\) of a second.\n\n\nMore…"
-  },
-  {
-    "objectID": "posts/fundamental-units/index.html#kilogram",
-    "href": "posts/fundamental-units/index.html#kilogram",
-    "title": "Fundamental units",
-    "section": "Kilogram",
-    "text": "Kilogram\nOne kilogram is the mass that makes Planck’s constant \\(h\\) exactly \\(6.62607015\\times10^{-34}\\ \\mathrm{kg \\cdot m^2/s}\\)\n\n\nMore…"
-  },
-  {
-    "objectID": "posts/habits/index.html",
-    "href": "posts/habits/index.html",
-    "title": "Good habits, bad habits",
+    "objectID": "posts/young-freedman-review/index.html#units-physical-quantities-and-vectors",
+    "href": "posts/young-freedman-review/index.html#units-physical-quantities-and-vectors",
+    "title": "Review: University Physics",
     "section": "",
-    "text": "Habits automate familiar routines, freeing attention and deliberate effort for tasks that need them.\nA habit is a learned (cue, response) association built through repetition, often supported by immediate reward. Lowering friction makes repetition easier—reducing the “activation energy” to act. Once established, the cue can prompt a response with little mental effort, even when the original reward is no longer valued. Such routines can escape notice; tracking can reveal them and help us decide what to preserve or change."
+    "text": "Physical quantities and units\n\n\n\n\nSignificant figures\n\n\n\n\nScalars, vectors, and vector addition\n\n\n\n\nVector components and vector addition\n\n\n\n\nUnit vectors\n\n\n\n\nScalar product\n\n\n\n\nVector product"
   },
   {
-    "objectID": "posts/habits/index.html#sources",
-    "href": "posts/habits/index.html#sources",
-    "title": "Good habits, bad habits",
-    "section": "Sources",
-    "text": "Sources\n\nGood Habits, Bad Habits by Wendy Wood\n\n\n\n\nHabit scorecard"
+    "objectID": "posts/young-freedman-review/index.html#motion-along-a-straight-line",
+    "href": "posts/young-freedman-review/index.html#motion-along-a-straight-line",
+    "title": "Review: University Physics",
+    "section": "02. Motion along a straight line",
+    "text": "02. Motion along a straight line\n\n\n\n\n\nStraight-line motion, average and instantaneous x-velocity\n\n\n\n\nAverage and instantaneous x-acceleration\n\n\n\n\nStraight-line motion with constant acceleration\n\n\n\n\nFreely falling bodies\n\n\n\n\nStraight-line motion with varying acceleration"
   },
   {
-    "objectID": "posts/rise-fall-dino/index.html",
-    "href": "posts/rise-fall-dino/index.html",
-    "title": "Rise and fall of dinosaurs",
+    "objectID": "posts/young-freedman-review/index.html#motion-in-two-and-three-dimensions",
+    "href": "posts/young-freedman-review/index.html#motion-in-two-and-three-dimensions",
+    "title": "Review: University Physics",
+    "section": "03. Motion in two and three dimensions",
+    "text": "03. Motion in two and three dimensions\n\n\n\n\n\nPosition, velocity, and acceleration vectors\n\n\n\n\nProjectile motion\n\n\\[\n\\begin{align}\nx(t) &= (v_0 \\cos{\\alpha_0})t \\\\\ny(t) &= (v_0 \\sin{\\alpha_0})t - \\frac{1}{2}gt^2 \\\\\nv_x(t) &= v_0 \\cos{\\alpha_0} \\\\\nv_y(t) &= v_0 \\sin{\\alpha_0} - gt\n\\end{align}\n\\]\n\n\n\nUniform and nonuniform circular motion\n\n\\[\n\\begin{align}\na_{\\text{rad}} &= \\frac{v^2}{R} \\\\\na_{\\text{tan}} &= \\frac{d|\\vec{v}|}{dt} \\\\\n\\left| \\frac{d\\vec{v}}{dt} \\right| &= \\sqrt{ a_{\\text{rad}}^2 + a_{\\text{tan}}^2 }\n\\end{align}\n\\]\n\n\n\nRelative velocity\n\n\\[\n\\begin{align}\n\\vec{v}_{A/C} &= \\vec{v}_{A/B} + \\vec{v}_{B/C} \\\\\n\\vec{v}_{A/B} &= -\\vec{v}_{B/A}\n\\end{align}\n\\]"
+  },
+  {
+    "objectID": "posts/trade-off-algebra/index.html",
+    "href": "posts/trade-off-algebra/index.html",
+    "title": "Tradeoffs in elementary algebra",
     "section": "",
-    "text": "Disasters within Earth helped dinosaurs rise to dominance; a disaster from beyond ended their reign."
+    "text": "tl;dr"
   },
   {
-    "objectID": "posts/rise-fall-dino/index.html#sources",
-    "href": "posts/rise-fall-dino/index.html#sources",
-    "title": "Rise and fall of dinosaurs",
-    "section": "Sources",
-    "text": "Sources\n\nThe Rise and Fall of the Dinosaurs by Steve Brusatte\nThe Last Days of the Dinosaurs by Riley Black"
+    "objectID": "posts/trade-off-algebra/index.html#x0",
+    "href": "posts/trade-off-algebra/index.html#x0",
+    "title": "Tradeoffs in elementary algebra",
+    "section": "\\(x^0\\)",
+    "text": "\\(x^0\\)\nWe choose \\(x^0 = 1\\) because choosing \\(x^0 = 0\\) instead would require us to give up the general exponent rule:\n\\[\nx^{a+b} = x^a x^b\n\\]\n\n\nMore…\n\n\\[\nx = x^{1+0} = x^1 \\cdot x^0\n\\]\nWith \\(x \\neq 0\\), \\[\n1 = \\frac{x^3}{x^3} = x^{3-3} = x^0\n\\]"
+  },
+  {
+    "objectID": "posts/trade-off-algebra/index.html#times--1",
+    "href": "posts/trade-off-algebra/index.html#times--1",
+    "title": "Tradeoffs in elementary algebra",
+    "section": "\\(-1 \\times -1\\)",
+    "text": "\\(-1 \\times -1\\)\nWhen extending multiplication to negative numbers, we choose \\((-1) \\times (-1) = +1\\) because choosing \\(-1\\) instead would require us to give up the distributive law:\n\\[\na \\times (b+c) = a \\times b + a \\times c\n\\]\n\n\nMore…\n\n\\[\n0=-1\\times \\bigl(1+(-1)\\bigr)= -1 + (-1 \\times -1)\n\\]\nWe can make the product of \\(-1\\) and \\(-1\\) equal to \\(-1\\) while keeping distributivity, but other rules must change. For example, we could define a new multiplication: \\(a \\star b = -(ab)\\) with \\(ab = \\underbrace{b + b + \\cdots + b}_{a\\text{ times}}\\). Now, the distributive law works:\n\\[\n0 = -1 \\star \\bigl(1+(-1)\\bigr) = 1 + (-1 \\star -1)\n\\]\nThe tradeoff is that multiplying by \\(1\\) now reverses the sign:\n\\[\na \\star 1 = -a.\n\\]\nInstead, \\(-1\\) becomes the multiplicative identity:\n\\[\na \\star (-1) = a.\n\\]"
+  },
+  {
+    "objectID": "posts/trade-off-algebra/index.html#fracx0",
+    "href": "posts/trade-off-algebra/index.html#fracx0",
+    "title": "Tradeoffs in elementary algebra",
+    "section": "\\(\\frac{x}{0}\\)",
+    "text": "\\(\\frac{x}{0}\\)\nWe leave \\(\\frac{x}{0}\\) undefined to preserve division as the operation that uniquely undoes multiplication: \\(a/b\\) must be the unique number \\(q\\) satisfying\n\\[\nbq = a\n\\]\n\n\nMore…\n\nFor \\(\\frac{3}{0}\\), no number satisfies \\(0q = 3\\).\nFor \\(\\frac{0}{0}\\), every number satisfies \\(0q = 0\\), so there is no unique answer."
+  },
+  {
+    "objectID": "posts/circular-motion/index.html",
+    "href": "posts/circular-motion/index.html",
+    "title": "Centripetal acceleration in uniform circular motion",
+    "section": "",
+    "text": "To understand how acceleration affects velocity, it is useful to think of acceleration vector having just two components: one parallel to the velocity vector and the other perpendicular to the velocity vector. The parallel component explains changes in speed and the perpendicular component explains changes in direction.\nIn uniform circular motion, the speed is constant. So, the entire acceleration vector consists of the perpendicular component. At a given point on the circle, the velocity vector is tangent to the circular path and the acceleration vector is directed towards the center along a radius.\nWe want to find the magnitude of this acceleration vector."
+  },
+  {
+    "objectID": "posts/circular-motion/index.html#approach-1-geometric-derivation",
+    "href": "posts/circular-motion/index.html#approach-1-geometric-derivation",
+    "title": "Centripetal acceleration in uniform circular motion",
+    "section": "Approach 1: Geometric derivation",
+    "text": "Approach 1: Geometric derivation\n\\[\n\\begin{align}\n\\left| \\vec{a}_{average} \\right| &= \\frac{\\left| \\Delta \\vec{v} \\right|}{\\Delta t} \\\\\n\\left|\\vec{a}\\right| &= \\lim_{\\Delta t \\to 0} \\left| \\vec{a}_{average} \\right|\n\\end{align}\n\\]\nFirst, we shall find out how \\(\\left| \\vec{a}_{average} \\right|\\) looks like geometrically and then we shall reason how the geometric view changes when \\(\\Delta t \\to 0\\).\nWe make the below observation about vectors in general: if we have two vectors (\\(\\vec{v}_1\\) and \\(\\vec{v}_2\\)) perpendicular to two other vectors (\\(\\vec{r}_1\\) and \\(\\vec{r}_2\\)), then these two pairs of vectors have same angle (\\(\\theta\\)) between them.\n\n\n\n\n\nNow, consider the situation where at times \\(t_1\\) and \\(t_2 (= t_1 + \\Delta t)\\) a particle in uniform circular motion has velocities \\(\\vec{v}_1\\) and \\(\\vec{v}_2\\). Here \\(|\\vec{v}_1| = |\\vec{v}_1| = v\\).\n\n\n\n\n\nWhen we measure \\(\\theta\\) in radians, from the left figure above, we have: \\[\n\\theta = \\frac{\\text{arc-length}}{R} = \\frac{v \\cdot \\Delta t}{R}\n\\]\nOn the other hand, from the right figure above, as \\(\\Delta t \\to 0, |\\Delta \\vec{v}| \\to\\) arc-length and we have another expression for \\(\\theta\\): \\[\n\\theta = \\frac{\\color{cyan}\\text{arc-length}}{v} = \\lim_{\\Delta t \\to 0} \\frac{|\\Delta \\vec{v}|}{v}\n\\]\nFrom the two expressions of \\(\\theta\\), we have:\n\\[\n\\begin{align}\n\\lim_{\\Delta t \\to 0} \\frac{ \\tfrac{|\\Delta \\vec{v}|}{v} }{ \\tfrac{v \\cdot \\Delta t}{R} } &= 1 \\\\\n\\frac{R}{v^2} \\lim_{\\Delta t \\to 0} \\frac{ |\\Delta \\vec{v}| }{ \\Delta t } &= 1 \\\\\n|\\vec{a}| = \\lim_{\\Delta t \\to 0} \\frac{ |\\Delta \\vec{v}| }{ \\Delta t } &= \\frac{v^2}{R}\n\\end{align}\n\\]\nConsequently, a small drop in speed can make it safe around a sharp bend. For example, for a fixed acceleration (fixed tire-traction, road-bank, etc.), a drop of \\(8\\%\\) in speed from \\(60\\) mph to \\(55\\) mph allows a \\(16\\%\\) smaller radius."
+  },
+  {
+    "objectID": "posts/circular-motion/index.html#approach-2-calculus-based-derivation",
+    "href": "posts/circular-motion/index.html#approach-2-calculus-based-derivation",
+    "title": "Centripetal acceleration in uniform circular motion",
+    "section": "Approach 2: Calculus-based derivation",
+    "text": "Approach 2: Calculus-based derivation\nIdea is to express the particle’s position as a function of time and then take derivatives to first find velocity and then acceleration.\n\n\n\n\n\nThe particle’s position can be represented as a radius vector that rotates with time: \\[\n\\vec{r}(t) = r \\cos{(\\theta(t))}\\hat{\\imath} + r \\sin{(\\theta(t))}\\hat{\\jmath}\n\\]\nSince the motion is uniform circular, \\(r = \\text{constant}\\) and \\(\\frac{d\\theta(t)}{dt} = \\text{constant}\\). Here \\(\\frac{d\\theta(t)}{dt}\\) is the angular speed which we denote as \\(\\omega\\). \\[\n\\begin{align}\n\\frac{d\\theta(t)}{dt} &= \\omega \\\\\n\\int_0^t \\frac{d\\theta(t)}{dt}\\ dt &= \\int_0^t \\omega\\ dt \\\\\n\\theta(t) - \\theta(0) &= \\omega t \\\\\n\\theta(t) &= \\omega t\\ (\\text{assume particle starts from +ve x-axis, so } \\theta(0) = 0)\n\\end{align}\n\\]\nSo, the particle’s position as a function of time is: \\[\n\\vec{r}(t) = r \\cos{(\\omega t)}\\hat{\\imath} + r \\sin{(\\omega t)}\\hat{\\jmath}\n\\]\nFinding an expression for the velocity is easy: \\[\n\\begin{align}\n\\vec{v}(t) &= \\frac{d}{dt}\\vec{r}(t) \\\\\n        &= -r\\omega \\sin{(\\omega t)}\\hat{\\imath}+r\\omega \\cos{(\\omega t)}\\hat{\\jmath}\n\\end{align}\n\\]\nNote, \\(\\vec{r}(t) \\cdot \\vec{v}(t) = -r^2\\omega \\sin{(\\omega t)}\\cos{(\\omega t)} + r^2\\omega \\sin{(\\omega t)} \\cos{(\\omega t)} = 0\\), so \\(\\vec{r}(t) \\perp \\vec{v}(t)\\)–as expected.\nAlso, the speed \\(v = \\sqrt{v_x^2 + v_y^2} = r\\omega\\).\nWe find the acceleration as the derivative of \\(\\vec{v}(t)\\): \\[\n\\begin{align}\n\\vec{a}(t) &= \\frac{d}{dt}\\vec{v}(t) \\\\\n           &= -r\\omega^2 \\cos{(\\omega t)}\\hat{\\imath}-r\\omega^2 \\sin{(\\omega t)}\\hat{\\jmath}\n\\end{align}\n\\]\nSo, \\(|\\vec{a}(t)| = r\\omega^2 = (r\\omega)\\omega = v\\frac{v}{r} = \\frac{v^2}{r}\\)."
+  },
+  {
+    "objectID": "posts/braver-calc-review/index.html",
+    "href": "posts/braver-calc-review/index.html",
+    "title": "Review: Full Frontal Calculus",
+    "section": "",
+    "text": "Algebraic Trickery (Rational Functions)\n\n\n\nAntiderivative of \\(\\frac{1}{x}\\)\n\n\\[\n\\int \\frac{1}{x}\\ dx = \\ln{|x|} + C\n\\]\n\n\n\nAntiderivative of \\(\\sec{(x)}\\) and \\(\\csc{(x)}\\)\n\n\\[\n\\begin{align}\n\\int \\sec{(x)}\\ dx &= \\ln{|\\sec{(x)} + \\tan{(x)}|} + C \\\\\n\\int \\csc{(x)}\\ dx &= -\\ln{|\\csc{(x)} + \\cot{(x)}|} + C\n\\end{align}\n\\]\n\n\n\n\nTrigonometric Trickery (Part 1)\n\n\n\nPythagorean identities\n\n\\[\n\\begin{align}\n\\sin^2{x} + \\cos^2{x} &= 1 \\\\\n\\sec^2{x} - \\tan^2{x} &= 1\n\\end{align}\n\\]\n\n\n\nDouble-angle identities\n\n\\[\n\\begin{align}\n\\cos{(2x)} &= \\cos^2{x} - \\sin^2{x} \\\\\n\\sin{(2x)} &= 2\\sin{x}\\cos{x}\n\\end{align}\n\\]\n\n\n\n\nTrigonometric Trickery (Part 2)\n\n\n\nTrigonometric substitution\n\nWe replace \\(x\\) with a trigonometric function to complete the square and thus get rid of the square root. The Pythagorean identities are the squaremakers.\n\n\n\n\nFor \\(\\sqrt{\\text{constant} - \\text{square}}\\), we use: \\(\\sin^2{\\theta} + \\cos^2{\\theta} = 1\\). For example, with \\(\\sqrt{9-x^2}\\) our substitution is \\(x = 3\\sin{\\theta}\\) which transforms the expression into \\(\\sqrt{(3\\cos{\\theta})^2}\\).\nFor \\(\\sqrt{\\text{square} + \\text{constant}}\\), we use: \\(\\sec^2{\\theta} - \\tan^2{\\theta} = 1\\). For example, with \\(\\sqrt{x^2+16}\\) our substitution is \\(x = 4\\tan{\\theta}\\) which transforms the expression into \\(\\sqrt{(4\\sec{\\theta})^2}\\).\nFor \\(\\sqrt{\\text{square} - \\text{constant}}\\), we use: \\(\\sec^2{\\theta} - \\tan^2{\\theta} = 1\\). For example, with \\(\\sqrt{x^2-3}\\) our substitution is \\(x = \\sqrt{3}\\sec{\\theta}\\) which transforms the expression into \\(\\sqrt{(\\sqrt{3}\\tan{\\theta})^2}\\).\n\n\n\n\n\n\nIntegration by parts\n\nIt falls out from the product rule of derivatives.\n\n\n\nSay \\(u\\) and \\(v\\) are two functions of \\(x\\). Then by product rule: \\[\n\\frac{d}{dx}(uv) = \\frac{d}{dx}(u) \\cdot v + u \\cdot \\frac{d}{dx}(v) \\\\\n\\]\n\\[\n\\begin{align}\n\\text{Integrating both sides:}&\\\\\n\\int \\frac{d}{dx}(uv)\\ dx &= \\int \\frac{d}{dx}(u) \\cdot v\\ dx + \\int u \\cdot \\frac{d}{dx}(v)\\ dx \\\\\nuv + C &= \\int \\frac{d}{dx}(u) \\cdot v\\ dx + \\int u \\cdot \\frac{d}{dx}(v)\\ dx \\\\\n\\text{Rearranging and absorbing }C&\\text{ inside the right-side integral:}\\\\\n\\int u \\cdot \\frac{d}{dx}(v)\\ dx &= uv - \\int \\textcolor{blue}{\\frac{d}{dx}(u)} \\cdot \\textcolor{green}{v}\\ dx\n\\end{align}\n\\] Final equality is the integration by parts. We just need to imagine our integral as a product like \\(\\left(u \\cdot \\frac{dv}{dx}\\right)\\) where finding \\(\\textcolor{blue}{\\frac{du}{dx}}\\) and \\(\\textcolor{green}{v}\\) is easy (and that we transition into a simpler integral than the one we started with).\n\n\n\n\\[\n\\begin{align}\n\\int x \\cos{(x)}\\ dx \\xlongequal{\\text{imagine...}} \\int \\underbrace{x}_{u} \\cdot \\overbrace{\\cos{(x)}}^{dv/dx}\\ dx &= \\underbrace{x}_{u}\\cdot \\overbrace{\\sin{(x)}}^{v} - \\int \\underbrace{1}_{du/dx} \\cdot \\overbrace{\\sin{(x)}}^{v}\\ dx\\\\\n&= x\\sin{(x)} + \\cos{(x)} + C\n\\end{align}\n\\] Note, the intermediate integral \\(\\int 1 \\cdot \\sin{(x)}\\ dx\\) is simpler than our original integral \\(\\int x\\cos{x}\\ dx\\)."
+  },
+  {
+    "objectID": "posts/braver-calc-review/index.html#chapter-5-the-integral-calculus-proper",
+    "href": "posts/braver-calc-review/index.html#chapter-5-the-integral-calculus-proper",
+    "title": "Review: Full Frontal Calculus",
+    "section": "",
+    "text": "Algebraic Trickery (Rational Functions)\n\n\n\nAntiderivative of \\(\\frac{1}{x}\\)\n\n\\[\n\\int \\frac{1}{x}\\ dx = \\ln{|x|} + C\n\\]\n\n\n\nAntiderivative of \\(\\sec{(x)}\\) and \\(\\csc{(x)}\\)\n\n\\[\n\\begin{align}\n\\int \\sec{(x)}\\ dx &= \\ln{|\\sec{(x)} + \\tan{(x)}|} + C \\\\\n\\int \\csc{(x)}\\ dx &= -\\ln{|\\csc{(x)} + \\cot{(x)}|} + C\n\\end{align}\n\\]\n\n\n\n\nTrigonometric Trickery (Part 1)\n\n\n\nPythagorean identities\n\n\\[\n\\begin{align}\n\\sin^2{x} + \\cos^2{x} &= 1 \\\\\n\\sec^2{x} - \\tan^2{x} &= 1\n\\end{align}\n\\]\n\n\n\nDouble-angle identities\n\n\\[\n\\begin{align}\n\\cos{(2x)} &= \\cos^2{x} - \\sin^2{x} \\\\\n\\sin{(2x)} &= 2\\sin{x}\\cos{x}\n\\end{align}\n\\]\n\n\n\n\nTrigonometric Trickery (Part 2)\n\n\n\nTrigonometric substitution\n\nWe replace \\(x\\) with a trigonometric function to complete the square and thus get rid of the square root. The Pythagorean identities are the squaremakers.\n\n\n\n\nFor \\(\\sqrt{\\text{constant} - \\text{square}}\\), we use: \\(\\sin^2{\\theta} + \\cos^2{\\theta} = 1\\). For example, with \\(\\sqrt{9-x^2}\\) our substitution is \\(x = 3\\sin{\\theta}\\) which transforms the expression into \\(\\sqrt{(3\\cos{\\theta})^2}\\).\nFor \\(\\sqrt{\\text{square} + \\text{constant}}\\), we use: \\(\\sec^2{\\theta} - \\tan^2{\\theta} = 1\\). For example, with \\(\\sqrt{x^2+16}\\) our substitution is \\(x = 4\\tan{\\theta}\\) which transforms the expression into \\(\\sqrt{(4\\sec{\\theta})^2}\\).\nFor \\(\\sqrt{\\text{square} - \\text{constant}}\\), we use: \\(\\sec^2{\\theta} - \\tan^2{\\theta} = 1\\). For example, with \\(\\sqrt{x^2-3}\\) our substitution is \\(x = \\sqrt{3}\\sec{\\theta}\\) which transforms the expression into \\(\\sqrt{(\\sqrt{3}\\tan{\\theta})^2}\\).\n\n\n\n\n\n\nIntegration by parts\n\nIt falls out from the product rule of derivatives.\n\n\n\nSay \\(u\\) and \\(v\\) are two functions of \\(x\\). Then by product rule: \\[\n\\frac{d}{dx}(uv) = \\frac{d}{dx}(u) \\cdot v + u \\cdot \\frac{d}{dx}(v) \\\\\n\\]\n\\[\n\\begin{align}\n\\text{Integrating both sides:}&\\\\\n\\int \\frac{d}{dx}(uv)\\ dx &= \\int \\frac{d}{dx}(u) \\cdot v\\ dx + \\int u \\cdot \\frac{d}{dx}(v)\\ dx \\\\\nuv + C &= \\int \\frac{d}{dx}(u) \\cdot v\\ dx + \\int u \\cdot \\frac{d}{dx}(v)\\ dx \\\\\n\\text{Rearranging and absorbing }C&\\text{ inside the right-side integral:}\\\\\n\\int u \\cdot \\frac{d}{dx}(v)\\ dx &= uv - \\int \\textcolor{blue}{\\frac{d}{dx}(u)} \\cdot \\textcolor{green}{v}\\ dx\n\\end{align}\n\\] Final equality is the integration by parts. We just need to imagine our integral as a product like \\(\\left(u \\cdot \\frac{dv}{dx}\\right)\\) where finding \\(\\textcolor{blue}{\\frac{du}{dx}}\\) and \\(\\textcolor{green}{v}\\) is easy (and that we transition into a simpler integral than the one we started with).\n\n\n\n\\[\n\\begin{align}\n\\int x \\cos{(x)}\\ dx \\xlongequal{\\text{imagine...}} \\int \\underbrace{x}_{u} \\cdot \\overbrace{\\cos{(x)}}^{dv/dx}\\ dx &= \\underbrace{x}_{u}\\cdot \\overbrace{\\sin{(x)}}^{v} - \\int \\underbrace{1}_{du/dx} \\cdot \\overbrace{\\sin{(x)}}^{v}\\ dx\\\\\n&= x\\sin{(x)} + \\cos{(x)} + C\n\\end{align}\n\\] Note, the intermediate integral \\(\\int 1 \\cdot \\sin{(x)}\\ dx\\) is simpler than our original integral \\(\\int x\\cos{x}\\ dx\\)."
   },
   {
     "objectID": "posts/school-shootings/index.html",
@@ -270,6 +284,6 @@
     "href": "index.html",
     "title": "Reading Nature",
     "section": "",
-    "text": "Beyond brute force\n\n\nPatterns behind efficient algorithm design\n\n\n\ncomputation\n\nalgorithms\n\n\n\n\n\n\n\n\n\nOct 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nDistributed systems\n\n\nWhen many computers pretend to be one\n\n\n\ncomputation\n\ncomplex-systems\n\n\n\n\n\n\n\n\n\nOct 21, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nBefore the violence\n\n\nUnderstanding mass shootings and how to prevent them\n\n\n\npsychology\n\nlife\n\ncomplex-systems\n\n\n\n\n\n\n\n\n\nOct 16, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHTTP: The Language of the Web\n\n\n\n\n\n\ncomputation\n\ncomputer-networks\n\n\n\n\n\n\n\n\n\nOct 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nSteadying the economy from the ground up\n\n\nThe Ideas Behind the 2026 Economics Nobel\n\n\n\ncomplex-systems\n\nnobel\n\neconomics\n\n2026\n\n\n\n\n\n\n\n\n\nOct 12, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nReview: Full Frontal Calculus\n\n\n\n\n\n\ncomputation\n\nmath\n\nreview\n\n\n\nRetrieval practice hints for Full Frontal Calculus (1st ed.) by Seth Braver\n\n\n\n\n\nOct 10, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nGood habits, bad habits\n\n\n\n\n\n\nlife\n\npsychology\n\n\n\n\n\n\n\n\n\nOct 9, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nOld school precalculus\n\n\n\n\n\n\ncomputation\n\nmath\n\n\n\n\n\n\n\n\n\nOct 8, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nSeeing the universe through ice\n\n\nThe Ideas Behind the 2026 Physics Nobel\n\n\n\nnobel\n\nphysics\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nA light switch for neurons\n\n\nThe Ideas Behind the 2026 Physiology and Medicine Nobel\n\n\n\nnobel\n\nlife\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHow chemistry chooses a hand\n\n\nThe Ideas Behind the 2026 Chemistry Nobel\n\n\n\nnobel\n\nchemistry\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Physics\n\n\n\n\n\n\nnobel\n\nphysics\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Physiology and Medicine\n\n\n\n\n\n\nnobel\n\nlife\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Chemistry\n\n\n\n\n\n\nnobel\n\nchemistry\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Economics\n\n\n\n\n\n\ncomplex-systems\n\nnobel\n\neconomics\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nRise and fall of dinosaurs\n\n\n\n\n\n\nlife\n\n\n\n\n\n\n\n\n\nOct 2, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nTradeoffs in elementary algebra\n\n\n\n\n\n\ncomputation\n\nmath\n\n\n\n\n\n\n\n\n\nSep 30, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nFundamental units\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 27, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nReview: University Physics\n\n\n\n\n\n\nphysics\n\nreview\n\n\n\nRetrieval practice hints for University Physics (14th ed.) by Young and Freedman\n\n\n\n\n\nSep 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nCentripetal acceleration in uniform circular motion\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHidden history in Physics textbooks\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 4, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\nNo matching items"
+    "text": "Interleaved realities\n\n\nThe logic and mechanics of concurrency\n\n\n\ncomputation\n\ncomplex-systems\n\n\n\n\n\n\n\n\n\nOct 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nBeyond brute force\n\n\nPatterns behind efficient algorithm design\n\n\n\ncomputation\n\nalgorithms\n\n\n\n\n\n\n\n\n\nOct 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nDistributed systems\n\n\nWhen many computers pretend to be one\n\n\n\ncomputation\n\ncomplex-systems\n\n\n\n\n\n\n\n\n\nOct 21, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nBefore the violence\n\n\nUnderstanding mass shootings and how to prevent them\n\n\n\npsychology\n\nlife\n\ncomplex-systems\n\n\n\n\n\n\n\n\n\nOct 16, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHTTP: The Language of the Web\n\n\n\n\n\n\ncomputation\n\ncomputer-networks\n\n\n\n\n\n\n\n\n\nOct 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nSteadying the economy from the ground up\n\n\nThe Ideas Behind the 2026 Economics Nobel\n\n\n\ncomplex-systems\n\nnobel\n\neconomics\n\n2026\n\n\n\n\n\n\n\n\n\nOct 12, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nReview: Full Frontal Calculus\n\n\n\n\n\n\ncomputation\n\nmath\n\nreview\n\n\n\nRetrieval practice hints for Full Frontal Calculus (1st ed.) by Seth Braver\n\n\n\n\n\nOct 10, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nGood habits, bad habits\n\n\n\n\n\n\nlife\n\npsychology\n\n\n\n\n\n\n\n\n\nOct 9, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nOld school precalculus\n\n\n\n\n\n\ncomputation\n\nmath\n\n\n\n\n\n\n\n\n\nOct 8, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nSeeing the universe through ice\n\n\nThe Ideas Behind the 2026 Physics Nobel\n\n\n\nnobel\n\nphysics\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nA light switch for neurons\n\n\nThe Ideas Behind the 2026 Physiology and Medicine Nobel\n\n\n\nnobel\n\nlife\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHow chemistry chooses a hand\n\n\nThe Ideas Behind the 2026 Chemistry Nobel\n\n\n\nnobel\n\nchemistry\n\n2026\n\n\n\n\n\n\n\n\n\nOct 7, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Physics\n\n\n\n\n\n\nnobel\n\nphysics\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Physiology and Medicine\n\n\n\n\n\n\nnobel\n\nlife\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Chemistry\n\n\n\n\n\n\nnobel\n\nchemistry\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nNobel prizes in Economics\n\n\n\n\n\n\ncomplex-systems\n\nnobel\n\neconomics\n\n\n\n\n\n\n\n\n\nOct 6, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nRise and fall of dinosaurs\n\n\n\n\n\n\nlife\n\n\n\n\n\n\n\n\n\nOct 2, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nTradeoffs in elementary algebra\n\n\n\n\n\n\ncomputation\n\nmath\n\n\n\n\n\n\n\n\n\nSep 30, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nFundamental units\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 27, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nReview: University Physics\n\n\n\n\n\n\nphysics\n\nreview\n\n\n\nRetrieval practice hints for University Physics (14th ed.) by Young and Freedman\n\n\n\n\n\nSep 22, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nCentripetal acceleration in uniform circular motion\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 13, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\n\n\n\n\n\n\n\nHidden history in Physics textbooks\n\n\n\n\n\n\nphysics\n\n\n\n\n\n\n\n\n\nSep 4, 2026\n\n\nMohammad Tanviruzzaman\n\n\n\n\n\nNo matching items"
   }
 ]
