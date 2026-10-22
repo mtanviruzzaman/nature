@@ -12,7 +12,12 @@ categories: [computation, complex-systems]
 ![](network_behavior.svg)
 
 * Node behavior
+
+![](node_behavior.svg)
+
 * Timing behavior
+
+![](timing_behavior.svg)
 
 ## Failure models
 * Two generals problem

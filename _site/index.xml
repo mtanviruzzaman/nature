@@ -53,8 +53,12 @@
 <p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/network_behavior.svg" class="img-fluid"></p>
 <ul>
 <li>Node behavior</li>
+</ul>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/node_behavior.svg" class="img-fluid"></p>
+<ul>
 <li>Timing behavior</li>
 </ul>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/timing_behavior.svg" class="img-fluid"></p>
 </section>
 <section id="failure-models" class="level2">
 <h2 class="anchored" data-anchor-id="failure-models">Failure models</h2>
