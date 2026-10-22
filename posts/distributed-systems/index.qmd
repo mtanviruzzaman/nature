@@ -28,4 +28,6 @@ categories: [computation, complex-systems]
 * IDL: Protocol buffer or Thrift
 
 ## Sources
-* [Kleppmann's 2021 lectures](https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB)
+* Kleppmann's 2021 lectures:
+    - [videos](https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB)
+    - [notes](https://www.cl.cam.ac.uk/teaching/2021/ConcDisSys/dist-sys-notes.pdf)
