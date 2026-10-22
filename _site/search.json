@@ -112,11 +112,18 @@
     "text": "Kilogram\nOne kilogram is the mass that makes Planck’s constant \\(h\\) exactly \\(6.62607015\\times10^{-34}\\ \\mathrm{kg \\cdot m^2/s}\\)\n\n\nMore…"
   },
   {
+    "objectID": "posts/distributed-systems/index.html",
+    "href": "posts/distributed-systems/index.html",
+    "title": "Distributed systems",
+    "section": "",
+    "text": "RPC: REST\nIDL: Protocol buffer or Thrift"
+  },
+  {
     "objectID": "posts/distributed-systems/index.html#messaging-layer",
     "href": "posts/distributed-systems/index.html#messaging-layer",
     "title": "Distributed systems",
-    "section": "Messaging layer",
-    "text": "Messaging layer\n\nRPC\nREST"
+    "section": "",
+    "text": "RPC: REST\nIDL: Protocol buffer or Thrift"
   },
   {
     "objectID": "posts/distributed-systems/index.html#sources",
