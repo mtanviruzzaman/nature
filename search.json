@@ -130,14 +130,21 @@
     "href": "posts/distributed-systems/index.html",
     "title": "Distributed systems",
     "section": "",
-    "text": "(Eventually Perfect) Failure detector\n\nTimeout"
+    "text": "Being able to timestamp events is useful because:\n\nElapsed time is a proxy for computational cost.\nA timestamp bigger than the current timestamp can serve as deadline.\nCause has a lower timestamp than its effect."
+  },
+  {
+    "objectID": "posts/distributed-systems/index.html#clocks",
+    "href": "posts/distributed-systems/index.html#clocks",
+    "title": "Distributed systems",
+    "section": "",
+    "text": "Being able to timestamp events is useful because:\n\nElapsed time is a proxy for computational cost.\nA timestamp bigger than the current timestamp can serve as deadline.\nCause has a lower timestamp than its effect."
   },
   {
     "objectID": "posts/distributed-systems/index.html#fault-tolerance",
     "href": "posts/distributed-systems/index.html#fault-tolerance",
     "title": "Distributed systems",
-    "section": "",
-    "text": "(Eventually Perfect) Failure detector\n\nTimeout"
+    "section": "Fault tolerance",
+    "text": "Fault tolerance\n\n(Eventually Perfect) Failure detector\n\nTimeout"
   },
   {
     "objectID": "posts/distributed-systems/index.html#availability",
