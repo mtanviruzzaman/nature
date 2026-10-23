@@ -6,6 +6,13 @@ date: "2026-10-21"
 categories: [computation, complex-systems]
 ---
 
+## Clocks
+Being able to timestamp events is useful because:
+
+* Elapsed time is a proxy for computational cost.
+* A timestamp bigger than the current timestamp can serve as deadline.
+* Cause has a lower timestamp than its effect.
+
 ## Fault tolerance
 * (Eventually Perfect) Failure detector
     - Timeout
