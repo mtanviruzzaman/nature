@@ -97,6 +97,9 @@ Note, the intermediate integral $\int 1 \cdot \sin{(x)}\ dx$ is simpler than our
 ## Chapter 6: Odds and Ends
 <details>
 <summary>Arc Length</summary>
+Zoom in enough and the curve, conveniently, becomes a straight line ...
+<details>
+<summary></summary>
 ![](arc-length.svg){width=100%}
 <details>
 <summary></summary>
@@ -106,5 +109,10 @@ $$
 ds &= \sqrt{1 + \left( \frac{dy}{dx} \right)^2} \cdot dx
 \end{align}
 $$
+Now add up $\textcolor{blue}{ds}$'s to find the total arc length of interest, say from $x=a$ to $x=b$:
+$$
+\int ds = \int_a^b \sqrt{1 + \left( \frac{dy}{dx} \right)^2} \cdot dx
+$$
+</details>
 </details>
 </details>
