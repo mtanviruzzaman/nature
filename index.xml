@@ -481,11 +481,16 @@ It falls out from the product rule of derivatives.
 <summary>
 Arc Length
 </summary>
+Zoom in enough and the curve, conveniently, becomes a straight line …
+<details>
+<summary>
+</summary>
 <img src="https://mtanviruzzaman.github.io/nature/posts/braver-calc-review/arc-length.svg" class="img-fluid" style="width:100.0%">
 <details>
 <summary>
 </summary>
-<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cleft(%5Cfrac%7Bds%7D%7Bdx%7D%5Cright)%5E2%20&amp;=%201%5E2%20+%20%5Cleft(%5Cfrac%7Bdy%7D%7Bdx%7D%5Cright)%5E2%20%5C%5C%0Ads%20&amp;=%20%5Csqrt%7B1%20+%20%5Cleft(%20%5Cfrac%7Bdy%7D%7Bdx%7D%20%5Cright)%5E2%7D%20%5Ccdot%20dx%0A%5Cend%7Balign%7D%0A">
+<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cleft(%5Cfrac%7Bds%7D%7Bdx%7D%5Cright)%5E2%20&amp;=%201%5E2%20+%20%5Cleft(%5Cfrac%7Bdy%7D%7Bdx%7D%5Cright)%5E2%20%5C%5C%0Ads%20&amp;=%20%5Csqrt%7B1%20+%20%5Cleft(%20%5Cfrac%7Bdy%7D%7Bdx%7D%20%5Cright)%5E2%7D%20%5Ccdot%20dx%0A%5Cend%7Balign%7D%0A"> Now add up <img src="https://latex.codecogs.com/png.latex?%5Ctextcolor%7Bblue%7D%7Bds%7D">’s to find the total arc length of interest, say from <img src="https://latex.codecogs.com/png.latex?x=a"> to <img src="https://latex.codecogs.com/png.latex?x=b">: <img src="https://latex.codecogs.com/png.latex?%0A%5Cint%20ds%20=%20%5Cint_a%5Eb%20%5Csqrt%7B1%20+%20%5Cleft(%20%5Cfrac%7Bdy%7D%7Bdx%7D%20%5Cright)%5E2%7D%20%5Ccdot%20dx%0A">
+</details>
 </details>
 </details>
 

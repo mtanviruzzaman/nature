@@ -35,3 +35,16 @@ details details {
   padding-inline-start: 0.75rem;
   border-inline-start: 2px solid #bbb;
 }
+
+mjx-container[jax="CHTML"] mjx-sqrt > mjx-box {
+  position: relative;
+}
+
+mjx-container[jax="CHTML"] mjx-sqrt > mjx-box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: .16em;
+  border-right: .07em solid currentColor;
+}
