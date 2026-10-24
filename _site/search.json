@@ -130,14 +130,14 @@
     "href": "posts/distributed-systems/index.html",
     "title": "Distributed systems",
     "section": "",
-    "text": "Being able to timestamp (a strictly monotonically increasing sequence) events is useful because:\n\nElapsed time is a proxy for performance.\nA timestamp bigger than the current timestamp can serve as deadline.\nCause has a lower timestamp than its effect."
+    "text": "Being able to timestamp (a strictly monotonically increasing sequence) events is useful because:\n\nElapsed time is a proxy for performance.\nA timestamp bigger than the current timestamp can serve as deadline.\nCause has a lower timestamp than its effect.\n\n\n\n\nRoundtrip network delay: \\(\\delta = (t_4 - t_1) - (t_3 - t_2)\\). Assuming the network delay is the same in both directions, when client is at \\(t_4\\) the server is at \\(t_3+\\frac{\\delta}{2}\\). Consequently, client’s clock skew: \\(\\theta = \\left(t_3+\\frac{\\delta}{2}\\right)-t_4 = \\frac{(t_2-t_1)+(t_3-t_4)}{2}\\)."
   },
   {
     "objectID": "posts/distributed-systems/index.html#clocks",
     "href": "posts/distributed-systems/index.html#clocks",
     "title": "Distributed systems",
     "section": "",
-    "text": "Being able to timestamp (a strictly monotonically increasing sequence) events is useful because:\n\nElapsed time is a proxy for performance.\nA timestamp bigger than the current timestamp can serve as deadline.\nCause has a lower timestamp than its effect."
+    "text": "Being able to timestamp (a strictly monotonically increasing sequence) events is useful because:\n\nElapsed time is a proxy for performance.\nA timestamp bigger than the current timestamp can serve as deadline.\nCause has a lower timestamp than its effect.\n\n\n\n\nRoundtrip network delay: \\(\\delta = (t_4 - t_1) - (t_3 - t_2)\\). Assuming the network delay is the same in both directions, when client is at \\(t_4\\) the server is at \\(t_3+\\frac{\\delta}{2}\\). Consequently, client’s clock skew: \\(\\theta = \\left(t_3+\\frac{\\delta}{2}\\right)-t_4 = \\frac{(t_2-t_1)+(t_3-t_4)}{2}\\)."
   },
   {
     "objectID": "posts/distributed-systems/index.html#fault-tolerance",

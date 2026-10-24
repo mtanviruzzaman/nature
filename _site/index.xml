@@ -77,6 +77,11 @@
 <li>A timestamp bigger than the current timestamp can serve as deadline.</li>
 <li>Cause has a lower timestamp than its effect.</li>
 </ul>
+<section id="clock-synchronization" class="level3">
+<h3 class="anchored" data-anchor-id="clock-synchronization">Clock synchronization</h3>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/ntp-exchange.svg" class="img-fluid"></p>
+<p>Roundtrip network delay: <img src="https://latex.codecogs.com/png.latex?%5Cdelta%20=%20(t_4%20-%20t_1)%20-%20(t_3%20-%20t_2)">. Assuming the network delay is the same in both directions, when client is at <img src="https://latex.codecogs.com/png.latex?t_4"> the server is at <img src="https://latex.codecogs.com/png.latex?t_3+%5Cfrac%7B%5Cdelta%7D%7B2%7D">. Consequently, client’s clock skew: <img src="https://latex.codecogs.com/png.latex?%5Ctheta%20=%20%5Cleft(t_3+%5Cfrac%7B%5Cdelta%7D%7B2%7D%5Cright)-t_4%20=%20%5Cfrac%7B(t_2-t_1)+(t_3-t_4)%7D%7B2%7D">.</p>
+</section>
 </section>
 <section id="fault-tolerance" class="level2">
 <h2 class="anchored" data-anchor-id="fault-tolerance">Fault tolerance</h2>
