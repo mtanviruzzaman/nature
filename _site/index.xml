@@ -73,7 +73,7 @@
 <h2 class="anchored" data-anchor-id="clocks">Clocks</h2>
 <p>Being able to timestamp (a strictly monotonically increasing sequence) events is useful because:</p>
 <ul>
-<li>Elapsed time is a proxy for computational cost.</li>
+<li>Elapsed time is a proxy for performance.</li>
 <li>A timestamp bigger than the current timestamp can serve as deadline.</li>
 <li>Cause has a lower timestamp than its effect.</li>
 </ul>
@@ -472,6 +472,20 @@ It falls out from the product rule of derivatives.
 </summary>
 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cint%20x%20%5Ccos%7B(x)%7D%5C%20dx%20%5Cxlongequal%7B%5Ctext%7Bimagine...%7D%7D%20%5Cint%20%5Cunderbrace%7Bx%7D_%7Bu%7D%20%5Ccdot%20%5Coverbrace%7B%5Ccos%7B(x)%7D%7D%5E%7Bdv/dx%7D%5C%20dx%20&amp;=%20%5Cunderbrace%7Bx%7D_%7Bu%7D%5Ccdot%20%5Coverbrace%7B%5Csin%7B(x)%7D%7D%5E%7Bv%7D%20-%20%5Cint%20%5Cunderbrace%7B1%7D_%7Bdu/dx%7D%20%5Ccdot%20%5Coverbrace%7B%5Csin%7B(x)%7D%7D%5E%7Bv%7D%5C%20dx%5C%5C%0A&amp;=%20x%5Csin%7B(x)%7D%20+%20%5Ccos%7B(x)%7D%20+%20C%0A%5Cend%7Balign%7D%0A"> Note, the intermediate integral <img src="https://latex.codecogs.com/png.latex?%5Cint%201%20%5Ccdot%20%5Csin%7B(x)%7D%5C%20dx"> is simpler than our original integral <img src="https://latex.codecogs.com/png.latex?%5Cint%20x%5Ccos%7Bx%7D%5C%20dx">.
 </details>
+</details>
+</details>
+</section>
+<section id="chapter-6-odds-and-ends" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-6-odds-and-ends">Chapter 6: Odds and Ends</h2>
+<details>
+<summary>
+Arc Length
+</summary>
+<img src="https://mtanviruzzaman.github.io/nature/posts/braver-calc-review/arc-length.svg" class="img-fluid" style="width:100.0%">
+<details>
+<summary>
+</summary>
+<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cleft(%5Cfrac%7Bds%7D%7Bdx%7D%5Cright)%5E2%20&amp;=%201%5E2%20+%20%5Cleft(%5Cfrac%7Bdy%7D%7Bdx%7D%5Cright)%5E2%20%5C%5C%0Ads%20&amp;=%20%5Csqrt%7B1%20+%20%5Cleft(%20%5Cfrac%7Bdy%7D%7Bdx%7D%20%5Cright)%5E2%7D%20%5Ccdot%20dx%0A%5Cend%7Balign%7D%0A">
 </details>
 </details>
 
