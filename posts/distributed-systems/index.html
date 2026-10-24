@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -158,6 +187,11 @@ ul.task-list li input[type="checkbox"] {
 <li>A timestamp bigger than the current timestamp can serve as deadline.</li>
 <li>Cause has a lower timestamp than its effect.</li>
 </ul>
+<section id="clock-synchronization" class="level3">
+<h3 class="anchored" data-anchor-id="clock-synchronization">Clock synchronization</h3>
+<p><img src="ntp-exchange.svg" class="img-fluid"></p>
+<p>Roundtrip network delay: <span class="math inline">\(\delta = (t_4 - t_1) - (t_3 - t_2)\)</span>. Assuming the network delay is the same in both directions, when client is at <span class="math inline">\(t_4\)</span> the server is at <span class="math inline">\(t_3+\frac{\delta}{2}\)</span>. Consequently, client’s clock skew: <span class="math inline">\(\theta = \left(t_3+\frac{\delta}{2}\right)-t_4 = \frac{(t_2-t_1)+(t_3-t_4)}{2}\)</span>.</p>
+</section>
 </section>
 <section id="fault-tolerance" class="level2">
 <h2 class="anchored" data-anchor-id="fault-tolerance">Fault tolerance</h2>
