@@ -474,6 +474,20 @@ It falls out from the product rule of derivatives.
 </details>
 </details>
 </details>
+</section>
+<section id="chapter-6-odds-and-ends" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-6-odds-and-ends">Chapter 6: Odds and Ends</h2>
+<details>
+<summary>
+Arc Length
+</summary>
+<img src="https://mtanviruzzaman.github.io/nature/posts/braver-calc-review/arc-length.svg" class="img-fluid" style="width:100.0%">
+<details>
+<summary>
+</summary>
+<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cleft(%5Cfrac%7Bds%7D%7Bdx%7D%5Cright)%5E2%20&amp;=%201%5E2%20+%20%5Cleft(%5Cfrac%7Bdy%7D%7Bdx%7D%5Cright)%5E2%20%5C%5C%0Ads%20&amp;=%20%5Csqrt%7B1%20+%20%5Cleft(%20%5Cfrac%7Bdy%7D%7Bdx%7D%20%5Cright)%5E2%7D%20%5Ccdot%20dx%0A%5Cend%7Balign%7D%0A">
+</details>
+</details>
 
 
 </section>
