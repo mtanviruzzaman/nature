@@ -116,3 +116,13 @@ $$
 </details>
 </details>
 </details>
+<details>
+<summary>Surface Area</summary>
+![](surface-of-revolution.svg){width=100%}
+<details>
+<summary></summary>
+$$
+\text{Surface area} = \int \left(2\pi \sqrt{x}\right)\textcolor{blue}{ds} = \int_0^4 \left(2\pi \sqrt{x}\right) \sqrt{1 + \left(\frac{dy}{dx}\right)^2} dx
+$$
+</details>
+</details>

@@ -277,7 +277,7 @@
     "href": "posts/braver-calc-review/index.html#chapter-6-odds-and-ends",
     "title": "Review: Full Frontal Calculus",
     "section": "Chapter 6: Odds and Ends",
-    "text": "Chapter 6: Odds and Ends\n\n\nArc Length\n\nZoom in enough and the curve, conveniently, becomes a straight line …\n\n\n\n\n\n\n\n\\[\n\\begin{align}\n\\left(\\frac{ds}{dx}\\right)^2 &= 1^2 + \\left(\\frac{dy}{dx}\\right)^2 \\\\\nds &= \\sqrt{1 + \\left( \\frac{dy}{dx} \\right)^2} \\cdot dx\n\\end{align}\n\\] Now add up \\(\\textcolor{blue}{ds}\\)’s to find the total arc length of interest, say from \\(x=a\\) to \\(x=b\\): \\[\n\\int ds = \\int_a^b \\sqrt{1 + \\left( \\frac{dy}{dx} \\right)^2} \\cdot dx\n\\]"
+    "text": "Chapter 6: Odds and Ends\n\n\nArc Length\n\nZoom in enough and the curve, conveniently, becomes a straight line …\n\n\n\n\n\n\n\n\\[\n\\begin{align}\n\\left(\\frac{ds}{dx}\\right)^2 &= 1^2 + \\left(\\frac{dy}{dx}\\right)^2 \\\\\nds &= \\sqrt{1 + \\left( \\frac{dy}{dx} \\right)^2} \\cdot dx\n\\end{align}\n\\] Now add up \\(\\textcolor{blue}{ds}\\)’s to find the total arc length of interest, say from \\(x=a\\) to \\(x=b\\): \\[\n\\int ds = \\int_a^b \\sqrt{1 + \\left( \\frac{dy}{dx} \\right)^2} \\cdot dx\n\\]\n\n\n\n\n\nSurface Area\n\n\n\n\n\n\\[\n\\text{Surface area} = \\int \\left(2\\pi \\sqrt{x}\\right)\\textcolor{blue}{ds} = \\int_0^4 \\left(2\\pi \\sqrt{x}\\right) \\sqrt{1 + \\left(\\frac{dy}{dx}\\right)^2} dx\n\\]"
   },
   {
     "objectID": "posts/school-shootings/index.html",
