@@ -19,6 +19,9 @@ Being able to timestamp (a strictly monotonically increasing sequence) events is
 
 Roundtrip network delay: $\delta = (t_4 - t_1) - (t_3 - t_2)$. Assuming the network delay is the same in both directions, when client is at $t_4$ the server is at $t_3+\frac{\delta}{2}$. Consequently, client's clock skew: $\theta = \left(t_3+\frac{\delta}{2}\right)-t_4 = \frac{(t_2-t_1)+(t_3-t_4)}{2}$.
 
+### Message ordering
+
+
 
 ## Fault tolerance
 * (Eventually Perfect) Failure detector
