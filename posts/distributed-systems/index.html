@@ -179,6 +179,11 @@ window.Quarto = {
 </header>
 
 
+<style>
+.quarto-figure figcaption {
+  text-align: center !important;
+}
+</style>
 <section id="clocks" class="level2">
 <h2 class="anchored" data-anchor-id="clocks">Clocks</h2>
 <p>Being able to timestamp (a strictly monotonically increasing sequence) events is useful because:</p>
@@ -189,11 +194,25 @@ window.Quarto = {
 </ul>
 <section id="clock-synchronization" class="level3">
 <h3 class="anchored" data-anchor-id="clock-synchronization">Clock synchronization</h3>
-<p><img src="ntp-exchange.svg" class="img-fluid"></p>
+<p><img src="ntp-exchange.svg" class="img-fluid" style="width:75.0%"></p>
 <p>Roundtrip network delay: <span class="math inline">\(\delta = (t_4 - t_1) - (t_3 - t_2)\)</span>. Assuming the network delay is the same in both directions, when client is at <span class="math inline">\(t_4\)</span> the server is at <span class="math inline">\(t_3+\frac{\delta}{2}\)</span>. Consequently, client’s clock skew: <span class="math inline">\(\theta = \left(t_3+\frac{\delta}{2}\right)-t_4 = \frac{(t_2-t_1)+(t_3-t_4)}{2}\)</span>.</p>
-</section>
-<section id="message-ordering" class="level3">
-<h3 class="anchored" data-anchor-id="message-ordering">Message ordering</h3>
+<p>If the network delay is not the same in both directions, even with NTP synchronization, there could be residual errors.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ntp-synchronization-timeline.svg" class="img-fluid figure-img"></p>
+<figcaption>Error dropped from 17 minutes to 10 ms</figcaption>
+</figure>
+</div>
+<p>Say total, forward and return network delays are <span class="math inline">\(\delta\)</span>, <span class="math inline">\(\delta_1\)</span> and <span class="math inline">\(\delta_2\)</span>. And say <span class="math inline">\(\epsilon\)</span> is the error that remains after NTP synchronization.</p>
+<p><img src="ntp-residual-error.svg" class="img-fluid"></p>
+<p><span class="math display">\[
+\begin{align}
+\epsilon &amp;= \delta_1 - \frac{\delta}{2}\\
+         &amp;= \delta_1 - \frac{\delta_1 + \delta_2}{2} \\
+         &amp;= \frac{\delta_1 - \delta_2}{2} \\
+         &amp;= \frac{ \text{forward-delay} - \text{return-delay} }{2}
+\end{align}
+\]</span></p>
 </section>
 </section>
 <section id="fault-tolerance" class="level2">

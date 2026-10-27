@@ -69,6 +69,11 @@
 
 
 
+<style>
+.quarto-figure figcaption {
+  text-align: center !important;
+}
+</style>
 <section id="clocks" class="level2">
 <h2 class="anchored" data-anchor-id="clocks">Clocks</h2>
 <p>Being able to timestamp (a strictly monotonically increasing sequence) events is useful because:</p>
@@ -79,11 +84,18 @@
 </ul>
 <section id="clock-synchronization" class="level3">
 <h3 class="anchored" data-anchor-id="clock-synchronization">Clock synchronization</h3>
-<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/ntp-exchange.svg" class="img-fluid"></p>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/ntp-exchange.svg" class="img-fluid" style="width:75.0%"></p>
 <p>Roundtrip network delay: <img src="https://latex.codecogs.com/png.latex?%5Cdelta%20=%20(t_4%20-%20t_1)%20-%20(t_3%20-%20t_2)">. Assuming the network delay is the same in both directions, when client is at <img src="https://latex.codecogs.com/png.latex?t_4"> the server is at <img src="https://latex.codecogs.com/png.latex?t_3+%5Cfrac%7B%5Cdelta%7D%7B2%7D">. Consequently, client’s clock skew: <img src="https://latex.codecogs.com/png.latex?%5Ctheta%20=%20%5Cleft(t_3+%5Cfrac%7B%5Cdelta%7D%7B2%7D%5Cright)-t_4%20=%20%5Cfrac%7B(t_2-t_1)+(t_3-t_4)%7D%7B2%7D">.</p>
-</section>
-<section id="message-ordering" class="level3">
-<h3 class="anchored" data-anchor-id="message-ordering">Message ordering</h3>
+<p>If the network delay is not the same in both directions, even with NTP synchronization, there could be residual errors.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/ntp-synchronization-timeline.svg" class="img-fluid figure-img"></p>
+<figcaption>Error dropped from 17 minutes to 10 ms</figcaption>
+</figure>
+</div>
+<p>Say total, forward and return network delays are <img src="https://latex.codecogs.com/png.latex?%5Cdelta">, <img src="https://latex.codecogs.com/png.latex?%5Cdelta_1"> and <img src="https://latex.codecogs.com/png.latex?%5Cdelta_2">. And say <img src="https://latex.codecogs.com/png.latex?%5Cepsilon"> is the error that remains after NTP synchronization.</p>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/ntp-residual-error.svg" class="img-fluid"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cepsilon%20&amp;=%20%5Cdelta_1%20-%20%5Cfrac%7B%5Cdelta%7D%7B2%7D%5C%5C%0A%20%20%20%20%20%20%20%20%20&amp;=%20%5Cdelta_1%20-%20%5Cfrac%7B%5Cdelta_1%20+%20%5Cdelta_2%7D%7B2%7D%20%5C%5C%0A%20%20%20%20%20%20%20%20%20&amp;=%20%5Cfrac%7B%5Cdelta_1%20-%20%5Cdelta_2%7D%7B2%7D%20%5C%5C%0A%20%20%20%20%20%20%20%20%20&amp;=%20%5Cfrac%7B%20%5Ctext%7Bforward-delay%7D%20-%20%5Ctext%7Breturn-delay%7D%20%7D%7B2%7D%0A%5Cend%7Balign%7D%0A"></p>
 </section>
 </section>
 <section id="fault-tolerance" class="level2">
