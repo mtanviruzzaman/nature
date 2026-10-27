@@ -73,7 +73,7 @@
 <h2 class="anchored" data-anchor-id="clocks">Clocks</h2>
 <p>Being able to timestamp (a strictly monotonically increasing sequence) events is useful because:</p>
 <ul>
-<li>Elapsed time is a proxy for performance.</li>
+<li>Elapsed time (using <a href="https://docs.python.org/3/library/time.html#time.monotonic">monotonic clock</a>) is a proxy for performance.</li>
 <li>A timestamp bigger than the current timestamp can serve as deadline.</li>
 <li>Cause has a lower timestamp than its effect.</li>
 </ul>
