@@ -29,9 +29,9 @@ Roundtrip network delay: $\delta = (t_4 - t_1) - (t_3 - t_2)$. Assuming the netw
 
 If the network delay is not the same in both directions, even with NTP synchronization, there could be residual errors.
 
-![Error dropped from 17 minutes to 10 ms](ntp-synchronization-timeline.svg)
+![Difference between A and B dropped from 17 minutes to 10 ms](ntp-synchronization-timeline.svg)
 
-Say total, forward and return network delays are $\delta$, $\delta_1$ and $\delta_2$. And say $\epsilon$ is the error that remains after NTP synchronization.
+Say between client and an NTP server, the total, forward and return network delays are $\delta$, $\delta_1$ and $\delta_2$. And say $\epsilon$ is the error that remains after NTP synchronization.
 
 ![](ntp-residual-error.svg)
 
