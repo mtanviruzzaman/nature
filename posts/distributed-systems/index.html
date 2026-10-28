@@ -249,6 +249,21 @@ window.Quarto = {
 \end{align}
 \]</span></p>
 </section>
+<section id="message-ordering" class="level3">
+<h3 class="anchored" data-anchor-id="message-ordering">Message ordering</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="message-ordering.svg" class="img-fluid figure-img"></p>
+<figcaption><span class="math inline">\(a \longrightarrow b\)</span>: <span class="math inline">\(a\)</span> happens-before <span class="math inline">\(b\)</span>; <span class="math inline">\(a \parallel b\)</span>: <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are concurrent</figcaption>
+</figure>
+</div>
+<ul>
+<li>Events local to one node: <span class="math inline">\(a \longrightarrow b\)</span>, <span class="math inline">\(c \longrightarrow d\)</span>, <span class="math inline">\(e \longrightarrow f\)</span></li>
+<li>Send, receive events: <span class="math inline">\(b \longrightarrow c\)</span>, <span class="math inline">\(d \longrightarrow f\)</span></li>
+<li>Transitivity: <span class="math inline">\(a \longrightarrow c\)</span>, <span class="math inline">\(a \longrightarrow d\)</span>, <span class="math inline">\(a \longrightarrow f\)</span>, <span class="math inline">\(b \longrightarrow d\)</span>, <span class="math inline">\(b \longrightarrow f\)</span>, <span class="math inline">\(c \longrightarrow f\)</span></li>
+<li>Concurrent (or causally unrelated): <span class="math inline">\(a \parallel e\)</span>, <span class="math inline">\(b \parallel e\)</span>, <span class="math inline">\(c \parallel e\)</span>, <span class="math inline">\(d \parallel e\)</span></li>
+</ul>
+</section>
 </section>
 <section id="fault-tolerance" class="level2">
 <h2 class="anchored" data-anchor-id="fault-tolerance">Fault tolerance</h2>
