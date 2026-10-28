@@ -353,9 +353,7 @@ window.Quarto = {
 <summary>
 </summary>
 <p>A URL shortener has a small interface: create a link, redirect a visitor, and delete a link. The interesting design work begins when those operations have to keep their promises during delays and failures.</p>
-<p>In this exercise, the most consequential promise is that a deletion takes effect within <strong>60 seconds</strong>. That requirement connects almost everything: cache expiration, delayed database responses, replica lag, leader failover, browser caching, and moving data between shards.</p>
-<p>This post follows the questions and revisions from my interview-preparation discussions. It presents a worked design, with assumptions and open choices stated explicitly. The estimates are sizing exercises, not benchmark results. Where the final presentation adds a stronger protocol or an implementation detail, I identify it as a refinement.</p>
-<p>The aim is a design whose claims can be defended under explicit requirements. An interview can change those requirements; the useful skill is to identify which assumption changes and revise the relevant part of the design.</p>
+<p>Here, the most consequential promise is that a deletion takes effect within <strong>60 seconds</strong>. That requirement connects almost everything: cache expiration, delayed database responses, replica lag, leader failover, browser caching, and moving data between shards.</p>
 <section id="url-shortener-1-clarify-the-problem-before-drawing-boxes" class="level3">
 <h3 class="anchored" data-anchor-id="url-shortener-1-clarify-the-problem-before-drawing-boxes">1. Clarify the problem before drawing boxes</h3>
 <p>These questions determine which system we are actually building.</p>
