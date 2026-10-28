@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="930" viewBox="0 0 1000 930" role="img" aria-labelledby="title desc">
+<title id="title">Safe migration of a hash range</title><desc id="desc">Range R initially belongs to shard A at epoch seven. Copy a snapshot and stream committed writes and deletes to B while A serves. Gate new operations, drain queued and in-flight work, and durably fence A including its restart and failover paths. B applies through the final committed source position L. Only then publish B as owner at epoch eight. Stale routes receive WrongShard, not Not Found. If A cannot be fenced, do not activate B.</desc>
+<rect width="1000" height="930" fill="white"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif} .edge{fill:none;stroke:#333;stroke-width:2;stroke-linejoin:round;stroke-linecap:round} .hint{fill:#666}</style>
+<text x="35" y="39" font-size="27" font-weight="600" text-anchor="start" fill="#222">Move a range without creating two owners</text>
+<text x="35" y="70" font-size="18" font-weight="normal" text-anchor="start" fill="#666">Range R starts on shard A, ownership epoch 7.</text>
+<rect x="75" y="105" width="850" height="111" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<circle cx="109" cy="136" r="17" fill="#333"/>
+<text x="109" y="142" font-size="17" font-weight="600" text-anchor="middle" fill="#fff">1</text>
+<text x="145" y="143" font-size="21" font-weight="600" text-anchor="start" fill="#222">Copy while A remains authoritative</text>
+<text x="145" y="174" font-size="17" font-weight="normal" text-anchor="start" fill="#222">Copy A’s snapshot to B; stream committed changes, including deletes.</text>
+<text x="145" y="199" font-size="17" font-weight="normal" text-anchor="start" fill="#222">Clients continue to use A during this phase.</text>
+<path class="edge" d="M 500,219 V 246" marker-end="url(#arrow)"/>
+<rect x="75" y="250" width="850" height="111" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<circle cx="109" cy="281" r="17" fill="#333"/>
+<text x="109" y="287" font-size="17" font-weight="600" text-anchor="middle" fill="#fff">2</text>
+<text x="145" y="288" font-size="21" font-weight="600" text-anchor="start" fill="#222">Gate, drain, and durably fence A</text>
+<text x="145" y="319" font-size="17" font-weight="normal" text-anchor="start" fill="#222">Stop admitting new operations for R; finish or abort queued / in-flight work.</text>
+<text x="145" y="344" font-size="17" font-weight="normal" text-anchor="start" fill="#222">The fence must survive A’s restart, failover, or isolation.</text>
+<path class="edge" d="M 500,364 V 391" marker-end="url(#arrow)"/>
+<rect x="75" y="395" width="850" height="111" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<circle cx="109" cy="426" r="17" fill="#333"/>
+<text x="109" y="432" font-size="17" font-weight="600" text-anchor="middle" fill="#fff">3</text>
+<text x="145" y="433" font-size="21" font-weight="600" text-anchor="start" fill="#222">Catch B up to the final committed position</text>
+<text x="145" y="464" font-size="17" font-weight="normal" text-anchor="start" fill="#222">Record A’s final committed position L.</text>
+<text x="145" y="489" font-size="17" font-weight="normal" text-anchor="start" fill="#222">B durably retains and applies all changes through L before serving.</text>
+<path class="edge" d="M 500,509 V 536" marker-end="url(#arrow)"/>
+<rect x="75" y="540" width="850" height="111" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<circle cx="109" cy="571" r="17" fill="#333"/>
+<text x="109" y="577" font-size="17" font-weight="600" text-anchor="middle" fill="#fff">4</text>
+<text x="145" y="578" font-size="21" font-weight="600" text-anchor="start" fill="#222">Publish the ownership change</text>
+<text x="145" y="609" font-size="17" font-weight="normal" text-anchor="start" fill="#222">Atomically change routing metadata: R → B, epoch 8.</text>
+<text x="145" y="634" font-size="17" font-weight="normal" text-anchor="start" fill="#222">Activate B only after A is fenced and B is caught up.</text>
+<path class="edge" d="M 500,654 V 681" marker-end="url(#arrow)"/>
+<rect x="75" y="685" width="850" height="111" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<circle cx="109" cy="716" r="17" fill="#333"/>
+<text x="109" y="722" font-size="17" font-weight="600" text-anchor="middle" fill="#fff">5</text>
+<text x="145" y="723" font-size="21" font-weight="600" text-anchor="start" fill="#222">Handle old routes safely</text>
+<text x="145" y="754" font-size="17" font-weight="normal" text-anchor="start" fill="#222">A returns WrongShard / refresh routing, not a misleading 404.</text>
+<text x="145" y="779" font-size="17" font-weight="normal" text-anchor="start" fill="#222">On restart, a server must establish current ownership before serving.</text>
+<rect x="75" y="850" width="850" height="48" rx="8" fill="#ededed" stroke="#555" stroke-width="1.6"/>
+<text x="500" y="880" font-size="18" font-weight="600" text-anchor="middle" fill="#222">If the old owner cannot be fenced, wait. A metadata change alone is not a fence.</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="815" viewBox="0 0 1000 815" role="img" aria-labelledby="title desc">
+<title id="title">URL shortener: request and storage paths</title><desc id="desc">Browser and optional CDN send requests through a load balancer to stateless web servers. Each web server has a local application cache and per-key singleflight. Cache misses and writes use a shard router to the selected shard primary. The primary replicates to followers. Routing metadata is cached and refreshed when needed.</desc>
+<rect width="1000" height="815" fill="white"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif} .edge{fill:none;stroke:#333;stroke-width:2;stroke-linejoin:round;stroke-linecap:round} .hint{fill:#666}</style>
+<text x="35" y="39" font-size="27" font-weight="600" text-anchor="start" fill="#222">URL shortener: the baseline</text>
+<text x="35" y="70" font-size="18" font-weight="normal" text-anchor="start" fill="#666">HTTP caches, application caches, and authoritative storage have different roles.</text>
+<rect x="45" y="108" width="220" height="100" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="155.0" y="139" font-size="21" font-weight="600" text-anchor="middle" fill="#222">Browser</text>
+<text x="155.0" y="168" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">HTTP redirect cache</text>
+<rect x="360" y="108" width="220" height="100" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="470.0" y="139" font-size="21" font-weight="600" text-anchor="middle" fill="#222">Optional CDN</text>
+<text x="470.0" y="168" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Shared HTTP cache</text>
+<rect x="675" y="108" width="280" height="100" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="815.0" y="139" font-size="21" font-weight="600" text-anchor="middle" fill="#222">Load balancer</text>
+<text x="815.0" y="168" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Distributes API traffic</text>
+<path class="edge" d="M 265,156 H 357" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<path class="edge" d="M 580,156 H 672" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<text x="310" y="139" font-size="16" font-weight="normal" text-anchor="middle" fill="#222">HTTP</text>
+<text x="627" y="139" font-size="16" font-weight="normal" text-anchor="middle" fill="#222">HTTP</text>
+<path class="edge" d="M 815,211 V 294" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<text x="829" y="249" font-size="16" font-weight="normal" text-anchor="start" fill="#222">Requests / responses</text>
+<rect x="600" y="297" width="355" height="172" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="777" y="329" font-size="22" font-weight="600" text-anchor="middle" fill="#222">Web-server pool</text>
+<text x="777" y="358" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Auth / ownership checks</text>
+<text x="777" y="384" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Local application cache</text>
+<text x="777" y="410" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Per-key refill coalescing</text>
+<rect x="280" y="327" width="230" height="112" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="395.0" y="358" font-size="21" font-weight="600" text-anchor="middle" fill="#222">Shard router</text>
+<text x="395.0" y="387" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Hash short_code</text>
+<text x="395.0" y="411" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Cached ownership map</text>
+<path class="edge" d="M 597,383 H 513" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<text x="554" y="363" font-size="16" font-weight="normal" text-anchor="middle" fill="#222">Miss / write</text>
+<path class="edge" d="M 394,442 V 498" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<rect x="45" y="501" width="465" height="225" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="277" y="532" font-size="23" font-weight="600" text-anchor="middle" fill="#222">Selected database shard</text>
+<rect x="91" y="553" width="372" height="66" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="277.0" y="584" font-size="21" font-weight="600" text-anchor="middle" fill="#222">Current primary</text>
+<rect x="78" y="655" width="180" height="46" rx="8" fill="#fff" stroke="#555" stroke-width="1.6"/>
+<rect x="296" y="655" width="180" height="46" rx="8" fill="#fff" stroke="#555" stroke-width="1.6"/>
+<text x="168" y="684" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Follower</text>
+<text x="386" y="684" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Follower</text>
+<path class="edge" d="M 215,621 V 637 H 168 V 652" marker-end="url(#arrow)"/>
+<path class="edge" d="M 339,621 V 637 H 386 V 652" marker-end="url(#arrow)"/>
+<text x="278" y="644" font-size="14" font-weight="normal" text-anchor="middle" fill="#222">replicate</text>
+<rect x="600" y="548" width="355" height="124" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="777.5" y="579" font-size="21" font-weight="600" text-anchor="middle" fill="#222">Routing metadata</text>
+<text x="777.5" y="608" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Range → owner + epoch</text>
+<text x="777.5" y="632" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Refresh on change / WrongShard</text>
+<path class="edge" d="M 510,419 H 553 V 608 H 597" stroke-dasharray="6 5" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<text x="777" y="709" font-size="17" font-weight="normal" text-anchor="middle" fill="#666">Not consulted on every cache hit.</text>
+<text x="35" y="768" font-size="18" font-weight="normal" text-anchor="start" fill="#222">Redirect: 302 + Location returns through the response path.</text>
+<text x="35" y="794" font-size="18" font-weight="normal" text-anchor="start" fill="#222">Create / delete bypass HTTP response caches and reach the authoritative primary.</text>
+</svg>
