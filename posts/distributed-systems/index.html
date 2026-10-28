@@ -267,6 +267,11 @@ window.Quarto = {
 <section id="lamport-clock" class="level3">
 <h3 class="anchored" data-anchor-id="lamport-clock">Lamport clock</h3>
 <p><img src="lamport-clocks.svg" class="img-fluid"></p>
+<ul>
+<li><span class="math inline">\((a \longrightarrow b) \implies (L(a) &lt; L(b))\)</span>.</li>
+<li><span class="math inline">\((L(a) = L(b)) \nRightarrow (a = b)\)</span>. In particular, concurrent events (<span class="math inline">\(a \parallel b\)</span>) may share the same Lamport timestamp. Consequently, sorting logs by Lamport timestamps alone may produce inconsistent ordering across nodes. We can resolve ties by using <span class="math inline">\((L(a), \operatorname{nodeID}(a))\)</span> and comparing these pairs lexicographically, yielding a deterministic total order consistent with happens-before.</li>
+<li><span class="math inline">\((L(a) &lt; L(b)) \nRightarrow (a \longrightarrow b)\)</span>. Comparing Lamport timestamps cannot establish whether one event causally preceded another. Vector clocks address this limitation by allowing us to distinguish causally ordered events from concurrent events.</li>
+</ul>
 </section>
 <section id="vector-clock" class="level3">
 <h3 class="anchored" data-anchor-id="vector-clock">Vector clock</h3>
