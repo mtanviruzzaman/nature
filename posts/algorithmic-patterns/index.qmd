@@ -8,8 +8,6 @@ categories: [computation, algorithms]
 
 ## Tree path DP
 
-Return the best path using at most one child branch. Consider joining both child branches through the current node when updating the global best.
-
 ![](tree-dp-path-pattern.svg)
 
 * [LeetCode #543: Diameter of Binary Tree](https://leetcode.com/problems/diameter-of-binary-tree/):
