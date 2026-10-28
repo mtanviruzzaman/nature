@@ -58,6 +58,10 @@ For a logical clock, minimum requirement is: $(a \longrightarrow b) \implies (T(
 ### Lamport clock
 ![](lamport-clocks.svg)
 
+- $(a \longrightarrow b) \implies (L(a) < L(b))$.
+- $(L(a) = L(b)) \nRightarrow (a = b)$. In particular, concurrent events ($a \parallel b$) may share the same Lamport timestamp. Consequently, sorting logs by Lamport timestamps alone may produce inconsistent ordering across nodes. We can resolve ties by using $(L(a), \operatorname{nodeID}(a))$ and comparing these pairs lexicographically, yielding a deterministic total order consistent with happens-before.
+- $(L(a) < L(b)) \nRightarrow (a \longrightarrow b)$. Comparing Lamport timestamps cannot establish whether one event causally preceded another. Vector clocks address this limitation by allowing us to distinguish causally ordered events from concurrent events.
+
 ### Vector clock
 
 # Fault tolerance
