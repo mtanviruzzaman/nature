@@ -14,14 +14,14 @@ categories: [computation, complex-systems]
 </style>
 ```
 
-## Clocks
+# Clocks
 Being able to timestamp (a strictly monotonically increasing sequence) events is useful because:
 
 * Elapsed time (using [monotonic clock](https://docs.python.org/3/library/time.html#time.monotonic)) is a proxy for performance.
 * A timestamp bigger than the current timestamp can serve as deadline.
 * Cause has a lower timestamp than its effect.
 
-### Clock synchronization
+## Clock synchronization
 
 ![](ntp-exchange.svg){width=75%}
 
@@ -44,7 +44,7 @@ $$
 \end{align}
 $$
 
-### Message ordering
+## Message ordering using logical clocks
 
 ![$a \longrightarrow b$: $a$ happens-before $b$; $a \parallel b$: $a$ and $b$ are concurrent](message-ordering.svg)
 
@@ -53,12 +53,19 @@ $$
 * Transitivity: $a \longrightarrow c$, $a \longrightarrow d$, $a \longrightarrow f$, $b \longrightarrow d$, $b \longrightarrow f$, $c \longrightarrow f$
 * Concurrent (or causally unrelated): $a \parallel e$, $b \parallel e$, $c \parallel e$, $d \parallel e$
 
-## Fault tolerance
+For a logical clock, minimum requirement is: $(a \longrightarrow b) \implies (T(a) < T(b))$
+
+### Lamport clock
+![](lamport-clocks.svg)
+
+### Vector clock
+
+# Fault tolerance
 * (Eventually Perfect) Failure detector
     - Timeout
 
 
-## Availability
+# Availability
 
 | Nines | Availability | Equivalent downtime/year | Service example | Use case and cost of an outage |
 |---|---:|---:|---|---|
@@ -69,9 +76,9 @@ $$
 
 Each additional nine reduces the downtime budget by **10×**.
 
-### SLO, SLA
+## SLO, SLA
 
-## Assumptions
+# Assumptions
 * Network behavior
 
 ![](network_behavior.svg)
@@ -84,21 +91,21 @@ Each additional nine reduces the downtime budget by **10×**.
 
 ![](timing_behavior.svg)
 
-## Failure models
+# Failure models
 * Two generals problem
 * Byzantine generals problem
 
-## Messaging layer
+# Messaging layer
 * RPC, REST
 * Language-agnostic IDL: Protocol buffer or Thrift
 
-## Sources
+# Sources
 * Kleppmann's 2021 lectures:
     - [videos](https://www.youtube.com/playlist?list=PLeKd45zvjcDFUEv_ohr_HdUFe97RItdiB)
     - [notes](https://www.cl.cam.ac.uk/teaching/2021/ConcDisSys/dist-sys-notes.pdf)
 * [Caching challenges and strategies from AWS](https://builder.aws.com/content/3K9TeXp6strMiJ4vhakpRD7BQWO/caching-challenges-and-strategies)
 
-## URL shortener {#url-shortener}
+# URL shortener {#url-shortener}
 
 <details id="url-shortener-design">
 <summary></summary>
