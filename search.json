@@ -46,14 +46,14 @@
     "href": "posts/algorithmic-patterns/index.html",
     "title": "Beyond brute force",
     "section": "",
-    "text": "Return the best path using at most one child branch. Consider joining both child branches through the current node when updating the global best.\n\n\nLeetCode #543: Diameter of Binary Tree: child contributions are nonnegative path lengths.\nLeetCode #124: Binary Tree Maximum Path Sum: discard negative child contributions; the node alone remains a valid candidate."
+    "text": "LeetCode #543: Diameter of Binary Tree: child contributions are nonnegative path lengths.\nLeetCode #124: Binary Tree Maximum Path Sum: discard negative child contributions; the node alone remains a valid candidate."
   },
   {
     "objectID": "posts/algorithmic-patterns/index.html#tree-path-dp",
     "href": "posts/algorithmic-patterns/index.html#tree-path-dp",
     "title": "Beyond brute force",
     "section": "",
-    "text": "Return the best path using at most one child branch. Consider joining both child branches through the current node when updating the global best.\n\n\nLeetCode #543: Diameter of Binary Tree: child contributions are nonnegative path lengths.\nLeetCode #124: Binary Tree Maximum Path Sum: discard negative child contributions; the node alone remains a valid candidate."
+    "text": "LeetCode #543: Diameter of Binary Tree: child contributions are nonnegative path lengths.\nLeetCode #124: Binary Tree Maximum Path Sum: discard negative child contributions; the node alone remains a valid candidate."
   },
   {
     "objectID": "posts/algorithmic-patterns/index.html#binary-search",
