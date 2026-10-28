@@ -44,6 +44,15 @@ $$
 \end{align}
 $$
 
+### Message ordering
+
+![$a \longrightarrow b$: $a$ happens-before $b$; $a \parallel b$: $a$ and $b$ are concurrent](message-ordering.svg)
+
+* Events local to one node: $a \longrightarrow b$, $c \longrightarrow d$, $e \longrightarrow f$
+* Send, receive events: $b \longrightarrow c$, $d \longrightarrow f$
+* Transitivity: $a \longrightarrow c$, $a \longrightarrow d$, $a \longrightarrow f$, $b \longrightarrow d$, $b \longrightarrow f$, $c \longrightarrow f$
+* Concurrent (or causally unrelated): $a \parallel e$, $b \parallel e$, $c \parallel e$, $d \parallel e$
+
 ## Fault tolerance
 * (Eventually Perfect) Failure detector
     - Timeout
