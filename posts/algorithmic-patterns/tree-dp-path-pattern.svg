@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="310" viewBox="0 0 1000 310" role="img" aria-labelledby="title desc">
+  <title id="title">Tree DP: extend one branch, combine two</title>
+  <desc id="desc">A path using both child branches of node u cannot also extend to its parent, because that would create a branch. A path using only the left child, only the right child, or node u alone can extend to the parent. Dashed edges indicate possible extensions to the parent.</desc>
+  <rect width="1000" height="310" fill="#fff"/>
+  <style>
+    text { font-family: Arial, Helvetica, sans-serif; fill: #202020; text-anchor: middle; }
+    .heading { font-size: 22px; font-weight: 600; }
+    .label { font-size: 18px; }
+    .small { font-size: 15px; fill: #666; }
+    .node-label { font-family: Georgia, 'Times New Roman', serif; font-size: 24px; font-style: italic; }
+    .branch { fill: none; stroke: #303030; stroke-width: 3; stroke-linecap: round; }
+    .extension { fill: none; stroke: #888; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 5 5; }
+    .node { fill: #fff; stroke: #303030; stroke-width: 2.5; }
+  </style>
+
+  <text class="heading" x="170" y="35">Use both children</text>
+  <text class="heading" x="670" y="35">Use at most one child</text>
+  <path d="M 340,60 V 251" stroke="#d3d3d3" stroke-width="1"/>
+
+  <!-- A completed path through u; extending upward would make three branches. -->
+  <path class="branch" d="M 170,145 L 105,208 M 170,145 L 235,208"/>
+  <circle class="node" cx="170" cy="145" r="24"/>
+  <text class="node-label" x="170" y="153">u</text>
+  <text class="label" x="170" y="246">Cannot extend to parent</text>
+
+  <!-- An extendable path can use the left branch, right branch, or neither. -->
+  <g>
+    <text class="small" x="465" y="75">parent</text>
+    <path class="extension" d="M 465,87 V 121"/>
+    <path class="branch" d="M 465,145 L 400,208"/>
+    <circle class="node" cx="465" cy="145" r="24"/>
+    <text class="node-label" x="465" y="153">u</text>
+    <text class="label" x="465" y="246">Left branch</text>
+  </g>
+  <g>
+    <text class="small" x="670" y="75">parent</text>
+    <path class="extension" d="M 670,87 V 121"/>
+    <path class="branch" d="M 670,145 L 735,208"/>
+    <circle class="node" cx="670" cy="145" r="24"/>
+    <text class="node-label" x="670" y="153">u</text>
+    <text class="label" x="670" y="246">Right branch</text>
+  </g>
+  <g>
+    <text class="small" x="875" y="75">parent</text>
+    <path class="extension" d="M 875,87 V 121"/>
+    <circle class="node" cx="875" cy="145" r="24"/>
+    <text class="node-label" x="875" y="153">u</text>
+    <text class="label" x="875" y="246">Node alone</text>
+  </g>
+  <text class="small" x="670" y="282">All three can extend to the parent.</text>
+</svg>
