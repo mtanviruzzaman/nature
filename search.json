@@ -46,14 +46,21 @@
     "href": "posts/algorithmic-patterns/index.html",
     "title": "Beyond brute force",
     "section": "",
-    "text": "Search within the data: Use the input’s ordering to determine which half could contain the target. Example: LeetCode #33: Search in Rotated Sorted Array.\nSearch the answer space: Find the smallest or largest answer satisfying a monotonic condition—one whose truth value changes at most once as candidate answers increase. The input itself need not be sorted. Example: LeetCode#875: Koko Eating Bananas."
+    "text": "Return the best path using at most one child branch. Consider joining both child branches through the current node when updating the global best.\n\n\nLeetCode #543: Diameter of Binary Tree: child contributions are nonnegative path lengths.\nLeetCode #124: Binary Tree Maximum Path Sum: discard negative child contributions; the node alone remains a valid candidate."
+  },
+  {
+    "objectID": "posts/algorithmic-patterns/index.html#tree-path-dp",
+    "href": "posts/algorithmic-patterns/index.html#tree-path-dp",
+    "title": "Beyond brute force",
+    "section": "",
+    "text": "Return the best path using at most one child branch. Consider joining both child branches through the current node when updating the global best.\n\n\nLeetCode #543: Diameter of Binary Tree: child contributions are nonnegative path lengths.\nLeetCode #124: Binary Tree Maximum Path Sum: discard negative child contributions; the node alone remains a valid candidate."
   },
   {
     "objectID": "posts/algorithmic-patterns/index.html#binary-search",
     "href": "posts/algorithmic-patterns/index.html#binary-search",
     "title": "Beyond brute force",
-    "section": "",
-    "text": "Search within the data: Use the input’s ordering to determine which half could contain the target. Example: LeetCode #33: Search in Rotated Sorted Array.\nSearch the answer space: Find the smallest or largest answer satisfying a monotonic condition—one whose truth value changes at most once as candidate answers increase. The input itself need not be sorted. Example: LeetCode#875: Koko Eating Bananas."
+    "section": "Binary search",
+    "text": "Binary search\n\nSearch within the data: Use the input’s ordering to determine which half could contain the target. Example: LeetCode #33: Search in Rotated Sorted Array.\nSearch the answer space: Find the smallest or largest answer satisfying a monotonic condition—one whose truth value changes at most once as candidate answers increase. The input itself need not be sorted. Example: LeetCode #875: Koko Eating Bananas."
   },
   {
     "objectID": "posts/concurrency/index.html",

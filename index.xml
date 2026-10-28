@@ -44,11 +44,20 @@
 
 
 
+<section id="tree-path-dp" class="level2">
+<h2 class="anchored" data-anchor-id="tree-path-dp">Tree path DP</h2>
+<p>Return the best path using at most one child branch. Consider joining both child branches through the current node when updating the global best.</p>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/algorithmic-patterns/tree-dp-path-pattern.svg" class="img-fluid"></p>
+<ul>
+<li><a href="https://leetcode.com/problems/diameter-of-binary-tree/">LeetCode #543: Diameter of Binary Tree</a>: child contributions are nonnegative path lengths.</li>
+<li><a href="https://leetcode.com/problems/binary-tree-maximum-path-sum/">LeetCode #124: Binary Tree Maximum Path Sum</a>: discard negative child contributions; the node alone remains a valid candidate.</li>
+</ul>
+</section>
 <section id="binary-search" class="level2">
 <h2 class="anchored" data-anchor-id="binary-search">Binary search</h2>
 <ul>
 <li><p><strong>Search within the data:</strong> Use the input’s ordering to determine which half could contain the target. Example: <a href="https://leetcode.com/problems/search-in-rotated-sorted-array/">LeetCode #33: Search in Rotated Sorted Array</a>.</p></li>
-<li><p><strong>Search the answer space:</strong> Find the smallest or largest answer satisfying a monotonic condition—one whose truth value changes at most once as candidate answers increase. The input itself need not be sorted. Example: <a href="https://leetcode.com/problems/koko-eating-bananas/">LeetCode#875: Koko Eating Bananas</a>.</p></li>
+<li><p><strong>Search the answer space:</strong> Find the smallest or largest answer satisfying a monotonic condition—one whose truth value changes at most once as candidate answers increase. The input itself need not be sorted. Example: <a href="https://leetcode.com/problems/koko-eating-bananas/">LeetCode #875: Koko Eating Bananas</a>.</p></li>
 </ul>
 
 
