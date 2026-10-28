@@ -202,9 +202,1143 @@
 </ul></li>
 <li><a href="https://builder.aws.com/content/3K9TeXp6strMiJ4vhakpRD7BQWO/caching-challenges-and-strategies">Caching challenges and strategies from AWS</a></li>
 </ul>
+</section>
+<section id="url-shortener" class="level2">
+<h2 class="anchored" data-anchor-id="url-shortener">URL shortener</h2>
+<details id="url-shortener-design">
+<summary>
+</summary>
+<p>A URL shortener has a small interface: create a link, redirect a visitor, and delete a link. The interesting design work begins when those operations have to keep their promises during delays and failures.</p>
+<p>In this exercise, the most consequential promise is that a deletion takes effect within <strong>60 seconds</strong>. That requirement connects almost everything: cache expiration, delayed database responses, replica lag, leader failover, browser caching, and moving data between shards.</p>
+<p>This post follows the questions and revisions from my interview-preparation discussions. It presents a worked design, with assumptions and open choices stated explicitly. The estimates are sizing exercises, not benchmark results. Where the final presentation adds a stronger protocol or an implementation detail, I identify it as a refinement.</p>
+<p>The aim is a design whose claims can be defended under explicit requirements. An interview can change those requirements; the useful skill is to identify which assumption changes and revise the relevant part of the design.</p>
+<section id="url-shortener-1-clarify-the-problem-before-drawing-boxes" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-1-clarify-the-problem-before-drawing-boxes">1. Clarify the problem before drawing boxes</h3>
+<p>These questions determine which system we are actually building.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Clarifying question</th>
+<th>Working answer or unresolved choice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>What operations are required?</td>
+<td>Create, redirect, and delete. Editing destinations, custom aliases, analytics, and listing a user’s links are optional follow-ups.</td>
+</tr>
+<tr class="even">
+<td>Does “one billion requests” mean creations or redirects?</td>
+<td><strong>One billion redirects/day</strong>, separate from <strong>10 million new links/day</strong>.</td>
+</tr>
+<tr class="odd">
+<td>Are redirects public or permission checked?</td>
+<td>Assume public bearer links for this baseline. Creation and deletion use authenticated identities. Private redirects need different authorization and cache rules.</td>
+</tr>
+<tr class="even">
+<td>Who may delete a link?</td>
+<td>Its authenticated owner. Knowing a short code is not authorization to delete it.</td>
+</tr>
+<tr class="odd">
+<td>What does “below 100 ms at p95” measure?</td>
+<td>Working interpretation: the shortener’s redirect response, including its internal waiting and database work. It excludes loading the destination page. Client geography and network time must be clarified before promising a global client-observed target.</td>
+</tr>
+<tr class="even">
+<td>What is peak traffic, rather than the daily average?</td>
+<td>Not specified. Keep peak and burst factors as explicit sizing inputs.</td>
+</tr>
+<tr class="odd">
+<td>How long are links retained?</td>
+<td>Five years is the sizing horizon. Actual expiry and retention rules remain a product decision.</td>
+</tr>
+<tr class="even">
+<td>How large can an original URL be?</td>
+<td>Not specified. Measure the distribution and enforce a chosen maximum; a small average is not an upper bound.</td>
+</tr>
+<tr class="odd">
+<td>What does “deleted within 60 seconds” mean?</td>
+<td>Use the precise contract below. It is a bound on serving a deleted redirect, not a promise to erase knowledge from clients.</td>
+</tr>
+<tr class="even">
+<td>Does the deletion clock start at receipt, database commit, or acknowledgment?</td>
+<td>This post uses <strong>successful acknowledgment</strong> as the external reference point. Commit happens before acknowledgment.</td>
+</tr>
+<tr class="odd">
+<td>Must deletion remain visible after an immediate primary crash?</td>
+<td>Yes. Acknowledgment must imply the delete survives the supported failover model.</td>
+</tr>
+<tr class="even">
+<td>May the service fail a request when it cannot establish freshness?</td>
+<td>Yes in this baseline. A retryable failure is preferable to serving a mapping that may violate deletion. The availability target is still unspecified.</td>
+</tr>
+<tr class="odd">
+<td>Are codes ever reused or destinations edited?</td>
+<td>Assume immutable destinations and no code reuse within the supported lifetime. Reuse requires additional rules for old bookmarks, negative caches, and deletion records.</td>
+</tr>
+<tr class="even">
+<td>Which regions must be supported?</td>
+<td>Deployment requirements remain unresolved; the worked baseline below chooses one home write region. Cross-region latency and disaster recovery need additional guarantees.</td>
+</tr>
+</tbody>
+</table>
+<section id="url-shortener-a-deletion-contract-that-can-be-tested" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-a-deletion-contract-that-can-be-tested">A deletion contract that can be tested</h4>
+<p>After a successful deletion acknowledgment at time <img src="https://latex.codecogs.com/png.latex?a">, <strong>new redirect requests initiated after <img src="https://latex.codecogs.com/png.latex?a+60"> seconds must not receive the deleted mapping from service-controlled components and compliant HTTP caches</strong>.</p>
+<p>When an authoritative lookup confirms absence, return <code>404 Not Found</code> (or a deliberately chosen <code>410 Gone</code> policy). When freshness cannot be established, return an appropriate retryable error. A <code>503</code> does <strong>not</strong> assert that the link is absent.</p>
+<p>This contract does not retract a redirect already delivered, close an already opened destination, stop someone visiting the original URL directly, or control a client that ignores cache rules. Arbitrarily delayed responses to older requests also require separate treatment; a TTL cannot recall a response already in transit. Clock behavior and HTTP cache compliance are assumptions in the timing argument, not invisible guarantees.</p>
+</section>
+</section>
+<section id="url-shortener-2-estimate-scale-then-identify-what-the-estimates-omit" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-2-estimate-scale-then-identify-what-the-estimates-omit">2. Estimate scale, then identify what the estimates omit</h3>
+<p>There are 86,400 seconds in a day:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Clambda_%7B%5Ctext%7Bcreate%7D%7D=%5Cfrac%7B10%5E7%7D%7B86%7B,%7D400%7D%5Capprox116/%5Ctext%7Bs%7D,%0A%5Cqquad%0A%5Clambda_%7B%5Ctext%7Bredirect%7D%7D=%5Cfrac%7B10%5E9%7D%7B86%7B,%7D400%7D%5Capprox11%7B,%7D574/%5Ctext%7Bs%7D.%0A"></p>
+<p>Using roughly 80,000 seconds/day gives 125 creations/s and 12,500 redirects/s. That is reasonable interview rounding, provided it is identified as such. The read-to-create ratio is about <strong>100:1</strong>.</p>
+<section id="url-shortener-how-much-data-is-five-years-of-links" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-how-much-data-is-five-years-of-links">How much data is five years of links?</h4>
+<p>Assuming 365 days/year and retaining all created codes:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AN=10%5E7%5Ctimes365%5Ctimes5=18.25%5Ctext%7B%20billion%7D.%0A"></p>
+<p>The initial record sketch was <code>short_code</code>, <code>original_url</code>, and <code>user_id</code>. A rough estimate of 20 + 100 + 20 bytes adds to <strong>140 bytes</strong>, not 256. We can nevertheless choose <strong>256 bytes/record as an explicit planning allowance</strong> for representation and some metadata; it is not a measured row size.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Quantity</th>
+<th style="text-align: right;">Estimate</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Five-year population</td>
+<td style="text-align: right;">18.25 billion codes</td>
+</tr>
+<tr class="even">
+<td>Logical data at 256 bytes/record</td>
+<td style="text-align: right;">4.672 TB</td>
+</tr>
+<tr class="odd">
+<td>Three full copies of that logical data</td>
+<td style="text-align: right;">14.016 TB</td>
+</tr>
+</tbody>
+</table>
+<p>These are decimal TB. Indexes, row and storage-engine overhead, logs, backups, compaction space, migration copies, and operational headroom can increase the physical footprint. Long original URLs can change the estimate substantially. User-profile data belongs in a separate identity/user store rather than being copied into every link row.</p>
+</section>
+<section id="url-shortener-how-much-does-caching-reduce-database-traffic" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-how-much-does-caching-reduce-database-traffic">How much does caching reduce database traffic?</h4>
+<p>If the <strong>application cache</strong> hit rate is 95% and all redirect traffic reaches the web-server tier, the average database read rate is approximately:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A(1-0.95)%5Ctimes11%7B,%7D574%5Capprox579%5Ctext%7B%20reads/s%7D.%0A"></p>
+<p>Add roughly 116 creations/s, plus deletes and other operations. The rounded discussion estimate was 580 reads/s and 116 creates/s. If a CDN absorbs some requests first, apply the application-cache hit ratio to the traffic that actually reaches the application; do not mix hit ratios measured at different layers.</p>
+<p>With an empty application cache, reads can approach <strong>11,574/s before peak factors</strong>: about 20 times the warm-cache read estimate. A warm-cache average alone is therefore insufficient to size the database.</p>
+</section>
+<section id="url-shortener-can-one-primary-handle-the-workload" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-can-one-primary-handle-the-workload">Can one primary handle the workload?</h4>
+<p>The answer requires measurements. Check usable storage, working-set memory, index behavior, CPU, I/O, mixed read/write throughput, connection pools, replica overhead, and recovery time. A large number of browser connections does not imply one database connection per browser; the web tier should pool database connections.</p>
+<p>Shard count must satisfy both storage and load constraints with headroom. Hash balance also does not imply request balance: one viral link can dominate a shard. The exact database product, hardware, shard count, peak factor, and availability SLO remain open choices.</p>
+<p>For an initial lower bound, let <img src="https://latex.codecogs.com/png.latex?B"> be logical bytes, <img src="https://latex.codecogs.com/png.latex?C_B"> the usable logical bytes per primary with headroom, <img src="https://latex.codecogs.com/png.latex?R_%7B%5Cmathrm%7Bpeak%7D%7D"> the cold-read peak, and <img src="https://latex.codecogs.com/png.latex?C_R"> the measured read capacity per primary under the intended mixed workload:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AS%5Cge%5Cleft%5Clceil%5Cmax%5Cleft(%5Cfrac%7BB%7D%7BC_B%7D,%5Cfrac%7BR_%7B%5Cmathrm%7Bpeak%7D%7D%7D%7BC_R%7D%5Cright)%5Cright%5Crceil.%0A"></p>
+<p>Also check write load and hot keys. This is a sizing bound, not a substitute for load testing. For example, a <strong>hypothetical</strong> 10× daily-average burst gives about 115,740 redirects/s; use the interviewer’s actual peak assumption when one is available. Replica copies multiply the machine/storage budget, not the number of independent writable partitions.</p>
+</section>
+</section>
+<section id="url-shortener-3-define-the-api-and-its-semantics" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-3-define-the-api-and-its-semantics">3. Define the API and its semantics</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Operation</th>
+<th>Request</th>
+<th>Success</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Create</td>
+<td><code>POST /urls</code> with the destination in JSON</td>
+<td><code>201 Created</code>, returning the short URL</td>
+</tr>
+<tr class="even">
+<td>Redirect</td>
+<td><code>GET /Ab3x9Qp2</code></td>
+<td><code>302 Found</code> with <code>Location</code> pointing to the destination</td>
+</tr>
+<tr class="odd">
+<td>Delete</td>
+<td><code>DELETE /Ab3x9Qp2</code></td>
+<td><code>204 No Content</code> after the durable deletion condition is met</td>
+</tr>
+</tbody>
+</table>
+<p>The code and domains below are illustrative. Framing and authentication details not relevant to an example are omitted.</p>
+<pre class="http"><code>POST /urls HTTP/1.1
+Host: s.example
+Authorization: Bearer &lt;token&gt;
+Content-Type: application/json
+
+{"url":"https://example.com/articles/a-long-title"}</code></pre>
+<pre class="http"><code>HTTP/1.1 201 Created
+Location: https://s.example/Ab3x9Qp2
+Content-Type: application/json
+Cache-Control: no-store
+
+{"shortened_url":"https://s.example/Ab3x9Qp2"}</code></pre>
+<pre class="http"><code>GET /Ab3x9Qp2 HTTP/1.1
+Host: s.example</code></pre>
+<pre class="http"><code>HTTP/1.1 302 Found
+Location: https://example.com/articles/a-long-title
+Cache-Control: public, max-age=15, must-revalidate
+Content-Length: 0</code></pre>
+<p>The redirect’s <code>max-age</code> is an example upper bound. Later we will make it depend on the remaining freshness of the application-cache entry.</p>
+<pre class="http"><code>DELETE /Ab3x9Qp2 HTTP/1.1
+Host: s.example
+Authorization: Bearer &lt;token&gt;</code></pre>
+<pre class="http"><code>HTTP/1.1 204 No Content
+Cache-Control: no-store</code></pre>
+<section id="url-shortener-why-does-the-endpoint-still-matter-when-the-request-has-json" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-why-does-the-endpoint-still-matter-when-the-request-has-json">Why does the endpoint still matter when the request has JSON?</h4>
+<p>The method and request target identify the operation and resource. The body supplies data for that operation. <code>{"url": ...}</code> does not replace <code>POST /urls</code>.</p>
+</section>
+<section id="url-shortener-why-post-if-put-can-also-create" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-why-post-if-put-can-also-create">Why POST if PUT can also create?</h4>
+<p>POST fits a service that assigns the code. PUT is appropriate when the client selects the target resource URI and requests its creation or replacement. Neither is universally more beneficial; the choice expresses the API contract.<sup>1</sup></p>
+</section>
+<section id="url-shortener-which-operations-are-idempotent" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-which-operations-are-idempotent">Which operations are idempotent?</h4>
+<p>Idempotency concerns the intended effect of repeating a request, not whether every response is identical.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Idempotency guaranteed by method semantics?</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>GET</td>
+<td>Yes</td>
+<td>Look up the redirect</td>
+</tr>
+<tr class="even">
+<td>PUT</td>
+<td>Yes</td>
+<td>Replace a resource at a known URI with the supplied representation</td>
+</tr>
+<tr class="odd">
+<td>DELETE</td>
+<td>Yes</td>
+<td>Leave the target resource deleted</td>
+</tr>
+<tr class="even">
+<td>POST</td>
+<td>Not guaranteed</td>
+<td>Repeating creation may allocate another code</td>
+</tr>
+<tr class="odd">
+<td>PATCH</td>
+<td>Not guaranteed</td>
+<td>“Increment this counter” differs from “set this field to 7”</td>
+</tr>
+</tbody>
+</table>
+<p>A second DELETE may return a different status while preserving the same deleted state. POST can offer idempotency through an application-defined key and retention contract. PATCH can be designed idempotently, but its method alone does not promise that.<sup>2</sup></p>
+</section>
+<section id="url-shortener-why-302-rather-than-201-or-301" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-why-302-rather-than-201-or-301">Why 302 rather than 201 or 301?</h4>
+<p>A redirect lookup creates no new mapping, so <code>201 Created</code> is inappropriate. <code>302 Found</code> communicates a temporary redirection using <code>Location</code>. It still needs explicit caching rules. A <code>301</code> is not literally cached forever, and a <code>302</code> is not automatically uncacheable; our revocation policy must be expressed and enforced separately.<sup>3</sup></p>
+</section>
+<section id="url-shortener-is-200-used-exactly-when-there-is-a-body" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-is-200-used-exactly-when-there-is-a-body">Is 200 used exactly when there is a body?</h4>
+<p>No.&nbsp;Status is part of the operation’s semantics. <code>204</code> prohibits response content; <code>200</code> is not merely a “body present” indicator. The service implementation chooses a status consistent with HTTP and its documented API.<sup>4</sup></p>
+</section>
+<section id="url-shortener-which-errors-matter-to-this-design" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-which-errors-matter-to-this-design">Which errors matter to this design?</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Status</th>
+<th>Use here</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>400 Bad Request</code></td>
+<td>Invalid creation input</td>
+</tr>
+<tr class="even">
+<td><code>401 Unauthorized</code></td>
+<td>Authentication is missing or invalid where required</td>
+</tr>
+<tr class="odd">
+<td><code>403 Forbidden</code></td>
+<td>Authenticated caller is not allowed to delete the link</td>
+</tr>
+<tr class="even">
+<td><code>404 Not Found</code></td>
+<td>Authoritative lookup confirms no active mapping</td>
+</tr>
+<tr class="odd">
+<td><code>429 Too Many Requests</code></td>
+<td>A separately specified rate policy rejects a request</td>
+</tr>
+<tr class="even">
+<td><code>500 Internal Server Error</code></td>
+<td>Unexpected service failure</td>
+</tr>
+<tr class="odd">
+<td><code>503 Service Unavailable</code></td>
+<td>The service cannot safely complete a lookup, for example because authority is unavailable</td>
+</tr>
+</tbody>
+</table>
+<p><code>Retry-After: 60</code> means <strong>60 seconds</strong>; HTTP also permits a date value. A retry indication is guidance for the client, not proof that the next attempt will succeed.<sup>5</sup></p>
+</section>
+</section>
+<section id="url-shortener-4-store-the-mapping-and-enforce-ownership" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-4-store-the-mapping-and-enforce-ownership">4. Store the mapping and enforce ownership</h3>
+<p>The minimal record is:</p>
+<pre class="text"><code>short_code    primary key, case-sensitive
+original_url  destination
+user_id       owner</code></pre>
+<p>With one fixed short domain, storing the whole shortened URL as the primary key is unnecessary. Reconstruct it from the domain and code. Because Base62 distinguishes uppercase and lowercase, the storage comparison/collation must preserve that distinction.</p>
+<p>Additional fields such as <code>created_at</code>, <code>deleted_at</code>, an explicit version, and a code-reservation marker support specific lifecycle decisions. They are refinements, not substitutes for deciding those semantics.</p>
+<p>Creation and deletion derive <code>user_id</code> from authenticated identity, rather than trusting a user-supplied owner field. A delete must verify ownership and change the mapping under a storage operation that cannot race an incompatible ownership change.</p>
+<p>If codes must never be reused, physical removal of every trace of a code is insufficient: a later random draw could allocate it again. Preserve a reservation/tombstone or otherwise enforce the no-reuse policy. The reservation need not retain the original destination.</p>
+</section>
+<section id="url-shortener-5-generate-codes-without-pretending-collisions-cannot-happen" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-5-generate-codes-without-pretending-collisions-cannot-happen">5. Generate codes without pretending collisions cannot happen</h3>
+<p>Generate a random Base62 code, then <strong>atomically insert only if that code is absent</strong>. If another mapping already owns the code, generate a new one and retry. A SQL primary-key constraint or a key-value store’s conditional insertion can enforce this.<sup>6</sup></p>
+<pre class="text"><code>repeat within a bounded retry budget:
+    code = random_base62(length=8)
+    outcome = authoritative_shard.insert_if_absent(code, mapping)
+    if outcome == CREATED:
+        return code
+    if outcome == DEFINITE_CONFLICT:
+        continue
+    resolve_uncertain_attempt_or_return_error()</code></pre>
+<p>A separate “does this code exist?” check followed by an unconditional write races with other creators. Never overwrite another mapping after a collision. Persistent conflicts should be investigated rather than hidden by an unbounded retry loop.</p>
+<p>A timeout is an <strong>unknown outcome</strong>, not a collision: the insert might have committed before its acknowledgment was lost. Generate another code only on a definite conflict. The baseline POST does not promise one mapping across retries; if duplicate creation is unacceptable, add a durable creation-idempotency key/result protocol. Making an idempotency record and the mapping atomic requires a specified transaction or coordination mechanism, particularly if they live on different shards. A response cache alone is insufficient.</p>
+<section id="url-shortener-what-is-the-minimum-length" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-what-is-the-minimum-length">What is the minimum length?</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 36%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Length</th>
+<th style="text-align: right;">Code space</th>
+<th>Meaning for 18.25 billion allocated codes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">916,132,832</td>
+<td>Insufficient</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">56,800,235,584</td>
+<td>Enough raw capacity, but about 32% occupied</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">218,340,105,584,896</td>
+<td>Much more headroom for random allocation</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">839,299,365,868,340,224</td>
+<td>More headroom again; not the minimum requirement</td>
+</tr>
+</tbody>
+</table>
+<p>The initial estimate of nine characters as a minimum was too high. <strong>Six</strong> meets raw capacity; <strong>eight</strong> is a working choice that makes retry overhead small at the assumed population. Ten is an optional tradeoff, not a necessity established by these numbers.</p>
+</section>
+<section id="url-shortener-what-does-the-collision-probability-actually-mean" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-what-does-the-collision-probability-actually-mean">What does the collision probability actually mean?</h4>
+<p>For uniform draws into a space of size <img src="https://latex.codecogs.com/png.latex?S">, with <img src="https://latex.codecogs.com/png.latex?N"> occupied codes:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0AP(%5Ctext%7Bnext%20draw%20collides%7D)=%5Cfrac%7BN%7D%7BS%7D.%0A"></p>
+<p>For eight characters at the five-year population:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cfrac%7B18.25%5Ctimes10%5E9%7D%7B62%5E8%7D%0A%5Capprox8.36%5Ctimes10%5E%7B-5%7D%0A%5Capprox%5Cfrac%7B1%7D%7B11%7B,%7D964%7D.%0A"></p>
+<p>“About one in 10,000” was a useful rough estimate; about one in 12,000 is closer. This is <strong>not</strong> the probability that the service ever experiences any collision. Over billions of allocations, collisions are expected, which is why atomic insertion is essential.</p>
+<p>A calculator can help during an interview if the interviewer permits it; ask rather than assuming phone use is acceptable. The important part is showing the equation, assumptions, units, and the distinction between capacity and collision overhead.</p>
+</section>
+</section>
+<section id="url-shortener-6-build-a-simple-baseline-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-6-build-a-simple-baseline-architecture">6. Build a simple baseline architecture</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/architecture.svg" class="img-fluid figure-img"></p>
+<figcaption>Baseline architecture: optional HTTP caching, load-balanced web servers with local application caches, shard routing, and an authoritative replicated database shard.</figcaption>
+</figure>
+</div>
+<p>The baseline has load-balanced web servers with local caches, plus a sharded database with a primary and replicas for each shard. A routing map associates hash ranges with shard owners. A CDN is optional and subject to the same freshness contract.</p>
+<section id="url-shortener-a-concrete-baseline-to-defend" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-a-concrete-baseline-to-defend">A concrete baseline to defend</h4>
+<p>To make the proposal specific, use the following explicit design choices. The replication topology and operational choices below complete the worked example; they are not historical claims about a system already built.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Decision</th>
+<th>Baseline choice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Ownership</td>
+<td>One authoritative owner per short code; immutable destination and no code reuse in the supported lifetime.</td>
+</tr>
+<tr class="even">
+<td>Placement</td>
+<td>A home write region; three voting replicas per shard across failure zones, plus a separately replicated routing-metadata service.</td>
+</tr>
+<tr class="odd">
+<td>Write safety</td>
+<td>Use an established consensus-based storage implementation. Acknowledge only after its durable commit protocol; a three-voter group uses a majority of two and tolerates one unavailable voter for progress.</td>
+</tr>
+<tr class="even">
+<td>Read safety</td>
+<td>A current, linearizable point read for each refill, with read authority and local application of the required committed prefix.</td>
+</tr>
+<tr class="odd">
+<td>Failure scope</td>
+<td>Non-Byzantine node/network failures under the chosen storage protocol; total destruction of all copies requires a separate recovery plan.</td>
+</tr>
+<tr class="even">
+<td>Cache</td>
+<td>Local cache-aside, per-key singleflight, hard application lifetime no more than 30 seconds.</td>
+</tr>
+<tr class="odd">
+<td>HTTP cache</td>
+<td>Public redirects may receive up to 15 seconds, capped by remaining application freshness; no stale override.</td>
+</tr>
+<tr class="even">
+<td>Unavailable authority</td>
+<td>Fail the affected lookup; do not use an arbitrary secondary or pretend the key is absent.</td>
+</tr>
+<tr class="odd">
+<td>Routing</td>
+<td>Cache versioned hash-range ownership metadata; refresh on explicit ownership/routing errors.</td>
+</tr>
+<tr class="even">
+<td>Capacity</td>
+<td>Choose shard and web-server counts from storage and peak/cold-load measurements.</td>
+</tr>
+</tbody>
+</table>
+<p>Cross-region disaster failover is a separate extension. Promoting an asynchronous remote copy cannot preserve a zero-loss acknowledgment promise without a stronger protocol. A global client-observed 100 ms p95 also needs geographic latency measurements; a regional server-side latency budget does not establish it.</p>
+<p>The web servers do not own the durable mapping. Losing one loses cache warmth, not the authoritative link data. Their local caches are still state, but replaceable state.</p>
+</section>
+<section id="url-shortener-what-happens-on-a-redirect" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-what-happens-on-a-redirect">What happens on a redirect?</h4>
+<ol type="1">
+<li>A browser or optional CDN may reuse a fresh HTTP redirect response under the configured rules.</li>
+<li>Otherwise the load balancer selects a web server.</li>
+<li>The web server checks its application-cache entry and hard expiry.</li>
+<li>On a live hit, it returns <code>302</code> with <code>Location</code> and a bounded HTTP freshness allowance.</li>
+<li>On a miss, one refill for that key reads the current authoritative shard; concurrent local requests may wait for it within deadlines.</li>
+<li>A confirmed absent/deleted mapping produces a not-found response. Unavailable authority produces an error rather than an invented answer.</li>
+</ol>
+<p>Calling the refill task “background work” does not remove its latency from a waiting user’s request. A cold miss still depends on a database read. Queueing, retries, and jitter all consume the response budget.</p>
+</section>
+<section id="url-shortener-sql-or-a-key-value-store" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-sql-or-a-key-value-store">SQL or a key-value store?</h4>
+<p>SQL is a reasonable starting point. The dominant operations are point lookup, conditional insertion, and owner-authorized deletion, so a key-value store may also fit.</p>
+<p>“SQL needs sharding, therefore switch to a key-value store” is not a sufficient argument. SQL can be sharded. Evaluate the actual system’s consistency, conditional-write support, transaction needs, failover guarantees, operations, and observed scale. Choosing either label does not establish the required semantics.</p>
+</section>
+<section id="url-shortener-is-this-read-through-caching" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-is-this-read-through-caching">Is this read-through caching?</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Pattern</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cache-aside</td>
+<td>The application checks the cache, reads the database on a miss, and fills the cache. This is our baseline.</td>
+</tr>
+<tr class="even">
+<td>Read-through</td>
+<td>The caller reads through a cache/loader that fetches missing data from the backing store.</td>
+</tr>
+<tr class="odd">
+<td>Write-through</td>
+<td>The write path synchronously updates cache and backing storage according to a defined success contract.</td>
+</tr>
+</tbody>
+</table>
+<p>The names indicate the read or write path involved, but responsibility matters. The fact that a read eventually populates a cache does not by itself make an application-managed flow read-through. We did not choose write-through for this design.</p>
+</section>
+</section>
+<section id="url-shortener-7-make-deletion-durable-before-acknowledging-it" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-7-make-deletion-durable-before-acknowledging-it">7. Make deletion durable before acknowledging it</h3>
+<p>The deletion path authenticates the caller, checks ownership, and commits deletion on the authoritative shard. It acknowledges success only after the database’s durable commit policy ensures that a permitted new leader will preserve the delete.</p>
+<p>Writing only to the current primary’s memory, or relying on an asynchronously lagging replica that may later be promoted, does not establish that promise. A storage system must supply the appropriate replication and promotion rules; the word “primary” is insufficient. PostgreSQL’s documentation, for example, distinguishes asynchronous replication and different synchronous acknowledgment levels.<sup>7</sup></p>
+<p>Invalidations can accelerate removal from caches. The correctness bound must still hold if an invalidation is delayed or lost. Also, an HTTP DELETE does not automatically invalidate every cache in the fleet; HTTP invalidation applies within the relevant request path and cache rules.<sup>8</sup></p>
+</section>
+<section id="url-shortener-8-fix-the-stale-fill-race-with-a-deadline" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-8-fix-the-stale-fill-race-with-a-deadline">8. Fix the stale-fill race with a deadline</h3>
+<p>The first idea was to give cached mappings a TTL below 60 seconds. That is a useful starting point, but it leaves a race.</p>
+<section id="url-shortener-why-is-a-fresh-ttl-at-insertion-unsafe" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-why-is-a-fresh-ttl-at-insertion-unsafe">Why is a fresh TTL at insertion unsafe?</h4>
+<p>Consider an application-cache TTL of 30 seconds:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">Time</th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td>An authoritative read starts and observes the mapping.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">1</td>
+<td>Deletion commits. Assume acknowledgment follows promptly.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">50</td>
+<td>The old read result finally arrives.</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">80</td>
+<td>Expiry if the late result receives a new 30-second TTL.</td>
+</tr>
+</tbody>
+</table>
+<p>The old mapping can now survive beyond the deletion deadline. Invalidating the cache at time 1 would not stop the delayed response from repopulating it at time 50.</p>
+<p>The refined invariant is:</p>
+<blockquote class="blockquote">
+<p>A cache fill must never outlive the expiry calculated from when its authoritative database read began.</p>
+</blockquote>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1">read_started <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> monotonic()</span>
+<span id="cb9-2">result <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> authoritative_read(short_code)</span>
+<span id="cb9-3">expires_at <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> read_started <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> app_ttl</span>
+<span id="cb9-4">remaining_ttl <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> expires_at <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> monotonic()</span>
+<span id="cb9-5"></span>
+<span id="cb9-6"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> remaining_ttl <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb9-7">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Do not publish or serve this result.</span></span>
+<span id="cb9-8">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Retry only within the request's remaining budget, or fail.</span></span>
+<span id="cb9-9">    discard(result)</span>
+<span id="cb9-10"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="cb9-11">    publish_if_still_refill_owner(result, expires_at)</span></code></pre></div></div>
+<p>This is explanatory pseudocode, not a complete concurrent cache implementation. The refill-owner check and rechecking expiry before use are part of the protocol.</p>
+</section>
+<section id="url-shortener-when-exactly-does-the-clock-start" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-when-exactly-does-the-clock-start">When exactly does the clock start?</h4>
+<p>Start it <strong>before issuing the database read</strong>, not when the read finishes or when the result is inserted. “The time when data was read” is too ambiguous for the proof.</p>
+<p>If a read begins at time 0 and its result arrives at time 20, its deadline remains 30; only <strong>10 seconds</strong> remain. If it arrives at time 50, discard it. Cache hits do not renew this deadline.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/cache-freshness.svg" class="img-fluid figure-img"></p>
+<figcaption>A fixed deadline survives a delayed fill and downstream HTTP caching. The illustration assumes negligible transit and omits the production timing margin.</figcaption>
+</figure>
+</div>
+</section>
+<section id="url-shortener-why-does-this-preserve-the-bound" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-why-does-this-preserve-the-bound">Why does this preserve the bound?</h4>
+<p>Let a read returning the old mapping begin at <img src="https://latex.codecogs.com/png.latex?r"> and give the result a deadline <img src="https://latex.codecogs.com/png.latex?r+T">.</p>
+<p>Use the external deletion acknowledgment time <img src="https://latex.codecogs.com/png.latex?a"> for the bound. With a properly scoped linearizable read, a read beginning after that acknowledgment cannot return the old mapping. Thus an old result has <img src="https://latex.codecogs.com/png.latex?r%5Cle%20a">, and:</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Ar+T%5Cle%20a+T.%0A"></p>
+<p>This is a bound derived from the read’s age. It does not depend on when that old result happens to reach the cache. An old database transaction snapshot, lagging replica, or isolated former primary would break the premise.</p>
+</section>
+<section id="url-shortener-can-a-cache-restored-from-disk-preserve-this-rule" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-can-a-cache-restored-from-disk-preserve-this-rule">Can a cache restored from disk preserve this rule?</h4>
+<p>Only if it preserves a trustworthy expiry. A local monotonic timestamp is not portable across machines or reboot. A disk-warm-start design needs a verifiable expiry representation and clock assumptions; otherwise discard uncertain entries. Reloading an entry with a new full TTL is unsafe. After a long outage, most short-lived entries will have expired anyway.</p>
+</section>
+</section>
+<section id="url-shortener-9-carry-freshness-through-browser-and-cdn-caches" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-9-carry-freshness-through-browser-and-cdn-caches">9. Carry freshness through browser and CDN caches</h3>
+<p>Application caches and HTTP caches have different notions of age. Both must fit the deletion argument.</p>
+<section id="url-shortener-which-cache-control-directives-matter" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-which-cache-control-directives-matter">Which Cache-Control directives matter?</h4>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Directive</th>
+<th>Relevant effect</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>public</code></td>
+<td>Permits shared caching; appropriate only for the public redirect representation.</td>
+</tr>
+<tr class="even">
+<td><code>max-age=N</code></td>
+<td>Sets freshness for private and shared HTTP caches.</td>
+</tr>
+<tr class="odd">
+<td><code>s-maxage=N</code></td>
+<td>Overrides freshness for shared caches.</td>
+</tr>
+<tr class="even">
+<td><code>must-revalidate</code></td>
+<td>Prevents stale reuse without successful validation; fresh hits need not contact the origin.</td>
+</tr>
+<tr class="odd">
+<td><code>no-cache</code></td>
+<td>Allows storage but requires validation before reuse.</td>
+</tr>
+<tr class="even">
+<td><code>no-store</code></td>
+<td>Prohibits storage of the response.</td>
+</tr>
+</tbody>
+</table>
+<p>The spelling is <code>max-age</code>, not <code>maxage</code>; the directive is <code>must-revalidate</code>, not <code>revalidate</code>. If browser and CDN use the same freshness allowance, <code>max-age</code> is enough to specify it; a matching <code>s-maxage</code> adds no separate budget.<sup>9</sup></p>
+</section>
+<section id="url-shortener-does-a-browser-get-another-full-ttl-after-the-cdn" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-does-a-browser-get-another-full-ttl-after-the-cdn">Does a browser get another full TTL after the CDN?</h4>
+<p>Not normally. HTTP age accounting carries age across caches. For example, a response with <code>max-age=15</code> that arrives with <code>Age: 10</code> has roughly five seconds of freshness left, allowing for transit and local age calculation. CDN and browser do not each restart an independent 15-second clock.<sup>10</sup></p>
+<p>Therefore, “three caches times 15 seconds equals 45 seconds” is not a general HTTP rule. A newly generated HTTP response can nevertheless add freshness on top of the age of its underlying application-cache data. HTTP <code>Age</code> alone does not know when that database read began.</p>
+</section>
+<section id="url-shortener-a-stronger-final-policy-cap-http-freshness-by-remaining-lifetime" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-a-stronger-final-policy-cap-http-freshness-by-remaining-lifetime">A stronger final policy: cap HTTP freshness by remaining lifetime</h4>
+<p>The discussion used an application TTL around 30 seconds and HTTP freshness around 15 seconds. With controlled age accounting, a rough uncapped budget is 30 seconds of application staleness plus up to 15 seconds of newly granted HTTP freshness. To make the final design easier to reason about, strengthen it by propagating the remaining application deadline.</p>
+<p>At response generation:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1">remaining <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> entry.expires_at <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> monotonic() <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span> timing_margin</span>
+<span id="cb10-2">http_ttl <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">min</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">15</span>, floor(remaining))</span>
+<span id="cb10-3"></span>
+<span id="cb10-4"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">if</span> http_ttl <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&lt;=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>:</span>
+<span id="cb10-5">    refresh_authoritatively_or_fail_within_request_deadline()</span>
+<span id="cb10-6"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">else</span>:</span>
+<span id="cb10-7">    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Example: "public, max-age=10, must-revalidate"</span></span>
+<span id="cb10-8">    emit_redirect_with_freshness(http_ttl)</span></code></pre></div></div>
+<p>Use normal HTTP <code>Date</code>/<code>Age</code> behavior, and do not reset age at a downstream cache. The actual timing margin must account for the supported clock and scheduling behavior; it is not a measured constant in this exercise.</p>
+<p>This policy is a <strong>further refinement</strong>, rather than a claim that the earlier sketch already implemented it. Under the stated assumptions, downstream reuse cannot extend the original 30-second application deadline; the 60-second requirement retains headroom.</p>
+</section>
+<section id="url-shortener-what-happens-when-the-origin-is-unreachable" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-what-happens-when-the-origin-is-unreachable">What happens when the origin is unreachable?</h4>
+<p>Do not configure this redirect path to serve beyond its hard deadline using <code>stale-if-error</code>, an unrestricted stale-while-revalidate policy, or a CDN “serve stale” override. A compliant cache honoring <code>must-revalidate</code> cannot reuse a stale response without successful validation. Failure must remain failure when freshness cannot be established.<sup>8</sup></p>
+<p>On revalidation, recompute the redirect or absence from a still-valid bounded application entry or a new authoritative read. Never grant a new full TTL to an expired snapshot. For this redirect endpoint, the normal outcome remains a redirect or not-found response; <code>304</code> is not a general replacement for <code>302</code>.</p>
+<p>The initial, simpler alternative is <code>Cache-Control: no-store</code> for redirects, while retaining the application cache. It avoids downstream response reuse at the cost of more origin traffic. Short bounded HTTP caching is an optimization whose correctness must be maintained.</p>
+</section>
+</section>
+<section id="url-shortener-10-make-primary-reads-safe-across-failover" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-10-make-primary-reads-safe-across-failover">10. Make primary reads safe across failover</h3>
+<p>Reading from “the primary” is meaningful only if the server is still authorized to act as primary and its applied state is current enough for the read.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/safe-failover.svg" class="img-fluid figure-img"></p>
+<figcaption>Safe failover separates durable commit, current read authority, and application of committed entries.</figcaption>
+</figure>
+</div>
+<section id="url-shortener-can-a-replica-that-lags-90-seconds-refill-the-cache" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-can-a-replica-that-lags-90-seconds-refill-the-cache">Can a replica that lags 90 seconds refill the cache?</h4>
+<p>No: its lag alone exceeds the deletion budget. A refill from that replica can then add cache lifetime. The simpler baseline reads the authorized primary for cache misses.</p>
+<p>Follower reads are possible under a stronger protocol. For example, a follower can establish an appropriate read index and wait until its local state has applied through that point. TiDB documents such a mechanism; it is not a property of arbitrary secondary reads.<sup>11</sup></p>
+</section>
+<section id="url-shortener-doesn-t-a-majority-automatically-identify-the-newest-value" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-doesn-t-a-majority-automatically-identify-the-newest-value">Doesn’t a majority automatically identify the newest value?</h4>
+<p>Suppose one replica reports absence and two return the mapping. Counting replies does not tell us whether absence means a newer deletion or an older missing copy. A deletion must participate in version/conflict rules, often through a tombstone. Removing deletion evidence too soon can let a stale replica resurrect data.<sup>12</sup></p>
+<p>Quorum overlap is one ingredient of a protocol, not the entire correctness proof. Concurrency, membership changes, version rules, and the read/write algorithm matter. We chose authoritative primary reads to keep the baseline simpler.</p>
+</section>
+<section id="url-shortener-what-does-election-guarantee-and-what-does-it-not" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-what-does-election-guarantee-and-what-does-it-not">What does election guarantee, and what does it not?</h4>
+<p>In correctly implemented Raft, election restrictions preserve previously committed log entries in future leaders. But <strong>committed and applied are different</strong>: a node can hold a committed entry in its log before its state machine reflects that entry.<sup>13</sup></p>
+<p>Before a new leader serves a linearizable read, its protocol must establish a safe read position, confirm current authority, and ensure the local state has applied through that position. A current-term barrier/no-op and quorum-confirmed read-index mechanism are ways to establish these conditions. It need not wait for every replica to catch up.</p>
+<p>An isolated former primary may still believe it is leader. That belief cannot authorize new cache-refill reads. A leader that cannot establish current authority must decline them; a carefully implemented lease is an alternative with additional timing assumptions.</p>
+</section>
+<section id="url-shortener-if-quorum-is-unavailable-has-data-been-lost" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-if-quorum-is-unavailable-has-data-been-lost">If quorum is unavailable, has data been lost?</h4>
+<p>Not necessarily. The service may be unable to make progress while durable copies still exist. <strong>Unavailability is not evidence of data loss.</strong> This design prioritizes the deletion/freshness guarantee during such a failure. It does not claim that durable commit survives arbitrary destruction of every replica.</p>
+</section>
+</section>
+<section id="url-shortener-11-handle-hot-urls-and-cache-refill-storms" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-11-handle-hot-urls-and-cache-refill-storms">11. Handle hot URLs and cache refill storms</h3>
+<p>Hashing distributes different codes. It cannot divide the reads for one viral code among independent authoritative keys.</p>
+<p>Local caches help because load balancing spreads redirect traffic across web servers. Each server can answer repeated reads of the same hot code. The remaining problem is what happens when entries expire together or a cold fleet starts together.</p>
+<section id="url-shortener-does-jitter-solve-concurrent-cache-misses" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-does-jitter-solve-concurrent-cache-misses">Does jitter solve concurrent cache misses?</h4>
+<p>Jitter spreads work in time; it does not choose one refill owner. Bounded TTL jitter, for example choosing an application TTL in a 20–30 second range, can reduce synchronized expiry while preserving a maximum deadline anchored at read start.</p>
+<p>Randomly delaying an on-demand database read also consumes the 100 ms response budget. It should not be described as free load smoothing. Peak bursts may still align despite jitter.</p>
+</section>
+<section id="url-shortener-how-does-one-server-issue-only-one-refill-for-a-key" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-how-does-one-server-issue-only-one-refill-for-a-key">How does one server issue only one refill for a key?</h4>
+<p>Use <strong>per-key singleflight</strong>: atomically change a missing/expired entry to <code>REFILLING</code>, give one caller ownership, and let concurrent callers wait on that refill within bounded deadlines.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/cache-refill.svg" class="img-fluid figure-img"></p>
+<figcaption>Per-key refill state, bounded waiting, and ownership-aware cleanup on one web server.</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Event</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Fresh hit</td>
+<td>Use the entry without renewing its fixed deadline.</td>
+</tr>
+<tr class="even">
+<td>Miss with no refill</td>
+<td>Atomically claim refill ownership and start one authoritative read.</td>
+</tr>
+<tr class="odd">
+<td>Miss with a refill active</td>
+<td>Wait on that refill, subject to queue and request limits.</td>
+</tr>
+<tr class="even">
+<td>Valid read result</td>
+<td>Publish only if the deadline is live and this attempt still owns the refill.</td>
+</tr>
+<tr class="odd">
+<td>Confirmed absence</td>
+<td>Return not found; do not turn a database error into absence.</td>
+</tr>
+<tr class="even">
+<td>Failure or timeout</td>
+<td>Fail affected waiters and release the refill state only if this attempt still owns it.</td>
+</tr>
+<tr class="odd">
+<td>Obsolete late completion</td>
+<td>Discard it; it must neither overwrite newer state nor clear another attempt’s ownership.</td>
+</tr>
+</tbody>
+</table>
+<p>The owner token/generation is an implementation refinement that closes a race left open in the early discussion: attempt A times out, attempt B starts, and A later finishes. Unconditional cleanup by A could otherwise delete B’s state.</p>
+<p>This is <strong>one refill per key per web server</strong>, not one refill across the fleet. Bound waiters and database concurrency, use bounded backoff, and avoid automatic retry loops that amplify an outage. A shared cache or a carefully designed cache-fill lease can be a later option. The Facebook memcache paper describes leases for stale-set and thundering-herd problems; a local mutex is not the same mechanism.<sup>14</sup></p>
+</section>
+<section id="url-shortener-should-missing-links-be-negatively-cached" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-should-missing-links-be-negatively-cached">Should missing links be negatively cached?</h4>
+<p>A short negative cache can reduce repeated lookups for nonexistent codes. Cache only an authoritative not-found result, never a timeout or loss of leadership. A negative cache also needs a policy for newly created or reused codes. The baseline can initially return <code>404</code> with <code>no-store</code> and add negative caching only after that lifecycle is specified.</p>
+</section>
+</section>
+<section id="url-shortener-12-protect-the-database-during-cold-starts" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-12-protect-the-database-during-cold-starts">12. Protect the database during cold starts</h3>
+<p>An all-miss event can occur at initial deployment or after a large restart. Saving caches to disk helps only if useful, verifiably unexpired entries remain. It does not eliminate a long-outage cold start.</p>
+<p>One proposal was to provision enough primary shards for the cold-miss workload. This keeps primary-only reads and avoids introducing replica-read consistency complexity. It is reasonable to evaluate, but requires measured per-shard capacity, peak factors, and headroom. More uniformly distributed keys can use more shards; a single hot key remains concentrated.</p>
+<p>Use a combination of measured cold-start capacity, staged restarts, bounded refill concurrency, singleflight, and overload rejection. Cache prewarming can help if it reads authoritative data and preserves freshness. Do not spend the entire latency budget waiting in an unbounded queue.</p>
+<section id="url-shortener-could-we-copy-a-viral-mapping-onto-every-shard" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-could-we-copy-a-viral-mapping-onto-every-shard">Could we copy a viral mapping onto every shard?</h4>
+<p>That could distribute reads, but it creates a new replicated-data protocol: which copy is authoritative, how writes and deletes propagate, what happens when one copy is unreachable, and when deletion can be acknowledged. A routing service that randomly chooses copies must know which ones are safe to read.</p>
+<p>This idea was considered and not adopted for the baseline. Local/shared read caching and controlled refills retain one authoritative owner and make the deletion argument simpler. If extra copies are introduced, treat them as replicas or caches with explicit version and expiry rules—not as unrelated authoritative rows.</p>
+</section>
+</section>
+<section id="url-shortener-13-route-by-hash-without-confusing-balance-with-correctness" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-13-route-by-hash-without-confusing-balance-with-correctness">13. Route by hash without confusing balance with correctness</h3>
+<p>Hash each <code>short_code</code> into a fixed hash space and assign ranges to shard owners. Web servers or their database clients can cache a versioned <strong>hash range → shard</strong> map. A metadata service supplies changes. It need not be queried for every cache hit or every database operation.</p>
+<p>The hash algorithm, input encoding, case handling, and seed/version must agree across routers and servers. A process-specific or inconsistently changed hash function would route the same code differently. If metadata is unavailable, an already authorized owner may continue under its protocol; an expired lease or unknown ownership cannot be replaced by a guess.</p>
+<p>Uniform hashing tends to balance key counts. It does not guarantee equal bytes, CPU cost, or requests per shard. Monitor those separately.</p>
+<section id="url-shortener-why-not-just-use-hash-code-modulo-the-number-of-shards" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-why-not-just-use-hash-code-modulo-the-number-of-shards">Why not just use hash(code) modulo the number of shards?</h4>
+<p>Changing the divisor remaps many keys. Consistent hashing or a stable logical-range map can move selected ranges instead. The “only neighbors move” ring intuition describes affected ranges; virtual nodes may involve several physical machines.</p>
+<p>Consistent hashing and a versioned range map are related routing options, not two mandatory independent systems. Neither performs data migration by itself.</p>
+</section>
+<section id="url-shortener-does-a-primary-key-remain-unique-after-sharding" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-does-a-primary-key-remain-unique-after-sharding">Does a primary key remain unique after sharding?</h4>
+<p>Every attempt for the same code must reach its single current owner, which performs the conditional insertion. Stale routers must not be allowed to create a second authoritative copy on the old owner during migration. Uniqueness therefore depends on both the database constraint and correct ownership/fencing.</p>
+</section>
+</section>
+<section id="url-shortener-14-move-a-range-without-losing-writes-or-reviving-deletes" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-14-move-a-range-without-losing-writes-or-reviving-deletes">14. Move a range without losing writes or reviving deletes</h3>
+<p>The initial migration idea was to copy a subrange from A to B while A continued serving, then switch the routing map after B caught up. The crucial follow-ups were in-flight requests, concurrent deletes, stale routers, and an old owner coming back after a crash.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/shard-migration.svg" class="img-fluid figure-img"></p>
+<figcaption>Range migration keeps A authoritative while copying, then fences and drains A before B becomes the new owner.</figcaption>
+</figure>
+</div>
+<section id="url-shortener-what-happens-while-the-copy-runs" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-what-happens-while-the-copy-runs">What happens while the copy runs?</h4>
+<p>A remains authoritative. Copy a consistent snapshot and transfer subsequent <strong>committed mutations</strong>, including deletions, to B. This can use the database’s log/change-stream machinery. An informal client-side “send every write to both” rule is incomplete: one write can succeed while the other fails.</p>
+</section>
+<section id="url-shortener-how-do-we-ensure-a-has-no-queued-or-in-flight-writes-left" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-how-do-we-ensure-a-has-no-queued-or-in-flight-writes-left">How do we ensure A has no queued or in-flight writes left?</h4>
+<p>Close admission at the actual commit/ownership boundary for that range. Drain or abort admitted work, and prevent already queued operations from committing after the handoff boundary. Record a final committed position <img src="https://latex.codecogs.com/png.latex?L">. B must apply through <img src="https://latex.codecogs.com/png.latex?L">, including delete records.</p>
+<p>B must also retain the transferred state durably under its own replication/failover policy before activation. Catching up only one volatile copy would not preserve the handoff through B’s immediate failure.</p>
+<p>Stopping traffic at the load balancer alone is insufficient. Requests may already be in application queues, connection buffers, transactions, or background workers.</p>
+</section>
+<section id="url-shortener-what-must-happen-atomically-at-cutover" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-what-must-happen-atomically-at-cutover">What must happen atomically at cutover?</h4>
+<p>Ownership metadata changes from A at epoch <img src="https://latex.codecogs.com/png.latex?e"> to B at epoch <img src="https://latex.codecogs.com/png.latex?e+1"> through an atomic, authoritative update. <strong>Before B serves, A must be durably fenced for that range</strong>, including its failover and restart paths, or its old serving lease must be proven expired.</p>
+<p>Updating metadata alone does not stop an isolated A from acting on old information. If the system cannot establish that A is fenced, the safe migration pauses. Logical ownership can change atomically even though physical actions on two servers do not occur simultaneously.</p>
+</section>
+<section id="url-shortener-what-should-a-stale-router-receive-from-a" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-what-should-a-stale-router-receive-from-a">What should a stale router receive from A?</h4>
+<p>An explicit routing/ownership error, such as <code>WrongShard</code> or <code>StaleEpoch</code>, so it refreshes its map and retries within a bound. <strong>Do not return ordinary not-found merely because A no longer owns the range.</strong> That confuses location with existence and may poison negative caches.</p>
+</section>
+<section id="url-shortener-what-happens-when-a-restarts" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-what-happens-when-a-restarts">What happens when A restarts?</h4>
+<p>A must recover the durable range fence or obtain current serving authority before accepting operations. Reading metadata on startup is part of the answer, but an already-running isolated owner also needs fencing. If current authority cannot be established, fail closed for that range. Old physical data can be cleaned up after the handoff’s safety conditions hold.</p>
+<p>This is the proposed protocol for this design, not a claim that all databases implement the same steps. MongoDB’s documented range migration provides a useful comparison: copying, catch-up, a short blocking phase, metadata change, and later cleanup.<sup>15</sup></p>
+</section>
+</section>
+<section id="url-shortener-15-the-questions-that-changed-the-design" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-15-the-questions-that-changed-the-design">15. The questions that changed the design</h3>
+<p>This table preserves the progression rather than only showing the polished final answer.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Starting idea or question</th>
+<th>What the follow-up exposed</th>
+<th>Resulting decision</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Check the database before every redirect.</td>
+<td>That gives up much of the cache’s benefit.</td>
+<td>Use cache hits within a proven freshness deadline.</td>
+</tr>
+<tr class="even">
+<td>A TTL below 60 seconds is enough.</td>
+<td>A delayed read can refill old data with a fresh TTL.</td>
+<td>Anchor expiry before the authoritative read begins.</td>
+</tr>
+<tr class="odd">
+<td>Subtract elapsed time when filling.</td>
+<td>“Read time” needs an exact boundary.</td>
+<td>Use a fixed read-start deadline and remaining lifetime.</td>
+</tr>
+<tr class="even">
+<td>Read any secondary to reduce primary load.</td>
+<td>A 90-second-lagging replica violates a 60-second goal.</td>
+<td>Use primary-only authoritative fills in the baseline.</td>
+</tr>
+<tr class="odd">
+<td>Ask a majority whether the key exists.</td>
+<td>Old values can outvote an unversioned absence.</td>
+<td>Require a real version/deletion protocol or retain the primary-read approach.</td>
+</tr>
+<tr class="even">
+<td>The new leader has committed writes.</td>
+<td>Its state machine may not have applied them yet.</td>
+<td>Establish authority/read position and wait for local application.</td>
+</tr>
+<tr class="odd">
+<td>A server believes it is primary.</td>
+<td>It may be isolated from a newer majority leader.</td>
+<td>Require protocol-backed read authority.</td>
+</tr>
+<tr class="even">
+<td>No quorum means data loss.</td>
+<td>Durable copies may exist while progress is impossible.</td>
+<td>Report unavailability without inferring loss.</td>
+</tr>
+<tr class="odd">
+<td>Each cache has 15 seconds.</td>
+<td>HTTP caches carry age; application snapshots have a separate age.</td>
+<td>Preserve HTTP age and cap freshness by remaining application lifetime.</td>
+</tr>
+<tr class="even">
+<td>SQL needs sharding, so switch to key-value.</td>
+<td>SQL can be sharded; guarantees differ by implementation.</td>
+<td>Choose based on required operations and measured behavior.</td>
+</tr>
+<tr class="odd">
+<td>Nine or ten characters are necessary.</td>
+<td>Six meets raw capacity; random occupancy is a different question.</td>
+<td>Use eight as the working allocation tradeoff.</td>
+</tr>
+<tr class="even">
+<td>Hashing balances traffic.</td>
+<td>One hot code remains one hot key.</td>
+<td>Use caches and refill control; measure per-shard load.</td>
+</tr>
+<tr class="odd">
+<td>Add random delay to refill reads.</td>
+<td>Delay consumes the latency budget and does not coalesce work.</td>
+<td>Bounded expiry jitter plus per-key singleflight.</td>
+</tr>
+<tr class="even">
+<td>Queue requests while a cache refills.</td>
+<td>Waiting requests still depend on database latency and need bounds.</td>
+<td>Explicit refill ownership, deadlines, queue limits, and failure cleanup.</td>
+</tr>
+<tr class="odd">
+<td>Clear the refill flag on failure.</td>
+<td>An old attempt may clear a newer attempt’s flag.</td>
+<td>Check ownership/generation before publication or cleanup.</td>
+</tr>
+<tr class="even">
+<td>Restore saved caches after restart.</td>
+<td>Restarting TTL can revive expired mappings.</td>
+<td>Preserve verifiable expiry or discard the entry.</td>
+</tr>
+<tr class="odd">
+<td>Copy a viral URL to all shards.</td>
+<td>Deletion now spans many independently reachable copies.</td>
+<td>Keep one authoritative owner in the baseline.</td>
+</tr>
+<tr class="even">
+<td>Copy a range, then change the map.</td>
+<td>Queued writes, deletes, and old owners can survive the cutover.</td>
+<td>Catch up, gate/drain, fence, establish a final position, then publish ownership.</td>
+</tr>
+<tr class="odd">
+<td>Old shard returns 404.</td>
+<td>Clients may cache an incorrect absence.</td>
+<td>Return an explicit routing error and refresh metadata.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="url-shortener-16-use-invariants-to-find-the-next-failure" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-16-use-invariants-to-find-the-next-failure">16. Use invariants to find the next failure</h3>
+<p>An invariants-first review makes the discussion systematic. It does not guarantee that a model omitted no important behavior.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Invariant</th>
+<th>Mechanism or assumption</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One code identifies at most one active destination.</td>
+<td>Conditional insertion at one fenced, authoritative owner.</td>
+</tr>
+<tr class="even">
+<td>Only an authorized owner can delete a mapping.</td>
+<td>Authenticated identity and an atomic authorization/update path.</td>
+</tr>
+<tr class="odd">
+<td>An acknowledged delete survives supported primary failover.</td>
+<td>A specified durable commit and promotion protocol.</td>
+</tr>
+<tr class="even">
+<td>An old read cannot acquire a new freshness lifetime.</td>
+<td>Fixed deadline from authoritative read start; reject expired fills.</td>
+</tr>
+<tr class="odd">
+<td>A downstream cache cannot extend the freshness grant.</td>
+<td>Correct HTTP age handling and remaining-lifetime cap.</td>
+</tr>
+<tr class="even">
+<td>A former leader cannot establish a fresh authoritative snapshot.</td>
+<td>Read authority/barrier or a proven valid lease.</td>
+</tr>
+<tr class="odd">
+<td>A timed-out refill cannot overwrite its replacement.</td>
+<td>Attempt identity checked on publish and cleanup.</td>
+</tr>
+<tr class="even">
+<td>Exactly one shard has serving authority for a range.</td>
+<td>Fencing plus atomic ownership epochs; safe recovery.</td>
+</tr>
+<tr class="odd">
+<td>Overload cannot create unlimited waiting work.</td>
+<td>Bounded queues, deadlines, refill concurrency, and retry budgets.</td>
+</tr>
+</tbody>
+</table>
+<p>For each invariant, list the actors and state, then draw a timeline that introduces a delay, crash, retry, or reordering. Ask what each actor knows and which authority it is relying on. Check the response path as carefully as the write path.</p>
+<p>Useful adversarial scenarios include:</p>
+<ol type="1">
+<li>A pre-delete read returns after the cache was invalidated.</li>
+<li>A database result arrives after its entire freshness allowance is spent.</li>
+<li>An old refill finishes after a newer refill has claimed the key.</li>
+<li>A primary acknowledges deletion and crashes immediately.</li>
+<li>An isolated former leader remains reachable by some web servers.</li>
+<li>A new leader has the deletion in its log but has not applied it.</li>
+<li>A CDN is disconnected when an old redirect becomes stale.</li>
+<li>An HTTP validation renews a redirect using an expired application snapshot.</li>
+<li>All application caches restart together during a peak.</li>
+<li>A delete occurs while its range is being copied to another shard.</li>
+<li>A write queued before cutover tries to commit afterward.</li>
+<li>A stale router asks the former owner for a key that now lives elsewhere.</li>
+</ol>
+<p>Small deterministic tests can cover the cache deadline and refill-state transitions. A small TLA+ model can explore ownership, in-flight writes, and crash/restart interleavings. Model checking establishes properties of the model under its assumptions; implementation and operational assumptions still need validation. The <a href="https://learntla.com/">Learn TLA+ resource</a> and the <a href="https://raft.github.io/raft.pdf">Raft paper</a> are useful next steps.</p>
+</section>
+<section id="url-shortener-17-what-remains-to-decide-before-deployment" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-17-what-remains-to-decide-before-deployment">17. What remains to decide before deployment</h3>
+<p>The design has a coherent baseline, but implementation choices remain: peak and burst traffic, exact availability target, regions and latency boundaries, database product and failover configuration, payload distribution, hardware capacity, retry budgets, queue limits, timing margins, and cache behavior in the actual CDN/browser path.</p>
+<p>Link expiry, destination updates, custom aliases, code reuse, analytics, and abuse controls also need explicit contracts if added. A short code is an identifier, not proof of authorization. If redirect visibility is private rather than public, shared response caching must be redesigned accordingly.</p>
+<p>Operationally, measure redirect latency and errors, cache hits by layer, refill fan-in and wait time, cold-miss throughput, ownership/routing errors, and deletion visibility through controlled probes. These are proposed checks for the design, not measurements already obtained.</p>
+<section id="url-shortener-adapt-when-the-interviewer-changes-a-requirement" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-adapt-when-the-interviewer-changes-a-requirement">Adapt when the interviewer changes a requirement</h4>
+<p>These are additional interview branches, rather than claims that every feature was developed in the original discussion.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>New requirement</th>
+<th>What changes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Custom aliases</td>
+<td>Reserve the requested alias atomically; report a conflict instead of choosing another alias. Define reserved names and case rules.</td>
+</tr>
+<tr class="even">
+<td>Automatic expiration</td>
+<td>Persist the link’s expiry and cap every cache lifetime by both source freshness and the link’s own expiry.</td>
+</tr>
+<tr class="odd">
+<td>Editable destinations</td>
+<td>Treat destination changes as versioned mutations with the same stale-fill and invalidation issues as deletion.</td>
+</tr>
+<tr class="even">
+<td>Private links</td>
+<td>Authorize every permitted access path; a globally shared public redirect cache is no longer appropriate.</td>
+</tr>
+<tr class="odd">
+<td>Click analytics</td>
+<td>Define whether a click means a user navigation, CDN hit, or origin request. Origin-only counters miss cache hits; asynchronous analytics avoid making redirects wait on aggregation.</td>
+</tr>
+<tr class="even">
+<td>Immediate revocation</td>
+<td>TTL alone cannot promise immediate revocation of previously cached responses. Reduce or disable downstream caching and design an acknowledgment/fencing protocol appropriate to the scope. Previously learned URLs still cannot be recalled.</td>
+</tr>
+<tr class="odd">
+<td>Global write availability</td>
+<td>Specify whether conflicting concurrent writes/deletes are allowed, and which latency/consistency tradeoff is acceptable before choosing multi-region replication.</td>
+</tr>
+<tr class="even">
+<td>Abuse prevention</td>
+<td>Specify URL validation, scheme restrictions, account limits, and malware handling. Any server-side preview/fetch feature needs its own hardened fetch policy.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="url-shortener-use-the-interview-time-deliberately" class="level4">
+<h4 class="anchored" data-anchor-id="url-shortener-use-the-interview-time-deliberately">Use the interview time deliberately</h4>
+<p>A possible 45-minute structure is 5 minutes for clarifications, 5 for sizing and APIs, 10 for the baseline, 15 for the interviewer’s chosen deep dive, and 10 for failures and tradeoffs. Adjust to the interviewer. The full discussion here is a reference; an interview answer should expose the key decisions first and expand the requested branch.</p>
+</section>
+</section>
+<section id="url-shortener-18-a-compact-interview-explanation" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-18-a-compact-interview-explanation">18. A compact interview explanation</h3>
+<blockquote class="blockquote">
+<p>I would use load-balanced web servers with local application caches and a sharded, replicated database keyed by a random Base62 code. Creation uses atomic insert-if-absent and retries collisions. Redirects return 302 with Location. Deletion checks ownership and is acknowledged only after the storage system’s durable commit requirement is met.</p>
+<p>The 60-second deletion requirement drives cache behavior. Every fill has a hard deadline anchored before its authoritative database read starts. Delayed fills receive only their remaining lifetime, and HTTP freshness cannot extend that deadline. Cache misses use a currently authorized primary; if freshness cannot be established, the service fails the request rather than serving an unsafe mapping.</p>
+<p>Per-key singleflight and bounded expiry jitter reduce refill storms. I size for cold-cache and peak traffic, not just the warm-cache average. Sharding distributes different codes, while caches absorb hot-code reads. Range migration copies committed mutations, fences and drains the old owner, catches up the new owner, and then changes ownership metadata. Stale routing receives a routing error rather than a false not-found.</p>
+<p>The remaining choices are quantitative: peak load, regions, availability, record sizes, measured database capacity, and the timing assumptions needed to enforce the freshness contract.</p>
+</blockquote>
+</section>
+<section id="url-shortener-references" class="level3">
+<h3 class="anchored" data-anchor-id="url-shortener-references">References</h3>
+<p>The references support protocol semantics and concrete implementation examples. The workload calculations, proposed architecture, timelines, and strengthened freshness policy are reasoning developed for this exercise.</p>
+<ol type="1">
+<li><p><span id="url-shortener-ref-1"></span> <a href="https://www.rfc-editor.org/rfc/rfc9110.html">RFC 9110: HTTP Semantics</a>, especially §§9.2.2, 9.3.3–9.3.5 and 15.3–15.4.</p></li>
+<li><p><span id="url-shortener-ref-2"></span> <a href="https://www.rfc-editor.org/rfc/rfc5789.html#section-2">RFC 5789: PATCH Method for HTTP</a>.</p></li>
+<li><p><span id="url-shortener-ref-3"></span> <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/302">MDN: 302 Found</a>.</p></li>
+<li><p><span id="url-shortener-ref-4"></span> <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/204">MDN: 204 No Content</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/DELETE">DELETE</a>.</p></li>
+<li><p><span id="url-shortener-ref-5"></span> <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Retry-After">MDN: Retry-After</a>.</p></li>
+<li><p><span id="url-shortener-ref-6"></span> <a href="https://www.postgresql.org/docs/current/sql-insert.html">PostgreSQL: INSERT</a>, including uniqueness conflicts and <code>ON CONFLICT</code>. This is an example of supported conditional behavior, not a database selection for this design.</p></li>
+<li><p><span id="url-shortener-ref-7"></span> <a href="https://www.postgresql.org/docs/current/warm-standby.html">PostgreSQL: Warm Standby and Replication</a> and <a href="https://www.postgresql.org/docs/current/runtime-config-wal.html">WAL settings</a>.</p></li>
+<li><p><span id="url-shortener-ref-8"></span> <a href="https://www.rfc-editor.org/rfc/rfc9111.html">RFC 9111: HTTP Caching</a>, especially §§4.2, 5.2.2 and 6.</p></li>
+<li><p><span id="url-shortener-ref-9"></span> <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control">MDN: Cache-Control</a>.</p></li>
+<li><p><span id="url-shortener-ref-10"></span> <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Age">MDN: Age</a> and RFC 9111 §4.2.3.</p></li>
+<li><p><span id="url-shortener-ref-11"></span> <a href="https://docs.pingcap.com/tidb/stable/follower-read/">TiDB: Follower Read</a>.</p></li>
+<li><p><span id="url-shortener-ref-12"></span> <a href="https://docs.datastax.com/en/astra-db-classic/architecture/database-internals/architecture-tombstones.html">DataStax: Deletes and tombstones</a>.</p></li>
+<li><p><span id="url-shortener-ref-13"></span> Diego Ongaro and John Ousterhout, <a href="https://raft.github.io/raft.pdf">In Search of an Understandable Consensus Algorithm</a>, especially §§5.4 and 8.</p></li>
+<li><p><span id="url-shortener-ref-14"></span> Rajesh Nishtala et al., <a href="https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf">Scaling Memcache at Facebook</a>, §3.2.1.</p></li>
+<li><p><span id="url-shortener-ref-15"></span> <a href="https://www.mongodb.com/docs/manual/core/sharding-balancer-administration/">MongoDB: Sharded Cluster Balancer and Range Migration</a>.</p></li>
+</ol>
+</section></details>
 
 
 </section>
+
 
  ]]></description>
   <category>computation</category>

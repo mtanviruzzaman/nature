@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="775" viewBox="0 0 1000 775" role="img" aria-labelledby="title desc">
+<title id="title">Safe primary failover</title><desc id="desc">A deletion is acknowledged only after durable quorum commitment. An isolated former primary must not authorize cache refills. A newly elected leader has committed log entries but must establish current authority and a safe read index, then apply through that index before serving an authoritative read. Without quorum, return a retryable failure rather than a fabricated not-found result.</desc>
+<rect width="1000" height="775" fill="white"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif} .edge{fill:none;stroke:#333;stroke-width:2;stroke-linejoin:round;stroke-linecap:round} .hint{fill:#666}</style>
+<text x="35" y="39" font-size="27" font-weight="600" text-anchor="start" fill="#222">Safe failover: committed, authoritative, applied</text>
+<text x="35" y="70" font-size="18" font-weight="normal" text-anchor="start" fill="#666">A server believing that it is primary is not enough to serve a fresh read.</text>
+<rect x="215" y="104" width="570" height="100" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="500.0" y="135" font-size="21" font-weight="600" text-anchor="middle" fill="#222">Delete committed and acknowledged</text>
+<text x="500.0" y="164" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Durably replicated under the database consensus protocol</text>
+<path class="edge" d="M 500,208 V 256" marker-end="url(#arrow)"/>
+<rect x="215" y="260" width="570" height="84" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="500.0" y="291" font-size="21" font-weight="600" text-anchor="middle" fill="#222">Leadership changes</text>
+<text x="500.0" y="320" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Old primary loses contact with the majority</text>
+<path class="edge" d="M 215,304 H 150 V 397" marker-end="url(#arrow)"/>
+<path class="edge" d="M 500,347 V 397" marker-end="url(#arrow)"/>
+<rect x="35" y="400" width="300" height="126" rx="8" fill="#eee" stroke="#555" stroke-width="1.6"/>
+<text x="185.0" y="431" font-size="21" font-weight="600" text-anchor="middle" fill="#222">Isolated old primary</text>
+<text x="185.0" y="460" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Cannot prove current authority</text>
+<text x="185.0" y="484" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Must not refill caches</text>
+<rect x="395" y="400" width="570" height="126" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="680.0" y="431" font-size="21" font-weight="600" text-anchor="middle" fill="#222">New leader</text>
+<text x="680.0" y="460" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Contains all committed log entries</text>
+<text x="680.0" y="484" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">May still be behind in applying them</text>
+<path class="edge" d="M 680,529 V 575" marker-end="url(#arrow)"/>
+<rect x="395" y="578" width="570" height="110" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="680.0" y="609" font-size="21" font-weight="600" text-anchor="middle" fill="#222">Authorize and apply before reading</text>
+<text x="680.0" y="638" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Establish a safe read barrier / current authority</text>
+<text x="680.0" y="662" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Apply through the required committed index</text>
+<rect x="35" y="577" width="300" height="111" rx="8" fill="#fff" stroke="#555" stroke-width="1.6"/>
+<text x="185" y="609" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Quorum unavailable?</text>
+<text x="185" y="636" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Return a retryable failure.</text>
+<text x="185" y="663" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">This is not proof of data loss.</text>
+<text x="680" y="735" font-size="18" font-weight="600" text-anchor="middle" fill="#222">Only then serve an authoritative cache-refill read.</text>
+</svg>

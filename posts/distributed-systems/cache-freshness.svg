@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="665" viewBox="0 0 1000 665" role="img" aria-labelledby="title desc">
+<title id="title">One fixed freshness deadline</title><desc id="desc">A database read starts at zero, deletion commits at one second, the result arrives at twenty seconds, and the cache deadline remains thirty seconds. Only ten seconds remain. A result arriving at fifty seconds must be discarded. A downstream CDN and browser share the remaining HTTP freshness budget through Age.</desc>
+<rect width="1000" height="665" fill="white"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333"/></marker></defs>
+<style>text{font-family:Arial,Helvetica,sans-serif} .edge{fill:none;stroke:#333;stroke-width:2;stroke-linejoin:round;stroke-linecap:round} .hint{fill:#666}</style>
+<text x="35" y="39" font-size="27" font-weight="600" text-anchor="start" fill="#222">Freshness belongs to the data, not its arrival time</text>
+<text x="35" y="70" font-size="18" font-weight="normal" text-anchor="start" fill="#666">Illustration: 30-second application TTL; negligible transit time in the HTTP example.</text>
+<text x="35" y="115" font-size="21" font-weight="600" text-anchor="start" fill="#222">1. Anchor expiry before the database read starts</text>
+<path class="edge" d="M 95,219 H 905" marker-end="url(#arrow)"/>
+<path class="edge" d="M 95,211 V 227"/>
+<path class="edge" d="M 111,211 V 227"/>
+<path class="edge" d="M 415,211 V 227"/>
+<path class="edge" d="M 575,211 V 227"/>
+<path class="edge" d="M 895,211 V 227"/>
+<text x="95" y="155" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">0 s</text>
+<text x="95" y="180" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Read starts</text>
+<text x="175" y="263" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">1 s</text>
+<text x="175" y="288" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Delete commits</text>
+<path class="edge" d="M 111,230 L 163,241"/>
+<text x="415" y="155" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">20 s</text>
+<text x="415" y="180" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Result arrives</text>
+<text x="575" y="263" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">30 s</text>
+<text x="575" y="288" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Hard deadline</text>
+<text x="895" y="155" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">50 s</text>
+<text x="895" y="180" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Late result</text>
+<path class="edge" d="M 420,194 H 570" marker-end="url(#arrow)" marker-start="url(#arrow)"/>
+<text x="520" y="179" font-size="17" font-weight="600" text-anchor="middle" fill="#222">10 s left</text>
+<rect x="60" y="326" width="420" height="72" rx="8" fill="#f1f1f1" stroke="#555" stroke-width="1.6"/>
+<text x="270" y="355" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">expires_at = read_start + 30 s</text>
+<text x="270" y="380" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Arrival at 20 s leaves TTL = 10 s</text>
+<rect x="520" y="326" width="420" height="72" rx="8" fill="#fff" stroke="#555" stroke-width="1.6"/>
+<text x="730" y="355" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Arrival at 50 s: already expired</text>
+<text x="730" y="380" font-size="18" font-weight="normal" text-anchor="middle" fill="#222">Discard; do not restart the TTL</text>
+<text x="35" y="448" font-size="21" font-weight="600" text-anchor="start" fill="#222">2. CDN and browser share the HTTP freshness budget</text>
+<rect x="40" y="479" width="265" height="103" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="172.5" y="510" font-size="21" font-weight="600" text-anchor="middle" fill="#222">Origin at t = 20 s</text>
+<text x="172.5" y="539" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">max-age = 10</text>
+<text x="172.5" y="563" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Capped by remaining lifetime</text>
+<rect x="368" y="479" width="265" height="103" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="500.5" y="510" font-size="21" font-weight="600" text-anchor="middle" fill="#222">CDN at t = 24 s</text>
+<text x="500.5" y="539" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Held response for 4 s</text>
+<text x="500.5" y="563" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Sends Age: 4</text>
+<rect x="696" y="479" width="265" height="103" rx="8" fill="#f8f8f8" stroke="#555" stroke-width="1.6"/>
+<text x="828.5" y="510" font-size="21" font-weight="600" text-anchor="middle" fill="#222">Browser at t = 24 s</text>
+<text x="828.5" y="539" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Freshness left: 10 − 4 = 6 s</text>
+<text x="828.5" y="563" font-size="17" font-weight="normal" text-anchor="middle" fill="#222">Deadline stays t = 30 s</text>
+<path class="edge" d="M 308,530 H 365" marker-end="url(#arrow)"/>
+<path class="edge" d="M 636,530 H 693" marker-end="url(#arrow)"/>
+<text x="500" y="624" font-size="18" font-weight="600" text-anchor="middle" fill="#222">Copying a cached response must not grant it a new full lifetime.</text>
+</svg>
