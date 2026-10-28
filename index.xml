@@ -82,16 +82,16 @@
   text-align: center !important;
 }
 </style>
-<section id="clocks" class="level2">
-<h2 class="anchored" data-anchor-id="clocks">Clocks</h2>
+<section id="clocks" class="level1">
+<h1>Clocks</h1>
 <p>Being able to timestamp (a strictly monotonically increasing sequence) events is useful because:</p>
 <ul>
 <li>Elapsed time (using <a href="https://docs.python.org/3/library/time.html#time.monotonic">monotonic clock</a>) is a proxy for performance.</li>
 <li>A timestamp bigger than the current timestamp can serve as deadline.</li>
 <li>Cause has a lower timestamp than its effect.</li>
 </ul>
-<section id="clock-synchronization" class="level3">
-<h3 class="anchored" data-anchor-id="clock-synchronization">Clock synchronization</h3>
+<section id="clock-synchronization" class="level2">
+<h2 class="anchored" data-anchor-id="clock-synchronization">Clock synchronization</h2>
 <p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/ntp-exchange.svg" class="img-fluid" style="width:75.0%"></p>
 <p>Roundtrip network delay: <img src="https://latex.codecogs.com/png.latex?%5Cdelta%20=%20(t_4%20-%20t_1)%20-%20(t_3%20-%20t_2)">. Assuming the network delay is the same in both directions, when client is at <img src="https://latex.codecogs.com/png.latex?t_4"> the server is at <img src="https://latex.codecogs.com/png.latex?t_3+%5Cfrac%7B%5Cdelta%7D%7B2%7D">. Consequently, client’s clock skew: <img src="https://latex.codecogs.com/png.latex?%5Ctheta%20=%20%5Cleft(t_3+%5Cfrac%7B%5Cdelta%7D%7B2%7D%5Cright)-t_4%20=%20%5Cfrac%7B(t_2-t_1)+(t_3-t_4)%7D%7B2%7D">.</p>
 <p>If the network delay is not the same in both directions, even with NTP synchronization, there could be residual errors.</p>
@@ -105,8 +105,8 @@
 <p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/ntp-residual-error.svg" class="img-fluid"></p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cepsilon%20&amp;=%20%5Cdelta_1%20-%20%5Cfrac%7B%5Cdelta%7D%7B2%7D%5C%5C%0A%20%20%20%20%20%20%20%20%20&amp;=%20%5Cdelta_1%20-%20%5Cfrac%7B%5Cdelta_1%20+%20%5Cdelta_2%7D%7B2%7D%20%5C%5C%0A%20%20%20%20%20%20%20%20%20&amp;=%20%5Cfrac%7B%5Cdelta_1%20-%20%5Cdelta_2%7D%7B2%7D%20%5C%5C%0A%20%20%20%20%20%20%20%20%20&amp;=%20%5Cfrac%7B%20%5Ctext%7Bforward-delay%7D%20-%20%5Ctext%7Breturn-delay%7D%20%7D%7B2%7D%0A%5Cend%7Balign%7D%0A"></p>
 </section>
-<section id="message-ordering" class="level3">
-<h3 class="anchored" data-anchor-id="message-ordering">Message ordering</h3>
+<section id="message-ordering-using-logical-clocks" class="level2">
+<h2 class="anchored" data-anchor-id="message-ordering-using-logical-clocks">Message ordering using logical clocks</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/message-ordering.svg" class="img-fluid figure-img"></p>
@@ -119,10 +119,18 @@
 <li>Transitivity: <img src="https://latex.codecogs.com/png.latex?a%20%5Clongrightarrow%20c">, <img src="https://latex.codecogs.com/png.latex?a%20%5Clongrightarrow%20d">, <img src="https://latex.codecogs.com/png.latex?a%20%5Clongrightarrow%20f">, <img src="https://latex.codecogs.com/png.latex?b%20%5Clongrightarrow%20d">, <img src="https://latex.codecogs.com/png.latex?b%20%5Clongrightarrow%20f">, <img src="https://latex.codecogs.com/png.latex?c%20%5Clongrightarrow%20f"></li>
 <li>Concurrent (or causally unrelated): <img src="https://latex.codecogs.com/png.latex?a%20%5Cparallel%20e">, <img src="https://latex.codecogs.com/png.latex?b%20%5Cparallel%20e">, <img src="https://latex.codecogs.com/png.latex?c%20%5Cparallel%20e">, <img src="https://latex.codecogs.com/png.latex?d%20%5Cparallel%20e"></li>
 </ul>
+<p>For a logical clock, minimum requirement is: <img src="https://latex.codecogs.com/png.latex?(a%20%5Clongrightarrow%20b)%20%5Cimplies%20(T(a)%20%3C%20T(b))"></p>
+<section id="lamport-clock" class="level3">
+<h3 class="anchored" data-anchor-id="lamport-clock">Lamport clock</h3>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/lamport-clocks.svg" class="img-fluid"></p>
+</section>
+<section id="vector-clock" class="level3">
+<h3 class="anchored" data-anchor-id="vector-clock">Vector clock</h3>
 </section>
 </section>
-<section id="fault-tolerance" class="level2">
-<h2 class="anchored" data-anchor-id="fault-tolerance">Fault tolerance</h2>
+</section>
+<section id="fault-tolerance" class="level1">
+<h1>Fault tolerance</h1>
 <ul>
 <li>(Eventually Perfect) Failure detector
 <ul>
@@ -130,8 +138,8 @@
 </ul></li>
 </ul>
 </section>
-<section id="availability" class="level2">
-<h2 class="anchored" data-anchor-id="availability">Availability</h2>
+<section id="availability" class="level1">
+<h1>Availability</h1>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -174,12 +182,12 @@
 </tbody>
 </table>
 <p>Each additional nine reduces the downtime budget by <strong>10×</strong>.</p>
-<section id="slo-sla" class="level3">
-<h3 class="anchored" data-anchor-id="slo-sla">SLO, SLA</h3>
+<section id="slo-sla" class="level2">
+<h2 class="anchored" data-anchor-id="slo-sla">SLO, SLA</h2>
 </section>
 </section>
-<section id="assumptions" class="level2">
-<h2 class="anchored" data-anchor-id="assumptions">Assumptions</h2>
+<section id="assumptions" class="level1">
+<h1>Assumptions</h1>
 <ul>
 <li>Network behavior</li>
 </ul>
@@ -193,22 +201,22 @@
 </ul>
 <p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/timing_behavior.svg" class="img-fluid"></p>
 </section>
-<section id="failure-models" class="level2">
-<h2 class="anchored" data-anchor-id="failure-models">Failure models</h2>
+<section id="failure-models" class="level1">
+<h1>Failure models</h1>
 <ul>
 <li>Two generals problem</li>
 <li>Byzantine generals problem</li>
 </ul>
 </section>
-<section id="messaging-layer" class="level2">
-<h2 class="anchored" data-anchor-id="messaging-layer">Messaging layer</h2>
+<section id="messaging-layer" class="level1">
+<h1>Messaging layer</h1>
 <ul>
 <li>RPC, REST</li>
 <li>Language-agnostic IDL: Protocol buffer or Thrift</li>
 </ul>
 </section>
-<section id="sources" class="level2">
-<h2 class="anchored" data-anchor-id="sources">Sources</h2>
+<section id="sources" class="level1">
+<h1>Sources</h1>
 <ul>
 <li>Kleppmann’s 2021 lectures:
 <ul>
@@ -218,8 +226,8 @@
 <li><a href="https://builder.aws.com/content/3K9TeXp6strMiJ4vhakpRD7BQWO/caching-challenges-and-strategies">Caching challenges and strategies from AWS</a></li>
 </ul>
 </section>
-<section id="url-shortener" class="level2">
-<h2 class="anchored" data-anchor-id="url-shortener">URL shortener</h2>
+<section id="url-shortener" class="level1">
+<h1>URL shortener</h1>
 <details id="url-shortener-design">
 <summary>
 </summary>
