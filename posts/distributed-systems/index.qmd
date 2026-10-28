@@ -96,11 +96,7 @@ Each additional nine reduces the downtime budget by **10×**.
 
 A URL shortener has a small interface: create a link, redirect a visitor, and delete a link. The interesting design work begins when those operations have to keep their promises during delays and failures.
 
-In this exercise, the most consequential promise is that a deletion takes effect within **60 seconds**. That requirement connects almost everything: cache expiration, delayed database responses, replica lag, leader failover, browser caching, and moving data between shards.
-
-This post follows the questions and revisions from my interview-preparation discussions. It presents a worked design, with assumptions and open choices stated explicitly. The estimates are sizing exercises, not benchmark results. Where the final presentation adds a stronger protocol or an implementation detail, I identify it as a refinement.
-
-The aim is a design whose claims can be defended under explicit requirements. An interview can change those requirements; the useful skill is to identify which assumption changes and revise the relevant part of the design.
+Here, the most consequential promise is that a deletion takes effect within **60 seconds**. That requirement connects almost everything: cache expiration, delayed database responses, replica lag, leader failover, browser caching, and moving data between shards.
 
 ### 1. Clarify the problem before drawing boxes {#url-shortener-1-clarify-the-problem-before-drawing-boxes}
 
