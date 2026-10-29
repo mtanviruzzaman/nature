@@ -46,21 +46,20 @@ $$
 
 ## Message ordering using logical clocks
 
-![$a \longrightarrow b$: $a$ happens-before $b$; $a \parallel b$: $a$ and $b$ are concurrent](message-ordering.svg)
+![$a \rightarrow b$: $a$ happens-before $b$; $a \parallel b$: $a$ and $b$ are concurrent](message-ordering.svg)
 
-* Events local to one node: $a \longrightarrow b$, $c \longrightarrow d$, $e \longrightarrow f$
-* Send, receive events: $b \longrightarrow c$, $d \longrightarrow f$
-* Transitivity: $a \longrightarrow c$, $a \longrightarrow d$, $a \longrightarrow f$, $b \longrightarrow d$, $b \longrightarrow f$, $c \longrightarrow f$
+* Events local to one node: $a \rightarrow b$, $c \rightarrow d$, $e \rightarrow f$
+* Send, receive events: $b \rightarrow c$, $d \rightarrow f$
+* Transitivity: $a \rightarrow c$, $a \rightarrow d$, $a \rightarrow f$, $b \rightarrow d$, $b \rightarrow f$, $c \rightarrow f$
 * Concurrent (or causally unrelated): $a \parallel e$, $b \parallel e$, $c \parallel e$, $d \parallel e$
 
-For a logical clock, minimum requirement is: $(a \longrightarrow b) \implies (T(a) < T(b))$
+For a logical clock, minimum requirement is: $(a \rightarrow b) \implies (T(a) < T(b))$
 
 ### Lamport clock
 ![](lamport-clocks.svg)
 
-- $(a \longrightarrow b) \implies (L(a) < L(b))$. Contrapositively, $(L(a) \ge L(b)) \implies (a \nrightarrow b)$. For example, if $L(a) = 10$ and $L(b) = 5$, we know $a \nrightarrow b$, but cannot distinguish between $b \longrightarrow a$ and $a \parallel b$.
-- $(L(a) = L(b)) \nRightarrow (a = b)$. In particular, concurrent events ($a \parallel b$) may share the same Lamport timestamp. Consequently, sorting logs by Lamport timestamps alone may produce inconsistent ordering across nodes. We can resolve ties using $(L(a), \operatorname{nodeID}(a))$ and comparing these pairs lexicographically, yielding a deterministic total order consistent with happens-before, assuming unique node IDs and strictly increasing local timestamps.
-- $(L(a) < L(b)) \nRightarrow (a \longrightarrow b)$. Comparing Lamport timestamps cannot establish whether one event causally preceded another. Vector clocks address this limitation by allowing us to distinguish causally ordered events from concurrent events.
+- $(a \rightarrow b) \implies (L(a) < L(b))$. Contrapositively, $(L(a) \ge L(b)) \implies (a \nrightarrow b)$. For example, if $L(a) = 10$ and $L(b) = 5$, we know $a \nrightarrow b$, but cannot distinguish between $b \rightarrow a$ and $a \parallel b$.
+- $(L(a) < L(b)) \nRightarrow (a \rightarrow b)$. Comparing Lamport timestamps cannot establish whether one event causally preceded another. Vector clocks address this limitation by allowing us to distinguish causally ordered events from concurrent events.
 
 ### Vector clock
 
