@@ -254,23 +254,22 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="message-ordering.svg" class="img-fluid figure-img"></p>
-<figcaption><span class="math inline">\(a \longrightarrow b\)</span>: <span class="math inline">\(a\)</span> happens-before <span class="math inline">\(b\)</span>; <span class="math inline">\(a \parallel b\)</span>: <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are concurrent</figcaption>
+<figcaption><span class="math inline">\(a \rightarrow b\)</span>: <span class="math inline">\(a\)</span> happens-before <span class="math inline">\(b\)</span>; <span class="math inline">\(a \parallel b\)</span>: <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are concurrent</figcaption>
 </figure>
 </div>
 <ul>
-<li>Events local to one node: <span class="math inline">\(a \longrightarrow b\)</span>, <span class="math inline">\(c \longrightarrow d\)</span>, <span class="math inline">\(e \longrightarrow f\)</span></li>
-<li>Send, receive events: <span class="math inline">\(b \longrightarrow c\)</span>, <span class="math inline">\(d \longrightarrow f\)</span></li>
-<li>Transitivity: <span class="math inline">\(a \longrightarrow c\)</span>, <span class="math inline">\(a \longrightarrow d\)</span>, <span class="math inline">\(a \longrightarrow f\)</span>, <span class="math inline">\(b \longrightarrow d\)</span>, <span class="math inline">\(b \longrightarrow f\)</span>, <span class="math inline">\(c \longrightarrow f\)</span></li>
+<li>Events local to one node: <span class="math inline">\(a \rightarrow b\)</span>, <span class="math inline">\(c \rightarrow d\)</span>, <span class="math inline">\(e \rightarrow f\)</span></li>
+<li>Send, receive events: <span class="math inline">\(b \rightarrow c\)</span>, <span class="math inline">\(d \rightarrow f\)</span></li>
+<li>Transitivity: <span class="math inline">\(a \rightarrow c\)</span>, <span class="math inline">\(a \rightarrow d\)</span>, <span class="math inline">\(a \rightarrow f\)</span>, <span class="math inline">\(b \rightarrow d\)</span>, <span class="math inline">\(b \rightarrow f\)</span>, <span class="math inline">\(c \rightarrow f\)</span></li>
 <li>Concurrent (or causally unrelated): <span class="math inline">\(a \parallel e\)</span>, <span class="math inline">\(b \parallel e\)</span>, <span class="math inline">\(c \parallel e\)</span>, <span class="math inline">\(d \parallel e\)</span></li>
 </ul>
-<p>For a logical clock, minimum requirement is: <span class="math inline">\((a \longrightarrow b) \implies (T(a) &lt; T(b))\)</span></p>
+<p>For a logical clock, minimum requirement is: <span class="math inline">\((a \rightarrow b) \implies (T(a) &lt; T(b))\)</span></p>
 <section id="lamport-clock" class="level3">
 <h3 class="anchored" data-anchor-id="lamport-clock">Lamport clock</h3>
 <p><img src="lamport-clocks.svg" class="img-fluid"></p>
 <ul>
-<li><span class="math inline">\((a \longrightarrow b) \implies (L(a) &lt; L(b))\)</span>. Contrapositively, <span class="math inline">\((L(a) \ge L(b)) \implies (a \nrightarrow b)\)</span>. For example, if <span class="math inline">\(L(a) = 10\)</span> and <span class="math inline">\(L(b) = 5\)</span>, we know <span class="math inline">\(a \nrightarrow b\)</span>, but cannot distinguish between <span class="math inline">\(b \longrightarrow a\)</span> and <span class="math inline">\(a \parallel b\)</span>.</li>
-<li><span class="math inline">\((L(a) = L(b)) \nRightarrow (a = b)\)</span>. In particular, concurrent events (<span class="math inline">\(a \parallel b\)</span>) may share the same Lamport timestamp. Consequently, sorting logs by Lamport timestamps alone may produce inconsistent ordering across nodes. We can resolve ties using <span class="math inline">\((L(a), \operatorname{nodeID}(a))\)</span> and comparing these pairs lexicographically, yielding a deterministic total order consistent with happens-before, assuming unique node IDs and strictly increasing local timestamps.</li>
-<li><span class="math inline">\((L(a) &lt; L(b)) \nRightarrow (a \longrightarrow b)\)</span>. Comparing Lamport timestamps cannot establish whether one event causally preceded another. Vector clocks address this limitation by allowing us to distinguish causally ordered events from concurrent events.</li>
+<li><span class="math inline">\((a \rightarrow b) \implies (L(a) &lt; L(b))\)</span>. Contrapositively, <span class="math inline">\((L(a) \ge L(b)) \implies (a \nrightarrow b)\)</span>. For example, if <span class="math inline">\(L(a) = 10\)</span> and <span class="math inline">\(L(b) = 5\)</span>, we know <span class="math inline">\(a \nrightarrow b\)</span>, but cannot distinguish between <span class="math inline">\(b \rightarrow a\)</span> and <span class="math inline">\(a \parallel b\)</span>.</li>
+<li><span class="math inline">\((L(a) &lt; L(b)) \nRightarrow (a \rightarrow b)\)</span>. Comparing Lamport timestamps cannot establish whether one event causally preceded another. Vector clocks address this limitation by allowing us to distinguish causally ordered events from concurrent events.</li>
 </ul>
 </section>
 <section id="vector-clock" class="level3">
