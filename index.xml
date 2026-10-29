@@ -105,8 +105,8 @@
 <p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/ntp-residual-error.svg" class="img-fluid"></p>
 <p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cepsilon%20&amp;=%20%5Cdelta_1%20-%20%5Cfrac%7B%5Cdelta%7D%7B2%7D%5C%5C%0A%20%20%20%20%20%20%20%20%20&amp;=%20%5Cdelta_1%20-%20%5Cfrac%7B%5Cdelta_1%20+%20%5Cdelta_2%7D%7B2%7D%20%5C%5C%0A%20%20%20%20%20%20%20%20%20&amp;=%20%5Cfrac%7B%5Cdelta_1%20-%20%5Cdelta_2%7D%7B2%7D%20%5C%5C%0A%20%20%20%20%20%20%20%20%20&amp;=%20%5Cfrac%7B%20%5Ctext%7Bforward-delay%7D%20-%20%5Ctext%7Breturn-delay%7D%20%7D%7B2%7D%0A%5Cend%7Balign%7D%0A"></p>
 </section>
-<section id="message-ordering-using-logical-clocks" class="level2">
-<h2 class="anchored" data-anchor-id="message-ordering-using-logical-clocks">Message ordering using logical clocks</h2>
+<section id="event-ordering-using-logical-clocks" class="level2">
+<h2 class="anchored" data-anchor-id="event-ordering-using-logical-clocks">Event ordering using logical clocks</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/message-ordering.svg" class="img-fluid figure-img"></p>
