@@ -44,7 +44,7 @@ $$
 \end{align}
 $$
 
-## Message ordering using logical clocks
+## Event ordering using logical clocks
 
 ![$a \rightarrow b$: $a$ happens-before $b$; $a \parallel b$: $a$ and $b$ are concurrent](message-ordering.svg)
 
