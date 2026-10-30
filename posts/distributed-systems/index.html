@@ -274,6 +274,16 @@ window.Quarto = {
 </section>
 <section id="vector-clock" class="level3">
 <h3 class="anchored" data-anchor-id="vector-clock">Vector clock</h3>
+<p><img src="vector-clocks.svg" class="img-fluid" style="width:100.0%"></p>
+<ul>
+<li><span class="math inline">\(V(e)\)</span> encodes the set containing <span class="math inline">\(e\)</span> and all its causal predecessors: <span class="math inline">\(\{e\} \cup \{a \mid a \rightarrow e\}\)</span>. Starting at <span class="math inline">\(e\)</span>, follow local timelines backward and follow each received message backward to its corresponding send event, recursively. Each component <span class="math inline">\(V(e)[i] = k\)</span> means this set contains the first <span class="math inline">\(k\)</span> events at node <span class="math inline">\(i\)</span>.</li>
+<li><span class="math inline">\((V(a) \le V(b)) \iff (\{a\} \cup \{e\ |\ e \rightarrow a\}) \subseteq (\{b\} \cup \{e\ |\ e \rightarrow b\})\)</span></li>
+<li><span class="math inline">\((V(a) &lt; V(b)) \iff (a \rightarrow b)\)</span><br>
+</li>
+<li><span class="math inline">\((V(a) = V(b)) \iff (a = b)\)</span><br>
+</li>
+<li><span class="math inline">\((V(a) \parallel V(b)) \iff (a \parallel b)\)</span></li>
+</ul>
 </section>
 </section>
 </section>
