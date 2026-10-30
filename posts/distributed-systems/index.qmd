@@ -63,6 +63,14 @@ For a logical clock, minimum requirement is: $(a \rightarrow b) \implies (T(a) <
 
 ### Vector clock
 
+![](vector-clocks.svg){width=100%}
+
+- $V(e)$ encodes the set containing $e$ and all its causal predecessors: $\{e\} \cup \{a \mid a \rightarrow e\}$. Starting at $e$, follow local timelines backward and follow each received message backward to its corresponding send event, recursively. Each component $V(e)[i] = k$ means this set contains the first $k$ events at node $i$.
+- $(V(a) \le V(b)) \iff (\{a\} \cup \{e\ |\ e \rightarrow a\}) \subseteq (\{b\} \cup \{e\ |\ e \rightarrow b\})$
+- $(V(a) < V(b)) \iff (a \rightarrow b)$  
+- $(V(a) = V(b)) \iff (a = b)$  
+- $(V(a) \parallel V(b)) \iff (a \parallel b)$  
+
 # Fault tolerance
 * (Eventually Perfect) Failure detector
     - Timeout
