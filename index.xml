@@ -1599,6 +1599,11 @@ Hello, world!</code></pre>
 
 
 
+<style>
+.quarto-figure figcaption {
+  text-align: center !important;
+}
+</style>
 <section id="chapter-5-the-integral-calculus-proper" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-5-the-integral-calculus-proper">Chapter 5: The Integral Calculus Proper</h2>
 <details>
@@ -1690,6 +1695,17 @@ Zoom in enough and the curve, conveniently, becomes a straight line …
 <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cleft(%5Cfrac%7Bds%7D%7Bdx%7D%5Cright)%5E2%20&amp;=%201%5E2%20+%20%5Cleft(%5Cfrac%7Bdy%7D%7Bdx%7D%5Cright)%5E2%20%5C%5C%0Ads%20&amp;=%20%5Csqrt%7B1%20+%20%5Cleft(%20%5Cfrac%7Bdy%7D%7Bdx%7D%20%5Cright)%5E2%7D%20%5Ccdot%20dx%0A%5Cend%7Balign%7D%0A"> Now add up <img src="https://latex.codecogs.com/png.latex?%5Ctextcolor%7Bblue%7D%7Bds%7D">’s to find the total arc length of interest, say from <img src="https://latex.codecogs.com/png.latex?x=a"> to <img src="https://latex.codecogs.com/png.latex?x=b">: <img src="https://latex.codecogs.com/png.latex?%0A%5Cint%20ds%20=%20%5Cint_a%5Eb%20%5Csqrt%7B1%20+%20%5Cleft(%20%5Cfrac%7Bdy%7D%7Bdx%7D%20%5Cright)%5E2%7D%20%5Ccdot%20dx%0A">
 </details>
 </details>
+</details>
+<details>
+<summary>
+Conical frustum’s lateral surface area
+</summary>
+<p>When we cut a full cone along a generator and spread it flat, it resembles a pac-man which is a part of a circle.</p>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/braver-calc-review/cone_lateral_area.svg" class="img-fluid"></p>
+<p>Clearly: <img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0A%5Cfrac%7B%5Ctext%7Bpac-man's%20area%7D,%5C,%20A%7D%7B%5Ctext%7Bcircle's%20area%7D%7D%0A&amp;=%20%5Cfrac%7B%5Ctext%7Bcircumference%20of%20pac-man's%20circular%20part%7D%7D%7B%5Ctext%7Bcircle's%20circumference%7D%7D%20%5C%5C%0A%5Cfrac%7BA%7D%7B%5Cpi%20s%5E2%7D%0A&amp;=%20%5Cfrac%7B2%5Cpi%20r%7D%7B2%5Cpi%20s%7D%20%5C%5C%0AA%0A&amp;=%20%5Cunderbrace%7B%5Cpi%20r%7D_%7B%5Csubstack%7B%5Ctext%7Bthe%20distance%7D%5C%5C%5Ctext%7Bmidpoint%7D%5C%5C%5Ctext%7Btravels%7D%7D%7D%0A%20%20%20%5Ctimes%0A%20%20%20%5Coverbrace%7Bs%7D%5E%7B%5Csubstack%7B%5Ctext%7Bgenerator's%7D%5C%5C%5Ctext%7Blength%7D%7D%7D%0A%5Cend%7Baligned%7D%0A"></p>
+<p>A conical frustum’s lateral surface area (<img src="https://latex.codecogs.com/png.latex?A">) can be thought of as the difference between two cone’s surface areas.</p>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/braver-calc-review/frustum_lateral_area.svg" class="img-fluid"></p>
+<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Baligned%7D%0AA%0A&amp;=%20%5Cunderbrace%7B%5Cpi%20R(x+s)%7D_%7BA_1%7D%20-%20%5Cunderbrace%7B%5Cpi%20rx%7D_%7BA_2%7D%20%5C%5C%0A&amp;=%20%5Cpi(R-r)x+%5Cpi%20Rs%20%5C%5C%0A&amp;=%20%5Cpi(R-r)%5Cfrac%7Brs%7D%7B(R-r)%7D+%5Cpi%20Rs%20%5C%5C%0A&amp;=%20%5Cpi(r+R)s%20%5C%5C%0AA%0A&amp;=%20%5Cunderbrace%7B%5Cleft(2%5Cpi%5Cfrac%7BR+r%7D%7B2%7D%5Cright)%7D_%7B%5Ctext%7Bdistance%20midpoint%20travels%7D%7D%0A%20%20%20%5Ctimes%0A%20%20%20%5Coverbrace%7Bs%7D%5E%7B%5Csubstack%7B%5Ctext%7Bgenerator's%7D%5C%5C%5Ctext%7Blength%7D%7D%7D%0A%5Cend%7Baligned%7D%0A"></p>
 </details>
 <details>
 <summary>

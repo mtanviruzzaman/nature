@@ -185,6 +185,11 @@ window.Quarto = {
 </header>
 
 
+<style>
+.quarto-figure figcaption {
+  text-align: center !important;
+}
+</style>
 <section id="chapter-5-the-integral-calculus-proper" class="level2">
 <h2 class="anchored" data-anchor-id="chapter-5-the-integral-calculus-proper">Chapter 5: The Integral Calculus Proper</h2>
 <details>
@@ -315,6 +320,40 @@ ds &amp;= \sqrt{1 + \left( \frac{dy}{dx} \right)^2} \cdot dx
 \]</span>
 </details>
 </details>
+</details>
+<details>
+<summary>
+Conical frustum’s lateral surface area
+</summary>
+<p>When we cut a full cone along a generator and spread it flat, it resembles a pac-man which is a part of a circle.</p>
+<p><img src="cone_lateral_area.svg" class="img-fluid"></p>
+<p>Clearly: <span class="math display">\[
+\begin{aligned}
+\frac{\text{pac-man's area},\, A}{\text{circle's area}}
+&amp;= \frac{\text{circumference of pac-man's circular part}}{\text{circle's circumference}} \\
+\frac{A}{\pi s^2}
+&amp;= \frac{2\pi r}{2\pi s} \\
+A
+&amp;= \underbrace{\pi r}_{\substack{\text{the distance}\\\text{midpoint}\\\text{travels}}}
+   \times
+   \overbrace{s}^{\substack{\text{generator's}\\\text{length}}}
+\end{aligned}
+\]</span></p>
+<p>A conical frustum’s lateral surface area (<span class="math inline">\(A\)</span>) can be thought of as the difference between two cone’s surface areas.</p>
+<p><img src="frustum_lateral_area.svg" class="img-fluid"></p>
+<p><span class="math display">\[
+\begin{aligned}
+A
+&amp;= \underbrace{\pi R(x+s)}_{A_1} - \underbrace{\pi rx}_{A_2} \\
+&amp;= \pi(R-r)x+\pi Rs \\
+&amp;= \pi(R-r)\frac{rs}{(R-r)}+\pi Rs \\
+&amp;= \pi(r+R)s \\
+A
+&amp;= \underbrace{\left(2\pi\frac{R+r}{2}\right)}_{\text{distance midpoint travels}}
+   \times
+   \overbrace{s}^{\substack{\text{generator's}\\\text{length}}}
+\end{aligned}
+\]</span></p>
 </details>
 <details>
 <summary>
