@@ -130,7 +130,6 @@ When we cut a full cone along a generator and spread it flat, it resembles a pac
 
 ![](cone_lateral_area.svg)
 
-Clearly:
 $$
 \begin{aligned}
 \frac{\text{pac-man's area},\, A}{\text{circle's area}}
