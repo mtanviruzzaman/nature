@@ -71,6 +71,12 @@ For a logical clock, minimum requirement is: $(a \rightarrow b) \implies (T(a) <
 - $(V(a) = V(b)) \iff (a = b)$  
 - $(V(a) \parallel V(b)) \iff (a \parallel b)$  
 
+## Broadcast
+![](broadcast_models.svg)
+
+### FIFO
+![](fifo_broadcast.svg)
+
 # Fault tolerance
 * (Eventually Perfect) Failure detector
     - Timeout
