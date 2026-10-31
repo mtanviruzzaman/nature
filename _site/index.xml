@@ -149,6 +149,17 @@
 <h3 class="anchored" data-anchor-id="fifo">FIFO</h3>
 <p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/fifo_broadcast.svg" class="img-fluid"></p>
 </section>
+<section id="causal" class="level3">
+<h3 class="anchored" data-anchor-id="causal">Causal</h3>
+<p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/causal_broadcast.svg" class="img-fluid"></p>
+</section>
+<section id="total-order" class="level3">
+<h3 class="anchored" data-anchor-id="total-order">Total order</h3>
+<ul>
+<li>All messages go through a leader node and the leader uses FIFO broadcast. So, all nodes receive all messages in the same order. Fault tolerance depends on safe leader election.</li>
+<li>Every message has a Lamport timestamp associated with it. Senders use FIFO broadcast. To be able to deliver the message with timestamp <img src="https://latex.codecogs.com/png.latex?T">, a receiving node waits for message with timestamp <img src="https://latex.codecogs.com/png.latex?%5Cge"> <img src="https://latex.codecogs.com/png.latex?T"> from every node. Not fault tolerant.</li>
+</ul>
+</section>
 </section>
 </section>
 <section id="fault-tolerance" class="level1">
@@ -159,6 +170,9 @@
 <li>Timeout</li>
 </ul></li>
 </ul>
+<section id="replication" class="level2">
+<h2 class="anchored" data-anchor-id="replication">Replication</h2>
+</section>
 </section>
 <section id="availability" class="level1">
 <h1>Availability</h1>

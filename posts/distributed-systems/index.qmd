@@ -77,10 +77,16 @@ For a logical clock, minimum requirement is: $(a \rightarrow b) \implies (T(a) <
 ### FIFO
 ![](fifo_broadcast.svg)
 
+### Causal
+![](causal_broadcast.svg)
+
+### Total order
+- All messages go through a leader node and the leader uses FIFO broadcast. So, all nodes receive all messages in the same order. Fault tolerance depends on safe leader election.
+- Every message has a Lamport timestamp associated with it. Senders use FIFO broadcast. To be able to deliver the message with timestamp $T$, a receiving node waits for message with timestamp $\ge$ $T$ from every node. Not fault tolerant.
+
 # Fault tolerance
 * (Eventually Perfect) Failure detector
     - Timeout
-
 
 # Availability
 
