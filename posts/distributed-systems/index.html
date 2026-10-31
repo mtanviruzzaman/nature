@@ -293,6 +293,17 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="fifo">FIFO</h3>
 <p><img src="fifo_broadcast.svg" class="img-fluid"></p>
 </section>
+<section id="causal" class="level3">
+<h3 class="anchored" data-anchor-id="causal">Causal</h3>
+<p><img src="causal_broadcast.svg" class="img-fluid"></p>
+</section>
+<section id="total-order" class="level3">
+<h3 class="anchored" data-anchor-id="total-order">Total order</h3>
+<ul>
+<li>All messages go through a leader node and the leader uses FIFO broadcast. So, all nodes receive all messages in the same order. Fault tolerance depends on safe leader election.</li>
+<li>Every message has a Lamport timestamp associated with it. Senders use FIFO broadcast. To be able to deliver the message with timestamp <span class="math inline">\(T\)</span>, a receiving node waits for message with timestamp <span class="math inline">\(\ge\)</span> <span class="math inline">\(T\)</span> from every node. Not fault tolerant.</li>
+</ul>
+</section>
 </section>
 </section>
 <section id="fault-tolerance" class="level1">
