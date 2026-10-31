@@ -5,6 +5,13 @@ date: "2026-10-10"
 categories: [computation, math, review]
 description: "Retrieval practice hints for Full Frontal Calculus (1st ed.) by Seth Braver"
 ---
+```{=html}
+<style>
+.quarto-figure figcaption {
+  text-align: center !important;
+}
+</style>
+```
 
 ## Chapter 5: The Integral Calculus Proper
 <details>
@@ -115,6 +122,46 @@ $$
 $$
 </details>
 </details>
+</details>
+<details>
+<summary>Conical frustum's lateral surface area</summary>
+
+When we cut a full cone along a generator and spread it flat, it resembles a pac-man which is a part of a circle.
+
+![](cone_lateral_area.svg)
+
+Clearly:
+$$
+\begin{aligned}
+\frac{\text{pac-man's area},\, A}{\text{circle's area}}
+&= \frac{\text{circumference of pac-man's circular part}}{\text{circle's circumference}} \\
+\frac{A}{\pi s^2}
+&= \frac{2\pi r}{2\pi s} \\
+A
+&= \underbrace{\pi r}_{\substack{\text{the distance}\\\text{midpoint}\\\text{travels}}}
+   \times
+   \overbrace{s}^{\substack{\text{generator's}\\\text{length}}}
+\end{aligned}
+$$
+
+A conical frustum's lateral surface area ($A$) can be thought of as the difference between two cone's surface areas.
+
+![](frustum_lateral_area.svg)
+
+$$
+\begin{aligned}
+A
+&= \underbrace{\pi R(x+s)}_{A_1} - \underbrace{\pi rx}_{A_2} \\
+&= \pi(R-r)x+\pi Rs \\
+&= \pi(R-r)\frac{rs}{(R-r)}+\pi Rs \\
+&= \pi(r+R)s \\
+A
+&= \underbrace{\left(2\pi\frac{R+r}{2}\right)}_{\text{distance midpoint travels}}
+   \times
+   \overbrace{s}^{\substack{\text{generator's}\\\text{length}}}
+\end{aligned}
+$$
+
 </details>
 <details>
 <summary>Surface Area</summary>
