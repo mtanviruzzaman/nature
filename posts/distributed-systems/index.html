@@ -314,6 +314,33 @@ window.Quarto = {
 <li>Timeout</li>
 </ul></li>
 </ul>
+<section id="replicaiton" class="level2">
+<h2 class="anchored" data-anchor-id="replicaiton">Replicaiton</h2>
+<section id="retry" class="level3">
+<h3 class="anchored" data-anchor-id="retry">Retry</h3>
+<section id="retry-semantics" class="level4">
+<h4 class="anchored" data-anchor-id="retry-semantics">Retry semantics</h4>
+<ul>
+<li><strong>At-most-once</strong>: fire and forget</li>
+<li><strong>At-least-once</strong>: retry until ack’d</li>
+<li><strong>Exactly-once</strong>: retry + idempotence/deduplication</li>
+</ul>
+</section>
+<section id="idempotence" class="level4">
+<h4 class="anchored" data-anchor-id="idempotence">Idempotence</h4>
+<p>Idempotent request can be retried without deduplication:</p>
+<ul>
+<li>Not-idempotent: <span class="math inline">\(f(\text{likeCount}) = \text{likeCount} + 1\)</span></li>
+<li>Idempotent: <span class="math inline">\(f(\text{likeSet}) = \text{likeSet} \cup \{\text{userID}\}\)</span></li>
+</ul>
+<p><img src="idempotent_retry.svg" class="img-fluid"></p>
+</section>
+<section id="timestamps-and-tombstones" class="level4">
+<h4 class="anchored" data-anchor-id="timestamps-and-tombstones">Timestamps and tombstones</h4>
+<p><img src="timestamps_tombstones.svg" class="img-fluid"></p>
+</section>
+</section>
+</section>
 </section>
 <section id="availability" class="level1">
 <h1>Availability</h1>
