@@ -88,6 +88,28 @@ For a logical clock, minimum requirement is: $(a \rightarrow b) \implies (T(a) <
 * (Eventually Perfect) Failure detector
     - Timeout
 
+## Replicaiton
+
+### Retry
+
+#### Retry semantics
+
+- **At-most-once**: fire and forget
+- **At-least-once**: retry until ack'd
+- **Exactly-once**: retry + idempotence/deduplication
+
+#### Idempotence
+Idempotent request can be retried without deduplication:
+
+- Not-idempotent: $f(\text{likeCount}) = \text{likeCount} + 1$
+- Idempotent: $f(\text{likeSet}) = \text{likeSet} \cup \{\text{userID}\}$
+
+![](idempotent_retry.svg)
+
+#### Timestamps and tombstones
+![](timestamps_tombstones.svg)
+
+
 # Availability
 
 | Nines | Availability | Equivalent downtime/year | Service example | Use case and cost of an outage |
