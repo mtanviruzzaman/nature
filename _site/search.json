@@ -165,7 +165,7 @@
     "href": "posts/distributed-systems/index.html#replicaiton",
     "title": "Distributed systems",
     "section": "Replicaiton",
-    "text": "Replicaiton\n\nRetry\n\nRetry semantics\n\nAt-most-once: fire and forget\nAt-least-once: retry until ack’d\nExactly-once: retry + idempotence/deduplication\n\n\n\nIdempotence\nIdempotent request can be retried without deduplication:\n\nNot-idempotent: \\(f(\\text{likeCount}) = \\text{likeCount} + 1\\)\nIdempotent: \\(f(\\text{likeSet}) = \\text{likeSet} \\cup \\{\\text{userID}\\}\\)\n\n\n\n\nTimestamps and tombstones"
+    "text": "Replicaiton\n\nRetry\n\nRetry semantics\n\nAt-most-once: fire and forget\nAt-least-once: retry until ack’d\nExactly-once: retry + idempotence/deduplication\n\n\n\nIdempotence\nIdempotent request can be retried without deduplication:\n\nNot-idempotent: \\(f(\\text{likeCount}) = \\text{likeCount} + 1\\)\nIdempotent: \\(f(\\text{likeSet}) = \\text{likeSet} \\cup \\{\\text{userID}\\}\\)\n\n\n\n\nTimestamps and tombstones\n\n\n\n\n\nRead-after-write consistency"
   },
   {
     "objectID": "posts/distributed-systems/index.html#slo-sla",

@@ -111,6 +111,11 @@ Idempotent request can be retried without deduplication:
 
 ![](concurrent_writes.svg)
 
+### Read-after-write consistency
+![](read_after_write.svg)
+![](quorum_2_of_3.svg)
+![](read_repair.svg)
+
 
 # Availability
 
