@@ -109,6 +109,8 @@ Idempotent request can be retried without deduplication:
 #### Timestamps and tombstones
 ![](timestamps_tombstones.svg)
 
+![](concurrent_writes.svg)
+
 
 # Availability
 
