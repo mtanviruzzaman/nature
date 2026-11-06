@@ -1,5 +1,5 @@
 ---
-title: "Before the Architecture"
+title: "Before the architecture"
 subtitle: "Asking the right questions in system design"
 author: "Mohammad Tanviruzzaman"
 date: "2026-11-06"
