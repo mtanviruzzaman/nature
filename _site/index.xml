@@ -10,7 +10,133 @@
 <atom:link href="https://mtanviruzzaman.github.io/nature/index.xml" rel="self" type="application/rss+xml"/>
 <description>A blog built with Quarto</description>
 <generator>quarto-1.10.18</generator>
-<lastBuildDate>Thu, 22 Oct 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 06 Nov 2026 08:00:00 GMT</lastBuildDate>
+<item>
+  <title>Before the Architecture</title>
+  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
+  <link>https://mtanviruzzaman.github.io/nature/posts/clarify-system-requirements/</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="clarifying-system-design-requirements" class="level2">
+<h2 class="anchored" data-anchor-id="clarifying-system-design-requirements">Clarifying system design requirements</h2>
+<p>Before choosing APIs, databases, or queues, establish <strong>what the system must accomplish and which guarantees matter</strong>.</p>
+<p>A useful mental model is:</p>
+<blockquote class="blockquote">
+<p>Follow one request from its caller to its final outcome. Then consider scale, time, and failure.</p>
+</blockquote>
+<section id="the-checklist" class="level3">
+<h3 class="anchored" data-anchor-id="the-checklist">The checklist</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Area</th>
+<th>Questions to ask</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1. Scope</strong></td>
+<td>Who uses the system? What are the two or three essential actions? What is explicitly out of scope?</td>
+</tr>
+<tr class="even">
+<td><strong>2. Scale</strong></td>
+<td>How many users and requests? What are the average and peak rates? How large is each item? Can one request produce many downstream operations?</td>
+</tr>
+<tr class="odd">
+<td><strong>3. Service targets</strong></td>
+<td>How quickly must each important operation finish? Where does that measurement start and end? What availability is required?</td>
+</tr>
+<tr class="even">
+<td><strong>4. Correctness</strong></td>
+<td>What must never happen? Are lost updates, duplicates, stale reads, or reordered events acceptable? What should happen during outages or overload?</td>
+</tr>
+<tr class="odd">
+<td><strong>5. Lifecycle</strong></td>
+<td>How long is data useful and how long must it be retained? Can work expire or be cancelled? How quickly must updates and deletions become visible?</td>
+</tr>
+<tr class="even">
+<td><strong>6. Boundaries and constraints</strong></td>
+<td>What already exists, and what must we build? Which external systems do we depend on? Who may access or modify the data? Are there geographic, privacy, or cost constraints?</td>
+</tr>
+</tbody>
+</table>
+<p>Use this as a sweep, not a questionnaire to recite. Ask the questions whose answers could change the design.</p>
+</section>
+<section id="make-vague-requirements-concrete" class="level3">
+<h3 class="anchored" data-anchor-id="make-vague-requirements-concrete">Make vague requirements concrete</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Vague requirement</th>
+<th>Useful clarification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>“It should be fast.”</td>
+<td>Which operation, measured between which two points, and at what percentile?</td>
+</tr>
+<tr class="even">
+<td>“It must scale.”</td>
+<td>To what average and peak workload, including fan-out?</td>
+</tr>
+<tr class="odd">
+<td>“It must be reliable.”</td>
+<td>Which failures must it tolerate, and what must remain available or durable?</td>
+</tr>
+<tr class="even">
+<td>“It must be consistent.”</td>
+<td>Which reads or updates require which guarantees?</td>
+</tr>
+<tr class="odd">
+<td>“Deliver the notification.”</td>
+<td>Does success mean queued, accepted by the provider, received by the device, or read by the user?</td>
+</tr>
+<tr class="even">
+<td>“Delete the data.”</td>
+<td>From which stores and caches, within what deadline, and with what retention exceptions?</td>
+</tr>
+</tbody>
+</table>
+<p>When goals conflict, clarify the priority. For example: during an outage, should the system reject a request or return potentially stale data?</p>
+</section>
+<section id="know-when-to-move-on" class="level3">
+<h3 class="anchored" data-anchor-id="know-when-to-move-on">Know when to move on</h3>
+<p>Move into design once you can state:</p>
+<ul>
+<li>The essential user flows and scope.</li>
+<li>The approximate workload.</li>
+<li>The important latency and availability targets.</li>
+<li>The strongest correctness requirements.</li>
+<li>Any lifecycle or integration constraint that materially affects the architecture.</li>
+</ul>
+<p>State reasonable assumptions for remaining details and revisit them when necessary.</p>
+<p>A useful transition is:</p>
+<blockquote class="blockquote">
+<p>“We’re designing <strong>[system]</strong> for <strong>[users]</strong>, supporting <strong>[core actions]</strong> at <strong>[average and peak load]</strong>. We need <strong>[latency and availability targets]</strong>, while preserving <strong>[key guarantees]</strong>. <strong>[Features]</strong> are out of scope. I’ll now define the APIs and data model, then trace the main flow through the architecture.”</p>
+</blockquote>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>computation</category>
+  <category>complex-systems</category>
+  <guid>https://mtanviruzzaman.github.io/nature/posts/clarify-system-requirements/</guid>
+  <pubDate>Fri, 06 Nov 2026 08:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Interleaved realities</title>
   <dc:creator>Mohammad Tanviruzzaman</dc:creator>
@@ -2230,128 +2356,6 @@ More…
   <category>physics</category>
   <guid>https://mtanviruzzaman.github.io/nature/posts/fundamental-units/</guid>
   <pubDate>Sun, 27 Sep 2026 07:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Review: University Physics</title>
-  <dc:creator>Mohammad Tanviruzzaman</dc:creator>
-  <link>https://mtanviruzzaman.github.io/nature/posts/young-freedman-review/</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="units-physical-quantities-and-vectors" class="level2">
-<h2 class="anchored" data-anchor-id="units-physical-quantities-and-vectors">01. Units, physical quantities, and vectors</h2>
-<details>
-<summary>
-</summary>
-<details>
-<summary>
-Physical quantities and units
-</summary>
-</details>
-<details>
-<summary>
-Significant figures
-</summary>
-</details>
-<details>
-<summary>
-Scalars, vectors, and vector addition
-</summary>
-</details>
-<details>
-<summary>
-Vector components and vector addition
-</summary>
-</details>
-<details>
-<summary>
-Unit vectors
-</summary>
-</details>
-<details>
-<summary>
-Scalar product
-</summary>
-</details>
-<details>
-<summary>
-Vector product
-</summary>
-</details>
-</details>
-</section>
-<section id="motion-along-a-straight-line" class="level2">
-<h2 class="anchored" data-anchor-id="motion-along-a-straight-line">02. Motion along a straight line</h2>
-<details>
-<summary>
-</summary>
-<details>
-<summary>
-Straight-line motion, average and instantaneous x-velocity
-</summary>
-</details>
-<details>
-<summary>
-Average and instantaneous x-acceleration
-</summary>
-</details>
-<details>
-<summary>
-Straight-line motion with constant acceleration
-</summary>
-</details>
-<details>
-<summary>
-Freely falling bodies
-</summary>
-</details>
-<details>
-<summary>
-Straight-line motion with varying acceleration
-</summary>
-</details>
-</details>
-</section>
-<section id="motion-in-two-and-three-dimensions" class="level2">
-<h2 class="anchored" data-anchor-id="motion-in-two-and-three-dimensions">03. Motion in two and three dimensions</h2>
-<details>
-<summary>
-</summary>
-<details>
-<summary>
-Position, velocity, and acceleration vectors
-</summary>
-</details>
-<details>
-<summary>
-Projectile motion
-</summary>
-<p><img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0Ax(t)%20&amp;=%20(v_0%20%5Ccos%7B%5Calpha_0%7D)t%20%5C%5C%0Ay(t)%20&amp;=%20(v_0%20%5Csin%7B%5Calpha_0%7D)t%20-%20%5Cfrac%7B1%7D%7B2%7Dgt%5E2%20%5C%5C%0Av_x(t)%20&amp;=%20v_0%20%5Ccos%7B%5Calpha_0%7D%20%5C%5C%0Av_y(t)%20&amp;=%20v_0%20%5Csin%7B%5Calpha_0%7D%20-%20gt%0A%5Cend%7Balign%7D%0A"></p>
-</details>
-<details>
-<summary>
-Uniform and nonuniform circular motion
-</summary>
-<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0Aa_%7B%5Ctext%7Brad%7D%7D%20&amp;=%20%5Cfrac%7Bv%5E2%7D%7BR%7D%20%5C%5C%0Aa_%7B%5Ctext%7Btan%7D%7D%20&amp;=%20%5Cfrac%7Bd%7C%5Cvec%7Bv%7D%7C%7D%7Bdt%7D%20%5C%5C%0A%5Cleft%7C%20%5Cfrac%7Bd%5Cvec%7Bv%7D%7D%7Bdt%7D%20%5Cright%7C%20&amp;=%20%5Csqrt%7B%20a_%7B%5Ctext%7Brad%7D%7D%5E2%20+%20a_%7B%5Ctext%7Btan%7D%7D%5E2%20%7D%0A%5Cend%7Balign%7D%0A">
-</details>
-<details>
-<summary>
-Relative velocity
-</summary>
-<img src="https://latex.codecogs.com/png.latex?%0A%5Cbegin%7Balign%7D%0A%5Cvec%7Bv%7D_%7BA/C%7D%20&amp;=%20%5Cvec%7Bv%7D_%7BA/B%7D%20+%20%5Cvec%7Bv%7D_%7BB/C%7D%20%5C%5C%0A%5Cvec%7Bv%7D_%7BA/B%7D%20&amp;=%20-%5Cvec%7Bv%7D_%7BB/A%7D%0A%5Cend%7Balign%7D%0A">
-</details>
-</details>
-
-
-</section>
-
- ]]></description>
-  <category>physics</category>
-  <category>review</category>
-  <guid>https://mtanviruzzaman.github.io/nature/posts/young-freedman-review/</guid>
-  <pubDate>Tue, 22 Sep 2026 07:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

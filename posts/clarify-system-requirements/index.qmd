@@ -1,0 +1,57 @@
+---
+title: "Before the Architecture"
+subtitle: "Asking the right questions in system design"
+author: "Mohammad Tanviruzzaman"
+date: "2026-11-06"
+categories: [computation, complex-systems]
+---
+
+## Clarifying system design requirements
+
+Before choosing APIs, databases, or queues, establish **what the system must accomplish and which guarantees matter**.
+
+A useful mental model is:
+
+> Follow one request from its caller to its final outcome. Then consider scale, time, and failure.
+
+### The checklist
+
+| Area | Questions to ask |
+|---|---|
+| **1. Scope** | Who uses the system? What are the two or three essential actions? What is explicitly out of scope? |
+| **2. Scale** | How many users and requests? What are the average and peak rates? How large is each item? Can one request produce many downstream operations? |
+| **3. Service targets** | How quickly must each important operation finish? Where does that measurement start and end? What availability is required? |
+| **4. Correctness** | What must never happen? Are lost updates, duplicates, stale reads, or reordered events acceptable? What should happen during outages or overload? |
+| **5. Lifecycle** | How long is data useful and how long must it be retained? Can work expire or be cancelled? How quickly must updates and deletions become visible? |
+| **6. Boundaries and constraints** | What already exists, and what must we build? Which external systems do we depend on? Who may access or modify the data? Are there geographic, privacy, or cost constraints? |
+
+Use this as a sweep, not a questionnaire to recite. Ask the questions whose answers could change the design.
+
+### Make vague requirements concrete
+
+| Vague requirement | Useful clarification |
+|---|---|
+| “It should be fast.” | Which operation, measured between which two points, and at what percentile? |
+| “It must scale.” | To what average and peak workload, including fan-out? |
+| “It must be reliable.” | Which failures must it tolerate, and what must remain available or durable? |
+| “It must be consistent.” | Which reads or updates require which guarantees? |
+| “Deliver the notification.” | Does success mean queued, accepted by the provider, received by the device, or read by the user? |
+| “Delete the data.” | From which stores and caches, within what deadline, and with what retention exceptions? |
+
+When goals conflict, clarify the priority. For example: during an outage, should the system reject a request or return potentially stale data?
+
+### Know when to move on
+
+Move into design once you can state:
+
+- The essential user flows and scope.
+- The approximate workload.
+- The important latency and availability targets.
+- The strongest correctness requirements.
+- Any lifecycle or integration constraint that materially affects the architecture.
+
+State reasonable assumptions for remaining details and revisit them when necessary.
+
+A useful transition is:
+
+> “We’re designing **[system]** for **[users]**, supporting **[core actions]** at **[average and peak load]**. We need **[latency and availability targets]**, while preserving **[key guarantees]**. **[Features]** are out of scope. I’ll now define the APIs and data model, then trace the main flow through the architecture.”
