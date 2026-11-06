@@ -22,7 +22,7 @@
 
 <section id="clarifying-system-design-requirements" class="level2">
 <h2 class="anchored" data-anchor-id="clarifying-system-design-requirements">Clarifying system design requirements</h2>
-<p>Before choosing APIs, databases, or queues, establish <strong>what the system must accomplish and which guarantees matter</strong>.</p>
+<p>Before choosing APIs, databases, or queues, establish what the system must accomplish and which guarantees matter.</p>
 <p>A useful mental model is:</p>
 <blockquote class="blockquote">
 <p>Follow one request from its caller to its final outcome. Then consider scale, time, and failure.</p>
