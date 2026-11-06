@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/clarify-system-requirements/index.html",
       "/posts/concurrency/index.html",
       "/posts/algorithmic-patterns/index.html",
       "/posts/distributed-systems/index.html",
