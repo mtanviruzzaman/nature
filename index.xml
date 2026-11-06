@@ -156,8 +156,8 @@
 <section id="total-order" class="level3">
 <h3 class="anchored" data-anchor-id="total-order">Total order</h3>
 <ul>
-<li>All messages go through a leader node and the leader uses FIFO broadcast. So, all nodes receive all messages in the same order. Fault tolerance depends on safe leader election.</li>
-<li>Every message has a Lamport timestamp associated with it. Senders use FIFO broadcast. To be able to deliver the message with timestamp <img src="https://latex.codecogs.com/png.latex?T">, a receiving node waits for message with timestamp <img src="https://latex.codecogs.com/png.latex?%5Cge"> <img src="https://latex.codecogs.com/png.latex?T"> from every node. Not fault tolerant.</li>
+<li><strong>With leader:</strong> All messages go through a leader node and the leader uses FIFO broadcast. So, all nodes receive all messages in the same order. Fault tolerance depends on safe leader election.</li>
+<li><strong>Without leader:</strong> Every message has a Lamport timestamp associated with it. Senders use FIFO broadcast. To be able to deliver the message with timestamp <img src="https://latex.codecogs.com/png.latex?T">, a receiving node waits for message with timestamp <img src="https://latex.codecogs.com/png.latex?%5Cge"> <img src="https://latex.codecogs.com/png.latex?T"> from every node. Not fault tolerant.</li>
 </ul>
 </section>
 </section>
@@ -200,6 +200,9 @@
 <section id="read-after-write-consistency" class="level3">
 <h3 class="anchored" data-anchor-id="read-after-write-consistency">Read-after-write consistency</h3>
 <p><img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/read_after_write.svg" class="img-fluid"> <img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/quorum_2_of_3.svg" class="img-fluid"> <img src="https://mtanviruzzaman.github.io/nature/posts/distributed-systems/read_repair.svg" class="img-fluid"></p>
+</section>
+<section id="state-machine-replication" class="level3">
+<h3 class="anchored" data-anchor-id="state-machine-replication">State machine replication</h3>
 </section>
 </section>
 </section>
