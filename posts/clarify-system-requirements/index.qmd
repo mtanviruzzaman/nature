@@ -8,7 +8,7 @@ categories: [computation, complex-systems]
 
 ## Clarifying system design requirements
 
-Before choosing APIs, databases, or queues, establish **what the system must accomplish and which guarantees matter**.
+Before choosing APIs, databases, or queues, establish what the system must accomplish and which guarantees matter.
 
 A useful mental model is:
 
