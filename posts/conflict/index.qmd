@@ -1,0 +1,10 @@
+---
+title: "Why we clash"
+subtitle: "From conflict to understanding"
+author: "Mohammad Tanviruzzaman"
+date: "2026-11-09"
+categories: [life, psychology]
+---
+
+## Sources
+- Difficult Conversations by Patton et al
