@@ -3,7 +3,6 @@
     "listing": "/index.html",
     "items": [
       "/posts/conflict/index.html",
-      "/posts/clarify-system-requirements/index.html",
       "/posts/concurrency/index.html",
       "/posts/algorithmic-patterns/index.html",
       "/posts/distributed-systems/index.html",
