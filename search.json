@@ -46,14 +46,21 @@
     "href": "posts/algorithmic-patterns/index.html",
     "title": "Beyond brute force",
     "section": "",
-    "text": "LeetCode #543: Diameter of Binary Tree: child contributions are nonnegative path lengths.\nLeetCode #124: Binary Tree Maximum Path Sum: discard negative child contributions; the node alone remains a valid candidate."
+    "text": "Start BFS from all sources at once, letting the search expand outward from them together.\n\nLeetCode #994: Rotting Oranges: start from all rotten oranges; each BFS layer represents one minute of spread.\nLeetCode #542: 01 Matrix: start from all zeros to find each cell’s distance to its nearest zero.\nLeetCode #417: Pacific Atlantic Water Flow: search backward from each ocean’s boundaries, moving to equal-or-higher cells; intersect the two reachable sets."
+  },
+  {
+    "objectID": "posts/algorithmic-patterns/index.html#multi-source-bfs",
+    "href": "posts/algorithmic-patterns/index.html#multi-source-bfs",
+    "title": "Beyond brute force",
+    "section": "",
+    "text": "Start BFS from all sources at once, letting the search expand outward from them together.\n\nLeetCode #994: Rotting Oranges: start from all rotten oranges; each BFS layer represents one minute of spread.\nLeetCode #542: 01 Matrix: start from all zeros to find each cell’s distance to its nearest zero.\nLeetCode #417: Pacific Atlantic Water Flow: search backward from each ocean’s boundaries, moving to equal-or-higher cells; intersect the two reachable sets."
   },
   {
     "objectID": "posts/algorithmic-patterns/index.html#tree-path-dp",
     "href": "posts/algorithmic-patterns/index.html#tree-path-dp",
     "title": "Beyond brute force",
-    "section": "",
-    "text": "LeetCode #543: Diameter of Binary Tree: child contributions are nonnegative path lengths.\nLeetCode #124: Binary Tree Maximum Path Sum: discard negative child contributions; the node alone remains a valid candidate."
+    "section": "Tree path DP",
+    "text": "Tree path DP\n\n\nLeetCode #543: Diameter of Binary Tree: child contributions are nonnegative path lengths.\nLeetCode #124: Binary Tree Maximum Path Sum: discard negative child contributions; the node alone remains a valid candidate."
   },
   {
     "objectID": "posts/algorithmic-patterns/index.html#binary-search",
