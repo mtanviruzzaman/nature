@@ -6,6 +6,17 @@ date: "2026-10-22"
 categories: [computation, algorithms]
 ---
 
+## Multi-source BFS
+
+Start BFS from all sources at once, letting the search expand outward from them together.
+
+* [LeetCode #994: Rotting Oranges](https://leetcode.com/problems/rotting-oranges/):
+  start from all rotten oranges; each BFS layer represents one minute of spread.
+* [LeetCode #542: 01 Matrix](https://leetcode.com/problems/01-matrix/):
+  start from all zeros to find each cell’s distance to its nearest zero.
+* [LeetCode #417: Pacific Atlantic Water Flow](https://leetcode.com/problems/pacific-atlantic-water-flow/):
+  search backward from each ocean’s boundaries, moving to equal-or-higher cells; intersect the two reachable sets.
+
 ## Tree path DP
 
 ![](tree-dp-path-pattern.svg)
